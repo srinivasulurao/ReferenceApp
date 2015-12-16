@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/btnselected"
+    android:layout_margin="5dp"
+    android:paddingBottom="5dp"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:text="Existing Member"
+        android:textColor="@color/blue"
+        android:textSize="18dp" />
+
+<!--     <EditText
+        android:id="@+id/etMobNum"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_voicey"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_grey"
+        android:ellipsize="start"
+        android:gravity="center"
+        android:hint="Mobile Number "
+        android:imeOptions="actionNext"
+        android:inputType="phone"
+        android:padding="3dp"
+        android:singleLine="true"
+        android:textSize="15dp" /> -->
+    <LinearLayout
+        android:id="@+id/etphone_lay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_voicey"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/countrycode"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.60"
+            android:background="@drawable/semiround"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="code"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/etMobNum"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.15"
+            android:background="@drawable/btn_grey"
+            android:ellipsize="start"
+            android:gravity="center"
+            android:hint="Mobile Number"
+            android:imeOptions="actionNext"
+            android:inputType="phone"
+            android:padding="3dp"
+            android:singleLine="true"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/phonenotify"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etphone_lay"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
+        android:text="Kindly enter your previous registered mobile number."
+        android:textSize="10dp" />
+
+    <EditText
+        android:id="@+id/etmail"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/phonenotify"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_grey"
+        android:ellipsize="start"
+        android:gravity="center"
+        android:hint="Email Id "
+        android:imeOptions="actionNext"
+        android:inputType="textEmailAddress"
+        android:padding="3dp"
+        android:singleLine="true"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/mailnotify"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etmail"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
+        android:text="Kindly enter valid email ID to get verification code."
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/tvsendmail"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mailnotify"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:layout_toLeftOf="@+id/tvsave"
+        android:background="@drawable/btnselected"
+        android:text="Send verification code"
+        android:textColor="@color/blue"
+        android:padding="3dp"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+    
+     <LinearLayout
+        android:id="@+id/etverifyblock"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_below="@+id/tvsendmail"
+        android:orientation="horizontal"
+        android:visibility="visible" >
+    
+    <EditText
+        android:id="@+id/etverify"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+            android:layout_weight="0.35"
+        android:background="@drawable/btn_grey"
+        android:ellipsize="start"
+        android:gravity="center"
+        android:hint="Enter Verification Code"
+        android:imeOptions="actionNext"
+        android:inputType="textEmailAddress"
+        android:padding="3dp"
+        android:singleLine="true"
+        android:textSize="15dp" />
+    
+    <TextView
+            android:id="@+id/save_grp"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.75"
+            android:background="@drawable/roundleft"
+            android:text="verify"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_marginRight="15dp"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/etverifynote"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etverifyblock"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="Enter the code sent to the above email address"
+        android:textSize="10sp" />
+    
+    <TextView
+        android:id="@+id/tvclose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etverifynote"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:text="Close"
+        android:padding="5dp"
+        android:background="@drawable/btnselected"
+        android:textColor="@color/gray"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/img_voicey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/welcome"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/launcher" />
+
+
+</RelativeLayout>

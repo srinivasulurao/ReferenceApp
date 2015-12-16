@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="480dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="0dp" >
+
+        <TextView
+            android:id="@+id/tvcamera"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:text="Take a Photo"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#006FB5"
+            android:textSize="35sp" />
+
+        <TextView
+            android:id="@+id/textView61"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#dfdfdf"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/tvgallery"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="Choose Existing Photos"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#006FB5"
+            android:textSize="35sp" />
+
+        <TextView
+            android:id="@+id/textView62"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="#dfdfdf"
+            android:gravity="center" />
+
+        
+
+        <TextView
+            android:id="@+id/textView34"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="#dfdfdf"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/tvcancel"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Cancel"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#727b8d"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+        <!-- @color/gray -->
+    </LinearLayout>
+
+</RelativeLayout>

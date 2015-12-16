@@ -1,0 +1,67 @@
+8
+
+dir
+58
+https://copperlabs.unfuddle.com/svn/copperlabs_aotd/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/multi
+https://copperlabs.unfuddle.com/svn/copperlabs_aotd
+
+
+
+2013-07-24T06:34:05.903976Z
+41
+bharat
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f1fa43f-907b-4675-81e4-73ce5c20cf60
+
+ByQuadrantReader.java
+file
+
+
+
+
+2013-09-12T06:44:00.000000Z
+82dc4f308eb7b093e38b35f0cc84e3a6
+2013-07-24T06:34:05.903976Z
+41
+bharat
+
+GenericMultipleBarcodeReader.java
+file
+
+
+
+
+2013-09-12T06:44:00.000000Z
+dea69820bb3562ca7738377d6a545e82
+2013-07-24T06:34:05.903976Z
+41
+bharat
+
+MultipleBarcodeReader.java
+file
+
+
+
+
+2013-09-12T06:44:00.000000Z
+e081b955797a644d039e0fc261dbf8f0
+2013-07-24T06:34:05.903976Z
+41
+bharat
+
+qrcode
+dir
+

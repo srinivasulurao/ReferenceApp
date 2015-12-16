@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+       android:background="@color/Background_list"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/tvcustomername"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="30"
+        android:gravity="center"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:textSize="15dp"
+        />
+
+    <TextView
+        android:id="@+id/tvphone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="30"
+        android:gravity="center"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:textSize="15dp"
+        />
+
+    <TextView
+        android:id="@+id/tvvisitcount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="20"
+        android:gravity="center"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:textSize="15dp"
+         />
+    
+     <TextView
+        android:id="@+id/tvprice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="20"
+        android:gravity="center"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:textSize="15dp"
+         />
+
+</LinearLayout>

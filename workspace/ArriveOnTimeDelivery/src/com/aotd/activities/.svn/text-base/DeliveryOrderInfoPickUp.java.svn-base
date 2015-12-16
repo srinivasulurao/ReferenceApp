@@ -1,0 +1,465 @@
+package com.aotd.activities;
+
+import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.text.Html;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.aotd.dialog.AlertDialogMsg;
+import com.aotd.helpers.AOTDDataBase;
+import com.aotd.model.DetailDeliveryModel;
+import com.aotd.parsers.DispatchDeliveryParser;
+import com.aotd.parsers.PickupParser;
+import com.aotd.utils.Utils;
+
+public class DeliveryOrderInfoPickUp extends Activity {
+	
+	private Button 		pickup_btn, scan_btn;
+	private	TextView 	
+			orderNum, accountName, accountNotes, pickUp_from, delivery_to, 
+			rfc, puinstruction, dlinstruction, serviceType,	pickupReady,	
+			requestedBy, pieces, weight, adminNotes;	
+	
+	private DetailDeliveryModel mDetailDeliveryModel = null;
+	private TextView   isRoundtrip   =null;
+	
+	private String openorderStatus;
+	private ProgressDialog progressdialog  =null;
+	private String data;
+	String orderId = "";
+	private String pickupAction = "get";
+	public ImageView imgOnline;
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);		
+		setContentView(R.layout.aotd_delivery_order_info_pickup);
+		orderId = getIntent().getStringExtra("orderNumber");
+		
+		intializeUI(); 
+		pickupAction = "get";
+		
+		if(Utils.checkNetwork(getApplicationContext()))
+		{
+			progressdialog = ProgressDialog.show(DeliveryOrderInfoPickUp.this, "", "please wait...");
+			
+			try {
+				
+				Log.e("Sync Data", "******************* syncData");
+				new SyncData(getApplicationContext(), new getSyncHandler());
+				
+			} catch (Exception e) {
+				// TODO: handle exception
+				
+				Log.e("Sync Data", "******************* syncData Error");
+				e.printStackTrace();
+			}
+			
+		}else{
+			
+			getPickupDataOffline();
+			
+		}
+		
+		
+		pickup_btn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				pickupAction = "set";
+				
+				if(Utils.checkNetwork(getApplicationContext()))
+				{
+					progressdialog = ProgressDialog.show(DeliveryOrderInfoPickUp.this, "", "please wait...");
+					
+					try {
+						
+						Log.e("Sync Data", "******************* syncData");
+						new SyncData(getApplicationContext(), new getSyncHandler());
+						
+					} catch (Exception e) {
+						// TODO: handle exception
+						
+						Log.e("Sync Data", "******************* syncData Error");
+						e.printStackTrace();
+					}
+					
+				}else{
+					
+					setPickupOffline();
+					
+				}
+			}
+		});
+		
+		
+		scan_btn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				Intent intent = new Intent("com.vinscan.barcode.SCAN");
+				intent.putExtra("SCAN_MODE", "PRODUCT_MODE");
+				startActivityForResult(intent, 0);
+			}
+		});
+	}
+	
+	private void getPickupDataOnline(){
+		
+		try
+		{
+			String encodedUserId   = URLEncoder.encode(Utils.ROLENAME.trim(),"UTF-8");
+			
+			String encodedorderId  = URLEncoder.encode(getIntent().getStringExtra("orderNumber"),"UTF-8");
+			
+			String url = String.format(Utils.DISPATCH_DELIVERY_URL,encodedUserId,encodedorderId);
+			
+			DispatchDeliveryParser mDispatchparser = new DispatchDeliveryParser(new PickUpHandler(), url , mDetailDeliveryModel);
+			mDispatchparser.start(); 
+			
+		}catch(Exception e){
+			Toast.makeText(getApplicationContext(), "Error in porcessing login details, contact support", Toast.LENGTH_LONG).show();
+		}
+	}
+	
+	private void getPickupDataOffline(){
+		
+		AOTDDataBase _AOTDDataBase = new AOTDDataBase(this);
+		mDetailDeliveryModel= _AOTDDataBase.getOrderDetails(orderId);
+		setData();
+	}
+	
+	private void setPickupOnline(){
+		
+		try{
+			
+			String encodedURoleName   = URLEncoder.encode(Utils.ROLENAME.trim(),"UTF-8");
+			String encodedOrderIds = URLEncoder.encode(getIntent().getStringExtra("orderNumber"),"UTF-8");
+			data = "roleName="+encodedURoleName+"&order_ids="+encodedOrderIds;
+			
+		}catch(Exception e){
+			
+			Toast.makeText(getApplicationContext(), "Error in porcessing login details, contact support", Toast.LENGTH_LONG).show();
+		}
+		
+		PickupParser mResponseParser = null;
+		mResponseParser = new PickupParser(Utils.PICKUP_URL,new PickUpHandler());				
+		mResponseParser.isPost=true;
+		mResponseParser.postData = data;
+		mResponseParser.start();
+		
+	}
+	
+	private void setPickupOffline(){
+		
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		String order_id = getIntent().getStringExtra("orderNumber");
+		String mydate =  sdf.format(date);
+		AOTDDataBase _AOTDDataBase = new AOTDDataBase(DeliveryOrderInfoPickUp.this);
+		_AOTDDataBase.updatePickup(order_id,mydate);
+		alertDialogWithMsg("AOTD","Order Picked-up updted successfully");
+		
+	}
+	
+//	Called when the sync id done
+	
+	class getSyncHandler extends Handler{
+		
+		public void handleMessage(android.os.Message msg)
+		{
+			
+			if(msg.what == 10){
+				
+				Log.e("Sync Data", "******************* getOnlineOrders 10");
+				
+				if(pickupAction.equalsIgnoreCase("get"))
+					getPickupDataOnline();
+				else
+					setPickupOnline();
+				
+			}else if(msg.what == 11){
+				
+				Log.e("Sync Data", "******************* getOfflineOrders 11");
+				progressdialog.dismiss();
+				if(pickupAction.equalsIgnoreCase("get"))
+					getPickupDataOffline();
+				else
+					setPickupOffline();
+				
+			}else if(msg.what == 12){
+				
+				Log.e("Sync Data", "******************* getOnlineOrders 12");
+				if(pickupAction.equalsIgnoreCase("get"))
+					getPickupDataOnline();
+				else
+					setPickupOnline();
+			}
+		}
+	}
+	
+	private void intializeUI() {
+		
+		openorderStatus =   getIntent().getExtras().getString("openorder"); 
+		
+		pickup_btn  	=   (Button)findViewById(R.id.aotd_delivery_delivery_btn_pup);
+		scan_btn  		=   (Button)findViewById(R.id.aotd_delivery_scan_btn_pup);
+		
+		orderNum		=	(TextView)findViewById(R.id.aotd_delivery_orderNum_btn_pup);
+		accountName		=   (TextView)findViewById(R.id.aotd_delivery_accountName_txt_pup);
+		accountNotes	=   (TextView)findViewById(R.id.aotd_delivery_accountNote_txt_pup);
+		rfc				= 	(TextView)findViewById(R.id.aotd_delivery_rfc_txt_pup);	
+		pickUp_from		=   (TextView)findViewById(R.id.aotd_delivery_PUaddress_txt_pup);
+		delivery_to		=   (TextView)findViewById(R.id.aotd_delivery_DLaddress_txt_pup);
+		puinstruction	=	(TextView)findViewById(R.id.aotd_delivery_PUInstruction_txt_pup);
+		dlinstruction  	=   (TextView)findViewById(R.id.aotd_delivery_DLInstruction_txt_pup);
+		serviceType    	=   (TextView)findViewById(R.id.aotd_delivery_serviceType_txt_pup);
+		pickupReady		=   (TextView)findViewById(R.id.aotd_delivery_pickupReady_txt_pup);
+		requestedBy		=   (TextView)findViewById(R.id.aotd_delivery_requiredBy_txt_pup);
+		pieces		 	=   (TextView)findViewById(R.id.aotd_delivery_piece_txt_pup);
+		weight			=   (TextView)findViewById(R.id.aotd_delivery_weight_txt_pup);		
+		isRoundtrip    	=   (TextView)findViewById(R.id.aotd_roundtrip_pup);
+		adminNotes		=   (TextView)findViewById(R.id.aotd_delivery_adminNote_txt_pup);
+		
+		imgOnline 		= 	(ImageView)findViewById(R.id.aotd_img_mode);
+		
+		mDetailDeliveryModel = new DetailDeliveryModel();		
+		
+		if(Utils.checkNetwork(getApplicationContext()))
+			imgOnline.setBackgroundResource(R.drawable.online);
+		else
+			imgOnline.setBackgroundResource(R.drawable.offline);
+		
+	}
+	
+	
+	
+	private void setData() {
+		
+		orderNum.setText(getIntent().getStringExtra("orderNumber").trim());
+		accountName.setText(mDetailDeliveryModel.getAccountName().trim());
+		rfc.setText(mDetailDeliveryModel.getRef().trim());
+		
+		pickUp_from.setText(Html.fromHtml(""+
+				((mDetailDeliveryModel.getPUcompany().length()>0) ? "<b>Company info: </b>"+mDetailDeliveryModel.getPUcompany() : "")+
+				((mDetailDeliveryModel.getPUaddress().length()>0) ? "<br/>"+"<b>Address: </b>"+mDetailDeliveryModel.getPUaddress() : "")+
+				((mDetailDeliveryModel.getPUsuit().length()>0) ? "<br/>"+"<b>Suite: </b>"+mDetailDeliveryModel.getPUsuit() : "")+
+				((mDetailDeliveryModel.getPUcity().length()>0) ? "<br/>"+"<b>City: </b>"+mDetailDeliveryModel.getPUcity() : "")+
+				((mDetailDeliveryModel.getPUstate().length()>0) ? "<br/>"+"<b>State: </b>"+mDetailDeliveryModel.getPUstate() : "")+
+				((mDetailDeliveryModel.getPUzip().length()>0) ? "<br/>"+"<b>Zip: </b>"+mDetailDeliveryModel.getPUzip() : "")+
+				((mDetailDeliveryModel.getPUcellPhone().length()>0) ? "<br/>"+"<br/>"+"<b>Cell Phone: </b>"+mDetailDeliveryModel.getPUcellPhone() : "")+
+				((mDetailDeliveryModel.getPUhomephone().length()>0) ? "<br/>"+"<br/>"+"<b>Home Phone: </b>"+mDetailDeliveryModel.getPUhomephone() : "")));
+		
+		delivery_to.setText(Html.fromHtml(""+
+				((mDetailDeliveryModel.getDLcompany().length()>0) ? "<b>Company info: </b>"+mDetailDeliveryModel.getDLcompany() : "")+
+				((mDetailDeliveryModel.getDLaddress().length()>0) ? "<br/>"+"<b>Address: </b>"+mDetailDeliveryModel.getDLaddress() : "")+
+				((mDetailDeliveryModel.getDLsuit().length()>0) ? "<br/>"+"<b>Suite: </b>"+mDetailDeliveryModel.getDLsuit() : "")+
+				((mDetailDeliveryModel.getDLcity().length()>0) ? "<br/>"+"<b>City: </b>"+mDetailDeliveryModel.getDLcity() : "")+
+				((mDetailDeliveryModel.getDLstate().length()>0) ? "<br/>"+"<b>State: </b>"+mDetailDeliveryModel.getDLstate() : "")+
+				((mDetailDeliveryModel.getDLzip().length()>0) ? "<br/>"+"<b>Zip: </b>"+mDetailDeliveryModel.getDLzip() : "")+
+				((mDetailDeliveryModel.getDLcellPhone().length()>0) ? "<br/>"+"<br/>"+"<b>Cell Phone: </b>"+mDetailDeliveryModel.getDLcellPhone() : "")+
+				((mDetailDeliveryModel.getDLhomephone().length()>0) ? "<br/>"+"<br/>"+"<b>Home Phone: </b>"+mDetailDeliveryModel.getDLcellPhone() : "")));
+		
+		serviceType.setText(mDetailDeliveryModel.getServiceName().trim());
+		pickupReady.setText(mDetailDeliveryModel.getRDDate().trim());
+		requestedBy.setText(mDetailDeliveryModel.getRequestor().trim());
+		pieces.setText(mDetailDeliveryModel.getPiece().trim());
+		weight.setText(mDetailDeliveryModel.getWeight().trim());
+		
+		
+		if(mDetailDeliveryModel.getPUInstruction().length()>1)
+			puinstruction.setText(mDetailDeliveryModel.getPUInstruction().trim());
+		else
+			puinstruction.setText(" Not Provided");
+		
+		if(mDetailDeliveryModel.getDLInstruction().length()>1)
+			dlinstruction.setText(mDetailDeliveryModel.getDLInstruction().trim());
+		else
+			dlinstruction.setText(" Not Provided");
+		
+		if(mDetailDeliveryModel.getAccountnotes().length()>1)
+			accountNotes.setText(mDetailDeliveryModel.getAccountnotes().trim());
+		else
+			accountNotes.setText(" Not Provided");
+		
+		if(mDetailDeliveryModel.getAdminNotes().length()>1)
+			adminNotes.setText(mDetailDeliveryModel.getAdminNotes().trim());
+		else
+			adminNotes.setText(" Not Provided");
+		
+		
+		if (mDetailDeliveryModel.getRoundTrip().trim().equalsIgnoreCase("0"))
+			isRoundtrip.setText("No");
+		else
+			isRoundtrip.setText("Yes");
+		
+	}	
+	
+	
+	
+	class PickUpHandler extends Handler{
+		
+		public void handleMessage(android.os.Message msg)
+		{
+			progressdialog.dismiss();				
+			
+			if(msg.what == 1){
+				
+				String errorMsg=msg.getData().getString("HttpError");
+				if(errorMsg.length()>0){	
+					
+					alertDialogWithMsg("AOTD",errorMsg);
+					
+				}else{
+					
+					mDetailDeliveryModel = (DetailDeliveryModel) msg.getData().getSerializable("dispatchdetail");
+					if(mDetailDeliveryModel!=null)
+						setData();
+					
+				}
+				
+				
+			}else{
+				
+				String errorMsg=msg.getData().getString("HttpError");
+				if(errorMsg.length()>0){	
+					
+					alertDialogWithMsg("AOTD",errorMsg);
+					
+				}else{	
+					String successDate=msg.getData().getString("success");
+					AOTDDataBase _AOTDDataBase = new AOTDDataBase(DeliveryOrderInfoPickUp.this);
+					_AOTDDataBase.updatePickup(orderId,successDate);
+					alertDialogWithMsg("AOTD","Order Picked-up updated successfully");
+					
+					
+				}  
+			}
+		}
+	}
+	
+	public void alertDialogWithMsg(String title, String msg){	
+		
+		new AlertDialogMsg(DeliveryOrderInfoPickUp.this, title, msg ).setPositiveButton("ok", new android.content.DialogInterface.OnClickListener(){
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which){
+				
+				System.out.println("The dialog box was clicked");
+				finish();
+			}		
+			
+		}).create().show();		
+	}
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+		
+		if (requestCode == 0) {
+			
+			if (resultCode == RESULT_OK) {
+				
+				String contents = intent.getStringExtra("batchid");
+				
+				try{
+					
+					Log.d("contents", "contents "+contents);
+					
+					if(contents.equalsIgnoreCase("none")){
+						
+						alertDialogWithOneMsg("AOTD", "Wrong Order Id Scan Please try again.");
+						
+					}else{
+						
+						char subId=contents.substring(contents.length()-1).toCharArray()[0];
+						
+						String scanOrderId = null;
+						
+						if (subId >= '0' && subId <= '9'){
+							
+							scanOrderId = contents;
+							
+						}else{
+							
+							scanOrderId = contents.substring(0,contents.length()-1);
+						}
+						
+						if(scanOrderId.trim().equals(getIntent().getStringExtra("orderNumber").trim())){
+							
+							pickupAction = "set";
+							
+							if(Utils.checkNetwork(getApplicationContext()))
+							{
+								progressdialog = ProgressDialog.show(DeliveryOrderInfoPickUp.this, "", "please wait...");
+								
+								try {
+									
+									Log.e("Sync Data", "******************* syncData");
+									new SyncData(getApplicationContext(), new getSyncHandler());
+									
+								} catch (Exception e) {
+									// TODO: handle exception
+									
+									Log.e("Sync Data", "******************* syncData Error");
+									e.printStackTrace();
+								}
+								
+							}else{
+								
+								setPickupOffline();
+								
+							}
+							
+						}else{
+							
+							alertDialogWithOneMsg("AOTD", "Wrong Order Id Scan Please try again.");
+							
+						}
+					}
+					
+				}catch(Exception e){
+					
+					e.printStackTrace();
+					
+				}
+				
+				// Toast.makeText(this,format+" "+contents, Toast.LENGTH_LONG).show();
+				
+			} else if (resultCode == RESULT_CANCELED) {
+				
+				Log.d("Cancle", "scanning cancle");
+			}
+		}
+	}
+	
+	public void alertDialogWithOneMsg(String title, String msg){	
+		 
+		new AlertDialogMsg(DeliveryOrderInfoPickUp.this, title, msg ).setPositiveButton("ok", new android.content.DialogInterface.OnClickListener(){
+	
+			@Override
+			public void onClick(DialogInterface dialog, int which)
+			{
+						
+			}
+			
+		}).create().show();		
+	}
+	
+}
+	

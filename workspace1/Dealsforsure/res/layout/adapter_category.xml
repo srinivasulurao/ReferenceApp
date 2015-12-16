@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFF"
+    android:paddingLeft="@dimen/padding_main"
+    android:paddingTop="@dimen/padding_main"
+    android:paddingRight="@dimen/padding_main" >
+    
+    <RelativeLayout 
+        android:id="@+id/lytMain"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@drawable/categorybackground"
+		android:padding="@dimen/padding_main_content">
+	
+	    <ImageView
+		    android:id="@+id/icmarker"
+		    android:layout_width="@dimen/marker_size"
+		    android:layout_height="@dimen/marker_size"
+		    android:layout_alignParentLeft="true"
+		    android:layout_centerVertical="true"
+		    android:layout_marginRight="@dimen/thumb_margin_right"
+		    android:contentDescription="@string/app_name"
+		    android:scaleType="centerCrop"/>
+	    
+	    <TextView
+	        android:id="@+id/lblNameCategory"
+	        style="@android:style/TextAppearance.Medium"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerVertical="true"
+	        
+	        android:layout_toRightOf="@+id/icmarker"
+	        android:textColor="@color/text_title" />
+	    
+	      <TextView
+	        android:id="@+id/lblcount"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerVertical="true"
+	        android:layout_marginLeft="10dp"
+	         android:layout_toRightOf="@+id/lblNameCategory"
+	         
+	        style="@android:style/TextAppearance.Medium"
+	        android:textColor="@color/text_title"/>
+	    
+	    
+	    
+    </RelativeLayout>
+</RelativeLayout>

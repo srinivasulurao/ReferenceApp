@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 4 elements to &apos;drawable-ldpi&apos;&#x0D;&#x0A;- Original project: &apos;MainActivity&apos;&#x0D;&#x0A;- Destination element: &apos;drawable-ldpi&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     chiang_mai.jpg&#x0D;&#x0A;     petronas_twin_tower.jpg&#x0D;&#x0A;     himeji.jpg&#x0D;&#x0A;     ulm.jpg" description="Copy files" element1="res/drawable/chiang_mai.jpg" element2="res/drawable/petronas_twin_tower.jpg" element3="res/drawable/himeji.jpg" element4="res/drawable/ulm.jpg" files="4" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1426786387948" target="/Dealforsure/res/drawable-ldpi" units="0" version="1.0"/>
+</session>

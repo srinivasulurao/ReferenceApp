@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.youflik.youflik"
+    android:versionCode="2"
+    android:versionName="1.0.1" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="21" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <permission
+        android:name="com.youflik.youflik.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.youflik.youflik.permission.C2D_MESSAGE" />
+
+    <application
+        android:name="com.youflik.youflik.utils.UILApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/app_id" />
+
+        <activity
+            android:name="com.youflik.youflik.SplashScreen"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.facebook.LoginActivity" />
+        <activity
+            android:name="com.youflik.youflik.MainScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+        </activity>
+        <activity
+            android:name="com.youflik.youflik.SigninActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+            android:windowSoftInputMode="adjustResize" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="signin"
+                    android:scheme="oauth" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.youflik.youflik.JoinActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="join"
+                    android:scheme="oauth" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.youflik.youflik.forgotpassword.ActivityForgotPassword"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.youflik.youflik.forgotpassword.ActivityVerifyCode"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.youflik.youflik.forgotpassword.ActivityChangePassword"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.youflik.youflik.register.RegistrationTwitter"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+        </activity>
+        <activity
+            android:name="com.youflik.youflik.RestrictedPage"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+        </activity>
+        <activity
+            android:name="com.youflik.youflik.register.RegistrationFacebook"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity
+            android:name="com.youflik.youflik.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+        </activity>
+        <activity
+            android:name="com.youflik.youflik.ViewPhoto"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+        </activity>
+        <activity
+            android:name="com.youflik.youflik.ViewPhotoTimefeed"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+        </activity>
+        <activity
+            android:name="com.youflik.youflik.ViewPhotoTimeLog"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+        </activity>
+        <activity
+            android:name="com.youflik.youflik.register.RegisterNormal"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity
+            android:name="com.youflik.youflik.userprofile.UserDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity
+            android:name="com.youflik.youflik.thirdPartyProfileView.ThirdPartyUserDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity
+            android:name="com.youflik.youflik.selectCustomFriends.SelectCustomFriends"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity
+            android:name="com.youflik.youflik.profileUpdate.UserProfileUpdate"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity
+            android:name="com.youflik.youflik.songs.ProfileSongs"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity
+            android:name="com.youflik.youflik.chat.ChatConversationsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity
+            android:name="eu.janmuller.android.simplecropimage.CropImage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.youflik.youflik.chat.ChatMessagingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity
+            android:name="com.youflik.youflik.settings.SettingsBlockUserActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity
+            android:name="com.youflik.youflik.ImageDetailPager.ImageDetail"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity
+            android:name="com.youflik.youflik.ImageDetailPager.videoDetail"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity
+            android:name="com.youflik.youflik.statusUpdate.UserStatusUpdate"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+            android:uiOptions="none"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.youflik.youflik.ImageDetailPager.CommentsDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.youflik.youflik.ImageDetailPager.LikeDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.youflik.youflik.ImageDetailPager.ShareDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.youflik.youflik.chat.ChatOthersConversationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.youflik.youflik.chat.AddFriendToChat"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.youflik.youflik.chat.ChatImagePreviewSave"
+            android:screenOrientation="portrait" />
+
+        <provider
+            android:name="com.youflik.youflik.utils.InternalStorageContentProvider"
+            android:authorities="com.youflik.youflik.utils"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <receiver
+            android:name="com.youflik.youflik.broadcastreceivers.YouflikGcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="com.youflik.youflik.broadcastreceivers" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.youflik.youflik.services.YouflikGcmIntentService" />
+    </application>
+
+</manifest>

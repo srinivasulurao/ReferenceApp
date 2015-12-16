@@ -1,0 +1,270 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/etbusinessname"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView1"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edt_blue_border"
+                android:ellipsize="start"
+                android:gravity="center"
+                android:hint="Name of business"
+                android:focusable="true" 
+                 android:focusableInTouchMode="true"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18dp" />
+            
+            <EditText
+                android:id="@+id/etcontactperson"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView1"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edt_blue_border"
+                android:ellipsize="start"
+                android:gravity="center"
+                android:hint="Contact Person Name:"
+                android:focusable="true" 
+                 android:focusableInTouchMode="true"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18dp" />
+            
+            <EditText
+                android:id="@+id/etcontactphone"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView1"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edt_blue_border"
+                android:ellipsize="start"
+                android:gravity="center"
+                android:hint="Contact Phone"
+                android:imeOptions="actionNext"
+                android:inputType="phone"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18dp" />
+            
+            <EditText
+                android:id="@+id/etbusinessphone"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView1"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edt_blue_border"
+                android:ellipsize="start"
+                android:gravity="center"
+                android:hint="Business Phone:"
+                android:imeOptions="actionNext"
+                android:inputType="phone"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/etemail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView1"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edt_blue_border"
+                android:ellipsize="start"
+                android:gravity="center"
+                android:hint="Email Id "
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/etwebsite"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView1"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edt_blue_border"
+                android:ellipsize="start"
+                android:gravity="center"
+                android:hint="Website"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18dp" />
+            
+            <EditText
+                android:id="@+id/etaddress"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView1"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edt_blue_border"
+                android:ellipsize="start"
+                android:gravity="center"
+                android:hint="Full Address"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18dp" />
+            
+            <EditText
+                android:id="@+id/etfacebookurl"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView1"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edt_blue_border"
+                android:ellipsize="start"
+                android:gravity="center"
+                android:hint="Facebook url"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18dp" />
+            
+            <EditText
+                android:id="@+id/etcategory"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView1"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edt_blue_border"
+                android:ellipsize="start"
+                android:gravity="center"
+                android:hint="Category of Business"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/etpassword"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView1"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edt_blue_border"
+                android:ellipsize="start"
+                android:gravity="center"
+                android:hint="Password"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/etconpassword"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView1"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edt_blue_border"
+                android:ellipsize="start"
+                android:gravity="center"
+                android:hint="Verify Password"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textSize="18dp" />
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <CheckBox
+                    android:id="@+id/chkterms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="20dp" />
+
+                <TextView
+                    android:id="@+id/tvtermscondition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="20dp"
+                    android:textSize="15dp"
+                    android:text="@string/terms_and_condition" >
+                </TextView>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnLogin"
+                style="@android:style/TextAppearance.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:background="@drawable/apptheme_btn_default_holo_light"
+                android:padding="10dp"
+                android:text="Register Me"
+                android:textColor="@color/text_btn" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.fivestarchicken.lms"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical" >
+
+<RelativeLayout
+            android:id="@+id/rlthimbnail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_centerHorizontal="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp" >
+
+    
+
+            <RelativeLayout
+                android:id="@+id/rlimage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/ivfreme_left"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/ivimage"
+                    android:layout_width="fill_parent"
+                    android:layout_height="600dp"
+                      android:scaleType="fitXY"
+                    android:src="@drawable/noimage" />
+                
+                <ImageView
+                   
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                      android:layout_centerHorizontal="true"
+                      android:layout_centerVertical="true"
+                    android:src="@drawable/play" />
+            </RelativeLayout>
+        </RelativeLayout>
+        </RelativeLayout>

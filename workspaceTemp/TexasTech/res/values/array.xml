@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- <string-array name="menu_arr">
+        <item>Campus Directory</item>
+        <item>Events</item>
+        <item>Faculty Directory</item>
+        <item>Campuses</item>
+        <item>Social Media Integration</item>
+        <item>Virtual Tours</item>
+        <item>Student Health Resources</item>
+        <item>Mental Resources</item>
+        <item>Profile</item>
+        <item>Logout</item>
+    </string-array>
+
+    <integer-array name="menu_icon_arr">
+        <item>@drawable/campus_directory</item>
+        <item>@drawable/events</item>
+        <item>@drawable/faculty_directory</item>
+        <item>@drawable/campuses</item>
+        <item>@drawable/social_media_integration</item>
+        <item>@drawable/virtual_tours</item>
+        <item>@drawable/student_resources</item>
+        <item>@drawable/mental_health</item>
+        <item>@drawable/faculty_directory</item>
+        <item>@drawable/faculty_directory</item>
+    </integer-array>
+
+    <string-array name="role">
+        <item>Select Role:</item>
+        <item>Alumni</item>
+        <item>Faculty</item>
+        <item>Staff</item>
+        <item>Student</item>
+    </string-array>
+    <string-array name="program">
+        <item>Select Program:</item>
+        <item>Traditional BSN-Lubbock</item>
+        <item>Traditional BSN-Odessa</item>
+        <item>Traditional BSN-Abilene</item>
+        <item>2nd Degree BSN-Abilene</item>
+        <item>2nd Degree BSN-Amarillo</item>
+        <item>2nd Degree BSN-Austin</item>
+        <item>2nd Degree BSN-Dallas</item>
+        <item>2nd Degree BSN-Lubbock</item>
+        <item>2nd Degree BSN-Odessa</item>
+        <item>RN-BSN</item>
+        <item>VBSN-Dallas</item>
+        <item>VBSN-Amarillo</item>
+        <item>MSN</item>
+        <item>DNP</item>
+    </string-array> -->
+    
+    
+    <string-array name="gra_mm">
+        <item>Select:</item>
+        <item>Spring</item>
+        <item>Summer</item>
+        <item>Fall</item>
+    </string-array>
+    
+    
+
+
+
+    <string-array name="arr_virtual_tour">
+         
+        <item>Academic Classroom Building</item>
+        <item>SimLife ER</item>
+        <item>Student Study Room</item>
+        <item>Synergistic Center</item>
+        
+    </string-array>
+
+</resources>

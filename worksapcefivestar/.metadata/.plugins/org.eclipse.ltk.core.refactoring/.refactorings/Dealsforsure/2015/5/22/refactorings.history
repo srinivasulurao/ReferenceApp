@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;actionbar_direction.xml&apos; to &apos;menu&apos;&#x0D;&#x0A;- Original project: &apos;Dealsforsure&apos;&#x0D;&#x0A;- Destination element: &apos;menu&apos;&#x0D;&#x0A;- Original element: &apos;actionbar_direction.xml&apos;" description="Copy file" element1="res/menu/actionbar_direction.xml" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1432641632699" target="/FiveStarChickenLMS/res/menu" units="0" version="1.0"/>
+</session>

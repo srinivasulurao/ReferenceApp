@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/rna/activities
+END
+RNATabActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/rna/activities/RNATabActivity.java
+END
+RNADispatchTabActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/rna/activities/RNADispatchTabActivity.java
+END
+RNADispatchPastTabActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/rna/activities/RNADispatchPastTabActivity.java
+END
+RNAPickUpActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/rna/activities/RNAPickUpActivity.java
+END
+RNAScanActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/rna/activities/RNAScanActivity.java
+END
+RNADeliveryActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/rna/activities/RNADeliveryActivity.java
+END
+SyncRNAData.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/rna/activities/SyncRNAData.java
+END
+RNADispatchFutureTabActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/rna/activities/RNADispatchFutureTabActivity.java
+END
+RNADispatchPresentTabActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/rna/activities/RNADispatchPresentTabActivity.java
+END

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_margin="10dp"
+    android:background="@drawable/btn_grey" >
+
+    <RelativeLayout
+        android:id="@+id/llheader"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+         >
+
+        <LinearLayout
+            android:id="@+id/headerlayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#C6C4C4"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/lblstorename"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="40"
+                android:gravity="center"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:text="Store Name"
+                android:textColor="@android:color/white"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lbldate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="30"
+                android:gravity="center"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:text="Date"
+                 android:textColor="@android:color/white"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lblamountt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="30"
+                android:gravity="center"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:text="Amount"
+                 android:textColor="@android:color/white"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lvcustomerdetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/headerlayout"
+            android:layout_above="@+id/tvcreatedeal"
+            android:layout_centerHorizontal="true"
+            android:divider="@android:color/white"
+            android:dividerHeight="10dp" >
+        </ListView>
+        
+        <TextView
+                android:id="@+id/tvcreatedeal"
+                style="@android:style/TextAppearance.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+               android:layout_alignParentBottom="true"
+                android:background="@drawable/apptheme_btn_default_holo_light"
+                android:text="@string/btn_create_deal"
+                android:textColor="@color/text_btn" />
+    </RelativeLayout>
+
+</RelativeLayout>

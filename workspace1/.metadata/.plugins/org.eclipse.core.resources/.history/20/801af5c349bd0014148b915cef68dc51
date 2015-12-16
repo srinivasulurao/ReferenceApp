@@ -1,0 +1,17 @@
+package com.dealsforsure;
+
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+
+
+public class ActivityHome1 extends ActionBarActivity  {
+	
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		
+		//ctx = this;
+		setContentView(R.layout.activity_main);
+		
+	}
+
+}

@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/aotd_background" >
+
+    <RelativeLayout
+        android:layout_width="400dp"
+        android:layout_height="fill_parent"
+        android:layout_centerHorizontal="true" >
+
+        <RelativeLayout
+            android:id="@+id/dispatchScreen_ll_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" >
+
+            <TextView
+                android:id="@+id/roundtrip_layout_title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/aotd_title"
+                android:gravity="center"
+                android:paddingBottom="8dp"
+                android:text="Dispatch Screen"
+                android:textColor="#4169E1"
+                android:textSize="25dip"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/aotd_img_mode"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/online" />
+        </RelativeLayout>
+
+        <ScrollView
+            android:id="@+id/scrollView1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/roundtrip_layout_title"
+            android:layout_below="@+id/dispatchScreen_ll_title" >
+
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/roundtrip_layout_sub_header"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/aotd_sub_header"
+                    android:gravity="center"
+                    android:paddingBottom="8dp"
+                    android:text="Round Trip"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="18dip"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <Button
+                        android:id="@+id/roundtrip_btn_no"
+                        android:layout_width="85dp"
+                        android:layout_height="45dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@id/roundtrip_layout_sub_header"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/roundtrip_yes_or_no"
+                        android:text="No"
+                        android:textColor="#000000"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/roundtrip_btn_yes"
+                        android:layout_width="85dp"
+                        android:layout_height="45dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@id/roundtrip_layout_sub_header"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/roundtrip_yes_or_no"
+                        android:text="Yes"
+                        android:textColor="#000000"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp" >
+
+                    <TextView
+                        android:id="@+id/roundtrip_txt_wait_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Wait Time"
+                        android:textColor="#000000" />
+
+                    <EditText
+                        android:id="@+id/roundtrip_et_wait_time"
+                        android:layout_width="85dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/edit_text_bg"
+                        android:hint="0"
+                        android:inputType="number"
+                        android:paddingBottom="2dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="2dp"
+                        android:singleLine="true" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/roundtrip_txt_more_options"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="More Options"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/roundtrip_txt_choose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/roundtrip_txt_wait_time"
+                    android:layout_below="@+id/roundtrip_txt_more_options"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginTop="10dip"
+                    android:text="Choose Transportation"
+                    android:textColor="#696969" />
+
+                <RadioGroup
+                    android:id="@+id/roundtrip_radio_choose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginTop="10dip"
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/radio_car"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Car"
+                        android:textColor="#696969" />
+
+                    <RadioButton
+                        android:id="@+id/radio_truck"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="90dip"
+                        android:text="Truck"
+                        android:textColor="#696969" />
+                </RadioGroup>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp" >
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Number of Boxes"
+                        android:textColor="#696969" />
+
+                    <EditText
+                        android:id="@+id/roundtrip_et_no_of_boxes"
+                        android:layout_width="85dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/edit_text_bg"
+                        android:hint="0"
+                        android:inputType="number"
+                        android:paddingBottom="2dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="2dp"
+                        android:singleLine="true" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="#000000" />
+
+                <TextView
+                    android:id="@+id/roundtrip_txt_order_status"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_horizontal"
+                    android:text="Order status"
+                    android:textColor="#000000" />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="#000000" />
+
+                <Button
+                    android:id="@+id/roundtrip_btn_finished"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/aotd_btn_yes_no_disable"
+                    android:enabled="false"
+                    android:text="Finished"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+</RelativeLayout>

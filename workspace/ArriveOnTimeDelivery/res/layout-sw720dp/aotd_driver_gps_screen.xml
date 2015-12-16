@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainlayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <!--
+         <ZoomControls
+	    android:id="@+id/zoomcontrols"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		/>
+    -->
+
+    <RelativeLayout
+        android:layout_width="400dp"
+        android:layout_height="fill_parent"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/aotd_splash" >
+
+        <com.readystatesoftware.maps.TapControlledMapView
+            android:id="@+id/driver_gps_screen_mapview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:apiKey="@string/mapkey"
+            android:clickable="true"
+            android:enabled="true" />
+    </RelativeLayout>
+
+    <!-- android:apiKey="0WOVXEU9tnlaFQD9u-cHr0nZ-fwZXRDUUqEYj_A" -->
+
+</RelativeLayout>

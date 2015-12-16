@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rel_activity_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp" >
+
+        <TextView
+            android:id="@+id/gravity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/txtActivityName"
+            style="@style/SubTextHeader"
+            android:layout_centerVertical="true"
+            android:text="Activity Name" />
+
+        <TextView
+            android:id="@+id/txtTime"
+            style="@style/SubTextHeader"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="0dp"
+            android:text="Quantity" />
+
+        <RelativeLayout
+            android:id="@+id/rel_points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/bDelete"
+            android:layout_toRightOf="@+id/txtTime" >
+
+            <TextView
+                android:id="@+id/txtGravity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+
+            <LinearLayout
+                android:id="@+id/linPoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/linMaxPoints"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/txtPoints"
+                    style="@style/SubTextHeader"
+                    android:layout_marginLeft="10dp"
+                    android:text="My" />
+
+                <TextView
+                    android:id="@+id/txtPoints_"
+                    style="@style/SubTextHeader"
+                    android:layout_marginLeft="10dp"
+                    android:text="Points" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linMaxPoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:layout_alignParentRight="true"
+               android:layout_marginRight="10dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/bDetails"
+                    style="@style/SubTextHeader"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="Max" />
+
+                <TextView
+                    android:id="@+id/bDetails"
+                    style="@style/SubTextHeader"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="points" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/bDelete"
+            style="@style/SubTextHeader"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="Edit"
+            android:textSize="12sp"
+             />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/list_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rel_activity_header"
+        android:layout_marginBottom="05dp"
+        android:layout_marginLeft="05dp"
+        android:layout_marginRight="05dp"
+        android:divider="@color/white"
+        android:dividerHeight="05dp" >
+    </ListView>
+
+    <TimePicker
+        android:id="@+id/timePicker1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+</RelativeLayout>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:baselineAligned="false"
+    android:clickable="true"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:visibility="visible" >
+
+        <LinearLayout
+            android:id="@+id/lladdress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="80"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/txtC"
+                style="@android:style/TextAppearance.Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/Cur_Loc"
+                android:textColor="#FF8000" />
+
+            <TextView
+                android:id="@+id/tvLocation"
+                style="@android:style/TextAppearance.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lleditloc"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="20"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/ic_edit_loc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:contentDescription="@string/app_name"
+                android:gravity="center_vertical|center_horizontal"
+                android:padding="20dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/edit_add" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/orange" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:baselineAligned="false"
+        android:orientation="horizontal" >
+
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.65"
+            android:background="#fff"
+            android:cacheColorHint="@android:color/transparent"
+            android:choiceMode="singleChoice"
+            android:divider="#FFF"
+            android:dividerHeight="0dp"
+            android:fadeScrollbars="true"
+            android:fadingEdge="none"
+            android:fastScrollEnabled="false"
+            android:listSelector="@color/foodzu_green"
+            android:paddingBottom="5dp" >
+        </ListView>
+
+        <LinearLayout
+            android:id="@+id/sub_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.45"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/back_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/foodzu_green"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/back"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/tvmain"
+                    style="@android:style/TextAppearance.Medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="8dp"
+                    android:singleLine="true"
+                    android:text="  Main Menu"
+                    android:textColor="@color/red"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/White" />
+
+            <ExpandableListView
+                android:id="@+id/sub_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/foodzu_green"
+                android:cacheColorHint="@android:color/transparent"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="0dp"
+                android:fadeScrollbars="true"
+                android:fadingEdge="none"
+                android:fastScrollEnabled="false"
+                android:groupIndicator="@null"
+                android:listSelector="@android:color/transparent"
+                android:visibility="visible" >
+            </ExpandableListView>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

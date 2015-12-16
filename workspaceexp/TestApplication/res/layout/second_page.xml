@@ -1,0 +1,69 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlmain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     >
+
+    <ImageView
+        android:id="@+id/ivclose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    
+    <TextView
+        android:id="@+id/tvheading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+          android:layout_centerHorizontal="true"
+          android:layout_below="@+id/ivclose"
+          android:textColor="@android:color/white" />
+
+    <LinearLayout
+        android:id="@+id/llbody"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/etfirstword"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/llheader"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edt_style"
+            android:ellipsize="start"
+            android:gravity="left"
+            android:hint="First word ..."
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/etsecondword"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/llheader"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edt_style"
+            android:ellipsize="start"
+            android:gravity="left"
+            android:hint="Second word ..."
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+</RelativeLayout>

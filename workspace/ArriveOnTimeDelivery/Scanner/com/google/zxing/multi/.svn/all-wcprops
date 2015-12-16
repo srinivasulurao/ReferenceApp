@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/multi
+END
+MultipleBarcodeReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/multi/MultipleBarcodeReader.java
+END
+ByQuadrantReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/multi/ByQuadrantReader.java
+END
+GenericMultipleBarcodeReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/multi/GenericMultipleBarcodeReader.java
+END

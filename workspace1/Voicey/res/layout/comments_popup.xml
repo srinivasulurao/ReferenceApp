@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    
+    <EditText
+        android:id="@+id/ettextmsg"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivaddimage"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:gravity="center"
+        android:hint="Add Memo"
+        android:inputType="textMultiLine"
+        android:textSize="15dp" />
+    
+     <LinearLayout
+        android:id="@+id/footerlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ettextmsg"
+        android:layout_marginTop="20dp" >
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="05dp"
+            android:layout_weight="1"
+            android:background="@color/gray" >
+
+            <TextView
+                android:id="@+id/tvcancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:padding="10dp"
+                android:text="cancel"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="05dp"
+            android:layout_weight="1"
+            android:background="@color/blue" >
+
+            <TextView
+                android:id="@+id/tvsave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:padding="10dp"
+                android:text="Save"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+        </RelativeLayout>
+    </LinearLayout>
+    
+    
+    </RelativeLayout>

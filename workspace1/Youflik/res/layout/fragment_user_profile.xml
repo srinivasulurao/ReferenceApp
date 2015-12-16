@@ -1,0 +1,275 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/userdetailsscrollViewpage"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/feed_container"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/image_container"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:background="@android:color/white"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/user_cover_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY" />
+
+                <com.youflik.youflik.utils.ImageViewRounded
+                    android:id="@+id/profilepic"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginLeft="19dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/placeholder" />
+
+                <Button
+                    android:id="@+id/edit"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="15dp"
+                    android:alpha=".85"
+                    android:background="@drawable/round_button_transparent"
+                    android:text="EDIT"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+            <!-- krunal -->
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/user_bio"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:textColor="#A5ADA8"
+                    android:textSize="19sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="4dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/horizontal_dashed_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/user_friend_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:drawableLeft="@drawable/icon_profile_friends_count"
+                            android:paddingTop="6dp"
+                            android:textColor="#A5ADA8"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/user_follow_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="30dp"
+                            android:drawableLeft="@drawable/icon_follower_profile_count"
+                            android:paddingTop="6dp"
+                            android:textColor="#A5ADA8"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/user_location"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:drawableLeft="@drawable/ic_location_place"
+                            android:ellipsize="marquee"
+                            android:fadingEdge="horizontal"
+                            android:lines="1"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:paddingTop="2dp"
+                            android:scrollHorizontally="true"
+                            android:singleLine="true"
+                            android:textColor="#A5ADA8"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="45dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/vertical_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/user_website_blog"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:drawableLeft="@drawable/link"
+                            android:ellipsize="marquee"
+                            android:fadingEdge="horizontal"
+                            android:lines="1"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:paddingTop="6dp"
+                            android:scrollHorizontally="true"
+                            android:singleLine="true"
+                            android:textColor="#A5ADA8"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/user_song_url"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:drawableLeft="@drawable/icon_play_song"
+                            android:ellipsize="marquee"
+                            android:fadingEdge="horizontal"
+                            android:lines="1"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:paddingTop="5dp"
+                            android:scrollHorizontally="true"
+                            android:singleLine="true"
+                            android:textColor="#A5ADA8"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="4dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/horizontal_dashed_line" />
+
+            <TextView
+                android:id="@+id/toplabel"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Top Fans"
+                android:textColor="#A5ADA8"
+                android:textSize="16sp" />
+
+            <GridView
+                android:id="@+id/user_topfans"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="3dp"
+                android:gravity="center"
+                android:horizontalSpacing="2dip"
+                android:numColumns="4"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="2dip" >
+            </GridView>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/feed_bg"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/reload_timelog"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center"
+                    android:text="Something went wrong! click to reload..."
+                    android:textColor="#20b2aa"
+                    android:visibility="gone" />
+
+                <ListView
+                    android:id="@+id/TimeLogfeedListview"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@null" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/load_more_timelog"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/feed_container"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/round_button_grey"
+            android:text="Load More"
+            android:textColor="#ffffff"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</ScrollView>

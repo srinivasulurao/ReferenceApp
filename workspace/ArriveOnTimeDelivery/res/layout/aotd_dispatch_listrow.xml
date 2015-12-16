@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dispatchScreen_listview_main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background1"
+    android:paddingBottom="10dp"
+     >
+
+    <TextView
+        android:id="@+id/dispathch_listrow_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:text="sfdfg" 
+        android:textStyle="bold"
+        />
+
+    <Button
+        android:id="@+id/dispathch_list_row_btn_order_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/dispathch_listrow_date"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/btn_background"
+        android:text="Confirm"
+        android:textStyle="bold"
+        android:textSize="18dp" 
+        android:layout_marginTop="05dp"
+        />
+
+    <Button
+        android:id="@+id/dispatch_order_num_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/btn_background"
+        android:text="dflafla"
+        android:layout_alignTop="@+id/dispathch_list_row_btn_order_status"
+        android:textSize="18dp"
+        android:padding="10dp"
+        android:textStyle="bold"
+         />
+    
+    <TextView 
+        android:id="@+id/pu_company"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dispatch_order_num_btn"
+        android:layout_marginTop="05dp"
+        android:text="pu_company"
+        android:layout_marginLeft="05dp"
+        android:textColor="#000000"
+        />
+    
+    <TextView 
+        android:id="@+id/pu_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pu_company"
+        android:text="pu_address"
+        android:layout_marginLeft="05dp"
+        android:textColor="#000000"
+        
+        />
+    
+     <TextView 
+        android:id="@+id/dl_company"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pu_address"
+        android:text="dl_company"
+        android:layout_marginLeft="05dp"
+        android:textColor="#000000"
+        
+        />
+     
+      <TextView 
+        android:id="@+id/dl_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dl_company"
+        android:text="dl_address"
+        android:layout_marginLeft="05dp"
+        android:textColor="#000000"
+        
+        />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/dispathch_list_row_btn_order_status"
+        android:layout_marginTop="5dp"
+        android:background="@color/white" />
+
+</RelativeLayout>

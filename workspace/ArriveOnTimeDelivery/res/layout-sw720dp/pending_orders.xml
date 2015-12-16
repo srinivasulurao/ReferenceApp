@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="#ffffff"
+    >
+    
+    <TextView
+                android:id="@+id/aotd_delivery_orderNum_btn_pup"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/aotd_title"
+                android:gravity="center"
+                android:paddingBottom="8dp"
+                android:text="Pending Orders"
+                android:textColor="@color/blue"
+                android:textSize="25dip"
+                android:textStyle="bold" />
+    
+    <RelativeLayout 
+        android:id="@+id/rel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@+id/aotd_delivery_orderNum_btn_pup"
+        >
+        
+        <ToggleButton 
+            android:id="@+id/toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOn="On"
+            android:textOff="Off"
+            android:checked="true"
+            />
+        
+        <Button 
+            android:id="@+id/btnResendAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resend All"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_alignParentRight="true"
+            
+            />
+        
+    </RelativeLayout>
+    
+     <ListView
+            android:id="@+id/pending_listView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel"
+            android:divider="#00000000"
+            android:dividerHeight="05dp"
+            android:scrollingCache="false"
+            android:layout_marginLeft="05dp"
+            android:layout_marginRight="05dp"
+            android:layout_marginTop="05dp"
+           
+             />
+    
+
+</RelativeLayout>

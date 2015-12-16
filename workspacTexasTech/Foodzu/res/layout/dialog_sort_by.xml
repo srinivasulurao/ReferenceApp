@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/padding_main"
+    android:paddingLeft="@dimen/padding_main"
+    android:paddingRight="@dimen/padding_main"
+    android:paddingTop="@dimen/padding_main" >
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/grey_light"
+        android:padding="5dp"
+        android:text="@string/sort_by"
+        android:textColor="@color/text_title"
+        android:textSize="15dp" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@color/White" >
+
+        <TextView
+            android:id="@+id/tvpopularity"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/ivselectpopularity"
+            android:background="@color/White"
+            android:padding="5dp"
+            android:text="@string/popularity"
+            android:textColor="@color/text_title"
+            android:textSize="17dp" />
+
+        <ImageView
+            android:id="@+id/ivselectpopularity"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/check_mark" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@color/White" >
+
+        <TextView
+            android:id="@+id/tvhightolow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="1dp"
+            android:layout_toLeftOf="@+id/ivselecthightolow"
+            android:background="@color/White"
+            android:padding="5dp"
+            android:text="@string/high_to_low"
+            android:textColor="@color/text_title"
+            android:textSize="17dp" />
+
+        <ImageView
+            android:id="@+id/ivselecthightolow"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/check_mark" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@color/White" >
+
+        <TextView
+            android:id="@+id/tvlowtohigh"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="1dp"
+            android:layout_toLeftOf="@+id/ivselectlowtohigh"
+            android:background="@color/White"
+            android:padding="5dp"
+            android:text="@string/low_to_high"
+            android:textColor="@color/text_title"
+            android:textSize="17dp" />
+
+        <ImageView
+            android:id="@+id/ivselectlowtohigh"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/check_mark" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@color/White" >
+
+        <TextView
+            android:id="@+id/tvnewest"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="1dp"
+            android:layout_toLeftOf="@+id/ivselectnewest"
+            android:background="@color/White"
+            android:padding="5dp"
+            android:text="@string/newest_first"
+            android:textColor="@color/text_title"
+            android:textSize="17dp" />
+
+        <ImageView
+            android:id="@+id/ivselectnewest"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/check_mark" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlmain"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="5dp"
+    android:paddingLeft="@dimen/padding_main"
+    android:paddingRight="@dimen/padding_main"
+    android:paddingTop="@dimen/padding_main" >
+
+    <LinearLayout
+        android:id="@+id/lytMain"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="1dp" >
+
+            <ImageView
+                android:id="@+id/icmarker"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_latest_blue" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent" >
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_toLeftOf="@+id/ivdelete"
+                android:padding="3dp"
+                android:text="15% OFF in SHOWOFF"
+                android:textColor="@color/text_title" />
+
+            <ImageView
+                android:id="@+id/ivdelete"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_delete" />
+
+            <ImageView
+                android:id="@+id/imgDivider"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line_height"
+                android:layout_below="@+id/tvTitle"
+                android:background="@color/divider"
+                android:contentDescription="@string/app_name" />
+
+            <LinearLayout
+                android:id="@+id/lytPriceDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imgDivider"
+                android:background="@color/Background_main_content"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_detail_price" >
+
+                    <TextView
+                        android:id="@+id/lblview"
+                        style="@android:style/TextAppearance.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Price"
+                        android:textColor="@color/text_sub_title" />
+
+                    <TextView
+                        android:id="@+id/lblPriceValue"
+                        style="@android:style/TextAppearance.Medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/imgDivider1"
+                    android:layout_width="@dimen/line_height"
+                    android:layout_height="match_parent"
+                    android:background="@color/divider"
+                    android:contentDescription="@string/app_name" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_detail_price" >
+
+                    <TextView
+                        style="@android:style/TextAppearance.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Quantity"
+                        android:textColor="@color/text_sub_title" />
+
+                    <EditText
+                        android:id="@+id/etquantity"
+                        style="@android:style/TextAppearance.Medium"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                          android:inputType="numberSigned"
+                        android:background="@drawable/edt_blue_border"
+                        android:textStyle="bold" />
+
+                  
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="@dimen/line_height"
+                    android:layout_height="match_parent"
+                    android:background="@color/divider"
+                    android:contentDescription="@string/app_name" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_detail_price" >
+
+                    <TextView
+                        android:id="@+id/lblTotal"
+                        style="@android:style/TextAppearance.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total"
+                        android:textColor="@color/text_sub_title" />
+
+                    <TextView
+                        android:id="@+id/lbltotalValue"
+                        style="@android:style/TextAppearance.Medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

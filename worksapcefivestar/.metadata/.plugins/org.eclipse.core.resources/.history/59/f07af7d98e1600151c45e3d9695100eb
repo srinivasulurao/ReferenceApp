@@ -1,0 +1,750 @@
+package com.fivestarchicken.lms.database;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.fivestarchicken.lms.model.Answer;
+import com.fivestarchicken.lms.model.Exam;
+import com.fivestarchicken.lms.model.ExamModule;
+import com.fivestarchicken.lms.model.Questions;
+import com.fivestarchicken.lms.model.Result;
+import com.fivestarchicken.lms.model.User;
+import com.fivestarchicken.lms.utils.Commons;
+
+public class DbAdapter {
+
+	private static Context context;
+	private static SQLiteDatabase database;
+	private DatabaseHelper dbHelper;
+
+	public DbAdapter(Context context) {
+		DbAdapter.context = context;
+		dbHelper = new DatabaseHelper(DbAdapter.context);
+		DbAdapter.database = dbHelper.getWritableDatabase();
+
+	}
+
+	public void close() {
+		dbHelper.close();
+	}
+
+	
+	public boolean insertExam(Exam exam) {
+
+		return database.insert(
+				Table.Exam.TABLE_NAME,
+				null,
+				Table.Exam.createValues(exam.getExamId(),
+						exam.getCategoryName(), exam.getTitle(),
+						exam.getModuleCount(),
+						exam.getLevel())) > 0;
+	}
+
+	public boolean insertExamModule(ExamModule examModule) {
+
+		return database.insert(Table.ExamModule.TABLE_NAME, null,
+				Table.ExamModule.createValues(examModule.getExamId(),
+						examModule.getModuleName(),
+						examModule.getTotalQuestions(),
+						examModule.getPassingScore(), examModule.getDuration(),
+						examModule.getModuleId())) > 0;
+	}
+
+	public boolean insertQuestion(Questions question) {
+
+		return database.insert(Table.Question.TABLE_NAME, null, Table.Question
+				.createValues(question.getModuleId(), question.getQuestionId(),
+						question.getQuestionText(), question.getAnswerCount())) > 0;
+	}
+	
+	public boolean insertUser(User user) {
+
+		return database.insert(Table.User.TABLE_NAME, null, Table.User
+				.createValues(user.getUserName(), user.getEmail(),
+						user.getPhone(), user.getRole(), user.getUserId(),
+						user.getProfileImage(), user.getStarRate(),user.getManagerId(),user.getPassward())) > 0;
+	}
+
+
+	public boolean insertAnswer(Answer answer) {
+
+		return database.insert(
+				Table.Answer.TABLE_NAME,
+				null,
+				Table.Answer.createValues(answer.getAnswerId(),
+						answer.getQuestionId(), answer.getAnswerText())) > 0;
+	}
+
+	public Long insertResult(Result result) {
+
+		return database.insert(
+				Table.Result.TABLE_NAME,
+				null,
+				Table.Result.createValues(result.getResultId(),
+						result.getExamId(), result.getExamName(),
+						result.getModuleId(), result.getExamDate(),
+						result.getPercentage(), result.getStatus(),
+						result.getModuleName(),result.getAnswerSelection()));
+	}
+
+	public boolean insertSyncStatus(String moduleName, String syncTime) {
+
+		return database.insert(Table.SyncStatus.TABLE_NAME, null,
+				Table.SyncStatus.createValues(syncTime, moduleName)) > 0;
+	}
+	
+	public boolean insertCheckin(String checkinDate,String userId,String checkinId) {
+
+		return database.insert(Table.Checkin.TABLE_NAME, null,
+				Table.Checkin.createValues(checkinDate, userId,checkinId)) > 0;
+	}
+	
+	public boolean deleteCheckin(String userId) 
+	{
+	    return database.delete(Table.Checkin.TABLE_NAME, Table.Checkin.USERID + "=" + userId, null) > 0;
+	}
+
+	public boolean updateSyncStatus(String moduleName, String syncTime) {
+
+		return database.update(Table.SyncStatus.TABLE_NAME,
+
+		Table.SyncStatus.createValues(syncTime, moduleName),
+				Table.SyncStatus.MODULENAME + " = ?",
+				new String[] { Commons.resultModule }) > 0;
+
+	}
+
+	public boolean updateUser(User user) {
+
+		return database.update(Table.User.TABLE_NAME, Table.User.createValues(
+				user.getUserName(), user.getEmail(), user.getPhone(),
+				user.getRole(), user.getUserId(), user.getProfileImage(),
+				user.getStarRate(),user.getManagerId(),user.getPassward()), Table.User.USERID + " = ?",
+				new String[] { user.getUserId() }) > 0;
+	}
+	
+	public int updateResult(Result result) {
+
+		return database.update(
+				Table.Result.TABLE_NAME,Table.Result.createValues(result.getResultId(),
+						result.getExamId(), result.getExamName(),
+						result.getModuleId(), result.getExamDate(),
+						result.getPercentage(), result.getStatus(),
+						result.getModuleName(),result.getAnswerSelection()),"id = ?",
+						new String[] { result.getId() });
+	}
+
+	public User getUserDetail(String userId) {
+		User user = null;
+
+		Cursor mCursor = database.query(true, Table.User.TABLE_NAME,
+				new String[] { Table.User.NAME, Table.User.EMAIL,
+						Table.User.PHONE, Table.User.ROLE, Table.User.USERID,
+						Table.User.PROFILEIMAGE, Table.User.RATE },
+				Table.User.USERID + "='" + userId + "'", null, null, null,
+				null, null);
+
+		if (null != mCursor) {
+
+			if (mCursor.moveToFirst()) {
+				do {
+					user = new User();
+					user.setUserName(mCursor.getString(mCursor
+							.getColumnIndex(Table.User.NAME)));
+					user.setEmail(mCursor.getString(mCursor
+							.getColumnIndex(Table.User.EMAIL)));
+					user.setPhone(mCursor.getString(mCursor
+							.getColumnIndex(Table.User.PHONE)));
+					user.setRole(mCursor.getString(mCursor
+							.getColumnIndex(Table.User.ROLE)));
+					user.setUserId(mCursor.getString(mCursor
+							.getColumnIndex(Table.User.USERID)));
+					user.setProfileImage(mCursor.getString(mCursor
+							.getColumnIndex(Table.User.PROFILEIMAGE)));
+					user.setStarRate(mCursor.getString(mCursor
+							.getColumnIndex(Table.User.RATE)));
+
+				}
+
+				while (mCursor.moveToNext());
+			}
+		}
+
+		return user;
+	}
+	
+	public String checkPendingResult(Result result){
+		String resultId;
+		
+		String query = "SELECT id  from " + Table.Result.TABLE_NAME + " where "
+				+ Table.Result.MODULEID + "=" + result.getModuleId() + " and "
+				+ Table.Result.STATUS + " ='" + Commons.statusProcessing+"'";	
+				
+				
+				Cursor mCursor = database.rawQuery(query, null);
+
+				if (mCursor.getCount() > 0) {
+
+					if (null != mCursor) {
+						if (mCursor.moveToFirst()) {
+
+							do {
+
+								result.setId(mCursor.getString(mCursor
+										.getColumnIndex("id")));
+
+							} while (mCursor.moveToNext());
+						}
+					}
+					mCursor.close();
+					
+					resultId= String.valueOf(updateResult(result));
+				}else{
+					
+					resultId=insertResult(result).toString();
+					
+				}
+		
+		
+		
+		
+		return resultId;	
+	}
+	
+	public ExamModule getModuleDetail(String moduleId) {
+		ExamModule examModule = null;
+
+		Cursor mCursor = database.query(true, Table.ExamModule.TABLE_NAME,
+				new String[] { Table.ExamModule.MODULENAME,
+						Table.ExamModule.DURATION,
+						Table.ExamModule.PASSINGSCORE,
+						Table.ExamModule.TOTALQUESTION },
+				Table.ExamModule.MODULEID + "='" + moduleId + "'", null, null,
+				null, null, null);
+
+		if (null != mCursor) {
+
+			if (mCursor.moveToFirst()) {
+				do {
+					examModule = new ExamModule();
+					examModule.setModuleName(mCursor.getString(mCursor
+							.getColumnIndex(Table.ExamModule.MODULENAME)));
+					examModule.setPassingScore((mCursor.getString(mCursor
+							.getColumnIndex(Table.ExamModule.PASSINGSCORE))));
+					examModule.setDuration(mCursor.getString(mCursor
+							.getColumnIndex(Table.ExamModule.PASSINGSCORE)));
+					examModule.setTotalQuestions(mCursor.getString(mCursor
+							.getColumnIndex(Table.ExamModule.TOTALQUESTION)));
+
+				}
+
+				while (mCursor.moveToNext());
+			}
+		}
+
+		return examModule;
+	}
+
+	public void saveResult(List<Result> resultList) {
+
+		for (Result result : resultList) {
+
+			insertResult(result);
+
+		}
+
+	}
+	
+	public Result getResultDetail(String resultId) {
+		Result result = null;
+
+		Cursor mCursor = database.query(true, Table.Result.TABLE_NAME,
+				new String[] { Table.Result.EXAMNAME, Table.Result.EXAMDATE,
+						Table.Result.PERCENTAGE, Table.Result.STATUS,
+						Table.Result.MODULEID }, "id ='" + resultId + "'",
+				null, null, null, null, null);
+
+		if (null != mCursor) {
+
+			if (mCursor.moveToFirst()) {
+				do {
+					result = new Result();
+					result.setExamName(mCursor.getString(mCursor
+							.getColumnIndex(Table.Result.EXAMNAME)));
+					result.setModuleId((mCursor.getString(mCursor
+							.getColumnIndex(Table.Result.MODULEID))));
+					result.setPercentage(mCursor.getString(mCursor
+							.getColumnIndex(Table.Result.PERCENTAGE)));
+
+					result.setExamDate(mCursor.getString(mCursor
+							.getColumnIndex(Table.Result.EXAMDATE)));
+					result.setStatus(mCursor.getString(mCursor
+							.getColumnIndex(Table.Result.STATUS)));
+
+				}
+
+				while (mCursor.moveToNext());
+			}
+		}
+
+		return result;
+	}
+
+	public Boolean isAllExamClear() {
+
+		Boolean result = true;
+
+		Cursor mCursor = database
+				.query(true, Table.ExamModule.TABLE_NAME,
+						new String[] { Table.ExamModule.MODULENAME, },
+						null, null, null, null,
+						null, null);
+
+		if (mCursor.getCount() > 0) {
+
+			result = false;
+		}
+
+		return result;
+	}
+	
+	public Boolean isPendingSyncResult() {
+		
+		Boolean result = false;
+		
+		Cursor mCursor = database
+				.query(true, Table.Result.TABLE_NAME,
+						new String[] { Table.Result.RESULTID, },
+						Table.Result.STATUS + "='"+Commons.statusProcessing+"'", null, null, null,
+						null, null);
+
+		if (mCursor.getCount() > 0) {
+
+			result = true;
+		}
+		
+		
+		return result;
+		
+	}
+	
+	public ArrayList<Result> getPendingResultList() {
+
+		ArrayList<Result> resultList = new ArrayList<Result>();
+		Result result;
+
+		Cursor mCursor = database.query(true, Table.Result.TABLE_NAME,
+				new String[] { Table.Result.PERCENTAGE, Table.Result.STATUS,
+						Table.Result.MODULENAME, Table.Result.EXAMNAME, "id" },
+						Table.Result.STATUS + "='"+Commons.statusProcessing+"'", null, null, null, null, null);
+
+		if (null != mCursor) {
+			if (mCursor.moveToFirst()) {
+				do {
+					result = new Result();
+					result.setResultId(mCursor.getString(mCursor
+							.getColumnIndex("id")));
+					result.setPercentage(mCursor.getString(mCursor
+							.getColumnIndex(Table.Result.PERCENTAGE)));
+					result.setStatus(mCursor.getString(mCursor
+							.getColumnIndex(Table.Result.STATUS)));
+					result.setModuleName(mCursor.getString(mCursor
+							.getColumnIndex(Table.Result.MODULENAME)));
+					result.setExamName(mCursor.getString(mCursor
+							.getColumnIndex(Table.Result.EXAMNAME)));
+					resultList.add(result);
+
+				} while (mCursor.moveToNext());
+			}
+		}
+		mCursor.close();
+
+		return resultList;
+
+	}
+	
+
+	/*public String getStarLevel(String userId) {
+
+		String starLevel = null;
+
+		String query = "SELECT " + Table.ExamModule.LEVEL +
+
+		" from " + Table.ExamModule.TABLE_NAME + " LIMIT 1;";
+
+		Cursor mCursor = database.rawQuery(query, null);
+
+		if (mCursor.getCount() > 0) {
+
+			if (null != mCursor) {
+				if (mCursor.moveToFirst()) {
+
+					do {
+
+						starLevel = mCursor.getString(mCursor
+								.getColumnIndex(Table.ExamModule.TABLE_NAME));
+
+					} while (mCursor.moveToNext());
+				}
+			}
+			mCursor.close();
+		} else {
+
+			String query1 = "SELECT " + Table.User.RATE +
+
+			" from " + Table.User.TABLE_NAME + " where " + Table.User.USERID
+					+ "='" + userId + "';";
+
+			Cursor nCursor = database.rawQuery(query1, null);
+
+			if (nCursor.getCount() > 0) {
+
+				if (null != nCursor) {
+					if (nCursor.moveToFirst()) {
+
+						do {
+
+							starLevel = nCursor.getString(nCursor
+									.getColumnIndex(Table.User.RATE));
+
+						} while (nCursor.moveToNext());
+					}
+				}
+				nCursor.close();
+
+			}
+		}
+		return starLevel;
+	}*/
+	
+	public Exam getExam(String examId){
+		Exam exam = null;
+		
+		Cursor mCursor = database.query(true, Table.Exam.TABLE_NAME,
+				new String[] { Table.Exam.CATEGORYNAME, Table.Exam.TITLE,
+						Table.Exam.SERVERID, Table.Exam.MODULECOUNT }, Table.Exam.SERVERID + "='" + examId + "'",
+				null, null, null, null, null);
+
+		if (null != mCursor) {
+			if (mCursor.moveToFirst()) {
+				do {
+					exam = new Exam();
+					exam.setCategoryName(mCursor.getString(mCursor
+							.getColumnIndex(Table.Exam.CATEGORYNAME)));
+					exam.setTitle(mCursor.getString(mCursor
+							.getColumnIndex(Table.Exam.TITLE)));
+					exam.setExamId(mCursor.getString(mCursor
+							.getColumnIndex(Table.Exam.SERVERID)));
+					exam.setModuleCount(mCursor.getString(mCursor
+							.getColumnIndex(Table.Exam.MODULECOUNT)));
+
+					
+
+				}
+
+				while (mCursor.moveToNext());
+			}
+		}
+
+		
+		
+		
+		return exam;
+		
+	}
+
+	public List<Exam> getExamDetail() {
+		List<Exam> examCategoryList = new ArrayList<Exam>();
+		Exam exam;
+		Cursor mCursor = database.query(true, Table.Exam.TABLE_NAME,
+				new String[] { Table.Exam.CATEGORYNAME, Table.Exam.TITLE,
+						Table.Exam.SERVERID, Table.Exam.MODULECOUNT }, null,
+				null, null, null, null, null);
+
+		if (null != mCursor) {
+			if (mCursor.moveToFirst()) {
+				do {
+					exam = new Exam();
+					exam.setCategoryName(mCursor.getString(mCursor
+							.getColumnIndex(Table.Exam.CATEGORYNAME)));
+					exam.setTitle(mCursor.getString(mCursor
+							.getColumnIndex(Table.Exam.TITLE)));
+					exam.setExamId(mCursor.getString(mCursor
+							.getColumnIndex(Table.Exam.SERVERID)));
+					exam.setModuleCount(mCursor.getString(mCursor
+							.getColumnIndex(Table.Exam.MODULECOUNT)));
+
+					examCategoryList.add(exam);
+
+				}
+
+				while (mCursor.moveToNext());
+			}
+		}
+
+		return examCategoryList;
+	}
+
+	public List<ExamModule> getExamModule(String examId) {
+		List<ExamModule> examModuleList = new ArrayList<ExamModule>();
+		ExamModule examModule;
+		Cursor mCursor = database.query(true, Table.ExamModule.TABLE_NAME,
+				new String[] { Table.ExamModule.MODULENAME,
+						Table.ExamModule.PASSINGSCORE,
+						Table.ExamModule.TOTALQUESTION,
+						Table.ExamModule.DURATION, Table.ExamModule.MODULEID,
+						Table.ExamModule.EXAMID }, Table.ExamModule.EXAMID
+						+ "='" + examId + "'", null, null, null, null, null);
+
+		if (null != mCursor) {
+			if (mCursor.moveToFirst()) {
+				do {
+					examModule = new ExamModule();
+					examModule.setModuleName(mCursor.getString(mCursor
+							.getColumnIndex(Table.ExamModule.MODULENAME)));
+					examModule.setPassingScore(mCursor.getString(mCursor
+							.getColumnIndex(Table.ExamModule.PASSINGSCORE)));
+					examModule.setModuleId(mCursor.getString(mCursor
+							.getColumnIndex(Table.ExamModule.MODULEID)));
+					examModule.setTotalQuestions(mCursor.getString(mCursor
+							.getColumnIndex(Table.ExamModule.TOTALQUESTION)));
+					examModule.setDuration(mCursor.getString(mCursor
+							.getColumnIndex(Table.ExamModule.DURATION)));
+					examModule.setExamId(mCursor.getString(mCursor
+							.getColumnIndex(Table.ExamModule.EXAMID)));
+					
+					examModuleList.add(examModule);
+
+				}
+
+				while (mCursor.moveToNext());
+			}
+		}
+
+		return examModuleList;
+	}
+	
+	
+	
+	public void saveUser(List<User> userList) {
+		
+		for (User user : userList) {
+			
+			insertUser(user);
+			
+		}
+		
+	}
+
+	public void saveExam(List<Exam> examList) {
+
+		for (Exam exam : examList) {
+
+			for (ExamModule examModule : exam.getExamModuleList()) {
+
+				for (Questions questions : examModule.getQuestionsList()) {
+
+					for (Answer answer : questions.getAnswareList()) {
+
+						insertAnswer(answer);
+
+					}
+					insertQuestion(questions);
+				}
+				insertExamModule(examModule);
+
+			}
+
+			insertExam(exam);
+		}
+	}
+	
+	public ArrayList<User> getEmployeeList(){
+		
+	ArrayList<User> employeeList = new ArrayList<User>();
+	
+	User user;
+	
+	Cursor mCursor = database.query(true, Table.User.TABLE_NAME,
+			new String[] { Table.User.NAME, Table.User.EMAIL,
+					Table.User.PHONE, Table.User.ROLE, Table.User.USERID,
+					Table.User.PROFILEIMAGE, Table.User.RATE,Table.User.PASSWORD },
+			null, null, null, null,
+			null, null);
+
+	if (null != mCursor) {
+
+		if (mCursor.moveToFirst()) {
+			do {
+				user = new User();
+				user.setUserName(mCursor.getString(mCursor
+						.getColumnIndex(Table.User.NAME)));
+				user.setEmail(mCursor.getString(mCursor
+						.getColumnIndex(Table.User.EMAIL)));
+				user.setPhone(mCursor.getString(mCursor
+						.getColumnIndex(Table.User.PHONE)));
+				user.setRole(mCursor.getString(mCursor
+						.getColumnIndex(Table.User.ROLE)));
+				user.setUserId(mCursor.getString(mCursor
+						.getColumnIndex(Table.User.USERID)));
+				user.setProfileImage(mCursor.getString(mCursor
+						.getColumnIndex(Table.User.PROFILEIMAGE)));
+				user.setStarRate(mCursor.getString(mCursor
+						.getColumnIndex(Table.User.RATE)));
+				user.setPassward(mCursor.getString(mCursor
+						.getColumnIndex(Table.User.PASSWORD)));
+				
+				employeeList.add(user);
+
+			}
+
+			while (mCursor.moveToNext());
+		}
+	}
+	
+		
+	
+	return employeeList;
+	}
+
+	public ArrayList<Result> getResult() {
+
+		ArrayList<Result> resultList = new ArrayList<Result>();
+		Result result;
+
+		Cursor mCursor = database.query(true, Table.Result.TABLE_NAME,
+				new String[] { Table.Result.PERCENTAGE, Table.Result.STATUS,
+						Table.Result.MODULENAME, Table.Result.EXAMNAME, "id" },
+				null, null, null, null, null, null);
+
+		if (null != mCursor) {
+			if (mCursor.moveToFirst()) {
+				do {
+					result = new Result();
+					result.setResultId(mCursor.getString(mCursor
+							.getColumnIndex("id")));
+					result.setPercentage(mCursor.getString(mCursor
+							.getColumnIndex(Table.Result.PERCENTAGE)));
+					result.setStatus(mCursor.getString(mCursor
+							.getColumnIndex(Table.Result.STATUS)));
+					result.setModuleName(mCursor.getString(mCursor
+							.getColumnIndex(Table.Result.MODULENAME)));
+					result.setExamName(mCursor.getString(mCursor
+							.getColumnIndex(Table.Result.EXAMNAME)));
+					resultList.add(result);
+
+				} while (mCursor.moveToNext());
+			}
+		}
+		mCursor.close();
+
+		return resultList;
+
+	}
+
+	public String getLastSynctime(String moduleName) {
+
+		String lastSyncTime = null;
+
+		Cursor mCursor = database.query(true, Table.SyncStatus.TABLE_NAME,
+				new String[] { Table.SyncStatus.MODULENAME,
+						Table.SyncStatus.LASTSYNCTIME, "id" },
+				Table.SyncStatus.MODULENAME + "='" + moduleName + "'", null,
+				null, null, null, null);
+
+		if (mCursor.getCount() > 0) {
+
+			if (null != mCursor) {
+				if (mCursor.moveToFirst()) {
+					do {
+
+						lastSyncTime = mCursor.getString(mCursor
+								.getColumnIndex(Table.SyncStatus.LASTSYNCTIME));
+
+					} while (mCursor.moveToNext());
+				}
+			}
+			mCursor.close();
+		} else {
+
+			lastSyncTime = "0000";
+
+		}
+
+		return lastSyncTime;
+
+	}
+
+	public ArrayList<Questions> getQuestionList(String moduleId) {
+
+		ArrayList<Questions> quotationList = new ArrayList<Questions>();
+		ArrayList<Answer> answareList;
+		Questions questions;
+		Answer answer;
+
+		Cursor mCursor = database.query(true, Table.Question.TABLE_NAME,
+				new String[] { Table.Question.QUESTIONID,
+						Table.Question.QUESTIONTEXT,
+						Table.Question.ANSWARECOUNT, Table.Question.MODULEID,
+						"id" },
+				Table.Question.MODULEID + "='" + moduleId + "'", null, null,
+				null, null, null);
+
+		if (null != mCursor) {
+			if (mCursor.moveToFirst()) {
+				do {
+
+					questions = new Questions();
+					// itemCategory=new ItemCategory();
+					questions.setQuestionId(mCursor.getString(mCursor
+							.getColumnIndex(Table.Question.QUESTIONID)));
+					questions.setQuestionText(mCursor.getString(mCursor
+							.getColumnIndex(Table.Question.QUESTIONTEXT)));
+
+					Cursor nCursor = database.query(
+							true,
+							Table.Answer.TABLE_NAME,
+							new String[] { Table.Answer.ANSWERID,
+									Table.Answer.ANSWERTEXT,
+									Table.Answer.QUESTIONID, "id" },
+							Table.Answer.QUESTIONID + "='"
+									+ questions.getQuestionId() + "'", null,
+							null, null, null, null);
+					answareList = new ArrayList<Answer>();
+
+					if (null != nCursor) {
+						if (nCursor.moveToFirst()) {
+							do {
+
+								answer = new Answer();
+								answer.setAnswerId(nCursor.getString(nCursor
+										.getColumnIndex(Table.Answer.ANSWERID)));
+								answer.setAnswerText(nCursor.getString(nCursor
+										.getColumnIndex(Table.Answer.ANSWERTEXT)));
+								answer.setQuestionId(nCursor.getString(nCursor
+										.getColumnIndex(Table.Answer.QUESTIONID)));
+								answareList.add(answer);
+
+							}
+
+							while (nCursor.moveToNext());
+						}
+					}
+					nCursor.close();
+
+					questions.setAnswareList(answareList);
+					quotationList.add(questions);
+
+				} while (mCursor.moveToNext());
+			}
+		}
+		mCursor.close();
+		return quotationList;
+
+	}
+
+}

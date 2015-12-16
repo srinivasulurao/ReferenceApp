@@ -1,0 +1,133 @@
+8
+
+dir
+58
+https://copperlabs.unfuddle.com/svn/copperlabs_aotd/AOTD/Version_2.0/ArriveOnTimeDelivery
+https://copperlabs.unfuddle.com/svn/copperlabs_aotd
+
+
+
+2014-01-27T07:28:18.895772Z
+58
+bharat
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f1fa43f-907b-4675-81e4-73ce5c20cf60
+
+.classpath
+file
+
+
+
+
+2013-09-12T06:43:30.000000Z
+245bd5d7af38d843cb377a9ea939e973
+2013-07-24T06:34:05.903976Z
+41
+bharat
+has-props
+
+.project
+file
+
+
+
+
+2013-09-12T06:43:30.000000Z
+e485f685decbed2cb78be6aa41da6e38
+2013-07-24T06:34:05.903976Z
+41
+bharat
+has-props
+
+AndroidManifest.xml
+file
+
+
+
+
+2013-11-10T17:48:33.000000Z
+0ecc7358c7965272931229e06c0c1b82
+2013-11-20T07:07:56.914735Z
+50
+bharat
+has-props
+
+Scanner
+dir
+
+assets
+dir
+
+default.properties
+file
+
+
+
+
+2013-09-12T06:43:30.000000Z
+5fd9ff4ae60366b342909d96483fb5dd
+2013-07-24T06:34:05.903976Z
+41
+bharat
+has-props
+
+libs
+dir
+
+lint.xml
+file
+
+
+
+
+2013-09-12T06:43:30.000000Z
+1ce274a186a2afb9f76542702f6ecc4d
+2013-07-24T06:34:05.903976Z
+41
+bharat
+
+proguard.cfg
+file
+
+
+
+
+2013-09-12T06:43:30.000000Z
+03ea0fdd0a4aabc43b80216d64438921
+2013-07-24T06:34:05.903976Z
+41
+bharat
+has-props
+
+project.properties
+file
+
+
+
+
+2013-11-06T22:52:19.000000Z
+a34ffc8b0452d89ac1d8f28e4e0ff527
+2013-11-20T07:41:02.465721Z
+51
+bharat
+has-props
+
+res
+dir
+
+src
+dir
+

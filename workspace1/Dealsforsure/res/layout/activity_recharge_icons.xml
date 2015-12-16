@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+     android:layout_marginBottom="20dp"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/llheader"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_margin="5dp"
+        android:orientation="horizontal"
+        android:visibility="visible" >
+
+        
+    </RelativeLayout>
+    
+    <LinearLayout
+                android:id="@+id/llbody"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+    
+     <TextView
+                     android:id="@+id/lbltype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Type"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/rgtype"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="3dp"
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/rbmerchant"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:text="Merchant"
+                        android:textSize="15dp" />
+
+                    <RadioButton
+                        android:id="@+id/rbuser"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="User"
+                        android:textSize="15dp" />
+                </RadioGroup>
+                
+                  <TextView
+                     android:id="@+id/lblamount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Amount"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+                  
+                  <EditText
+        android:id="@+id/etamount"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llheader"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edt_blue_border"
+        android:ellipsize="start"
+        android:gravity="center"
+        android:imeOptions="actionNext"
+        android:inputType="number"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textSize="15dp" />
+                  
+                   <Button
+        android:id="@+id/btnpaynow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etotp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/apptheme_btn_default_holo_light"
+        android:text="@string/btn_pay_now"
+        android:textColor="@color/text_btn" />
+    </LinearLayout>
+    
+    </RelativeLayout>

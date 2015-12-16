@@ -1,0 +1,46 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="foodzu.in.HomeActivity" >
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_action_search"
+        android:showAsAction="always"
+        android:title="@string/action_search"/>
+    <item
+        android:id="@+id/action_refresh"
+        android:icon="@drawable/home"
+        android:showAsAction="withText|ifRoom"
+        android:title="@string/action_refresh"
+        android:visible="true"/>
+    <item
+        android:id="@+id/action_MyCart"
+        android:icon="@drawable/cart"
+        android:showAsAction="never"
+        android:title="@string/action_MyCart"
+        android:visible="false"/>
+    <item
+        android:id="@+id/action_More"
+        android:icon="@drawable/dot"
+        android:showAsAction="always"
+        android:title=""/>
+    <item
+        android:id="@+id/action_Login"
+        android:icon="@drawable/login"
+        android:showAsAction="never"
+        android:title="@string/action_Login"/>
+    <item
+        android:id="@+id/action_SignUp"
+        android:icon="@drawable/signup"
+        android:showAsAction="never"
+        android:title="@string/action_SignUp"/>
+    <item
+        android:id="@+id/action_Aboutus"
+        android:showAsAction="never"
+        android:title="@string/action_Aboutus"/>
+    <item
+        android:id="@+id/action_share"
+        android:showAsAction="never"
+        android:title="@string/action_share"/>
+
+</menu>

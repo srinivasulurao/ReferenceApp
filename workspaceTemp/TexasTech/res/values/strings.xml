@@ -1,0 +1,16 @@
+<resources>
+
+    <string name="alert_dialog_title">Please Select</string>
+    <string name="positive_button_text">Select</string>
+    <string name="negative_button_text">Cancel</string>
+    
+    <string name="preferences_name">Preferences Name</string>
+     <string name="share_name">share_name</string>
+      <string name="sbc_name">sbc_name</string>
+    
+    <string name="app_name">TxTechNurse</string>
+    <string name="address">School of Nursing 3601 4th Street,Lubbock,TX \n 79430 \n T:806.743.2730|F:806.743.1622</string>
+    <string name="pass_info">At least 6 characters, case sensitive. Avoid \ncommon words and names.
+							 Strong password \ncontain numbers and special characters ($,%,#).</string>
+
+</resources>

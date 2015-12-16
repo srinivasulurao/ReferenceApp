@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" 
+    android:padding="10dp"
+    >
+    
+    
+    <TextView 
+        android:id="@+id/txtName"
+        style="@style/textview"
+        android:text="Name"
+        android:textAllCaps="true"
+        />
+    
+    <SeekBar 
+        android:id="@+id/seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtName"
+        android:layout_marginTop="05dp"
+        />
+    
+    <TextView 
+        android:id="@+id/txtMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="@color/red_brown"
+        android:layout_below="@+id/seekbar"
+        android:layout_alignLeft="@+id/seekbar"
+        />
+    <TextView 
+        android:id="@+id/txtVal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="50"
+        android:textColor="@color/red_brown"
+        android:layout_below="@+id/seekbar"
+        android:layout_centerHorizontal="true"
+        />
+    <TextView 
+        android:id="@+id/txtMax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        android:layout_below="@+id/seekbar"
+        android:textColor="@color/red_brown"
+        android:layout_alignRight="@+id/seekbar"
+        />
+    
+
+</RelativeLayout>

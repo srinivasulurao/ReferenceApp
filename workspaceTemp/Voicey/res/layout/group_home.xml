@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="@drawable/btnselected"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal"
+        android:visibility="visible" >
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.15"
+            android:src="@drawable/grp" />
+
+        <TextView
+            android:id="@+id/grpname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_weight="0.15"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="GROUP NAME"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#515151"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25" />
+
+        <ImageView
+            android:id="@+id/closedialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.15"
+            android:src="@drawable/close" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:orientation="vertical"
+        android:visibility="visible" >
+
+        <TextView
+            android:id="@+id/invitetogrp"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/rounded"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="4dp"
+            android:text="Invite to Group"
+            android:textColor="#fff"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/back"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="0.60"
+                android:background="@drawable/semiround"
+                android:gravity="center_vertical|center_horizontal"
+                android:padding="4dp"
+                android:text="Back"
+                android:textColor="#515151"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/invitenow"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_weight="0.30"
+                android:background="@drawable/roundleft"
+                android:gravity="center_vertical|center_horizontal"
+                android:padding="4dp"
+                android:text="Invite"
+                android:textColor="#fff"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/grpfriendlist"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:clickable="true"
+        android:divider="@color/white"
+        android:dividerHeight="5dp"
+        android:scrollingCache="false"
+        android:smoothScrollbar="true" />
+
+</LinearLayout>

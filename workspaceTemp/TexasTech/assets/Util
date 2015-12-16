@@ -1,0 +1,6 @@
+ project settings, Java Compiler / Annotation Processing panel, check both "Enable Project Specific Settings" 
+ and "Enable Annotation Processing". Then open the Java Compiler / Annotation Processing / Factory Path panel 
+ and add the latest Butter Knife jar to this list and rebuild.
+ 
+ 
+  

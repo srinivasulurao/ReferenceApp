@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <RelativeLayout 
+        android:id="@+id/relMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@color/listbg1"
+        >
+        
+        <View 
+            android:id="@+id/divider_vertical"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:background="@color/gray"
+            android:layout_alignTop="@+id/relReport"
+            android:layout_alignBottom="@+id/relSetPassword"
+            android:layout_centerInParent="true"
+            />
+        <View 
+            android:id="@+id/divider_horizontal_1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray"
+            android:layout_below="@+id/relReport"
+            />
+        <View 
+            android:id="@+id/divider_horizontal_2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray"
+            android:layout_below="@+id/relImport"
+            />
+        
+        <RelativeLayout
+            android:id="@+id/relReport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/divider_vertical"
+            >
+            <ImageView 
+                android:id="@+id/imgReport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/report"
+                />
+            <TextView 
+                android:id="@+id/txtReport"
+                style="@style/NormalText"
+                
+                android:text="Report"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/imgReport"
+                android:layout_marginTop="05dp"
+                />
+        </RelativeLayout>
+        
+        
+        <RelativeLayout
+            android:id="@+id/relTellaFriend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignLeft="@+id/divider_vertical"
+            >
+            <ImageView 
+                android:id="@+id/imgTellaFriend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/share"
+                />
+            <TextView 
+                android:id="@+id/txtTellaFriend"
+                style="@style/NormalText"
+                android:text="Share"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/imgTellaFriend"
+                android:layout_marginTop="05dp"
+                />
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/relImport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_below="@+id/divider_horizontal_1"
+            android:layout_alignRight="@+id/relReport"
+            android:layout_alignParentLeft="true"
+            
+            >
+            <ImageView 
+                android:id="@+id/imgImport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/dataimp"
+                />
+            <TextView 
+                android:id="@+id/txtImport"
+                style="@style/NormalText"
+                
+                android:text="Import Data"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/imgImport"
+                android:layout_marginTop="05dp"
+                />
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/relBackUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_below="@+id/divider_horizontal_1"
+            android:layout_alignLeft="@+id/relTellaFriend"
+            android:layout_alignParentRight="true"
+            
+            >
+            <ImageView 
+                android:id="@+id/imgExport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/backup"
+                />
+            <TextView 
+                android:id="@+id/txtExport"
+                style="@style/NormalText"
+                
+                android:text="BackUp Data"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/imgExport"
+                android:layout_marginTop="05dp"
+                />
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/relSetPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_below="@+id/divider_horizontal_2"
+            android:layout_alignRight="@+id/relReport"
+            android:layout_alignParentLeft="true"
+            
+            >
+            <ImageView 
+                android:id="@+id/imgSetPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/password"
+                />
+            <TextView 
+                android:id="@+id/txtSetPassword"
+                style="@style/NormalText"
+                
+                android:text="Set Passowrd"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/imgSetPassword"
+                android:layout_marginTop="05dp"
+                />
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/relChangePassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_below="@+id/divider_horizontal_2"
+            android:layout_alignLeft="@+id/relTellaFriend"
+            android:layout_alignParentRight="true"
+            
+            >
+            <ImageView 
+                android:id="@+id/imgChangePassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/chage_pw"
+                />
+            <TextView 
+                android:id="@+id/txtChangePassword"
+                style="@style/NormalText"
+                
+                android:text="Change Password"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/imgChangePassword"
+                android:layout_marginTop="05dp"
+                />
+        </RelativeLayout>
+        
+        
+        
+    </RelativeLayout>
+    
+     <CheckBox 
+            android:id="@+id/ask_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@+id/relMain"
+            android:text="Ask me for Login."
+            
+            />
+  
+    
+
+</RelativeLayout>

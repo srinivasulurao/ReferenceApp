@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+ 
+    <item android:title="GPS"
+          android:id="@+id/GPS_MenuItem"	
+          android:icon="@drawable/menu_map_icon"/>
+    
+     <!-- <item android:title="List"
+          android:id="@+id/List_MenuItem"	
+          android:icon="@drawable/menu_list_icon"/>
+ -->
+</menu>

@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Voicey</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_record">Settings</string>
+    <string name="saveshare">Save and Share</string>
+
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_home</item>
+        <item>@drawable/ic_home</item>
+        <item>@drawable/ic_home</item>
+        <item>@drawable/ic_home</item>
+        <item>@drawable/ic_home</item>
+    </array>
+
+    <string-array name="nav_drawer_items">
+        <item>Browse voiceys</item>
+        <item>Record voiceys</item>
+        <item>Me:</item>
+        <item>Friend List</item>
+        <item>Rate us,thank you</item>
+        <item>Your feedback</item>
+    </string-array>
+
+    <string name="error_config">Please set the %1$s constant and recompile the app.</string>
+    <string name="already_registered">Device is already registered on server.</string>
+    <string name="gcm_registered">From GCM: device successfully registered!</string>
+    <string name="gcm_unregistered">From GCM: device successfully unregistered!</string>
+    <string name="gcm_message">From GCM: you got message!</string>
+    <string name="gcm_error">From GCM: error (%1$s).</string>
+    <string name="gcm_recoverable_error">From GCM: recoverable error (%1$s).</string>
+    <string name="gcm_deleted">From GCM: server deleted %1$d pending messages!</string>
+    <string name="server_registering">Trying (attempt %1$d/%2$d) to register device on Demo Server.</string>
+    <string name="server_registered">From Demo Server: successfully added device!</string>
+    <string name="server_unregistered">From Demo Server: successfully removed device!</string>
+    <string name="server_register_error">Could not register device on Demo Server after %1$d attempts.</string>
+    <string name="server_unregister_error">Could not unregister device on Demo Server (%1$s).</string>
+    <string name="options_register">Register</string>
+    <string name="options_unregister">Unregister</string>
+    <string name="options_clear">Clear</string>
+    <string name="options_exit">Exit</string>
+
+    <string-array name="CountryCodes">
+        <item>(93)   Afghanistan,AF</item>
+        <item>(355)  Albania,AL</item>
+        <item>(213)  Algeria,DZ</item>
+        <item>(684)  American Samoa,AS</item>
+        <item>(376)  Andorra,AD</item>
+        <item>(244)  Angola,AO</item>
+        <item>(1-264) Anguilla,AI</item>
+        <item>(672)  Antarctica,AQ</item>
+        <item>(1-268) Antigua and Barbuda,AG</item>
+        <item>(54)   Argentina,AR</item>
+        <item>(374)  Armenia,AM</item>
+        <item>(297)  Aruba,AW</item>
+        <item>(61)   Australia,AU</item>
+        <item>(43)   Austria,AT</item>
+        <item>(994)  Azerbaijan,AZ</item>
+        <item>(1-242) Bahamas,BS</item>
+        <item>(973)  Bahrain,BH</item>
+        <item>(880)  Bangladesh,BD</item>
+        <item>(1-246) Barbados,BB</item>
+        <item>(375)  Belarus,BY</item>
+        <item>(32)   Belgium,BE</item>
+        <item>(501)  Belize,BZ</item>
+        <item>(229)  Benin,BJ</item>
+        <item>(1-441) Bermuda,BM</item>
+        <item>(975)  Bhutan,BT</item>
+        <item>(591)  Bolivia,BO</item>
+        <item>(387)  Bosnia-Herzegovina,BA</item>
+        <item>(267)  Botswana,BW</item>
+        <item>(55)   Brazil,BR</item>
+        <item>(673)  Brunei Darussalam,BN</item>
+        <item>(359)  Bulgaria,BG</item>
+        <item>(226)  Burkina Faso,BF</item>
+        <item>(257)  Burundi,BI</item>
+        <item>(855)  Cambodia,KH</item>
+        <item>(237)  Cameroon,CM</item>
+        <item>(001)  Canada,CA</item>
+        <item>(238)  Cape Verde,CV</item>
+        <item>(1-345) Cayman Islands,KY</item>
+        <item>(236)  Central African Republic,CF</item>
+        <item>(235)  Chad,TD</item>
+        <item>(56)   Chile,CL</item>
+        <item>(86) China,CN</item>
+        <item>(61) Christmas Island,CX</item>
+        <item>(61) Cocos (Keeling) Islands,CC</item>
+        <item>(57) Colombia,CO</item>
+        <item>(269) Comoros,KM</item>
+        <item>(242) Congo,CG</item>
+        <item>(243) Congo Dem. Republic,CD</item>
+        <item>(682) Cook Islands,CK</item>
+        <item>(506) Costa Rica,CR</item>
+        <item>(385) Croatia,HR</item>
+        <item>(53) Cuba,CU</item>
+        <item>(357) Cyprus,CY</item>
+        <item>(420) Czech Rep.,CZ</item>
+        <item>(45) Denmark,DK</item>
+        <item>(253) Djibouti,DJ</item>
+        <item>(1-767) Dominica,DM</item>
+        <item>(809) Dominican Republic,DO</item>
+        <item>(593) Ecuador,EC</item>
+        <item>(20) Egypt,EG</item>
+        <item>(503) El Salvador,SV</item>
+        <item>(240) Equatorial Guinea,GQ</item>
+        <item>(291) Eritrea,ER</item>
+        <item>(372) Estonia,EE</item>
+        <item>(251) Ethiopia,ET</item>
+        <item>(500) Falkland Islands (Malvinas),FK</item>
+        <item>(298) Faroe Islands,FO</item>
+        <item>(679) Fiji,FJ</item>
+        <item>(358) Finland,FI</item>
+        <item>(33) France,FR</item>
+        <item>(594) French Guiana,GF</item>
+        <item>(241) Gabon,GA</item>
+        <item>(220) Gambia,GM</item>
+        <item>(995) Georgia,GE</item>
+        <item>(49) Germany,DE</item>
+        <item>(233) Ghana,GH</item>
+        <item>(350) Gibraltar,GI</item>
+        <item>(44) Great Britain,GB</item>
+        <item>(30) Greece,GR</item>
+        <item>(299) Greenland,GL</item>
+        <item>(1-473) Grenada,GD</item>
+        <item>(590) Guadeloupe (French),GP</item>
+        <item>(1-671) Guam (USA),GU</item>
+        <item>(502) Guatemala,GT</item>
+        <item>(224) Guinea,GN</item>
+        <item>(245) Guinea Bissau,GW</item>
+        <item>(592) Guyana,GY</item>
+        <item>(509) Haiti,HT</item>
+        <item>(504) Honduras,HN</item>
+        <item>(852) Hong Kong,HK</item>
+        <item>(36) Hungary,HU</item>
+        <item>(354) Iceland,IS</item>
+        <item>(91) India,IN</item>
+        <item>(62) Indonesia,ID</item>
+        <item>(98) Iran,IR</item>
+        <item>(964) Iraq,IQ</item>
+        <item>(353) Ireland,IE</item>
+        <item>(972) Israel,IL</item>
+        <item>(39) Italy,IT</item>
+        <item>(225) Ivory Coast,CI</item>
+        <item>(1-876) Jamaica,JM</item>
+        <item>(81) Japan,JP</item>
+        <item>(962) Jordan,JO</item>
+        <item>(07) Kazakhstan,KZ</item>
+        <item>(254) Kenya,KE</item>
+        <item>(686) Kiribati,KI</item>
+        <item>(850) Korea-North,KP</item>
+        <item>(82) Korea-South,KR</item>
+        <item>(965) Kuwait,KW</item>
+        <item>(996) Kyrgyzstan,KG</item>
+        <item>(856) Laos,LA</item>
+        <item>(371) Latvia,LV</item>
+        <item>(961) Lebanon,LB</item>
+        <item>(266) Lesotho,LS</item>
+        <item>(231) Liberia,LR</item>
+        <item>(218) Libya,LY</item>
+        <item>(423) Liechtenstein,LI</item>
+        <item>(370) Lithuania,LT</item>
+        <item>(352) Luxembourg,LU</item>
+        <item>(853) Macau,MO</item>
+        <item>(389) Macedonia,MK</item>
+        <item>(261) Madagascar,MG</item>
+        <item>(265) Malawi,MW</item>
+        <item>(60) Malaysia,MY</item>
+        <item>(960) Maldives,MV</item>
+        <item>(223) Mali,ML</item>
+        <item>(356) Malta,MT</item>
+        <item>(692) Marshall Islands,MH</item>
+        <item>(596) Martinique (French),MQ</item>
+        <item>(222) Mauritania,MR</item>
+        <item>(230) Mauritius,MU</item>
+        <item>(269) Mayotte,YT</item>
+        <item>(52) Mexico,MX</item>
+        <item>(691) Micronesia,FM</item>
+        <item>(373) Moldova,MD</item>
+        <item>(377) Monaco,MC</item>
+        <item>(976) Mongolia,MN</item>
+        <item>(382) Montenegro,ME</item>
+        <item>(1-664) Montserrat,MS</item>
+        <item>(212) Morocco,MA</item>
+        <item>(258) Mozambique,MZ</item>
+        <item>(95) Myanmar,MM</item>
+        <item>(264) Namibia,NA</item>
+        <item>(674) Nauru,NR</item>
+        <item>(977) Nepal,NP</item>
+        <item>(31) Netherlands,NL</item>
+        <item>(599) Netherlands Antilles,AN</item>
+        <item>(687) New Caledonia (French),NC</item>
+        <item>(64) New Zealand,NZ</item>
+        <item>(505) Nicaragua,NI</item>
+        <item>(227) Niger,NE</item>
+        <item>(234) Nigeria,NG</item>
+        <item>(683) Niue,NU</item>
+        <item>(672) Norfolk Island,NF</item>
+        <item>(670) Northern Mariana Islands,MP</item>
+        <item>(47) Norway,NO</item>
+        <item>(968) Oman,OM</item>
+        <item>(92) Pakistan,PK</item>
+        <item>(680) Palau,PW</item>
+        <item>(507) Panama,PA</item>
+        <item>(675) Papua New Guinea,PG</item>
+        <item>(595) Paraguay,PY</item>
+        <item>(51) Peru,PE</item>
+        <item>(63) Philippines,PH</item>
+        <item>(48) Poland,PL</item>
+        <item>(689) Polynesia (French),PF</item>
+        <item>(351) Portugal,PT</item>
+        <item>(1-787) Puerto Rico,PR</item>
+        <item>(974) Qatar,QA</item>
+        <item>(262) Reunion (French),RE</item>
+        <item>(40) Romania,RO</item>
+        <item>(7) Russia,RU</item>
+        <item>(250) Rwanda,RW</item>
+        <item>(290) Saint Helena,SH</item>
+        <item>(1-869) Saint Kitts &amp; Nevis Anguilla,KN</item>
+        <item>(1-758) Saint Lucia,LC</item>
+        <item>(508) Saint Pierre and Miquelon,PM</item>
+        <item>(1-784) Saint Vincent &amp; Grenadines,VC</item>
+        <item>(684) Samoa,WS</item>
+        <item>(378) San Marino,SM</item>
+        <item>(239) Sao Tome and Principe,ST</item>
+        <item>(966) Saudi Arabia,SA</item>
+        <item>(221) Senegal,SN</item>
+        <item>(381) Serbia,RS</item>
+        <item>(248) Seychelles,SC</item>
+        <item>(232) Sierra Leone,SL</item>
+        <item>(65) Singapore,SG</item>
+        <item>(421) Slovakia,SK</item>
+        <item>(386) Slovenia,SI</item>
+        <item>(677) Solomon Islands,SB</item>
+        <item>(252) Somalia,SO</item>
+        <item>(27) South Africa,ZA</item>
+        <item>(34) Spain,ES</item>
+        <item>(94) Sri Lanka,LK</item>
+        <item>(249) Sudan,SD</item>
+        <item>(597) Suriname,SR</item>
+        <item>(268) Swaziland,SZ</item>
+        <item>(46) Sweden,SE</item>
+        <item>(41) Switzerland,CH</item>
+        <item>(963) Syria,SY</item>
+        <item>(886) Taiwan,TW</item>
+        <item>(992) Tajikistan,TJ</item>
+        <item>(255) Tanzania,TZ</item>
+        <item>(66) Thailand,TH</item>
+        <item>(228) Togo,TG</item>
+        <item>(690) Tokelau,TK</item>
+        <item>(676) Tonga,TO</item>
+        <item>(1-868) Trinidad and Tobago,TT</item>
+        <item>(216) Tunisia,TN</item>
+        <item>(90) Turkey,TR</item>
+        <item>(993) Turkmenistan,TM</item>
+        <item>(1-649) Turks and Caicos Islands,TC</item>
+        <item>(688) Tuvalu,TV</item>
+        <item>(44) U.K.,UK</item>
+        <item>(256) Uganda,UG</item>
+        <item>(380) Ukraine,UA</item>
+        <item>(971) United Arab Emirates,AE</item>
+        <item>(598) Uruguay,UY</item>
+        <item>(001) USA,US</item>
+        <item>(998) Uzbekistan,UZ</item>
+        <item>(678) Vanuatu,VU</item>
+        <item>(39) Vatican,VA</item>
+        <item>(58) Venezuela,VE</item>
+        <item>(84) Vietnam,VN</item>
+        <item>(1-284) Virgin Islands (British),VG</item>
+        <item>(1-340) Virgin Islands (USA),VI</item>
+        <item>(681) Wallis and Futuna Islands,WF</item>
+        <item>(967) Yemen,YE</item>
+        <item>(260) Zambia,ZM</item>
+        <item>(263) Zimbabwe,ZW</item>
+    </string-array>
+
+</resources>

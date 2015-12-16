@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/common/reedsolomon
+END
+GenericGFPoly.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/common/reedsolomon/GenericGFPoly.java
+END
+ReedSolomonException.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/common/reedsolomon/ReedSolomonException.java
+END
+ReedSolomonEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/common/reedsolomon/ReedSolomonEncoder.java
+END
+ReedSolomonDecoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/common/reedsolomon/ReedSolomonDecoder.java
+END
+GenericGF.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/common/reedsolomon/GenericGF.java
+END

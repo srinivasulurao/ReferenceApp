@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dispatchScreen_listview_main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" 
+    android:background="@drawable/background1"
+    
+    >
+
+    <TextView
+        android:id="@+id/dispathch_listrow_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:text=""
+        
+        android:textStyle="bold"
+         />
+
+    
+    <!-- android:background="@drawable/btn_bg_openorder" -->
+    <Button
+        android:id="@+id/dispathch_list_row_btn_order_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/dispathch_listrow_date"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/btn_background"
+        android:padding="10dp"
+        android:text="Confirm"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:layout_marginTop="05dp"
+        />
+
+    <Button
+        android:id="@+id/dispatch_order_num_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/dispathch_list_row_btn_order_status"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/btn_background"
+        android:padding="10dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="18dp" />
+
+    <LinearLayout
+        android:id="@+id/dispathch_listrow_PU_DL_details"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dispatch_order_num_btn"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        android:layout_toLeftOf="@+id/dispathch_listrow_checkbox_rel" >
+
+        <TextView
+            android:id="@+id/dispathch_listrow_PU_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            
+             />
+
+        <TextView
+            android:id="@+id/dispathch_listrow_PU_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            
+             />
+
+        <TextView
+            android:id="@+id/dispathch_listrow_DL_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            
+             />
+
+        <TextView
+            android:id="@+id/dispathch_listrow_DL_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textSize="12dp"
+             />
+        
+        <TextView 
+            android:id="@+id/tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
+    </LinearLayout>
+    
+    <Button 
+        android:id="@+id/resend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resend"
+        android:layout_below="@+id/dispathch_listrow_PU_DL_details"
+        android:layout_marginTop="05dp"
+        
+        />
+
+    <RelativeLayout
+        android:id="@+id/dispathch_listrow_checkbox_rel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dispatch_order_num_btn"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentRight="true"
+        android:visibility="gone" >
+        
+        <CheckBox 
+            android:id="@+id/dispathch_listrow_checkbox"
+            android:layout_width="50dp"
+        	android:layout_height="50dp" />
+    </RelativeLayout>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/dispathch_listrow_PU_DL_details"
+        android:layout_marginTop="3dp"
+        android:background="@color/white" />
+
+</RelativeLayout>

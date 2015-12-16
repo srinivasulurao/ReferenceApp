@@ -1,0 +1,251 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/copperlabs_aotd/!svn/ver/49/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout
+END
+login.xml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/login.xml
+END
+aotd_routeoptimizition_list.xml
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/copperlabs_aotd/!svn/ver/49/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/aotd_routeoptimizition_list.xml
+END
+aotd_driver_current_orders_list.xml
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/aotd_driver_current_orders_list.xml
+END
+aotd_pdf_signature.xml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/copperlabs_aotd/!svn/ver/49/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/aotd_pdf_signature.xml
+END
+aotd_driver_list_listview.xml
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/aotd_driver_list_listview.xml
+END
+rna_tabview.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/rna_tabview.xml
+END
+aotd_dispatchscreen_listrow.xml
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/copperlabs_aotd/!svn/ver/43/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/aotd_dispatchscreen_listrow.xml
+END
+aotd_driver_direction_screen.xml
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/aotd_driver_direction_screen.xml
+END
+aotd_delivery_order_info_pickup.xml
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/aotd_delivery_order_info_pickup.xml
+END
+rna_delivery_data.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/rna_delivery_data.xml
+END
+rna_pickup_row.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/rna_pickup_row.xml
+END
+sign_layout.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/copperlabs_aotd/!svn/ver/49/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/sign_layout.xml
+END
+rna_pickup.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/rna_pickup.xml
+END
+aotd_route_optimization_row.xml
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/copperlabs_aotd/!svn/ver/49/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/aotd_route_optimization_row.xml
+END
+rna_batchid_list_row.xml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/rna_batchid_list_row.xml
+END
+balloon_overlay.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/balloon_overlay.xml
+END
+aotd_driver_list_listrow.xml
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/aotd_driver_list_listrow.xml
+END
+aotd_second_signaute_page.xml
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/aotd_second_signaute_page.xml
+END
+vinscan_capture.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/vinscan_capture.xml
+END
+viewmore_items.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/viewmore_items.xml
+END
+aotd_dispatch_listrow.xml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/aotd_dispatch_listrow.xml
+END
+rna_dispatch.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/rna_dispatch.xml
+END
+aotd_driver_gps_screen.xml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/aotd_driver_gps_screen.xml
+END
+aotd_current_orders_listrow.xml
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/aotd_current_orders_listrow.xml
+END
+rna_dispatch_presenttab.xml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/rna_dispatch_presenttab.xml
+END
+balloon_overlay_example2.xml
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/balloon_overlay_example2.xml
+END
+aotd_lastname_dialog.xml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/aotd_lastname_dialog.xml
+END
+registration.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/registration.xml
+END
+aotd_custom_dialog_for_selection.xml
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/copperlabs_aotd/!svn/ver/45/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/aotd_custom_dialog_for_selection.xml
+END
+aotd_dispatch_tab_listview.xml
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/copperlabs_aotd/!svn/ver/44/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/aotd_dispatch_tab_listview.xml
+END
+aotd_round_trip.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/copperlabs_aotd/!svn/ver/49/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/aotd_round_trip.xml
+END
+aotd_delivery_order_info_delivery.xml
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/aotd_delivery_order_info_delivery.xml
+END
+aotd_driver_direction_list_row.xml
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/aotd_driver_direction_list_row.xml
+END
+aotd_driver_history_listrow.xml
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/aotd_driver_history_listrow.xml
+END
+aotd_dispatchscreen.xml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/aotd_dispatchscreen.xml
+END
+order_balloon_overlay.xml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/order_balloon_overlay.xml
+END
+aotd_signature_page.xml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/aotd_signature_page.xml
+END
+aotd_driver_eachorder_detail.xml
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/aotd_driver_eachorder_detail.xml
+END
+new_aotd_driver_gps_screen.xml
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/copperlabs_aotd/!svn/ver/49/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/new_aotd_driver_gps_screen.xml
+END
+aotd_detail_info.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/aotd_detail_info.xml
+END
+splash.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/res/layout/splash.xml
+END

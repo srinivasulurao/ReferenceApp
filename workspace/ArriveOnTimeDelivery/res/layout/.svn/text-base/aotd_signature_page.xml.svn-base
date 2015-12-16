@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <ViewFlipper
+        android:id="@+id/viewf"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            android:id="@+id/dispatchScreen_main"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/aotd_background" >
+
+            <RelativeLayout
+                android:id="@+id/dispatchScreen_ll_title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true" >
+
+                <TextView
+                    android:id="@+id/signature_layout_title"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/aotd_title"
+                    android:gravity="center"
+                    android:paddingBottom="8dp"
+                    android:text="768988"
+                    android:textColor="@color/blue"
+                    android:textSize="25dip"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/aotd_img_mode"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/online" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/signature_btn_lastname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/done_btn"
+                android:text="Last Name" />
+
+            <RelativeLayout
+                android:id="@+id/signature_layout_convascontainer"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/signature_btn_lastname"
+                android:layout_below="@+id/dispatchScreen_ll_title"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5dip"
+                android:background="@drawable/signature_pad_bg" >
+
+                <RelativeLayout
+                    android:id="@+id/signature_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" >
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <include
+            android:id="@+id/aotd_secondsign_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/aotd_second_signaute_page" />
+    </ViewFlipper>
+
+</RelativeLayout>

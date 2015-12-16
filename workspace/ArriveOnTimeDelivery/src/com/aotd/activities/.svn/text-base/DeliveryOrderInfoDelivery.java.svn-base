@@ -1,0 +1,520 @@
+package com.aotd.activities;
+
+import java.io.File;
+import java.net.URLEncoder;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
+import android.text.Html;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.aotd.dialog.AlertDialogMsg;
+import com.aotd.helpers.AOTDDataBase;
+import com.aotd.helpers.DownLoadPDFAsync;
+import com.aotd.model.DetailDeliveryModel;
+import com.aotd.parsers.DispatchDeliveryParser;
+import com.aotd.utils.Utils;
+
+public class DeliveryOrderInfoDelivery extends Activity {
+
+	private Button delivered, scanBtn;
+	private TextView orderNum, accountName, accountNotes, pickUp_from,
+			delivery_to, rfc, puinstruction, dlinstruction, serviceType,
+			pickupReady, requestedBy, pieces, weight, roundTrip, adminNotes;
+
+	private ProgressDialog progress = null;
+	private DetailDeliveryModel mDetailDeliveryModel = null;
+	private String openorderStatus;
+	public ImageView imgOnline;
+
+	String orderId = "", deliveryType = "first";
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		orderId = getIntent().getStringExtra("orderNumber");
+
+		setContentView(R.layout.aotd_delivery_order_info_delivery);
+		intializeUI();
+
+		if (getIntent().getStringExtra("condition").equalsIgnoreCase(
+				"UpdateSecondSignatureForDeliver")) {
+			delivered
+					.setBackgroundResource(R.drawable.btn_past_delivered_roundtrip);
+			deliveryType = "second";
+		}
+
+		if (Utils.checkNetwork(getApplicationContext())) {
+			progress = ProgressDialog.show(DeliveryOrderInfoDelivery.this, "",
+					"please wait...");
+			try {
+				String encodedUserId = URLEncoder.encode(Utils.ROLENAME.trim(),
+						"UTF-8");
+
+				String encodedorderId = URLEncoder.encode(getIntent()
+						.getStringExtra("orderNumber"), "UTF-8");
+
+				String url = String.format(Utils.DISPATCH_DELIVERY_URL,
+						encodedUserId, encodedorderId);
+
+				DispatchDeliveryParser mDispatchparser = new DispatchDeliveryParser(
+						new DispatchDeliveryHandler(), url,
+						mDetailDeliveryModel);
+				mDispatchparser.start();
+
+			} catch (Exception e) {
+				Toast.makeText(getApplicationContext(),
+						"Error in porcessing login details, contact support",
+						Toast.LENGTH_LONG).show();
+			}
+		} else {
+
+			AOTDDataBase _AOTDDataBase = new AOTDDataBase(this);
+			mDetailDeliveryModel = _AOTDDataBase.getOrderDetails(orderId);
+			if (mDetailDeliveryModel != null)
+				setData();
+
+		}
+
+		delivered.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+				// Intent sign_intent = new
+				// Intent(DeliveryOrderInfoDelivery.this,SignatureActivity.class);
+				// sign_intent.putExtra("orderNumber",
+				// getIntent().getStringExtra("orderNumber"));
+				// sign_intent.putExtra("roundtrip",
+				// getIntent().getStringExtra("roundtrip"));
+				// sign_intent.putExtra("condition",
+				// getIntent().getStringExtra("condition"));
+				// sign_intent.putExtra("deliveryType", deliveryType);
+				// sign_intent.putExtra("from", "aotd");
+				// startActivity(sign_intent);
+
+				String orderNum = getIntent().getStringExtra("orderNumber");
+				
+				//shoud be remove
+				//orderNum = "123123";
+				
+				String pdfUrl = String.format(Utils.PDF_DOWNLOAD_URL,orderNum);
+				String newFolder = "/AOTD";
+				String extStorageDirectory = Environment
+						.getExternalStorageDirectory().toString();
+				File myNewFolder = new File(extStorageDirectory + newFolder);
+				if(myNewFolder.exists()){
+					File file = new File(myNewFolder, getIntent()
+							.getStringExtra("orderNumber")+".pdf");
+					if(file.exists()){
+						Intent sign_intent = new Intent(DeliveryOrderInfoDelivery.this,PdfSignatureActivity.class);
+						sign_intent.putExtra("orderNumber", getIntent().getStringExtra("orderNumber"));
+						sign_intent.putExtra("roundtrip", getIntent().getStringExtra("roundtrip"));
+						sign_intent.putExtra("condition", getIntent().getStringExtra("condition"));
+						sign_intent.putExtra("deliveryType", deliveryType);
+						sign_intent.putExtra("from", "aotd");
+						startActivity(sign_intent);
+					}else{
+						//download pdf async calling
+						if (Utils.checkNetwork(DeliveryOrderInfoDelivery.this)) {
+							
+							pdfDownloadedView(pdfUrl);
+						}else{
+							
+//							alertDialog("AOTD","There is no active network, Please try again.");
+							
+							/* latest modification for offline mode */
+							Log.i("", "kkk orderNumber"+getIntent().getStringExtra("orderNumber"));
+							Intent sign_intent = new Intent(DeliveryOrderInfoDelivery.this,SignatureActivity.class);
+							sign_intent.putExtra("orderNumber", getIntent().getStringExtra("orderNumber"));
+							sign_intent.putExtra("roundtrip", getIntent().getStringExtra("roundtrip"));
+							sign_intent.putExtra("condition", getIntent().getStringExtra("condition"));
+							sign_intent.putExtra("deliveryType",deliveryType);
+							sign_intent.putExtra("from", "aotd");
+							startActivity(sign_intent);
+						}
+					}
+				}else{
+					//download pdf async calling
+					if (Utils.checkNetwork(DeliveryOrderInfoDelivery.this)) {
+						pdfDownloadedView(pdfUrl);
+
+					}else{
+//						alertDialog("AOTD","There is no active network, Please try again.");
+						
+						/* latest modification for offline mode */
+						Log.i("", "kkk orderNumber"+getIntent().getStringExtra("orderNumber"));
+						Intent sign_intent = new Intent(DeliveryOrderInfoDelivery.this,SignatureActivity.class);
+						sign_intent.putExtra("orderNumber", getIntent().getStringExtra("orderNumber"));
+						sign_intent.putExtra("roundtrip", getIntent().getStringExtra("roundtrip"));
+						sign_intent.putExtra("condition", getIntent().getStringExtra("condition"));
+						sign_intent.putExtra("deliveryType",deliveryType);
+						sign_intent.putExtra("from", "aotd");
+						startActivity(sign_intent);
+					}
+					
+				}
+				
+				
+
+			}
+		});
+
+		scanBtn.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+				Intent intent = new Intent("com.vinscan.barcode.SCAN");
+				intent.putExtra("SCAN_MODE", "PRODUCT_MODE");
+				startActivityForResult(intent, 0);
+			}
+		});
+
+	}
+
+	protected void pdfDownloadedView(String pdfUrl) {
+		if (Utils.checkNetwork(DeliveryOrderInfoDelivery.this)) {
+			DownLoadPDFAsync downLoadPDFAsync = new DownLoadPDFAsync(
+					DeliveryOrderInfoDelivery.this,new PdfHandler());
+			downLoadPDFAsync.execute(pdfUrl, getIntent()
+					.getStringExtra("orderNumber"));
+			
+			
+			
+		}
+		
+	}
+
+	private void intializeUI() {
+
+		openorderStatus = getIntent().getExtras().getString("openorder");
+
+		delivered = (Button) findViewById(R.id.aotd_delivery_delivery_btn);
+		scanBtn = (Button) findViewById(R.id.aotd_delivery_scan_btn);
+		orderNum = (TextView) findViewById(R.id.aotd_delivery_orderNum_btn);
+		accountName = (TextView) findViewById(R.id.aotd_delivery_accountName_txt);
+		accountNotes = (TextView) findViewById(R.id.aotd_delivery_accountNotes_txt);
+		rfc = (TextView) findViewById(R.id.aotd_delivery_rfc_txt);
+		pickUp_from = (TextView) findViewById(R.id.aotd_delivery_PUaddress_txt);
+		delivery_to = (TextView) findViewById(R.id.aotd_delivery_DLaddress_txt);
+		puinstruction = (TextView) findViewById(R.id.aotd_delivery_PUInstruction_txt);
+		dlinstruction = (TextView) findViewById(R.id.aotd_delivery_DLInstruction_txt);
+		serviceType = (TextView) findViewById(R.id.aotd_delivery_serviceType_txt);
+		pickupReady = (TextView) findViewById(R.id.aotd_delivery_pickupReady_txt);
+		requestedBy = (TextView) findViewById(R.id.aotd_delivery_requiredBy_txt);
+		pieces = (TextView) findViewById(R.id.aotd_delivery_piece_txt);
+		weight = (TextView) findViewById(R.id.aotd_delivery_weight_txt);
+		roundTrip = (TextView) findViewById(R.id.aotd_roundtrip);
+		adminNotes = (TextView) findViewById(R.id.aotd_delivery_adminNotes_txt);
+
+		mDetailDeliveryModel = new DetailDeliveryModel();
+
+		imgOnline = (ImageView) findViewById(R.id.aotd_img_mode);
+		if (Utils.checkNetwork(getApplicationContext()))
+			imgOnline.setBackgroundResource(R.drawable.online);
+		else
+			imgOnline.setBackgroundResource(R.drawable.offline);
+
+	}
+
+	class DispatchDeliveryHandler extends Handler {
+		public void handleMessage(android.os.Message msg) {
+			if (progress != null)
+				progress.dismiss();
+
+			String errorMsg = msg.getData().getString("HttpError");
+			if (errorMsg.length() > 0) {
+
+				alertDialogWithMsg("AOTD", errorMsg);
+
+			} else {
+
+				mDetailDeliveryModel = (DetailDeliveryModel) msg.getData()
+						.getSerializable("dispatchdetail");
+				if (mDetailDeliveryModel != null)
+					setData();
+
+			}
+		}
+
+	}
+	
+	@SuppressLint("HandlerLeak")
+	public class PdfHandler extends Handler{
+
+		@Override
+		public void handleMessage(Message msg) {
+		
+			if(msg.what == 0){
+//				Toast.makeText(DeliveryOrderInfoDelivery.this, "Error occured while downloading.", Toast.LENGTH_LONG).show();
+				
+				Intent sign_intent = new Intent(DeliveryOrderInfoDelivery.this,SignatureActivity.class);
+				sign_intent.putExtra("orderNumber", getIntent().getStringExtra("orderNumber"));
+				sign_intent.putExtra("roundtrip", getIntent().getStringExtra("roundtrip"));
+				sign_intent.putExtra("condition", getIntent().getStringExtra("condition"));
+				sign_intent.putExtra("deliveryType",deliveryType);
+				sign_intent.putExtra("from", "aotd");
+				startActivity(sign_intent);
+				
+			}else{
+				File file = new File(Environment
+						.getExternalStorageDirectory().toString(), "/AOTD/"+getIntent()
+						.getStringExtra("orderNumber")+".pdf");
+				if(file.exists()){
+					// calling PdfSignatureActivity
+					Intent sign_intent = new Intent(DeliveryOrderInfoDelivery.this,PdfSignatureActivity.class);
+					sign_intent.putExtra("orderNumber", getIntent().getStringExtra("orderNumber"));
+					sign_intent.putExtra("roundtrip", getIntent().getStringExtra("roundtrip"));
+					sign_intent.putExtra("condition", getIntent().getStringExtra("condition"));
+					sign_intent.putExtra("deliveryType", deliveryType);
+					sign_intent.putExtra("from", "aotd");
+					startActivity(sign_intent);
+				}else{
+					Toast.makeText(DeliveryOrderInfoDelivery.this, "File not found.", Toast.LENGTH_LONG).show();
+				}
+			}
+		}
+		
+	}
+
+	public void setData() {
+		orderNum.setText(getIntent().getStringExtra("orderNumber").trim());
+		accountName.setText(mDetailDeliveryModel.getAccountName().trim());
+		rfc.setText(mDetailDeliveryModel.getRef().trim());
+
+		pickUp_from
+				.setText(Html
+						.fromHtml(""
+								+ ((mDetailDeliveryModel.getPUcompany()
+										.length() > 0) ? "<b>Company info: </b>"
+										+ mDetailDeliveryModel.getPUcompany()
+										: "")
+								+ ((mDetailDeliveryModel.getPUaddress()
+										.length() > 0) ? "<br/>"
+										+ "<b>Address: </b>"
+										+ mDetailDeliveryModel.getPUaddress()
+										: "")
+								+ ((mDetailDeliveryModel.getPUsuit().length() > 0) ? "<br/>"
+										+ "<b>Suite: </b>"
+										+ mDetailDeliveryModel.getPUsuit()
+										: "")
+								+ ((mDetailDeliveryModel.getPUcity().length() > 0) ? "<br/>"
+										+ "<b>City: </b>"
+										+ mDetailDeliveryModel.getPUcity()
+										: "")
+								+ ((mDetailDeliveryModel.getPUstate().length() > 0) ? "<br/>"
+										+ "<b>State: </b>"
+										+ mDetailDeliveryModel.getPUstate()
+										: "")
+								+ ((mDetailDeliveryModel.getPUzip().length() > 0) ? "<br/>"
+										+ "<b>Zip: </b>"
+										+ mDetailDeliveryModel.getPUzip()
+										: "")
+								+ ((mDetailDeliveryModel.getPUcellPhone()
+										.length() > 0) ? "<br/>"
+										+ "<b>Cell Phone: </b>"
+										+ mDetailDeliveryModel.getPUcellPhone()
+										: "")
+								+ ((mDetailDeliveryModel.getPUhomephone()
+										.length() > 0) ? "<br/>"
+										+ "<b>Home Phone: </b>"
+										+ mDetailDeliveryModel.getPUhomephone()
+										: "")));
+
+		delivery_to
+				.setText(Html
+						.fromHtml(""
+								+ ((mDetailDeliveryModel.getDLcompany()
+										.length() > 0) ? "<b>Company info: </b>"
+										+ mDetailDeliveryModel.getDLcompany()
+										: "")
+								+ ((mDetailDeliveryModel.getDLaddress()
+										.length() > 0) ? "<br/>"
+										+ "<b>Address: </b>"
+										+ mDetailDeliveryModel.getDLaddress()
+										: "")
+								+ ((mDetailDeliveryModel.getDLsuit().length() > 0) ? "<br/>"
+										+ "<b>Suite: </b>"
+										+ mDetailDeliveryModel.getDLsuit()
+										: "")
+								+ ((mDetailDeliveryModel.getDLcity().length() > 0) ? "<br/>"
+										+ "<b>City: </b>"
+										+ mDetailDeliveryModel.getDLcity()
+										: "")
+								+ ((mDetailDeliveryModel.getDLstate().length() > 0) ? "<br/>"
+										+ "<b>State: </b>"
+										+ mDetailDeliveryModel.getDLstate()
+										: "")
+								+ ((mDetailDeliveryModel.getDLzip().length() > 0) ? "<br/>"
+										+ "<b>Zip: </b>"
+										+ mDetailDeliveryModel.getDLzip()
+										: "")
+								+ ((mDetailDeliveryModel.getDLcellPhone()
+										.length() > 0) ? "<br/>"
+										+ "<b>Cell Phone: </b>"
+										+ mDetailDeliveryModel.getDLcellPhone()
+										: "")
+								+ ((mDetailDeliveryModel.getDLhomephone()
+										.length() > 0) ? "<br/>"
+										+ "<b>Home Phone: </b>"
+										+ mDetailDeliveryModel.getDLcellPhone()
+										: "")));
+
+		serviceType.setText(mDetailDeliveryModel.getServiceName().trim());
+		pickupReady.setText(mDetailDeliveryModel.getRDDate().trim());
+		requestedBy.setText(mDetailDeliveryModel.getRequestor().trim());
+		pieces.setText(mDetailDeliveryModel.getPiece().trim());
+		weight.setText(mDetailDeliveryModel.getWeight().trim());
+
+		if (mDetailDeliveryModel.getPUInstruction().length() > 1)
+			puinstruction.setText(mDetailDeliveryModel.getPUInstruction()
+					.trim());
+		else
+			puinstruction.setText(" Not Provided");
+
+		if (mDetailDeliveryModel.getDLInstruction().length() > 1)
+			dlinstruction.setText(mDetailDeliveryModel.getDLInstruction()
+					.trim());
+		else
+			dlinstruction.setText(" Not Provided");
+
+		if (mDetailDeliveryModel.getAccountnotes().length() > 1)
+			accountNotes.setText(mDetailDeliveryModel.getAccountnotes().trim());
+		else
+			accountNotes.setText(" Not Provided");
+
+		if (mDetailDeliveryModel.getAdminNotes().length() > 1)
+			adminNotes.setText(mDetailDeliveryModel.getAdminNotes().trim());
+		else
+			adminNotes.setText(" Not Provided");
+
+		if (mDetailDeliveryModel.getRoundTrip().trim().equalsIgnoreCase("0"))
+			roundTrip.setText("No");
+		else
+			roundTrip.setText("Yes");
+
+	}
+
+	public void alertDialogWithMsg(String title, String msg) {
+
+		new AlertDialogMsg(DeliveryOrderInfoDelivery.this, title, msg)
+				.setPositiveButton("ok",
+						new android.content.DialogInterface.OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								finish();
+
+							}
+
+						}).create().show();
+	}
+
+	public void alertDialogWithOneMsg(String title, String msg) {
+
+		new AlertDialogMsg(DeliveryOrderInfoDelivery.this, title, msg)
+				.setPositiveButton("ok",
+						new android.content.DialogInterface.OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+
+							}
+
+						}).create().show();
+	}
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+
+		if (requestCode == 0) {
+
+			if (resultCode == RESULT_OK) {
+
+				String contents = intent.getStringExtra("batchid");
+
+				try {
+
+					Log.d("contents", "contents " + contents);
+
+					if (contents.equalsIgnoreCase("none")) {
+
+						alertDialogWithOneMsg("AOTD",
+								"Wrong Order Id Scan Please try again.");
+
+					} else {
+
+						char subId = contents.substring(contents.length() - 1)
+								.toCharArray()[0];
+
+						String scanOrderId = null;
+
+						if (subId >= '0' && subId <= '9') {
+
+							scanOrderId = contents;
+
+						} else {
+
+							scanOrderId = contents.substring(0,
+									contents.length() - 1);
+						}
+
+						if (scanOrderId.trim().equals(
+								getIntent().getStringExtra("orderNumber")
+										.trim())) {
+
+							delivered.performClick();
+
+						} else {
+
+							alertDialogWithOneMsg("AOTD",
+									"Wrong Order Id Scan Please try again.");
+
+						}
+
+					}
+
+				} catch (Exception e) {
+
+					e.printStackTrace();
+
+				}
+
+				// Toast.makeText(this,format+" "+contents,
+				// Toast.LENGTH_LONG).show();
+
+			} else if (resultCode == RESULT_CANCELED) {
+
+				Log.d("Cancle", "scanning cancle");
+			}
+		}
+	}
+	
+public void alertDialog(String title, String msg){	
+		
+		new AlertDialogMsg(DeliveryOrderInfoDelivery.this, title, msg ).setPositiveButton("ok", new android.content.DialogInterface.OnClickListener(){
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which){
+				
+			}
+			
+		}).create().show();		
+	}
+}

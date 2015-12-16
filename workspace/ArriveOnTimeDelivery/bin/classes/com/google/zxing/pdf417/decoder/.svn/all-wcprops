@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/pdf417/decoder
+END
+DecodedBitStreamParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/pdf417/decoder/DecodedBitStreamParser.java
+END
+DetectionResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/pdf417/decoder/DetectionResult.java
+END
+BarcodeValue.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/pdf417/decoder/BarcodeValue.java
+END
+DetectionResultRowIndicatorColumn.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/pdf417/decoder/DetectionResultRowIndicatorColumn.java
+END
+BarcodeMetadata.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/pdf417/decoder/BarcodeMetadata.java
+END
+Codeword.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/pdf417/decoder/Codeword.java
+END
+BoundingBox.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/pdf417/decoder/BoundingBox.java
+END
+DetectionResultColumn.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/pdf417/decoder/DetectionResultColumn.java
+END
+PDF417CodewordDecoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/pdf417/decoder/PDF417CodewordDecoder.java
+END
+PDF417ScanningDecoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/pdf417/decoder/PDF417ScanningDecoder.java
+END

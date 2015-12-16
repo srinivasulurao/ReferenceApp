@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dispatchScreen_listview_main"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/transparent"
+    android:padding="10dip" >
+
+    <!--
+    <TextView
+        android:id="@+id/driver_history_txt_ordernum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="88689"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/driver_history_txt_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/driver_history_txt_ordernum"
+        android:layout_below="@+id/driver_history_txt_ordernum"
+        android:layout_marginTop="10dip"
+        android:text="123 Street Address"
+        android:textColor="#000000" />
+        
+         <TextView
+        android:id="@+id/driver_history_txt_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/driver_history_txt_time"
+        android:layout_alignTop="@+id/driver_history_txt_time"
+        android:layout_marginRight="10dip"
+        android:layout_toLeftOf="@+id/driver_history_txt_time"
+        android:text="MM/DD/YY"
+        android:textColor="#000000" />
+    -->
+
+    <TextView
+        android:id="@+id/driver_history_txt_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="Time"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/driver_history_row_btn_order_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/driver_history_txt_time"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/btn_bg_openorder"
+        android:text="Confirm"
+        android:textSize="18dp" />
+
+    <Button
+        android:id="@+id/dispatch_order_num_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/driver_history_row_btn_order_status"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/btn_bg"
+        android:gravity="center"
+        android:text="dflafla"
+        android:textSize="18dp" />
+
+</RelativeLayout>

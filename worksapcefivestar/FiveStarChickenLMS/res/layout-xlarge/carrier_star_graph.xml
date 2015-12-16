@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.fivestarchicken.lms"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F2F0"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="62dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/carrier_graph_string"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/maroonbackground"
+        android:textSize="30dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/ivBackground"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/carrier_graph" >
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/ivfiveStar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ivBackground"
+            android:layout_alignLeft="@+id/ivBackground"
+            android:layout_marginBottom="430dp"
+            android:layout_marginLeft="500dp"
+            android:src="@drawable/five_star_red" />
+
+        <ImageView
+            android:id="@+id/ivfourStar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ivBackground"
+            android:layout_alignLeft="@+id/ivBackground"
+            android:layout_marginBottom="340dp"
+            android:layout_marginLeft="415dp"
+            android:src="@drawable/four_star_red" />
+
+        <ImageView
+            android:id="@+id/ivthreeStar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ivBackground"
+            android:layout_alignLeft="@+id/ivBackground"
+            android:layout_marginBottom="255dp"
+            android:layout_marginLeft="305dp"
+            android:src="@drawable/three_star_red" />
+
+        <ImageView
+            android:id="@+id/ivtwoStar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ivBackground"
+            android:layout_alignLeft="@+id/ivBackground"
+            android:layout_marginBottom="155dp"
+            android:layout_marginLeft="195dp"
+            android:src="@drawable/two_star_red" />
+
+        <ImageView
+            android:id="@+id/ivoneStar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ivBackground"
+            android:layout_alignLeft="@+id/ivBackground"
+            android:layout_marginBottom="78dp"
+            android:layout_marginLeft="78dp"
+            android:src="@drawable/onestar_green" />
+
+        <com.fivestarchicken.lms.libs.CircularImageView
+            android:id="@+id/ciprofileimage"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignLeft="@+id/ivBackground"
+            android:layout_alignTop="@+id/ivoneStar"
+            android:layout_marginTop="91dp"
+            android:src="@drawable/image"
+            app:border="true"
+            app:border_color="@color/profile_image_background"
+            app:border_width="4dp"
+            app:shadow="true" />
+    </RelativeLayout>
+
+</LinearLayout>

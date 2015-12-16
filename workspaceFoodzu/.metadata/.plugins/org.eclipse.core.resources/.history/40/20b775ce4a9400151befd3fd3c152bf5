@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/White"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/wrap_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="1dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="7.3"
+                android:orientation="vertical" >
+
+                <FrameLayout
+                    android:id="@+id/lytImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" >
+
+                    <ImageView
+                        android:id="@+id/imgThumbnail"
+                        android:layout_width="@dimen/thumb_width"
+                        android:layout_height="@dimen/thumb_height"
+                        android:layout_margin="2dp"
+                        android:contentDescription="@string/app_name"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/foodzu_noimage" />
+                    <!-- ic_launcher -->
+                    <!-- android:background="@color/White" -->
+
+                    <RelativeLayout
+                        android:id="@+id/lytTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="@dimen/margin_top_home_deal"
+                        android:visibility="gone" >
+
+                        <!-- android:background="@color/foodzu_green" -->
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/added_item"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/lblofferdetail"
+                            android:layout_width="@dimen/thumb_width"
+                            android:layout_height="wrap_content"
+                            android:background="@color/foodzu_green"
+                            android:gravity="center"
+                            android:padding="2dp"
+                            android:text="In Cart"
+                            android:textColor="@color/White"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                        <!-- text_deal -->
+                    </RelativeLayout>
+                </FrameLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2.7"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center|left"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:gravity="center|left"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/lblstore"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_weight="1.5"
+                            android:gravity="center|left"
+                            android:lines="2"
+                            android:text="abc"
+                            android:textColor="@color/black" />
+
+                        <ImageView
+                            android:id="@+id/fav"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="8.5"
+                            android:padding="5dp"
+                            android:src="@drawable/unfav_icon"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/deleteLayy"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="8.5"
+                        android:gravity="center|right"
+                        android:orientation="vertical"
+                        android:visibility="gone" >
+
+                        <ImageView
+                            android:id="@+id/deleteBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:src="@drawable/trash_icon" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center|left"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/p_qty"
+                        style="@android:style/TextAppearance.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@id/lblstore"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginEnd="100dp"
+                        android:layout_marginRight="100dp"
+                        android:layout_marginTop="10dp"
+                        android:text="ABC"
+                        android:textColor="@color/grey" />
+
+                    <TextView
+                        style="@android:style/TextAppearance.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lblstore"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@+id/lblstore"
+                        android:text="XYZ"
+                        android:textColor="@color/grey"
+                        android:visibility="gone" />
+                    <!-- android:id="@+id/lblAddress" -->
+                </LinearLayout>
+                
+                
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="4"
+                        android:gravity="center|left"
+                        android:orientation="horizontal" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="4"
+                            android:gravity="center|left"
+                            android:orientation="horizontal" >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.5"
+                                android:orientation="horizontal" >
+
+                                <TextView
+                                    android:id="@+id/prod_off_cost"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                   
+                                    android:layout_weight="1"
+                                    android:gravity="center|left"
+                                    android:text="ABC"
+                                    android:textColor="@color/red"
+                                    android:textStyle="normal"
+                                    android:visibility="visible" />
+
+                                <TextView
+                                    android:id="@+id/lblAddress"
+                                  android:textSize="12sp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_below="@+id/lblstore"
+                                    android:gravity="center|left"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_weight="1"
+                                    android:text="XYZ"
+                                    android:textColor="@color/grey" />  <!-- style="@android:style/TextAppearance.Small" -->
+                            </LinearLayout>
+
+                            <!-- style="@android:style/TextAppearance.Medium" -->
+
+                            <ImageView
+                                android:id="@+id/more"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="5dp"
+                                android:layout_weight="7.5"
+                                android:contentDescription="@string/app_name"
+                                android:src="@drawable/more"
+                                android:visibility="gone" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                        android:id="@+id/lloutofstock"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="6"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        >
+                        
+                       <TextView
+                                    
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                   
+                                    android:layout_weight="1"
+                                    android:gravity="center|left"
+                                    android:text="out of stock"
+                                    android:textColor="@color/red"
+                                    android:textStyle="normal"
+                                    android:visibility="visible" />
+                        
+                        </LinearLayout>
+
+                    <LinearLayout
+                         android:id="@+id/lladdcart"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="6"
+                        android:gravity="center"
+                        android:orientation="horizontal" 
+                         >
+
+                        <ImageView
+                            android:id="@+id/minus"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/minus_icon" />
+
+                        <TextView
+                            android:id="@+id/count"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:text="@string/text_count"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/black" />
+                        <!-- #000000 -->
+
+
+                        <!-- #ffa500 -->
+
+                        <ImageView
+                            android:id="@+id/plus"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/plus_icon" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imgDivider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_height"
+        android:layout_below="@+id/lytMain"
+        android:layout_marginTop="10dp"
+        android:background="@color/divider"
+        android:contentDescription="@string/app_name"
+        android:visibility="visible" />
+
+</LinearLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlbody"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/llName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvuserName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@+id/llremove"
+            android:padding="5dp"
+            android:text="title"
+            android:textColor="@color/gray"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:typeface="serif" />
+
+         <RelativeLayout
+        android:id="@+id/llremove"
+        android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        
+         <ImageView
+        android:id="@+id/remove_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+    
+        android:layout_centerVertical="true"
+        android:src="@android:drawable/ic_delete" />
+         </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvuserid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llName"
+        android:layout_marginLeft="10dp"
+        android:text="count"
+        android:textSize="12dp"
+        android:typeface="serif" />
+
+</RelativeLayout>

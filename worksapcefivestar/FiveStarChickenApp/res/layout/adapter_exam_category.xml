@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@android:color/white"
+       
+        >
+        
+        <LinearLayout
+            android:id="@+id/lytMain"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="1dp"
+                android:background="#FFF" >
+
+                <ImageView
+                    android:id="@+id/icmarker"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/category_img"
+                    />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/lblNameCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                   android:layout_marginLeft="5dp"
+                    android:padding="3dp"
+                    android:text="ATTENDER"
+                    android:textColor="#983534"
+                    />
+
+                <TextView
+                    android:id="@+id/tvcategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:padding="3dp"
+                    android:text="Republic Day"
+                   android:textColor="@android:color/black"
+                        android:textStyle="bold"
+                     />
+
+               <RelativeLayout 
+                
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" 
+                   
+                   >
+                   
+                    <TextView
+                        android:id="@+id/tvquestion"
+                        style="@android:style/TextAppearance.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                         android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:text="Question 9" />
+
+                    <TextView
+                        android:id="@+id/tvminit"
+                        style="@android:style/TextAppearance.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/tvquestion"
+                        android:layout_marginTop="3dp"
+                         android:layout_marginRight="5dp"
+                        android:text="Minutes 20:00" />
+
+               </RelativeLayout>
+
+                
+            </LinearLayout>
+        </LinearLayout>
+        
+        
+        </RelativeLayout>
+    
+    
+    
+    </RelativeLayout>

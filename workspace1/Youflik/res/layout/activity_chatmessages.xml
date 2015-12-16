@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/layouttop"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/menugradient" >
+
+        <ImageView
+            android:id="@+id/with_user_image"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="2dp"
+            android:scaleType="fitXY" />
+
+        <Button
+            android:id="@+id/OptionsButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ic_launcher"
+            android:gravity="right" />
+
+        <TextView
+            android:id="@+id/withUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/with_user_image"
+            android:gravity="center_vertical"
+            android:text="Write Post"
+            android:textColor="@android:color/white" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layouttop"
+        android:layout_marginBottom="50dp" 
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/chatlistview"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null"
+            android:dividerHeight="4dp" />
+        <TextView 
+            android:id="@+id/noMessages"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="@string/string_noMessage"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:layout_alignBottom="@id/header"
+        android:layout_alignParentBottom="true"
+        android:gravity="bottom"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/sendMedia"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:background="@drawable/round_button"
+            android:text="M"
+            android:textColor="@android:color/white" />
+
+        <EditText
+            android:id="@+id/messageText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:singleLine="false"
+            android:inputType="textAutoCorrect|textCapSentences|textMultiLine" />
+
+        <Button
+            android:id="@+id/sendMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:background="@drawable/round_button"
+            android:text="Send"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+</RelativeLayout>

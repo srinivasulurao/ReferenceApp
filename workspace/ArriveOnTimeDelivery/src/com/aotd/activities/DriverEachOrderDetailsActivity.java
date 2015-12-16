@@ -1,0 +1,141 @@
+package com.aotd.activities;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.aotd.helpers.ImageDownloader;
+import com.aotd.model.DispatchAllListModel;
+import com.aotd.utils.Utils;;
+
+public class DriverEachOrderDetailsActivity extends Activity {
+	
+	private Button openorder_btn,pickup_order_btn,delivered_order_btn,roundtrip_order_btn;
+	private Button openorder_status,pickup_order_status,delivered_order_status,roundtrip_order_status;
+	//,sign_btn;
+	private ImageView sign_imgView,roundtripsign_imgView;
+	private TextView account_name,order_date,openorder_date,pickup_date,deliver_date,roundtrip_date;
+	private DispatchAllListModel receive_object;
+	//private boolean isOpenordered=false,isPickedup=false,isdelivered = false;
+    String mDpdate_Status = "0000-00-00 00:00:00";
+    public ImageView imgOnline;
+    
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);		
+		setContentView(R.layout.aotd_driver_eachorder_detail);
+		overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+		
+		initializeUI();
+		receive_object = (DispatchAllListModel) getIntent().getExtras().get("orderinfo");	
+		
+		
+		
+		account_name.setText(receive_object.getAccountName().trim());
+		order_date.setText(receive_object.getRDDate().trim());
+		String sign_url = Utils.DRIVER_SIGNATURE_PATH + receive_object.getSignDelivery();
+		String roundtrip_sign_url =  Utils.DRIVER_SIGNATURE_PATH + receive_object.getSignRoundTrip();
+		Log.v("sign url *****************",""+sign_url);
+		Log.v("round trip sign url *****************",""+roundtrip_sign_url);
+		
+		new ImageDownloader(this).download(sign_url, sign_imgView);
+		new ImageDownloader(this).download(roundtrip_sign_url, roundtripsign_imgView); 
+		
+			
+		 if (receive_object.getDPDate().equalsIgnoreCase(mDpdate_Status) || !receive_object.getDPDate().equalsIgnoreCase(mDpdate_Status)) {			 
+			
+			 openorder_status.setText("Open Order");
+			 if(receive_object.getIsRoundTrip().equalsIgnoreCase("1")){
+				 
+				 if(receive_object.getOrderColor().equalsIgnoreCase("red"))
+					 openorder_status.setBackgroundResource(R.drawable.btn_bg_pickedup_red_roundtrip);
+				 else if(receive_object.getOrderColor().equalsIgnoreCase("orange"))
+					 openorder_status.setBackgroundResource(R.drawable.btn_bg_pickedup_orange_roundtrip);
+				 else
+					 openorder_status.setBackgroundResource(R.drawable.btn_bg_openorder);	
+				 
+			 }else{
+				 
+				 if(receive_object.getOrderColor().equalsIgnoreCase("red"))
+					 openorder_status.setBackgroundResource(R.drawable.btn_bg_pickedup_red);
+				 else if(receive_object.getOrderColor().equalsIgnoreCase("orange"))
+					 openorder_status.setBackgroundResource(R.drawable.btn_bg_pickedup_orange);
+				 else
+					 openorder_status.setBackgroundResource(R.drawable.btn_bg_openorder);	
+			 }
+							 
+		 }			 
+		 
+		 if (!receive_object.getPUDate().equalsIgnoreCase(mDpdate_Status) ) {				 
+			 pickup_order_status.setText("Picked Up");
+			 if(receive_object.getIsRoundTrip().equalsIgnoreCase("1")){
+				 pickup_order_status.setBackgroundResource(R.drawable.btn_bg_pickedup_green_roundtrip);
+			 }else{	 
+				 pickup_order_status.setBackgroundResource(R.drawable.btn_bg_pickedup_green);
+			 }	 
+		 }
+		 
+		 if (!receive_object.getDLDate().equalsIgnoreCase(mDpdate_Status) ) {				 
+			 delivered_order_status.setText("Delivered");
+			 if(receive_object.getIsRoundTrip().equalsIgnoreCase("1")){
+				 delivered_order_status.setBackgroundResource(R.drawable.btn_past_delivered_roundtrip);
+			 }else{
+				 delivered_order_status.setBackgroundResource(R.drawable.btn_past_delivered);
+			 }
+			
+		 }
+		
+		
+		openorder_date.setText(receive_object.getDPDate().trim());
+		pickup_date.setText(receive_object.getPUDate().trim());
+		deliver_date.setText(receive_object.getDLDate().trim());
+		//roundtrip_date.setText(receive_object.getRDDate().trim());
+		
+		openorder_btn.setText(receive_object.getOrder_id().trim());
+		pickup_order_btn.setText(receive_object.getOrder_id().trim());
+		delivered_order_btn.setText(receive_object.getOrder_id().trim());
+		//roundtrip_order_btn.setText(receive_object.getOrder_id().trim());
+		
+	}
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		
+		if(Utils.checkNetwork(getApplicationContext()))
+			imgOnline.setBackgroundResource(R.drawable.online);
+		else
+			imgOnline.setBackgroundResource(R.drawable.offline);
+	}
+	
+
+	private void initializeUI() {
+		openorder_btn = (Button)findViewById(R.id.details_open_order_num_btn);
+		pickup_order_btn = (Button)findViewById(R.id.details_pickup_num_btn);
+		delivered_order_btn = (Button)findViewById(R.id.details_delivered_num_btn);
+		//roundtrip_order_btn = (Button)findViewById(R.id.details_roundtrip_num_btn);		
+		
+		openorder_status = (Button)findViewById(R.id.details_openorder_btn_status);
+		pickup_order_status = (Button)findViewById(R.id.details_pickup_btn_status);
+		delivered_order_status = (Button)findViewById(R.id.details_devlivered_btn_status);
+		//roundtrip_order_status = (Button)findViewById(R.id.details_roundtrip_btn_status);
+		
+		account_name = (TextView)findViewById(R.id.accountName);
+		order_date 	 = (TextView)findViewById(R.id.order_date);
+		openorder_date = (TextView)findViewById(R.id.openorder_date);
+		pickup_date = (TextView)findViewById(R.id.pickup_date);
+		deliver_date = (TextView)findViewById(R.id.deliver_date);
+		//roundtrip_date	 = (TextView)findViewById(R.id.roundtrip_date);
+		
+		//sign_btn = (Button)findViewById(R.id.details_signature_btn);
+		sign_imgView = (ImageView)findViewById(R.id.details_signature_imgView);
+		roundtripsign_imgView = (ImageView)findViewById(R.id.details_roundtrip_signature_imgView);
+		
+		imgOnline = (ImageView)findViewById(R.id.aotd_img_mode);
+	}	
+}

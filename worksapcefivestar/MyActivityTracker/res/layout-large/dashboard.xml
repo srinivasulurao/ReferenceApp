@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rel_dash_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/listbg1"
+         >
+        
+        <View 
+            android:id="@+id/divider_vertical"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@color/gray"
+            android:layout_alignTop="@+id/rel_dash_first"
+            android:layout_alignBottom="@+id/rel_dash_second_"
+            />
+        
+
+        <RelativeLayout
+            android:id="@+id/rel_dash_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            
+            android:layout_alignRight="@+id/divider_vertical"
+            android:padding="20dp" >
+
+            <ImageView
+                android:id="@+id/img_dash_morning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/todays" />
+
+            <RelativeLayout
+                android:id="@+id/rel_dash_Morfooter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img_dash_morning"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="05dp" >
+
+                <TextView
+                    android:id="@+id/txt_footer_morming"
+                    android:text="TODAY'S LOG"
+                    style="@style/DASH_SUBHEADING"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_dash_second_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/rel_dash_first"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/rel_dash_first"
+            android:layout_below="@+id/rel_dash_first"
+            
+            android:padding="20dp" >
+
+              <ImageView
+                android:id="@+id/img_dash_night"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/notes" />
+
+            <RelativeLayout
+                android:id="@+id/rel_dash_nightfooter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img_dash_night"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="05dp" >
+
+                <TextView
+                    android:id="@+id/txt_footer_noon"
+                    style="@style/DASH_SUBHEADING"
+                    android:text="NOTES"
+                     />
+            
+            </RelativeLayout>
+        </RelativeLayout>
+        
+        <View 
+            android:id="@+id/divider_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray"
+            android:layout_below="@+id/rel_dash_first"
+            />
+
+        <RelativeLayout
+            android:id="@+id/rel_dash_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            
+            android:layout_alignLeft="@+id/divider_vertical"
+            android:padding="20dp" >
+
+            <ImageView
+                android:id="@+id/img_dash_noon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/history" />
+
+            <RelativeLayout
+                android:id="@+id/rel_dash_Noonfooter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img_dash_noon"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="05dp" >
+
+                <TextView
+                    android:id="@+id/txt_footer_noon"
+                  	style="@style/DASH_SUBHEADING"
+                    android:text="HISTORY"
+                  />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_dash_first_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/rel_dash_second"
+            android:layout_alignParentRight="true"
+            android:layout_alignRight="@+id/rel_dash_second"
+            android:layout_below="@+id/rel_dash_second"
+            
+            android:padding="20dp" >
+
+            <ImageView
+                android:id="@+id/img_dash_evening"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/settings" />
+
+            <RelativeLayout
+                android:id="@+id/rel_dash_Evefooter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img_dash_evening"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="05dp" >
+
+                <TextView
+                    android:id="@+id/txt_footer_evening"
+                    android:text="SETTINGS"
+                    style="@style/DASH_SUBHEADING" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rel_header_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rel_dash_top"
+        android:background="#035E77"
+        android:padding="05dp" >
+
+        <TextView
+            android:id="@+id/txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:text="Todays achieved points" />
+        
+        <TextView 
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="1"
+            android:textColor="#ffffff"
+            android:visibility="gone"
+            />
+        
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rel_percentage_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rel_header_text"
+        android:layout_alignParentTop="true" >
+
+        <FrameLayout
+            android:id="@+id/seekArcContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/startcolor"
+            android:layout_weight="1" >
+
+            <com.devadvance.circularseekbar.CircularSeekBar
+                xmlns:app="http://schemas.android.com/apk/res/com.omkar.myactivitytracker"
+                android:id="@+id/circularSeekBar1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:circle_color="#DBD9D0"
+                app:circle_fill="false"
+                app:circle_stroke_width="20"
+                app:circle_x_radius="100"
+                app:circle_y_radius="100"
+                app:end_angle="400"
+                app:max="100"
+                app:pointer_alpha_ontouch="100"
+                app:pointer_halo_color="#880174DF"
+                app:start_angle="-220"
+                app:use_custom_radii="false" />
+
+            <RelativeLayout
+                android:id="@+id/relText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" 
+                
+                >
+
+                <TextView
+                    android:id="@+id/seekArcProgress"
+                    android:layout_marginLeft="10dp"
+                   style="@style/DashboardProgress" />
+                
+                <TextView
+                    android:id="@+id/txtPercent"
+                    android:layout_alignTop="@+id/seekArcProgress"
+                    android:layout_marginLeft="10dp"
+                    android:text="pts"
+                    android:textStyle="normal"
+                    android:layout_toRightOf="@+id/seekArcProgress"
+                   style="@style/DashPercent"/>
+                
+                <TextView 
+                    android:id="@+id/txtMaxPoints"
+                    style="@style/textview"
+                    android:textColor="@color/white"
+                    android:textStyle="italic"
+                    android:layout_marginLeft="05dp"
+                    android:layout_below="@+id/seekArcProgress"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="05dp"
+                    />
+                
+            </RelativeLayout>
+        </FrameLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

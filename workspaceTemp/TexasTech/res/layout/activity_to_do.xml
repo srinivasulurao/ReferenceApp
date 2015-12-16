@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/h6" >
+
+            <!--
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/btn_clear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/tableft"
+                    android:gravity="center"
+                    android:text="Clear Completed"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/h3" />
+
+                <TextView
+                    android:id="@+id/btn_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/tabright"
+                    android:gravity="center"
+                    android:text="Edit"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/h3" />
+            </LinearLayout>
+            -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="@dimen/h5" >
+
+                <TextView
+                    android:id="@+id/btn_clear"
+                    style="@style/style_lable"
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/white_listview"
+                    android:gravity="center"
+                    android:padding="@dimen/h5"
+                    android:text="Clear Completed"
+                    android:textColor="@color/red" />
+
+                <TextView
+                    android:id="@+id/btn_edit"
+                    style="@style/style_lable"
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/red_mapview"
+                    android:gravity="center"
+                    android:padding="@dimen/h5"
+                    android:text="Edit"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" >
+
+                    <ListView
+                        android:id="@+id/list_to_do"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:divider="@android:color/darker_gray"
+                        android:dividerHeight="1dp" >
+                    </ListView>
+
+                    <TextView
+                        android:id="@+id/tv_no_to_do_item"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:drawablePadding="5dp"
+                        android:drawableTop="@drawable/notodopic"
+                        android:gravity="center_horizontal"
+                        android:text="No To-do Items"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/h3" />
+                </RelativeLayout>
+
+                <Button
+                    android:id="@+id/btn_add_new"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/red"
+                    android:text="Add New"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/h3" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ************************************************* -->
+
+
+        <!--
+        <SlidingDrawer
+            android:id="@+id/slidingDrawer"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/login_frame"
+            android:layout_alignParentBottom="true"
+            
+            android:content="@+id/contentLayout"
+            android:handle="@+id/slideHandleButton"
+            android:padding="@dimen/h6" >
+
+            <Button
+                android:id="@+id/slideHandleButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/red"
+                android:text="Add New"
+                android:textColor="@color/white"
+                android:textSize="@dimen/h3" />
+
+            <LinearLayout
+                android:id="@+id/contentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/gray"
+                android:orientation="vertical"
+                android:padding="@dimen/h5" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Subject"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/h3" />
+
+                <EditText
+                    android:id="@+id/et_to_do"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/h7"
+                    android:background="@android:drawable/editbox_background_normal"
+                    android:hint="What do you have to do?"
+                    android:imeOptions="actionDone"
+                    android:padding="@dimen/h6"
+                    android:singleLine="true"
+                    android:textSize="@dimen/h4" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/h7"
+                    android:gravity="center"
+                    android:text="Tap to edit your to-do subject."
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/h4" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/h7"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/h5"
+                        android:text="Reminder:\n(Optional)"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/h4" />
+
+                    <TextView
+                        android:id="@+id/tvTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@android:drawable/editbox_background_normal"
+                        android:gravity="center"
+                        android:hint="Select Time:"
+                        android:lines="2"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/h4" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/h7"
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/btn_justOnce"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/h6"
+                        android:layout_weight="1"
+                        android:background="@android:color/darker_gray"
+                        android:text="Just Once"
+                        android:textSize="@dimen/h4" 
+                        android:tag="0"/>
+
+                    <Button
+                        android:id="@+id/btn_weekDay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/h6"
+                        android:layout_weight="1"
+                        android:background="@android:color/darker_gray"
+                        android:text="Week Days"
+                        android:textSize="@dimen/h4" 
+                        android:tag="0"/>
+                </LinearLayout>
+            </LinearLayout>
+        </SlidingDrawer>
+        -->
+        <!-- ************************************************* -->
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/darker_gray"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/hide_postId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="left"
+        android:padding="10dp"
+        android:text="@string/string_hide_post" />
+
+    <Button
+        android:id="@+id/hide_post_offensive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="left"
+        android:padding="10dp"
+        android:text="@string/string_hide_post_offensive" />
+
+    <Button
+        android:id="@+id/hide_post_harassment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="left"
+        android:padding="10dp"
+        android:text="@string/string_hide_post_harassment" />
+
+    <Button
+        android:id="@+id/hide_post_spam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="left"
+        android:padding="10dp"
+        android:text="@string/string_hide_post_spam" />
+
+</LinearLayout>

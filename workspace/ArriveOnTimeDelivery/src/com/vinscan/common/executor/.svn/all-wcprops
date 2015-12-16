@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/common/executor
+END
+AsyncTaskExecInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/common/executor/AsyncTaskExecInterface.java
+END
+AsyncTaskExecManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/common/executor/AsyncTaskExecManager.java
+END
+DefaultAsyncTaskExecInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/common/executor/DefaultAsyncTaskExecInterface.java
+END
+HoneycombAsyncTaskExecInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/common/executor/HoneycombAsyncTaskExecInterface.java
+END

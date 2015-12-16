@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/copperlabs_aotd/!svn/ver/54/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/helpers
+END
+CustomOverlayItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/helpers/CustomOverlayItem.java
+END
+ImageDownloader.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/helpers/ImageDownloader.java
+END
+DownLoadPDFAsync.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/copperlabs_aotd/!svn/ver/47/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/helpers/DownLoadPDFAsync.java
+END
+HttpLoaderOne.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/copperlabs_aotd/!svn/ver/45/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/helpers/HttpLoaderOne.java
+END
+MapOverlayHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/helpers/MapOverlayHelper.java
+END
+DownLoadAcceptPDFAsync.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/copperlabs_aotd/!svn/ver/52/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/helpers/DownLoadAcceptPDFAsync.java
+END
+GetPlaceAPIResponseHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/copperlabs_aotd/!svn/ver/47/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/helpers/GetPlaceAPIResponseHandler.java
+END
+CustomItemizedOverlay.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/helpers/CustomItemizedOverlay.java
+END
+DataBaseHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/helpers/DataBaseHelper.java
+END
+HttpLoader.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/copperlabs_aotd/!svn/ver/47/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/helpers/HttpLoader.java
+END
+NetworkConnectionHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/helpers/NetworkConnectionHelper.java
+END
+CustomBalloonOverlayView.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/helpers/CustomBalloonOverlayView.java
+END
+SyncUploadPDF.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/copperlabs_aotd/!svn/ver/54/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/helpers/SyncUploadPDF.java
+END
+LocationHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/helpers/LocationHelper.java
+END
+BackUpDataBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/helpers/BackUpDataBase.java
+END
+AOTDDataBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/copperlabs_aotd/!svn/ver/47/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/helpers/AOTDDataBase.java
+END
+PdfUploadAsync.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/copperlabs_aotd/!svn/ver/54/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/helpers/PdfUploadAsync.java
+END
+DirectionsJSONParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/copperlabs_aotd/!svn/ver/47/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/helpers/DirectionsJSONParser.java
+END
+RNADataBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/helpers/RNADataBase.java
+END

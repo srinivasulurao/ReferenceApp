@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" 
+    >
+
+    <TextView
+        android:id="@+id/tvcategory_name"
+        style="@android:style/TextAppearance.Medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        
+      
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:singleLine="true"
+        android:text="sdfgsfg"
+        android:textColor="@color/White"
+        android:textSize="18sp" />
+    
+    
+    <TextView
+        android:id="@+id/tvSelectCount"
+        style="@android:style/TextAppearance.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5"
+        android:layout_margin="5dp"
+        android:background="@drawable/filter_select_shape"
+        android:paddingLeft="5dp"
+         android:paddingRight="5dp"
+        android:layout_alignParentRight="true"
+        android:textSize="15sp" />
+
+</RelativeLayout>

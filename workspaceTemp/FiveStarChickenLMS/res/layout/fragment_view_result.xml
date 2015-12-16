@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/headerlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llheader"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/maroonbackground"
+        android:orientation="horizontal" >
+
+        <!-- bluebackground -->
+
+        <TextView
+            android:id="@+id/lblstorename"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="40"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
+            android:text="@string/module_name"
+            android:textColor="#FFF200"
+            android:textSize="15dp"
+            android:textStyle="normal" />
+        <!-- android:textColor="@android:color/white" -->
+
+        <TextView
+            android:id="@+id/lbldate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="40"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
+            android:text="@string/percentage"
+            android:textColor="#FFF200"
+            android:textSize="15dp"
+            android:textStyle="normal" />
+        <!-- android:textColor="@android:color/white" -->
+
+        <TextView
+            android:id="@+id/lblamountt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="20"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
+            android:text="@string/status"
+            android:textColor="#FFF200"
+            android:textSize="15dp"
+            android:textStyle="normal" />
+ <!-- android:textColor="@android:color/white" -->
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lvviewresult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/headerlayout"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:divider="@color/divider_color"
+        android:dividerHeight="3dp"
+        android:fadeScrollbars="true"
+        android:fadingEdge="none"
+        android:fastScrollEnabled="true" />
+
+</RelativeLayout>

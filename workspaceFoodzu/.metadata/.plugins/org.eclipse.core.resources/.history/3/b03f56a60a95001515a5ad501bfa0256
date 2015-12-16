@@ -1,0 +1,2698 @@
+package foodzu.com;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.R.color;
+import android.app.ActionBar;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Paint;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
+
+import foodzu.com.HomeActivity.AsyGetCartList;
+import foodzu.com.Utils.SwipeListView.SwipeListViewCallback;
+import foodzu.com.Utils.URLs;
+import foodzu.com.Utils.Utils;
+import foodzu.com.models.Products;
+import foodzu.com.models.SubProduct;
+
+public class FavoriteActivity extends Activity implements
+		SwipeListViewCallback, OnItemClickListener {
+
+	private ListView myfavoritelist, cartproductlist;
+	SharedPreferences sharedpreferences;
+	public static final String MyLogin = "Login";
+	private String user_id, PID;
+	int POS;
+	AlertDialog.Builder alertDialogBuilder;
+	AlertDialog alertDialog;
+
+	// public static Data_Models Cart_checklist;
+	public static ArrayList<SubProduct> Cart_Arraylist;
+	public static ArrayList<Products> mycartlist;
+	private Products item_of_product;
+	SubProduct item;
+	private ArrayList<Products> favList_Array;
+	private FavoriteAdapter FL_Adapter;
+	private FVCartAdapter CART_adapt;
+	static double item_total_cost = 0;
+
+	protected int DELETE_POS = -1;
+	private final int INVALID = -1;
+
+	TextView bottombar, cartitem_count, total_cost, topbar, top_cartitem_count,
+			top_total_cost, cart_empty_tv, tv_nofav;
+	ImageView chkout_bottom, chkoutcart_buttom, chkout_top;
+	static ImageView chkoutcart_top, cart_empty;
+	RelativeLayout bottom_bar_rl;
+	static RelativeLayout Main_layout;
+	static RelativeLayout View_layout;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_favorite);
+		ActionBar actionBar = getActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(true);
+
+		myfavoritelist = (ListView) findViewById(R.id.myfavorite_list);
+		cartproductlist = (ListView) findViewById(R.id.cartproduct_list);
+		tv_nofav = (TextView) findViewById(R.id.no_favorite);
+
+		// Buttom cart Bar
+		bottombar = (TextView) findViewById(R.id.bottombar);
+		chkout_bottom = (ImageView) findViewById(R.id.chk_out_bottom);
+		chkoutcart_buttom = (ImageView) findViewById(R.id.cart_icon_buttom);
+		bottom_bar_rl = (RelativeLayout) findViewById(R.id.main_bottombar);
+		cartitem_count = (TextView) findViewById(R.id.cartitem_count);
+		total_cost = (TextView) findViewById(R.id.total_cost);
+
+		// top cart bar
+		topbar = (TextView) findViewById(R.id.topbar);
+		chkout_top = (ImageView) findViewById(R.id.chk_out_top);
+		chkoutcart_top = (ImageView) findViewById(R.id.cart_icon_top);
+		top_cartitem_count = (TextView) findViewById(R.id.top_cartitem_count);
+		top_total_cost = (TextView) findViewById(R.id.top_total_cost);
+
+		Main_layout = (RelativeLayout) findViewById(R.id.main_rel_layout);
+		View_layout = (RelativeLayout) findViewById(R.id.view_rel_layout);
+		Main_layout.setVisibility(View.VISIBLE);
+
+		cart_empty = (ImageView) findViewById(R.id.cart_empty);
+		cart_empty_tv = (TextView) findViewById(R.id.cart_empty_tv);
+
+		sharedpreferences = getSharedPreferences(MyLogin, Context.MODE_PRIVATE);
+		alertDialogBuilder = new AlertDialog.Builder(FavoriteActivity.this);
+		user_id = sharedpreferences.getString("user_id", "");
+		Cart_Arraylist = new ArrayList<SubProduct>();
+		favList_Array = new ArrayList<Products>();
+
+		if (Utils.Cart_checklist.getcartdata().size() != 0) {
+			Cart_Arraylist.addAll(Utils.Cart_checklist.getcartdata());
+			buttombarAction(Cart_Arraylist, Double.valueOf(Utils.GrandTotal));
+			item_total_cost = Double.valueOf(Utils.GrandTotal);
+
+		} else {
+			bottom_bar_rl.setVisibility(View.GONE);
+			chkoutcart_buttom.setVisibility(View.GONE);
+			////
+			item_total_cost = 0.0;
+		}
+		if (user_id != null)
+			fav_product();
+		
+		
+
+		// SwipeListView l = new SwipeListView(FavoriteActivity.this,
+		// FavoriteActivity.this);
+		// l.exec();
+		// myfavoritelist.setOnItemClickListener(this);
+
+		chkoutcart_buttom.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Utils.Cart_checklist.setcartdata(Cart_Arraylist);
+				Intent intent = new Intent(FavoriteActivity.this,
+						CheckoutActivity.class);
+				intent.putExtra("GT", Double.toString(item_total_cost));
+				startActivity(intent);
+				Utils.GrandTotal = Double.toString(item_total_cost);
+				Utils.FAV_PG = true;
+				finish();
+			}
+		});
+
+		chkoutcart_top.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				SlideToDown();
+				Utils.Cart_checklist.setcartdata(Cart_Arraylist);
+				Intent intent = new Intent(FavoriteActivity.this,
+						CheckoutActivity.class);
+				intent.putExtra("GT", Double.toString(item_total_cost));
+				startActivity(intent);
+				Utils.GrandTotal = Double.toString(item_total_cost);
+				Utils.FAV_PG = true;
+				finish();
+			}
+		});
+
+		bottombar.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+				SlideToAbove();
+				chkoutcart_top.setVisibility(View.VISIBLE);
+				View_layout.setVisibility(View.VISIBLE);
+
+				if (CART_adapt != null) {
+					CART_adapt = new FVCartAdapter(FavoriteActivity.this,
+							Cart_Arraylist);
+					cartproductlist.setAdapter(CART_adapt);
+					Cart_Arraylist.clear();
+					CART_adapt.notifyDataSetChanged();
+					new AsyGetCartList().execute();
+				}
+			}
+		});
+
+		topbar.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				SlideToDown();
+				Main_layout.setVisibility(View.VISIBLE);
+				View_layout.setVisibility(View.GONE);
+				chkoutcart_top.setVisibility(View.GONE);
+			}
+		});
+
+	}
+
+	public void buttombarAction(ArrayList<SubProduct> product,
+			Double item_total_sum) {
+
+		if (product.size() > 0) {
+			chkoutcart_top.setEnabled(true);
+			cart_empty_tv.setVisibility(View.GONE);
+			cart_empty.setVisibility(View.GONE);
+			bottom_bar_rl.setVisibility(View.VISIBLE);
+			chkoutcart_buttom.setVisibility(View.VISIBLE);
+			cartitem_count.setText(Integer.toString(product.size()));
+			top_cartitem_count.setText(Integer.toString(product.size()));
+			// GRD_TOTAL = Double.toString(item_total_sum);
+
+			// // code by TH
+
+//			if (Cart_Arraylist.size() == 0) {
+//				item_total_cost = 0;
+//
+//			} else {
+//				for (int i = 0; i < Cart_Arraylist.size(); i++) {
+//
+//					item_total_cost = item_total_cost
+//							+ Double.parseDouble(Cart_Arraylist.get(i)
+//									.getSelling_price());
+//
+//					Log.d("TAG", "item_total_cost in for:" + item_total_cost);
+//				}
+//				
+//				Log.d("TAG", "item_total_cost out for:" + item_total_cost);
+//			}
+
+			// //////////
+			
+			
+			
+			this.item_total_cost=item_total_sum;
+			total_cost.setText("\u20B9  " + Double.toString(item_total_sum));
+			top_total_cost
+					.setText("\u20B9  " + Double.toString(item_total_sum));
+
+			if (CART_adapt != null) {
+				CART_adapt.notifyDataSetChanged();
+				CART_adapt = new FVCartAdapter(FavoriteActivity.this,
+						Cart_Arraylist);
+				cartproductlist.invalidateViews();
+			} else {
+				CART_adapt = new FVCartAdapter(FavoriteActivity.this,
+						Cart_Arraylist);
+				cartproductlist.setAdapter(CART_adapt);
+				CART_adapt.notifyDataSetChanged();
+			}
+			if (FL_Adapter != null) {
+				FL_Adapter.notifyDataSetChanged();
+
+				FL_Adapter = new FavoriteAdapter(FavoriteActivity.this,
+						favList_Array);
+				myfavoritelist.invalidateViews();
+				// homeproductlist.setAdapter(PD_adapt);
+			} else {
+
+				FL_Adapter = new FavoriteAdapter(FavoriteActivity.this,
+						favList_Array);
+				myfavoritelist.invalidateViews();
+				// homeproductlist.setAdapter(PD_adapt);
+				FL_Adapter.notifyDataSetChanged();
+			}
+
+		} else {
+			// chkout_top.setVisibility(View.INVISIBLE);
+			chkoutcart_top.setEnabled(false);
+			cart_empty_tv.setVisibility(View.VISIBLE);
+			cart_empty.setVisibility(View.VISIBLE);
+			bottom_bar_rl.setVisibility(View.GONE);
+			chkoutcart_buttom.setVisibility(View.GONE);
+			cartitem_count.setText("");
+			top_cartitem_count.setText("0");
+			total_cost.setText("\u20B9  " + "0");
+			top_total_cost.setText("\u20B9  " + "0");
+			item_total_cost = 0.0;
+			if (FL_Adapter != null)
+				FL_Adapter.notifyDataSetChanged();
+			else {
+
+				FL_Adapter = new FavoriteAdapter(FavoriteActivity.this,
+						favList_Array);
+				// homeproductlist.setAdapter(PD_adapt);
+				FL_Adapter.notifyDataSetChanged();
+			}
+
+		}
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+
+			onBackPressed();
+			return true;
+		}
+
+		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onBackPressed() {
+		Utils.FAV_PG = true;
+		Utils.GrandTotal = Double.toString(item_total_cost);
+		Utils.Cart_checklist.setcartdata(Cart_Arraylist);
+		finish();
+	}
+
+	void fav_product() {
+		if (IsInternetPresent()) {
+			new getFavProductsTask().execute();
+		} else {
+			alertDialogBuilder
+					.setMessage("Internet/Mobile Data Not Available!")
+					.setCancelable(false)
+					.setPositiveButton("Retry",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int id) {
+									fav_product();
+								}
+							});
+			alertDialog = alertDialogBuilder.create();
+			alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+			alertDialog.show();
+		}
+	}
+
+	public class getFavProductsTask extends AsyncTask<Void, Void, String> {
+
+		Dialog dialog;
+		String Main = "Y";
+
+		protected void onPreExecute() {
+
+			dialog = Utils.createProgressDialog(FavoriteActivity.this);
+			dialog.setCancelable(false);
+			if (dialog.isShowing())
+				dialog.dismiss();
+			dialog.show();
+		}
+
+		protected String doInBackground(Void... params) {
+
+			String result = null;
+			String URL = URLs.FAV_ITEM_URL;
+			try {
+				List<NameValuePair> pairs = new ArrayList<NameValuePair>();
+				pairs.add(new BasicNameValuePair("userid", user_id));
+				pairs.add(new BasicNameValuePair("devicetype", "ANDROID"));
+
+				DefaultHttpClient httpClient = new DefaultHttpClient();
+
+				HttpPost httpPost = new HttpPost(URL);
+				httpPost.setEntity(new UrlEncodedFormEntity(pairs));
+				HttpResponse httpResponse = httpClient.execute(httpPost);
+				result = EntityUtils.toString(httpResponse.getEntity());
+			} catch (Exception e) {
+				Log.d("InputStream", e.getLocalizedMessage());
+			}
+			return result;
+
+		}
+
+		protected void onPostExecute(String result) {
+			parsejson(result);
+			if (favList_Array.size() == 0) {
+				myfavoritelist.setVisibility(View.GONE);
+				tv_nofav.setVisibility(View.VISIBLE);
+				bottom_bar_rl.setVisibility(View.GONE);
+				chkoutcart_buttom.setVisibility(View.GONE);
+			} else {
+				if (favList_Array != null)
+					FL_Adapter = new FavoriteAdapter(FavoriteActivity.this,
+							favList_Array);
+				myfavoritelist.setAdapter(FL_Adapter);
+			}
+			dialog.dismiss();
+		}
+	}
+
+	ArrayList<Products> parsejson(String homeproducts) {
+		try {
+			if (favList_Array != null)
+				favList_Array.clear();
+			if (homeproducts != null && homeproducts.length() > 0) {
+
+				JSONObject jObj_main = new JSONObject(homeproducts);
+				if (!jObj_main.getString("success").equals("0")) {
+					JSONArray result = jObj_main.getJSONArray("result");
+					if (result.length() > 0) {
+						for (int i = 0; i < result.length(); i++) {
+							JSONObject cat = result.getJSONObject(i);
+							int total = cat.getInt("total_product");
+							if (total > 0) {
+								JSONArray product = cat
+										.getJSONArray("products");
+								if (product.length() > 0) {
+									for (int j = 0; j < product.length(); j++) {
+										item_of_product = new Products();
+										JSONObject items = product
+												.getJSONObject(j);
+
+										int sub_prod = items
+												.getInt("subproduct_counter");
+
+										if (sub_prod > 0) {
+											JSONArray subproduct = items
+													.getJSONArray("subproduct");
+											for (int x = 0; x < subproduct
+													.length(); x++) {
+												JSONObject obj = subproduct
+														.getJSONObject(x);
+												item = new SubProduct();
+												item.setitem_ID(obj.getString(
+														"product_id")
+														.toString());
+												item.setitem_name(obj
+														.getString(
+																"product_name")
+														.toString());
+												item.setMRP_price(obj
+														.getString(
+																"product_mrp")
+														.toString());
+												item.setSelling_price(obj
+														.getString(
+																"product_actual_price")
+														.toString());
+												item.setvaliddiscount(obj
+														.getString(
+																"product_offer")
+														.toString());
+												item.setOfferPercentage(obj
+														.getString(
+																"product_offer_percentage")
+														.toString());
+												item.setitem_image(obj
+														.getString("logo")
+														.toString());
+												item.setpd_wieght(obj
+														.getString(
+																"product_weight")
+														.toString());
+												item.setIsOutOfStock(items.getString(
+														"outof_stock").toString());
+												if (x == 0) {
+													int index = updatedata(obj
+															.getString(
+																	"product_id")
+															.toString());
+													if (index > -1) {
+														item.setqty_count(Cart_Arraylist
+																.get(index)
+																.getqty_count());
+														item.setitem_in_cart("YES");
+													} else {
+														item.setitem_in_cart("NO");
+														item.setqty_count(0);
+													}
+													item_of_product
+															.setprod_0(item);
+												}
+												if (x == 1) {
+													int index = updatedata(obj
+															.getString(
+																	"product_id")
+															.toString());
+													if (index > -1) {
+														item.setqty_count(Cart_Arraylist
+																.get(index)
+																.getqty_count());
+														item.setitem_in_cart("YES");
+													} else {
+														item.setitem_in_cart("NO");
+														item.setqty_count(0);
+													}
+													item_of_product
+															.setprod_1(item);
+												}
+												if (x == 2) {
+													int index = updatedata(obj
+															.getString(
+																	"product_id")
+															.toString());
+													if (index > -1) {
+														item.setqty_count(Cart_Arraylist
+																.get(index)
+																.getqty_count());
+														item.setitem_in_cart("YES");
+													} else {
+														item.setitem_in_cart("NO");
+														item.setqty_count(0);
+													}
+													item_of_product
+															.setprod_2(item);
+												}
+												if (x == 3) {
+													int index = updatedata(obj
+															.getString(
+																	"product_id")
+															.toString());
+													if (index > -1) {
+														item.setqty_count(Cart_Arraylist
+																.get(index)
+																.getqty_count());
+														item.setitem_in_cart("YES");
+													} else {
+														item.setitem_in_cart("NO");
+														item.setqty_count(0);
+													}
+													item_of_product
+															.setprod_3(item);
+												}
+												if (x == 4) {
+													int index = updatedata(obj
+															.getString(
+																	"product_id")
+															.toString());
+													if (index > -1) {
+														item.setqty_count(Cart_Arraylist
+																.get(index)
+																.getqty_count());
+														item.setitem_in_cart("YES");
+													} else {
+														item.setitem_in_cart("NO");
+														item.setqty_count(0);
+													}
+													item_of_product
+															.setprod_4(item);
+												}
+
+											}// for loop for subproducts
+											item_of_product
+													.setpd_description(items
+															.getString(
+																	"small_desc")
+															.toString());
+											item_of_product
+													.setlocation_specific(items
+															.getString(
+																	"islocspecific")
+															.toString());
+											item_of_product
+													.setlocation_availability(items
+															.getString(
+																	"loc_available")
+															.toString());
+											item_of_product
+													.setlocation_address(items
+															.getString(
+																	"loc_specificvalue")
+															.toString());
+											item_of_product
+													.setIs_Favorite(items
+															.getString("is_fav")
+															.toString());
+											
+											
+
+										}
+										favList_Array.add(item_of_product);
+									}// End of for-loop
+								}
+							}// total products count
+						}
+					}
+				}
+			}
+			System.out.println("BE:" + favList_Array.size());
+			return favList_Array;
+		} catch (JSONException e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+
+	int updatedata(String itemID) {
+		if (Cart_Arraylist != null && Cart_Arraylist.size() > 0) {
+			for (int c = 0; c < Cart_Arraylist.size(); c++) {
+				if (Cart_Arraylist.get(c) != null) {
+					if (Cart_Arraylist.get(c).getitem_ID().equals(itemID)) {
+						if (Cart_Arraylist.get(c).getqty_count() > 0
+								&& Cart_Arraylist.get(c).getitem_in_cart()
+										.equals("YES")) {
+							return c;
+						}
+					}
+				}
+			}
+		}
+		return -1;
+	}
+
+	int UpdatePlusCounter(String Id) {
+		for (int i = 0; i < Cart_Arraylist.size(); i++) {
+			if (Cart_Arraylist.get(i) != null) {
+				if (Cart_Arraylist.get(i).getitem_in_cart().equals("YES")) {
+
+					if (Cart_Arraylist.get(i).getitem_ID().equals(Id)) {
+						System.out.println(i);
+						return i;
+					}
+				}
+			}
+		}
+		return -1;
+	}
+
+	// Favorite Adapter
+	public class FavoriteAdapter extends BaseAdapter {
+
+		private Activity activity;
+		private ArrayList<Products> data;
+		private LayoutInflater inflater = null;
+
+		SharedPreferences sharedPreferences, pref;
+		private ImageView imgThumbnail, plus, closeit, minus, favo;
+		private TextView prod_name, prod_cost, prod_offer_cost, prod_desc,
+				prod_quantity, count, tab1, tab2, tab3, tab4, tab5;
+		JSONObject promoJson;
+		HashMap<String, String> item = new HashMap<String, String>();
+		private Context mContext;
+		int value = 0;
+		String control = "";
+		Dialog dialog;
+
+		public FavoriteAdapter(Activity a, ArrayList<Products> d) {
+			activity = a;
+			data = d;
+			this.mContext = a;
+			inflater = (LayoutInflater) activity
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+			pref = PreferenceManager.getDefaultSharedPreferences(activity);
+
+		}
+
+		public int getCount() {
+			return data.size();
+		}
+
+		public Object getItem(int position) {
+			return position;
+		}
+
+		public long getItemId(int position) {
+			return position;
+		}
+
+		class ViewHolder {
+			private ImageView imgThumbnail, plus, minus, more, fav;
+			private TextView lblDateEnd, tvmrp, tvoffcost, tvProdName,
+					prod_qty, count;
+			RelativeLayout view, tick_me;
+			LinearLayout llOutofstock, llAddcart;
+			// ImageLoader imgLoader;
+		}
+
+		public View getView(final int p, View convertView, ViewGroup parent) {
+			final ViewHolder holder;
+			if (convertView == null) {
+				convertView = inflater.inflate(R.layout.adapter_home_new,
+						parent, false);// adapter_home
+				holder = new ViewHolder();
+				convertView.setTag(holder);
+			} else {
+				holder = (ViewHolder) convertView.getTag();
+			}
+			holder.view = (RelativeLayout) convertView
+					.findViewById(R.id.wrap_rl);
+			holder.tick_me = (RelativeLayout) convertView
+					.findViewById(R.id.lytTitle);
+			holder.lblDateEnd = (TextView) convertView
+					.findViewById(R.id.lblEndDate);
+			holder.tvProdName = (TextView) convertView
+					.findViewById(R.id.lblstore);
+			holder.prod_qty = (TextView) convertView.findViewById(R.id.p_qty);
+			holder.imgThumbnail = (ImageView) convertView
+					.findViewById(R.id.imgThumbnail);
+			holder.plus = (ImageView) convertView.findViewById(R.id.plus);
+			holder.minus = (ImageView) convertView.findViewById(R.id.minus);
+			holder.fav = (ImageView) convertView.findViewById(R.id.fav);
+			holder.more = (ImageView) convertView.findViewById(R.id.more);
+			holder.count = (TextView) convertView.findViewById(R.id.count);
+			holder.tvmrp = (TextView) convertView.findViewById(R.id.lblAddress);
+			holder.tvoffcost = (TextView) convertView
+					.findViewById(R.id.prod_off_cost);
+			holder.tvProdName.setMaxLines(2);
+			holder.llOutofstock = (LinearLayout) convertView
+					.findViewById(R.id.lloutofstock);
+			holder.llAddcart = (LinearLayout) convertView
+					.findViewById(R.id.lladdcart);
+			holder.fav.setVisibility(View.VISIBLE);
+			holder.fav.setImageResource(R.drawable.trash_icon);
+
+			if (data.get(p).getprod_0() != null) {
+				int ind = UpdatePlusCounter(data.get(p).getprod_0()
+						.getitem_ID());
+				if (ind > -1) {
+					data.get(p)
+							.getprod_0()
+							.setqty_count(
+									Cart_Arraylist.get(ind).getqty_count());
+
+				} else {
+					data.get(p).getprod_0().setqty_count(0);
+					data.get(p).getprod_0().setitem_in_cart("NO");
+				}
+			}
+			if (data.get(p).getprod_1() != null) {
+				int ind = UpdatePlusCounter(data.get(p).getprod_1()
+						.getitem_ID());
+				if (ind > -1) {
+					data.get(p)
+							.getprod_1()
+							.setqty_count(
+									Cart_Arraylist.get(ind).getqty_count());
+				} else {
+					data.get(p).getprod_1().setqty_count(0);
+					data.get(p).getprod_1().setitem_in_cart("NO");
+				}
+			}
+			if (data.get(p).getprod_2() != null) {
+				int ind = UpdatePlusCounter(data.get(p).getprod_2()
+						.getitem_ID());
+				if (ind > -1) {
+					data.get(p)
+							.getprod_2()
+							.setqty_count(
+									Cart_Arraylist.get(ind).getqty_count());
+				} else {
+					data.get(p).getprod_2().setqty_count(0);
+					data.get(p).getprod_2().setitem_in_cart("NO");
+				}
+			}
+			if (data.get(p).getprod_3() != null) {
+				int ind = UpdatePlusCounter(data.get(p).getprod_3()
+						.getitem_ID());
+				if (ind > -1) {
+					data.get(p)
+							.getprod_3()
+							.setqty_count(
+									Cart_Arraylist.get(ind).getqty_count());
+				} else {
+					data.get(p).getprod_3().setqty_count(0);
+					data.get(p).getprod_3().setitem_in_cart("NO");
+				}
+			}
+			if (data.get(p).getprod_4() != null) {
+				int ind = UpdatePlusCounter(data.get(p).getprod_4()
+						.getitem_ID());
+				if (ind > -1) {
+					data.get(p)
+							.getprod_4()
+							.setqty_count(
+									Cart_Arraylist.get(ind).getqty_count());
+				} else {
+					data.get(p).getprod_4().setqty_count(0);
+					data.get(p).getprod_4().setitem_in_cart("NO");
+				}
+			}
+			
+			if (data.get(p).getprod_0().getIsOutOfStock().equals("1")) {
+				holder.llOutofstock.setVisibility(View.VISIBLE);
+				holder.llAddcart.setVisibility(View.GONE);
+			} else {
+				holder.llOutofstock.setVisibility(View.GONE);
+				holder.llAddcart.setVisibility(View.VISIBLE);
+
+			}
+
+			holder.fav.setOnClickListener(new View.OnClickListener() {
+
+				AlertDialog.Builder builder = new Builder(activity);
+
+				@Override
+				public void onClick(View v) {
+					// favorite(data.get(p).getprod_0().getitem_ID().split("-")[0]);
+					// POS = p;
+
+					builder.setMessage(
+							"Are you sure of removing this product from your favorites?")
+							.setNegativeButton("CANCEL",
+									new DialogInterface.OnClickListener() {
+										public void onClick(
+												DialogInterface dialog, int id) {
+											dialog.cancel();
+
+											// deleteItem(position);
+										}
+									})
+							// .setCancelable(true)
+							.setPositiveButton("OK",
+									new DialogInterface.OnClickListener() {
+										public void onClick(
+												DialogInterface dialog, int id) {
+											// dialog.cancel();
+
+											// int getpos = p;
+											//
+											// favorite_product_id = data
+											// .get(getpos)
+											// .getFav_product_id()
+											// .toString();
+											//
+											// Log.d("TAG",
+											// "favorite_product_id :"
+											// + favorite_product_id);
+											// deleteItem(getpos);
+											// new
+											// DeleteFavoritetask().execute();
+
+											favorite(data.get(p).getprod_0()
+													.getitem_ID().split("-")[0]);
+											POS = p;
+
+										}
+									});
+					AlertDialog alert = builder.create();
+					alert.show();
+
+				}
+			});
+			if (data.get(p).getprod_1() != null)
+				holder.more.setVisibility(View.VISIBLE);
+			else
+				holder.more.setVisibility(View.GONE);
+
+			holder.plus.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					String GO = "N";
+					if (data.get(p).getlocation_specific().equals("1")) {
+						if (data.get(p).getlocation_availability().equals("1")) {
+							GO = "Y";
+						} else if (data.get(p).getlocation_availability()
+								.equals("2")) {
+							String add = Utils.ADD;
+							if (add.matches("(.*)india(.*)"))
+								GO = "Y";
+							else
+								GO = "N";
+							// india
+						} else if (data.get(p).getlocation_availability()
+								.equals("3")) {
+							// location specific
+							String ad = Utils.ADD;
+							String keyword[] = data.get(p)
+									.getlocation_address().split("@#");
+							System.out.println(data.get(p)
+									.getlocation_address());
+							for (int i = 0; i < keyword.length; i++) {
+								String sub_key[] = keyword[i].toString().split(
+										",");
+								if (sub_key.length == 3) {
+									if (ad.replaceAll("[0-9]+", "").contains(
+											sub_key[0].toString())) {
+										GO = "Y";
+									}
+								}
+								if (sub_key.length == 4) {
+									if (ad.replaceAll("[0-9]+", "").contains(
+											sub_key[0].toString())
+											&& ad.replaceAll("[0-9]+", "")
+													.contains(
+															sub_key[1]
+																	.toString())) {
+										GO = "Y";
+									}
+								}
+							}
+
+						} else {
+							alertDialogBuilder
+									.setMessage(
+											"Item not available for the Shipping region!")
+									.setCancelable(false)
+									.setPositiveButton(
+											"OK",
+											new DialogInterface.OnClickListener() {
+												public void onClick(
+														DialogInterface dialog,
+														int id) {
+													alertDialog.dismiss();
+												}
+											});
+							alertDialog = alertDialogBuilder.create();
+							alertDialog
+									.requestWindowFeature(Window.FEATURE_NO_TITLE);
+							alertDialog.show();
+						}
+					} else
+						GO = "Y";
+
+					if (GO.equals("N")) {
+						alertDialogBuilder
+								.setMessage(
+										"Item not available for the Shipping region!")
+								.setCancelable(false)
+								.setPositiveButton("OK",
+										new DialogInterface.OnClickListener() {
+											public void onClick(
+													DialogInterface dialog,
+													int id) {
+												alertDialog.dismiss();
+											}
+										});
+						alertDialog = alertDialogBuilder.create();
+						alertDialog
+								.requestWindowFeature(Window.FEATURE_NO_TITLE);
+						alertDialog.show();
+					} else {
+
+						// ------------------------------------------------
+
+						value = data.get(p).getprod_0().getqty_count();
+						if (value >= 0) {
+							new AsyCartAdd().execute(data.get(p).getprod_0().getitem_ID()+"-1-"+data.get(p).getprod_0().getpd_wieght());
+							value = value + 1;
+							data.get(p).getprod_0().setqty_count(value);
+
+							if (data.get(p).getprod_0().getitem_in_cart()
+									.equals("NO")) {
+								data.get(p).getprod_0().setitem_in_cart("YES");
+								Cart_Arraylist.add(data.get(p).getprod_0());
+							}
+
+							if (data.get(p).getprod_0() != null) {
+								int ind = UpdatePlusCounter(data.get(p)
+										.getprod_0().getitem_ID());
+								if (ind > -1) {
+									Cart_Arraylist.get(ind).setqty_count(value);
+									data.get(p)
+											.getprod_0()
+											.setqty_count(
+													Cart_Arraylist.get(ind)
+															.getqty_count());
+									if (CART_adapt != null)
+										CART_adapt.notifyDataSetChanged();
+								}
+							}
+
+							if (Cart_Arraylist.size() == 0)
+								item_total_cost = 0;
+							item_total_cost = item_total_cost
+									+ Double.parseDouble(data.get(p)
+											.getprod_0().getSelling_price());
+
+							notifyDataSetChanged();
+							buttombarAction(Cart_Arraylist, item_total_cost);
+						}
+					}
+				}
+			});
+
+			holder.minus.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+
+					int cnt_val = 0;
+					for (int m = 0; m < Cart_Arraylist.size(); m++) {
+						if (Cart_Arraylist.get(m).getitem_ID()
+								.equals(data.get(p).getprod_0().getitem_ID()))
+							cnt_val = m;
+					}
+					value = data.get(p).getprod_0().getqty_count();
+					if (value > 0) {
+
+						value = value - 1;
+						new AsyCartRemove().execute(data.get(p).getprod_0().getitem_ID()+"-1-"+data.get(p).getprod_0().getpd_wieght());
+						data.get(p).getprod_0().setqty_count(value);
+						Cart_Arraylist.get(cnt_val).setqty_count(value);
+						if (Cart_Arraylist.size() == 0)
+							item_total_cost = 0;
+						item_total_cost = item_total_cost
+								- Double.parseDouble(data.get(p).getprod_0()
+										.getSelling_price());
+
+						if (value == 0) {
+							if (data.get(p).getprod_0().getitem_in_cart()
+									.equals("YES")) {
+								data.get(p).getprod_0().setitem_in_cart("NO");
+								Cart_Arraylist.remove(Cart_Arraylist
+										.get(cnt_val));
+							}
+						}
+						notifyDataSetChanged();
+						buttombarAction(Cart_Arraylist, item_total_cost);
+					}
+
+				}
+			});
+
+			holder.view.setOnClickListener(new View.OnClickListener() {
+
+				@SuppressWarnings("deprecation")
+				@Override
+				public void onClick(View v) {
+
+					if (DELETE_POS == p) {
+						System.out.println("HI");
+					} else {
+						dialog = new Dialog(
+								FavoriteActivity.this,
+								android.R.style.Theme_DeviceDefault_Dialog_NoActionBar);
+						dialog.setContentView(R.layout.view_product_details);
+
+						tab1 = (TextView) dialog.findViewById(R.id.product_wt1);
+						tab2 = (TextView) dialog.findViewById(R.id.product_wt2);
+						tab3 = (TextView) dialog.findViewById(R.id.product_wt3);
+						tab4 = (TextView) dialog.findViewById(R.id.product_wt4);
+						tab5 = (TextView) dialog.findViewById(R.id.product_wt5);
+
+						prod_name = (TextView) dialog
+								.findViewById(R.id.prod_name);
+						prod_cost = (TextView) dialog
+								.findViewById(R.id.prod_cost);
+						prod_offer_cost = (TextView) dialog
+								.findViewById(R.id.prod_offer_cost);
+						prod_desc = (TextView) dialog
+								.findViewById(R.id.desc_details);
+						prod_quantity = (TextView) dialog
+								.findViewById(R.id.prod_quantity);
+						imgThumbnail = (ImageView) dialog
+								.findViewById(R.id.imgThumbnail);
+
+						closeit = (ImageView) dialog.findViewById(R.id.closeit);
+						plus = (ImageView) dialog.findViewById(R.id.plus);
+						minus = (ImageView) dialog.findViewById(R.id.minus);
+						favo = (ImageView) dialog.findViewById(R.id.favorite);
+						count = (TextView) dialog.findViewById(R.id.count);
+						control = "TAB1";
+						favo.setVisibility(View.GONE);
+
+						prod_name.setText(data.get(p).getprod_0()
+								.getitem_name());
+						prod_offer_cost.setText("\u20B9  "
+								+ data.get(p).getprod_0().getSelling_price());
+						if (!data.get(p).getprod_0().getvaliddiscount()
+								.equals("1"))
+							prod_cost.setVisibility(View.INVISIBLE);
+						prod_cost.setText("\u20B9  "
+								+ data.get(p).getprod_0().getMRP_price());
+						prod_cost.setPaintFlags(prod_cost.getPaintFlags()
+								| Paint.STRIKE_THRU_TEXT_FLAG);
+						prod_desc.setText(data.get(p).getpd_description());
+						prod_quantity.setText(data.get(p).getprod_0()
+								.getpd_wieght());
+						count.setText(Integer.toString(data.get(p).getprod_0()
+								.getqty_count()));
+						System.out.println(Integer.toString(data.get(p)
+								.getprod_0().getqty_count()));
+
+						closeit.setOnClickListener(new View.OnClickListener() {
+
+							@Override
+							public void onClick(View v) {
+								dialog.dismiss();
+							}
+						});
+
+						if (data.get(p).getprod_1() != null) {
+							tab1.setVisibility(View.VISIBLE);
+							tab2.setVisibility(View.VISIBLE);
+
+							if (data.get(p).getprod_2() != null) {
+								tab3.setVisibility(View.VISIBLE);
+								tab3.setText(data.get(p).getprod_2()
+										.getpd_wieght().toString());
+								if (data.get(p).getprod_3() != null) {
+									tab4.setVisibility(View.VISIBLE);
+									tab4.setText(data.get(p).getprod_3()
+											.getpd_wieght().toString());
+									if (data.get(p).getprod_4() != null) {
+										tab5.setVisibility(View.VISIBLE);
+										tab5.setText(data.get(p).getprod_4()
+												.getpd_wieght().toString());
+									} else
+										tab5.setVisibility(View.GONE);
+								} else
+									tab4.setVisibility(View.GONE);
+							} else
+								tab3.setVisibility(View.GONE);
+
+							tab1.setText(data.get(p).getprod_0().getpd_wieght()
+									.toString());
+							tab2.setText(data.get(p).getprod_1().getpd_wieght()
+									.toString());
+
+							tab1.setBackgroundDrawable(getResources()
+									.getDrawable(R.drawable.green_bg_round));
+							tab1.setTextColor(getResources().getColor(
+									color.white));
+
+						} else {
+							tab1.setVisibility(View.GONE);
+							tab2.setVisibility(View.GONE);
+						}
+
+						tab1.setOnClickListener(new View.OnClickListener() {
+
+							@Override
+							public void onClick(View v) {
+								tab1.setBackgroundDrawable(getResources()
+										.getDrawable(R.drawable.green_bg_round));
+								tab1.setTextColor(getResources().getColor(
+										color.white));
+								tab2.setBackgroundDrawable(getResources()
+										.getDrawable(
+												R.drawable.green_round_border));
+								tab2.setTextColor(getResources().getColor(
+										R.color.orange));
+								tab3.setBackgroundDrawable(getResources()
+										.getDrawable(
+												R.drawable.green_round_border));
+								tab3.setTextColor(getResources().getColor(
+										R.color.orange));
+								tab4.setBackgroundDrawable(getResources()
+										.getDrawable(
+												R.drawable.green_round_border));
+								tab4.setTextColor(getResources().getColor(
+										R.color.orange));
+								tab5.setBackgroundDrawable(getResources()
+										.getDrawable(
+												R.drawable.green_round_border));
+								tab5.setTextColor(getResources().getColor(
+										R.color.orange));
+
+								prod_name.setText(data.get(p).getprod_0()
+										.getitem_name());
+								prod_offer_cost.setText("\u20B9  "
+										+ data.get(p).getprod_0()
+												.getSelling_price());
+								if (!data.get(p).getprod_0().getvaliddiscount()
+										.equals("1"))
+									prod_cost.setVisibility(View.INVISIBLE);
+								else
+									prod_cost.setVisibility(View.VISIBLE);
+								prod_cost.setText("\u20B9  "
+										+ data.get(p).getprod_0()
+												.getMRP_price());
+								prod_cost.setPaintFlags(prod_cost
+										.getPaintFlags()
+										| Paint.STRIKE_THRU_TEXT_FLAG);
+								prod_quantity.setText(data.get(p).getprod_0()
+										.getpd_wieght());
+								count.setText(Integer.toString(data.get(p)
+										.getprod_0().getqty_count()));
+								control = "TAB1";
+							}
+						});
+
+						tab2.setOnClickListener(new View.OnClickListener() {
+
+							@Override
+							public void onClick(View v) {
+								tab1.setBackgroundDrawable(getResources()
+										.getDrawable(
+												R.drawable.green_round_border));
+								tab1.setTextColor(getResources().getColor(
+										R.color.orange));
+								tab2.setBackgroundDrawable(getResources()
+										.getDrawable(R.drawable.green_bg_round));
+								tab2.setTextColor(getResources().getColor(
+										color.white));
+								tab3.setBackgroundDrawable(getResources()
+										.getDrawable(
+												R.drawable.green_round_border));
+								tab3.setTextColor(getResources().getColor(
+										R.color.orange));
+								tab4.setBackgroundDrawable(getResources()
+										.getDrawable(
+												R.drawable.green_round_border));
+								tab4.setTextColor(getResources().getColor(
+										R.color.orange));
+								tab5.setBackgroundDrawable(getResources()
+										.getDrawable(
+												R.drawable.green_round_border));
+								tab5.setTextColor(getResources().getColor(
+										R.color.orange));
+
+								prod_name.setText(data.get(p).getprod_1()
+										.getitem_name());
+								prod_offer_cost.setText("\u20B9  "
+										+ data.get(p).getprod_1()
+												.getSelling_price());
+								if (!data.get(p).getprod_1().getvaliddiscount()
+										.equals("1"))
+									prod_cost.setVisibility(View.INVISIBLE);
+								else
+									prod_cost.setVisibility(View.VISIBLE);
+								prod_cost.setText("\u20B9  "
+										+ data.get(p).getprod_1()
+												.getMRP_price());
+								prod_cost.setPaintFlags(prod_cost
+										.getPaintFlags()
+										| Paint.STRIKE_THRU_TEXT_FLAG);
+								prod_quantity.setText(data.get(p).getprod_1()
+										.getpd_wieght());
+								count.setText(Integer.toString(data.get(p)
+										.getprod_1().getqty_count()));
+								control = "TAB2";
+							}
+						});
+
+						tab3.setOnClickListener(new View.OnClickListener() {
+
+							@Override
+							public void onClick(View v) {
+								tab1.setBackgroundDrawable(getResources()
+										.getDrawable(
+												R.drawable.green_round_border));
+								tab1.setTextColor(getResources().getColor(
+										R.color.orange));
+								tab2.setBackgroundDrawable(getResources()
+										.getDrawable(
+												R.drawable.green_round_border));
+								tab2.setTextColor(getResources().getColor(
+										R.color.orange));
+								tab3.setBackgroundDrawable(getResources()
+										.getDrawable(R.drawable.green_bg_round));
+								tab3.setTextColor(getResources().getColor(
+										color.white));
+								tab4.setBackgroundDrawable(getResources()
+										.getDrawable(
+												R.drawable.green_round_border));
+								tab4.setTextColor(getResources().getColor(
+										R.color.orange));
+								tab5.setBackgroundDrawable(getResources()
+										.getDrawable(
+												R.drawable.green_round_border));
+								tab5.setTextColor(getResources().getColor(
+										R.color.orange));
+
+								prod_name.setText(data.get(p).getprod_2()
+										.getitem_name());
+								prod_offer_cost.setText("\u20B9  "
+										+ data.get(p).getprod_2()
+												.getSelling_price());
+								if (!data.get(p).getprod_2().getvaliddiscount()
+										.equals("1"))
+									prod_cost.setVisibility(View.INVISIBLE);
+								else
+									prod_cost.setVisibility(View.VISIBLE);
+								prod_cost.setText("\u20B9  "
+										+ data.get(p).getprod_2()
+												.getMRP_price());
+								prod_cost.setPaintFlags(prod_cost
+										.getPaintFlags()
+										| Paint.STRIKE_THRU_TEXT_FLAG);
+								prod_quantity.setText(data.get(p).getprod_2()
+										.getpd_wieght());
+								count.setText(Integer.toString(data.get(p)
+										.getprod_2().getqty_count()));
+								control = "TAB3";
+							}
+						});
+
+						tab4.setOnClickListener(new View.OnClickListener() {
+
+							@Override
+							public void onClick(View v) {
+								tab1.setBackgroundDrawable(getResources()
+										.getDrawable(
+												R.drawable.green_round_border));
+								tab1.setTextColor(getResources().getColor(
+										R.color.orange));
+								tab2.setBackgroundDrawable(getResources()
+										.getDrawable(
+												R.drawable.green_round_border));
+								tab2.setTextColor(getResources().getColor(
+										R.color.orange));
+								tab4.setBackgroundDrawable(getResources()
+										.getDrawable(R.drawable.green_bg_round));
+								tab4.setTextColor(getResources().getColor(
+										color.white));
+								tab3.setBackgroundDrawable(getResources()
+										.getDrawable(
+												R.drawable.green_round_border));
+								tab3.setTextColor(getResources().getColor(
+										R.color.orange));
+								tab5.setBackgroundDrawable(getResources()
+										.getDrawable(
+												R.drawable.green_round_border));
+								tab5.setTextColor(getResources().getColor(
+										R.color.orange));
+
+								prod_name.setText(data.get(p).getprod_3()
+										.getitem_name());
+								prod_offer_cost.setText("\u20B9  "
+										+ data.get(p).getprod_3()
+												.getSelling_price());
+								if (!data.get(p).getprod_3().getvaliddiscount()
+										.equals("1"))
+									prod_cost.setVisibility(View.INVISIBLE);
+								else
+									prod_cost.setVisibility(View.VISIBLE);
+								prod_cost.setText("\u20B9  "
+										+ data.get(p).getprod_3()
+												.getMRP_price());
+								prod_cost.setPaintFlags(prod_cost
+										.getPaintFlags()
+										| Paint.STRIKE_THRU_TEXT_FLAG);
+								prod_quantity.setText(data.get(p).getprod_3()
+										.getpd_wieght());
+								count.setText(Integer.toString(data.get(p)
+										.getprod_3().getqty_count()));
+								control = "TAB4";
+							}
+						});
+
+						tab5.setOnClickListener(new View.OnClickListener() {
+
+							@Override
+							public void onClick(View v) {
+								tab1.setBackgroundDrawable(getResources()
+										.getDrawable(
+												R.drawable.green_round_border));
+								tab1.setTextColor(getResources().getColor(
+										R.color.orange));
+								tab2.setBackgroundDrawable(getResources()
+										.getDrawable(
+												R.drawable.green_round_border));
+								tab2.setTextColor(getResources().getColor(
+										R.color.orange));
+								tab5.setBackgroundDrawable(getResources()
+										.getDrawable(R.drawable.green_bg_round));
+								tab5.setTextColor(getResources().getColor(
+										color.white));
+								tab4.setBackgroundDrawable(getResources()
+										.getDrawable(
+												R.drawable.green_round_border));
+								tab4.setTextColor(getResources().getColor(
+										R.color.orange));
+								tab3.setBackgroundDrawable(getResources()
+										.getDrawable(
+												R.drawable.green_round_border));
+								tab3.setTextColor(getResources().getColor(
+										R.color.orange));
+
+								prod_name.setText(data.get(p).getprod_4()
+										.getitem_name());
+								prod_offer_cost.setText("\u20B9  "
+										+ data.get(p).getprod_4()
+												.getSelling_price());
+								if (!data.get(p).getprod_4().getvaliddiscount()
+										.equals("1"))
+									prod_cost.setVisibility(View.INVISIBLE);
+								else
+									prod_cost.setVisibility(View.VISIBLE);
+								prod_cost.setText("\u20B9  "
+										+ data.get(p).getprod_4()
+												.getMRP_price());
+								prod_cost.setPaintFlags(prod_cost
+										.getPaintFlags()
+										| Paint.STRIKE_THRU_TEXT_FLAG);
+								prod_quantity.setText(data.get(p).getprod_4()
+										.getpd_wieght());
+								count.setText(Integer.toString(data.get(p)
+										.getprod_4().getqty_count()));
+								control = "TAB5";
+							}
+						});
+
+						plus.setOnClickListener(new View.OnClickListener() {
+
+							@Override
+							public void onClick(View v) {
+
+								if (control.equals("TAB2")) {
+									value = data.get(p).getprod_1()
+											.getqty_count();
+									if (value >= 0) {
+										value = value + 1;
+										data.get(p).getprod_1()
+												.setqty_count(value);
+										if (data.get(p).getprod_1()
+												.getitem_in_cart().equals("NO")) {
+											data.get(p).getprod_1()
+													.setitem_in_cart("YES");
+											Cart_Arraylist.add(data.get(p)
+													.getprod_1());
+										}
+
+										if (Cart_Arraylist.size() == 0)
+											item_total_cost = 0;
+										item_total_cost = item_total_cost
+												+ Double.parseDouble(data
+														.get(p).getprod_1()
+														.getSelling_price());
+
+										if (data.get(p).getprod_1() != null) {
+											int ind = UpdatePlusCounter(data
+													.get(p).getprod_1()
+													.getitem_ID());
+											if (ind > -1) {
+												Cart_Arraylist.get(ind)
+														.setqty_count(value);
+												data.get(p)
+														.getprod_1()
+														.setqty_count(
+																Cart_Arraylist
+																		.get(ind)
+																		.getqty_count());
+												if (CART_adapt != null)
+													CART_adapt
+															.notifyDataSetChanged();
+											}
+										}
+
+										notifyDataSetChanged();
+										buttombarAction(Cart_Arraylist,
+												item_total_cost);
+										count.setText(Integer.toString(value));
+									}
+
+								} else if (control.equals("TAB3")) {
+
+									value = data.get(p).getprod_2()
+											.getqty_count();
+									if (value >= 0) {
+										value = value + 1;
+										data.get(p).getprod_2()
+												.setqty_count(value);
+										if (data.get(p).getprod_2()
+												.getitem_in_cart().equals("NO")) {
+											data.get(p).getprod_2()
+													.setitem_in_cart("YES");
+											Cart_Arraylist.add(data.get(p)
+													.getprod_2());
+										}
+
+										if (Cart_Arraylist.size() == 0)
+											item_total_cost = 0;
+										item_total_cost = item_total_cost
+												+ Double.parseDouble(data
+														.get(p).getprod_2()
+														.getSelling_price());
+
+										if (data.get(p).getprod_2() != null) {
+											int ind = UpdatePlusCounter(data
+													.get(p).getprod_2()
+													.getitem_ID());
+											if (ind > -1) {
+												Cart_Arraylist.get(ind)
+														.setqty_count(value);
+												data.get(p)
+														.getprod_2()
+														.setqty_count(
+																Cart_Arraylist
+																		.get(ind)
+																		.getqty_count());
+												if (CART_adapt != null)
+													CART_adapt
+															.notifyDataSetChanged();
+											}
+										}
+
+										notifyDataSetChanged();
+										buttombarAction(Cart_Arraylist,
+												item_total_cost);
+										count.setText(Integer.toString(value));
+									}
+								} else if (control.equals("TAB4")) {
+									value = data.get(p).getprod_3()
+											.getqty_count();
+									if (value >= 0) {
+										value = value + 1;
+										data.get(p).getprod_3()
+												.setqty_count(value);
+										if (data.get(p).getprod_3()
+												.getitem_in_cart().equals("NO")) {
+											data.get(p).getprod_3()
+													.setitem_in_cart("YES");
+											Cart_Arraylist.add(data.get(p)
+													.getprod_3());
+										}
+
+										if (Cart_Arraylist.size() == 0)
+											item_total_cost = 0;
+										item_total_cost = item_total_cost
+												+ Double.parseDouble(data
+														.get(p).getprod_3()
+														.getSelling_price());
+
+										if (data.get(p).getprod_3() != null) {
+											int ind = UpdatePlusCounter(data
+													.get(p).getprod_3()
+													.getitem_ID());
+											if (ind > -1) {
+												Cart_Arraylist.get(ind)
+														.setqty_count(value);
+												data.get(p)
+														.getprod_3()
+														.setqty_count(
+																Cart_Arraylist
+																		.get(ind)
+																		.getqty_count());
+												if (CART_adapt != null)
+													CART_adapt
+															.notifyDataSetChanged();
+											}
+										}
+
+										notifyDataSetChanged();
+										buttombarAction(Cart_Arraylist,
+												item_total_cost);
+										count.setText(Integer.toString(value));
+									}
+								} else if (control.equals("TAB5")) {
+									value = data.get(p).getprod_4()
+											.getqty_count();
+									if (value >= 0) {
+										value = value + 1;
+										data.get(p).getprod_4()
+												.setqty_count(value);
+										if (data.get(p).getprod_4()
+												.getitem_in_cart().equals("NO")) {
+											data.get(p).getprod_4()
+													.setitem_in_cart("YES");
+											Cart_Arraylist.add(data.get(p)
+													.getprod_4());
+										}
+
+										if (Cart_Arraylist.size() == 0)
+											item_total_cost = 0;
+										item_total_cost = item_total_cost
+												+ Double.parseDouble(data
+														.get(p).getprod_4()
+														.getSelling_price());
+
+										if (data.get(p).getprod_4() != null) {
+											int ind = UpdatePlusCounter(data
+													.get(p).getprod_4()
+													.getitem_ID());
+											if (ind > -1) {
+												Cart_Arraylist.get(ind)
+														.setqty_count(value);
+												data.get(p)
+														.getprod_4()
+														.setqty_count(
+																Cart_Arraylist
+																		.get(ind)
+																		.getqty_count());
+												if (CART_adapt != null)
+													CART_adapt
+															.notifyDataSetChanged();
+											}
+										}
+
+										notifyDataSetChanged();
+										buttombarAction(Cart_Arraylist,
+												item_total_cost);
+										count.setText(Integer.toString(value));
+									}
+								} else if (control.equals("TAB1")
+										|| control.equals("")) {
+									value = data.get(p).getprod_0()
+											.getqty_count();
+									if (value >= 0) {
+
+										value = value + 1;
+										data.get(p).getprod_0()
+												.setqty_count(value);
+										if (data.get(p).getprod_0()
+												.getitem_in_cart().equals("NO")) {
+
+											data.get(p).getprod_0()
+													.setitem_in_cart("YES");
+											Cart_Arraylist.add(data.get(p)
+													.getprod_0());
+										}
+
+										if (Cart_Arraylist.size() == 0)
+											item_total_cost = 0;
+										item_total_cost = item_total_cost
+												+ Double.parseDouble(data
+														.get(p).getprod_0()
+														.getSelling_price());
+
+										if (data.get(p).getprod_0() != null) {
+											int ind = UpdatePlusCounter(data
+													.get(p).getprod_0()
+													.getitem_ID());
+											if (ind > -1) {
+												Cart_Arraylist.get(ind)
+														.setqty_count(value);
+												data.get(p)
+														.getprod_0()
+														.setqty_count(
+																Cart_Arraylist
+																		.get(ind)
+																		.getqty_count());
+												if (CART_adapt != null)
+													CART_adapt
+															.notifyDataSetChanged();
+											}
+										}
+
+										notifyDataSetChanged();
+										// CART_adapt.notifyDataSetChanged();
+										buttombarAction(Cart_Arraylist,
+												item_total_cost);
+										count.setText(Integer.toString(value));
+									}
+								}
+							}
+						});
+
+						minus.setOnClickListener(new View.OnClickListener() {
+
+							@Override
+							public void onClick(View v) {
+
+								if (control.equals("TAB2")) {
+									int cnt_val = 0;
+									for (int m = 0; m < Cart_Arraylist.size(); m++) {
+										if (Cart_Arraylist.get(m) != null
+												&& data.get(p).getprod_1() != null) {
+											if (Cart_Arraylist
+													.get(m)
+													.getitem_ID()
+													.equals(data.get(p)
+															.getprod_1()
+															.getitem_ID()))
+												cnt_val = m;
+										}
+									}
+									value = data.get(p).getprod_1()
+											.getqty_count();
+									if (value > 0) {
+
+										value = value - 1;
+										data.get(p).getprod_1()
+												.setqty_count(value);
+										Cart_Arraylist.get(cnt_val)
+												.setqty_count(value);
+										if (Cart_Arraylist.size() == 0)
+											item_total_cost = 0;
+										item_total_cost = item_total_cost
+												- Double.parseDouble(data
+														.get(p).getprod_1()
+														.getSelling_price());
+										if (value == 0) {
+											if (data.get(p).getprod_1()
+													.getitem_in_cart()
+													.equals("YES")) {
+												data.get(p).getprod_1()
+														.setitem_in_cart("NO");
+
+												Cart_Arraylist
+														.remove(Cart_Arraylist
+																.get(cnt_val));
+												dialog.dismiss();
+											}
+										}
+
+										buttombarAction(Cart_Arraylist,
+												item_total_cost);
+
+										count.setText(Integer.toString(value));
+
+										notifyDataSetChanged();
+										CART_adapt.notifyDataSetChanged();
+									}
+								} else if (control.equals("TAB3")) {
+									int cnt_val = 0;
+									for (int m = 0; m < Cart_Arraylist.size(); m++) {
+										if (Cart_Arraylist.get(m) != null
+												&& data.get(p).getprod_2() != null) {
+											if (Cart_Arraylist
+													.get(m)
+													.getitem_ID()
+													.equals(data.get(p)
+															.getprod_2()
+															.getitem_ID()))
+												cnt_val = m;
+										}
+									}
+									value = data.get(p).getprod_2()
+											.getqty_count();
+									if (value > 0) {
+
+										value = value - 1;
+										data.get(p).getprod_2()
+												.setqty_count(value);
+										Cart_Arraylist.get(cnt_val)
+												.setqty_count(value);
+										if (Cart_Arraylist.size() == 0)
+											item_total_cost = 0;
+										item_total_cost = item_total_cost
+												- Double.parseDouble(data
+														.get(p).getprod_2()
+														.getSelling_price());
+										if (value == 0) {
+											if (data.get(p).getprod_2()
+													.getitem_in_cart()
+													.equals("YES")) {
+												data.get(p).getprod_2()
+														.setitem_in_cart("NO");
+												Cart_Arraylist
+														.remove(Cart_Arraylist
+																.get(cnt_val));
+												dialog.dismiss();
+											}
+										}
+
+										buttombarAction(Cart_Arraylist,
+												item_total_cost);
+
+										count.setText(Integer.toString(value));
+
+										notifyDataSetChanged();
+										CART_adapt.notifyDataSetChanged();
+									}
+								} else if (control.equals("TAB4")) {
+									int cnt_val = 0;
+									for (int m = 0; m < Cart_Arraylist.size(); m++) {
+										if (Cart_Arraylist.get(m) != null
+												&& data.get(p).getprod_3() != null) {
+											if (Cart_Arraylist
+													.get(m)
+													.getitem_ID()
+													.equals(data.get(p)
+															.getprod_3()
+															.getitem_ID()))
+												cnt_val = m;
+										}
+									}
+									value = data.get(p).getprod_3()
+											.getqty_count();
+									if (value > 0) {
+
+										value = value - 1;
+										data.get(p).getprod_3()
+												.setqty_count(value);
+										Cart_Arraylist.get(cnt_val)
+												.setqty_count(value);
+										if (Cart_Arraylist.size() == 0)
+											item_total_cost = 0;
+										item_total_cost = item_total_cost
+												- Double.parseDouble(data
+														.get(p).getprod_3()
+														.getSelling_price());
+										if (value == 0) {
+											if (data.get(p).getprod_3()
+													.getitem_in_cart()
+													.equals("YES")) {
+												data.get(p).getprod_3()
+														.setitem_in_cart("NO");
+												Cart_Arraylist
+														.remove(Cart_Arraylist
+																.get(cnt_val));
+												dialog.dismiss();
+											}
+										}
+
+										buttombarAction(Cart_Arraylist,
+												item_total_cost);
+
+										count.setText(Integer.toString(value));
+
+										notifyDataSetChanged();
+										CART_adapt.notifyDataSetChanged();
+									}
+								} else if (control.equals("TAB5")) {
+									int cnt_val = 0;
+									for (int m = 0; m < Cart_Arraylist.size(); m++) {
+										if (Cart_Arraylist.get(m) != null
+												&& data.get(p).getprod_4() != null) {
+											if (Cart_Arraylist
+													.get(m)
+													.getitem_ID()
+													.equals(data.get(p)
+															.getprod_4()
+															.getitem_ID()))
+												cnt_val = m;
+										}
+									}
+									value = data.get(p).getprod_4()
+											.getqty_count();
+									if (value > 0) {
+
+										value = value - 1;
+										data.get(p).getprod_4()
+												.setqty_count(value);
+										Cart_Arraylist.get(cnt_val)
+												.setqty_count(value);
+										if (Cart_Arraylist.size() == 0)
+											item_total_cost = 0;
+										item_total_cost = item_total_cost
+												- Double.parseDouble(data
+														.get(p).getprod_4()
+														.getSelling_price());
+										if (value == 0) {
+											if (data.get(p).getprod_4()
+													.getitem_in_cart()
+													.equals("YES")) {
+												data.get(p).getprod_4()
+														.setitem_in_cart("NO");
+												Cart_Arraylist
+														.remove(Cart_Arraylist
+																.get(cnt_val));
+												dialog.dismiss();
+											}
+										}
+
+										buttombarAction(Cart_Arraylist,
+												item_total_cost);
+
+										count.setText(Integer.toString(value));
+
+										notifyDataSetChanged();
+										CART_adapt.notifyDataSetChanged();
+									}
+								} else if (control.equals("TAB1")
+										|| control.equals("")) {
+
+									int cnt_val = 0;
+									for (int m = 0; m < Cart_Arraylist.size(); m++) {
+										if (Cart_Arraylist
+												.get(m)
+												.getitem_ID()
+												.equals(data.get(p).getprod_0()
+														.getitem_ID()))
+											cnt_val = m;
+									}
+									value = data.get(p).getprod_0()
+											.getqty_count();
+									if (value > 0) {
+
+										value = value - 1;
+										data.get(p).getprod_0()
+												.setqty_count(value);
+										Cart_Arraylist.get(cnt_val)
+												.setqty_count(value);
+										if (Cart_Arraylist.size() == 0)
+											item_total_cost = 0;
+										item_total_cost = item_total_cost
+												- Double.parseDouble(data
+														.get(p).getprod_0()
+														.getSelling_price());
+										if (value == 0) {
+											if (data.get(p).getprod_0()
+													.getitem_in_cart()
+													.equals("YES")) {
+												data.get(p).getprod_0()
+														.setitem_in_cart("NO");
+
+												Cart_Arraylist
+														.remove(Cart_Arraylist
+																.get(cnt_val));
+												dialog.dismiss();
+											}
+										}
+
+										buttombarAction(Cart_Arraylist,
+												item_total_cost);
+
+										count.setText(Integer.toString(value));
+
+										notifyDataSetChanged();
+										CART_adapt.notifyDataSetChanged();
+									}
+								}
+							}
+						});
+
+						if (data.get(p).getprod_0().getitem_image() != null
+								&& !data.get(p).getprod_0().getitem_image()
+										.equals(""))
+							Picasso.with(FavoriteActivity.this)
+									.load(data.get(p).getprod_0()
+											.getitem_image())
+									.placeholder(R.drawable.foodzu_noimage)
+									.fit().centerInside()
+									.tag(FavoriteActivity.this)
+									.into(imgThumbnail);
+
+						String GO = "N";
+						if (data.get(p).getlocation_specific().equals("1")) {
+							if (data.get(p).getlocation_availability()
+									.equals("1")) {
+								GO = "Y";
+							} else if (data.get(p).getlocation_availability()
+									.equals("2")) {
+								String add = Utils.ADD;
+								if (add.matches("(.*)india(.*)"))
+									GO = "Y";
+								else
+									GO = "N";
+								// india
+							} else if (data.get(p).getlocation_availability()
+									.equals("3")) {
+								// location specific
+								String ad = Utils.ADD;
+								String keyword[] = data.get(p)
+										.getlocation_address().split("@#");
+								System.out.println(data.get(p)
+										.getlocation_address());
+								for (int i = 0; i < keyword.length; i++) {
+									String sub_key[] = keyword[i].toString()
+											.split(",");
+									if (sub_key.length == 3) {
+										if (ad.replaceAll("[0-9]+", "")
+												.contains(sub_key[0].toString())) {
+											GO = "Y";
+										}
+									}
+									if (sub_key.length == 4) {
+										if (ad.replaceAll("[0-9]+", "")
+												.contains(sub_key[0].toString())
+												&& ad.replaceAll("[0-9]+", "")
+														.contains(
+																sub_key[1]
+																		.toString())) {
+											GO = "Y";
+										}
+									}
+								}
+
+							} else {
+								alertDialogBuilder
+										.setMessage(
+												"Item not available for the Shipping region!")
+										.setCancelable(false)
+										.setPositiveButton(
+												"OK",
+												new DialogInterface.OnClickListener() {
+													public void onClick(
+															DialogInterface dialog,
+															int id) {
+														alertDialog.dismiss();
+													}
+												});
+								alertDialog = alertDialogBuilder.create();
+								alertDialog
+										.requestWindowFeature(Window.FEATURE_NO_TITLE);
+								alertDialog.show();
+							}
+						} else
+							GO = "Y";
+
+						if (GO.equals("N")) {
+							alertDialogBuilder
+									.setMessage(
+											"Item not available for the Shipping region!")
+									.setCancelable(false)
+									.setPositiveButton(
+											"OK",
+											new DialogInterface.OnClickListener() {
+												public void onClick(
+														DialogInterface dialog,
+														int id) {
+													alertDialog.dismiss();
+												}
+											});
+							alertDialog = alertDialogBuilder.create();
+							alertDialog
+									.requestWindowFeature(Window.FEATURE_NO_TITLE);
+							alertDialog.show();
+						} else {
+
+							dialog.show();
+						}
+
+					}
+				}
+			});
+
+			if (data.get(p).getprod_0() != null)
+				if (data.get(p).getprod_0().getqty_count() == 0)
+					holder.tick_me.setVisibility(View.GONE);
+				else
+					holder.tick_me.setVisibility(View.VISIBLE);
+			if (data.get(p).getprod_1() != null)
+				if (data.get(p).getprod_1().getqty_count() == 0
+						&& data.get(p).getprod_0().getqty_count() == 0)
+					holder.tick_me.setVisibility(View.GONE);
+				else
+					holder.tick_me.setVisibility(View.VISIBLE);
+			if (data.get(p).getprod_2() != null)
+				if (data.get(p).getprod_2().getqty_count() == 0
+						&& data.get(p).getprod_1().getqty_count() == 0
+						&& data.get(p).getprod_0().getqty_count() == 0)
+					holder.tick_me.setVisibility(View.GONE);
+				else
+					holder.tick_me.setVisibility(View.VISIBLE);
+			if (data.get(p).getprod_3() != null)
+				if (data.get(p).getprod_3().getqty_count() == 0
+						&& data.get(p).getprod_2().getqty_count() == 0
+						&& data.get(p).getprod_1().getqty_count() == 0
+						&& data.get(p).getprod_0().getqty_count() == 0)
+					holder.tick_me.setVisibility(View.GONE);
+				else
+					holder.tick_me.setVisibility(View.VISIBLE);
+			if (data.get(p).getprod_4() != null)
+				if (data.get(p).getprod_4().getqty_count() == 0
+						&& data.get(p).getprod_3().getqty_count() == 0
+						&& data.get(p).getprod_2().getqty_count() == 0
+						&& data.get(p).getprod_1().getqty_count() == 0
+						&& data.get(p).getprod_0().getqty_count() == 0)
+					holder.tick_me.setVisibility(View.GONE);
+				else
+					holder.tick_me.setVisibility(View.VISIBLE);
+
+			holder.prod_qty.setText(data.get(p).getprod_0().getpd_wieght());
+			holder.tvProdName.setText(data.get(p).getprod_0().getitem_name());
+			holder.tvoffcost.setText("\u20B9  "
+					+ data.get(p).getprod_0().getSelling_price());
+
+			if (!data.get(p).getprod_0().getvaliddiscount().equals("1"))
+				holder.tvmrp.setVisibility(View.INVISIBLE);
+			else
+				holder.tvmrp.setVisibility(View.VISIBLE);
+			holder.tvmrp.setText("\u20B9  "
+					+ data.get(p).getprod_0().getMRP_price());
+			holder.tvmrp.setPaintFlags(holder.tvmrp.getPaintFlags()
+					| Paint.STRIKE_THRU_TEXT_FLAG);
+
+			holder.count.setText(Integer.toString(data.get(p).getprod_0()
+					.getqty_count()));
+			if (data.get(p).getprod_0().getitem_image() == null
+					|| data.get(p).getprod_0().getitem_image().equals(""))
+				holder.imgThumbnail.setImageResource(R.drawable.no_image);
+			else
+				Picasso.with(activity)
+						.load(data.get(p).getprod_0().getitem_image())
+						.placeholder(R.drawable.foodzu_noimage).fit()
+						.centerCrop().tag(activity).into(holder.imgThumbnail);
+
+			if (data.get(p).getprod_0() != null) {
+				int ind = UpdatePlusCounter(data.get(p).getprod_0()
+						.getitem_ID());
+				if (ind > -1) {
+					holder.count.setText(Integer.toString(Cart_Arraylist.get(
+							ind).getqty_count()));
+				}
+			}
+
+			return convertView;
+		}
+
+		public void deleteItem(int pos) {
+
+			data.remove(pos);
+			DELETE_POS = INVALID;
+			notifyDataSetChanged();
+		}
+
+		public void onSwipeItem(boolean isRight, int position) {
+
+			if (isRight == false) {
+				DELETE_POS = position;
+			} else if (DELETE_POS == position) {
+				DELETE_POS = INVALID;
+			}
+			notifyDataSetChanged();
+		}
+	}
+
+	public boolean IsInternetPresent() {
+		if (new Utils(FavoriteActivity.this).isNetworkAvailable())
+			return true;
+		else
+			return false;
+	}
+
+	// CART ADAPTER
+	
+public String getCartList() {
+		
+		String result = null;
+		String URL = URLs.CART_LIST;
+		try {
+
+			List<NameValuePair> pairs = new ArrayList<NameValuePair>();
+			pairs.add(new BasicNameValuePair("user_id", user_id));
+			pairs.add(new BasicNameValuePair("device_id",Utils.getDeviceId(FavoriteActivity.this)));
+		
+			
+
+			DefaultHttpClient httpClient = new DefaultHttpClient();
+
+			HttpPost httpPost = new HttpPost(URL);
+			httpPost.setEntity(new UrlEncodedFormEntity(pairs));
+			HttpResponse httpResponse = httpClient.execute(httpPost);
+			result = EntityUtils.toString(httpResponse.getEntity());
+
+		} catch (Exception e) {
+			Log.d("InputStream", e.getLocalizedMessage());
+		}
+		return result;	
+		
+	}
+	
+	public class AsyGetCartList extends AsyncTask<Void, Void, String> {
+
+		Dialog dialog;
+		
+
+		protected void onPreExecute() {
+
+			dialog = Utils.createProgressDialog(FavoriteActivity.this);
+			dialog.setCancelable(false);
+			if (dialog.isShowing())
+				dialog.dismiss();
+			dialog.show();
+		}
+
+		protected String doInBackground(Void... params) {
+			
+
+			return getCartList();
+		}
+
+		protected void onPostExecute(String result) {
+			
+			try{
+			
+			if (result != null && result.length() > 0) {
+				
+				
+				JSONObject jObj_main = new JSONObject(result);
+				if (jObj_main.getString("success").equals("true")) {
+					JSONArray jaresult = jObj_main.getJSONArray("result");	
+					
+					Cart_Arraylist.addAll(parseCartJson(jaresult));
+					
+					CART_adapt.notifyDataSetChanged();
+					
+					buttombarAction(Cart_Arraylist,Double.valueOf(jObj_main.getString("cart_total_price")));
+											
+					//cartitem_count.setText(jObj_main.getString("cart_total"));	
+					total_cost.setText("\u20B9  " + jObj_main.getString("cart_total_price"));
+						
+					
+					
+				}
+			}
+			}catch(Exception e){
+				
+			}
+			
+			
+			
+			
+			dialog.dismiss();
+			
+		}
+	}
+	
+ArrayList<SubProduct> parseCartJson(JSONArray jaresult) {
+		
+		ArrayList<SubProduct> cartproduct=new ArrayList<SubProduct>();	
+		try{
+		
+		
+		
+		if (jaresult.length() > 0) {
+			for (int i = 0; i < jaresult.length(); i++) {
+				JSONObject obj = jaresult.getJSONObject(i);
+				
+				item = new SubProduct();
+				item.setitem_ID(obj.getString(
+						"item_id")
+						.toString());
+				item.setitem_name(obj
+						.getString(
+								"item_name")
+						.toString());
+				item.setMRP_price(obj
+						.getString(
+								"product_mrp_1")
+						.toString());
+				item.setSelling_price(obj
+						.getString(
+								"product_actual_price_1")
+						.toString());
+				item.setvaliddiscount(obj
+						.getString(
+								"product_offer_1"));
+				item.setOfferPercentage(obj.getString(
+						"product_offer_percentage_1").toString());
+				
+			    item.setitem_image(obj
+							.getString("item_image")
+							.toString());
+			    
+			    item.setitem_in_cart("YES");
+			    item.setqty_count(Integer.parseInt(obj
+							.getString("added_quantity")
+							.toString()));
+				item.setpd_wieght(obj
+						.getString(
+								"item_weight")
+						.toString());
+				item.setIsOutOfStock(obj.getString(
+						"outof_stock").toString());
+				cartproduct.add(item);
+			}
+		}
+		}catch(Exception e){
+			
+			
+		}
+		
+		
+		return cartproduct;
+	}
+
+	public class FVCartAdapter extends BaseAdapter {
+
+		private Activity activity;
+		private ArrayList<SubProduct> data;
+		private LayoutInflater inflater = null;
+
+		SharedPreferences sharedPreferences;
+		private ImageView imgThumbnail, plus, closeit, minus;
+		private TextView prod_name, prod_cost, prod_offer_cost, prod_desc,
+				prod_quantity, count, tab1, tab2, tab3, tab4, tab5;
+		JSONObject promoJson;
+		HashMap<String, String> item = new HashMap<String, String>();
+		private Context mContext;
+		int value = 0;
+		String control = "";
+
+		public FVCartAdapter(Activity a, ArrayList<SubProduct> d) {
+			activity = a;
+			data = d;
+			this.mContext = a;
+			inflater = (LayoutInflater) activity
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+			sharedPreferences = PreferenceManager
+					.getDefaultSharedPreferences(activity);
+
+		}
+
+		public int getCount() {
+			return data.size();
+		}
+
+		public Object getItem(int position) {
+			return position;
+		}
+
+		public long getItemId(int position) {
+			return position;
+		}
+
+		class ViewHolder {
+			private ImageView imgThumbnail, plus, minus, fav;
+			private TextView lblDateEnd, tvmrp, tvoffcost, tvProdName,
+					prod_qty, count;
+			RelativeLayout view;
+			LinearLayout llOutofstock, llAddcart;
+			// ImageLoader imgLoader;
+		}
+
+		public View getView(final int p, View convertView, ViewGroup parent) {
+			final ViewHolder holder;
+			if (convertView == null) {
+				convertView = inflater.inflate(R.layout.adapter_home_new, parent,
+						false);
+				holder = new ViewHolder();
+				convertView.setTag(holder);
+			} else {
+				holder = (ViewHolder) convertView.getTag();
+			}
+			holder.view = (RelativeLayout) convertView
+					.findViewById(R.id.wrap_rl);
+			holder.lblDateEnd = (TextView) convertView
+					.findViewById(R.id.lblEndDate);
+			holder.tvProdName = (TextView) convertView
+					.findViewById(R.id.lblstore);
+			holder.prod_qty = (TextView) convertView.findViewById(R.id.p_qty);
+			holder.imgThumbnail = (ImageView) convertView
+					.findViewById(R.id.imgThumbnail);
+			holder.plus = (ImageView) convertView.findViewById(R.id.plus);
+			holder.minus = (ImageView) convertView.findViewById(R.id.minus);
+			holder.fav = (ImageView) convertView.findViewById(R.id.fav);
+
+			holder.count = (TextView) convertView.findViewById(R.id.count);
+			holder.tvmrp = (TextView) convertView.findViewById(R.id.lblAddress);
+			holder.tvoffcost = (TextView) convertView
+					.findViewById(R.id.prod_off_cost);
+			holder.tvProdName.setMaxLines(2);
+			holder.llOutofstock = (LinearLayout) convertView
+					.findViewById(R.id.lloutofstock);
+			holder.llAddcart = (LinearLayout) convertView
+					.findViewById(R.id.lladdcart);
+
+			// if (UID.equals(""))
+			// holder.fav.setVisibility(View.GONE);
+			// else {
+			// if (data.get(p).getIs_Favorite().equals("1")) {
+			// holder.fav.setVisibility(View.VISIBLE);
+			// holder.fav.setImageResource(R.drawable.fav_icon);
+			// } else {
+			// holder.fav.setVisibility(View.VISIBLE);
+			// holder.fav.setImageResource(R.drawable.unfav_icon);
+			// }
+			// }
+			// holder.fav.setOnClickListener(new View.OnClickListener() {
+			//
+			// @Override
+			// public void onClick(View v) {
+			// ADAPT = "CA";
+			// if (data.get(p).getIs_Favorite().equals("1"))
+			// favorite(data.get(p).getitem_id(), "0", p);
+			// else
+			// favorite(data.get(p).getitem_id(), "1", p);
+			// }
+			// });
+
+			holder.plus.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					value = data.get(p).getqty_count();
+					if (value >= 0) {
+						new AsyCartAdd().execute(data.get(p).getitem_ID()+"-1-"+data.get(p).getpd_wieght());
+						value = value + 1;
+						data.get(p).setqty_count(value);
+
+						if (data.get(p).getitem_in_cart().equals("NO")) {
+							data.get(p).setitem_in_cart("YES");
+							Cart_Arraylist.add(data.get(p));
+						} else
+							data.get(p).setqty_count(value);
+
+						if (Cart_Arraylist.size() == 0)
+							item_total_cost = 0;
+						item_total_cost = item_total_cost
+								+ Double.parseDouble(data.get(p)
+										.getSelling_price());
+					}
+
+					notifyDataSetChanged();
+					FL_Adapter.notifyDataSetChanged();
+					buttombarAction(Cart_Arraylist, item_total_cost);
+
+				}
+			});
+
+			holder.minus.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+
+					int cnt_val = 0;
+					for (int m = 0; m < Cart_Arraylist.size(); m++) {
+						if (Cart_Arraylist.get(m) != null)
+							if (Cart_Arraylist.get(m).getitem_ID()
+									.equals(data.get(p).getitem_ID()))
+								cnt_val = m;
+					}
+					value = data.get(p).getqty_count();
+					if (value > 0) {
+						new AsyCartRemove().execute(data.get(p).getitem_ID()+"-1-"+data.get(p).getpd_wieght());
+						value = value - 1;
+						data.get(p).setqty_count(value);
+						Cart_Arraylist.get(cnt_val).setqty_count(value);
+						if (Cart_Arraylist.size() == 0)
+							item_total_cost = 0;
+						item_total_cost = item_total_cost
+								- Double.parseDouble(data.get(p)
+										.getSelling_price());
+
+						if (value == 0) {
+							if (data.get(p).getitem_in_cart().equals("YES")) {
+								data.get(p).setitem_in_cart("NO");
+								Cart_Arraylist.remove(Cart_Arraylist
+										.get(cnt_val));
+								notifyDataSetChanged();
+								FL_Adapter.notifyDataSetChanged();
+								buttombarAction(Cart_Arraylist, item_total_cost);
+							}
+						}
+					}
+					notifyDataSetChanged();
+					FL_Adapter.notifyDataSetChanged();
+					buttombarAction(Cart_Arraylist, item_total_cost);
+
+				}
+			});
+			
+			if (data.get(p).getIsOutOfStock().equals("1")) {
+				holder.llOutofstock.setVisibility(View.VISIBLE);
+				holder.llAddcart.setVisibility(View.GONE);
+			} else {
+				holder.llOutofstock.setVisibility(View.GONE);
+				holder.llAddcart.setVisibility(View.VISIBLE);
+
+			}
+
+			holder.prod_qty.setText(data.get(p).getpd_wieght());
+			holder.tvProdName.setText(data.get(p).getitem_name());
+			holder.tvoffcost.setText("\u20B9  "
+					+ data.get(p).getSelling_price());
+
+			if (!data.get(p).getvaliddiscount().equals("1"))
+				holder.tvmrp.setVisibility(View.INVISIBLE);
+			else
+				holder.tvmrp.setVisibility(View.VISIBLE);
+			holder.tvmrp.setText("\u20B9  " + data.get(p).getMRP_price());
+			holder.tvmrp.setPaintFlags(holder.tvmrp.getPaintFlags()
+					| Paint.STRIKE_THRU_TEXT_FLAG);
+
+			if (data.get(p).getitem_in_cart().equals("YES"))
+				holder.count.setText(Integer.toString(data.get(p)
+						.getqty_count()));
+
+			if (data.get(p).getitem_image() == null
+					|| data.get(p).getitem_image().equals(""))
+				holder.imgThumbnail.setImageResource(R.drawable.no_image);
+			else
+				Picasso.with(activity).load(data.get(p).getitem_image())
+						.placeholder(R.drawable.foodzu_noimage).fit()
+						.centerCrop().tag(activity).into(holder.imgThumbnail);
+
+			return convertView;
+		}
+
+	}
+
+	public static void SlideToAbove() {
+		Animation slide = null;
+
+		slide = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.0f,
+				Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
+				1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
+
+		slide.setDuration(300);
+		slide.setFillAfter(true);
+		slide.setFillEnabled(true);
+		View_layout.startAnimation(slide);
+		chkoutcart_top.startAnimation(slide);
+		slide.setAnimationListener(new AnimationListener() {
+
+			@Override
+			public void onAnimationStart(Animation animation) {
+				Main_layout.setVisibility(View.GONE);
+			}
+
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+			}
+
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				View_layout.clearAnimation();
+				chkoutcart_top.clearAnimation();
+			}
+
+		});
+
+	}
+
+	public static void SlideToDown() {
+		Animation slide = null;
+		slide = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.0f,
+				Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
+				0.0f, Animation.RELATIVE_TO_SELF, 5.2f);
+
+		slide.setDuration(1000);
+		slide.setFillAfter(true);
+		slide.setFillEnabled(true);
+		View_layout.startAnimation(slide);
+		chkoutcart_top.startAnimation(slide);
+
+		slide.setAnimationListener(new AnimationListener() {
+
+			@Override
+			public void onAnimationStart(Animation animation) {
+
+			}
+
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+			}
+
+			@Override
+			public void onAnimationEnd(Animation animation) {
+
+				chkoutcart_top.clearAnimation();
+				View_layout.clearAnimation();
+			}
+
+		});
+
+	}
+
+	void favorite(final String prod_id) {
+		PID = prod_id;
+		if (IsInternetPresent())
+			new remove_favList().execute();
+		else {
+			alertDialogBuilder
+					.setMessage("Internet/Mobile Data Not Available!")
+					.setCancelable(false)
+					.setPositiveButton("Retry",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int id) {
+									favorite(prod_id);
+								}
+							});
+			alertDialog = alertDialogBuilder.create();
+			alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+			alertDialog.show();
+		}
+	}
+
+	public class remove_favList extends AsyncTask<Void, Void, String> {
+
+		String URL;
+
+		protected void onPreExecute() {
+			URL = URLs.SET_FAV_URL;
+		}
+
+		protected String doInBackground(Void... params) {
+
+			String result = null;
+
+			try {
+				List<NameValuePair> pairs = new ArrayList<NameValuePair>();
+				pairs.add(new BasicNameValuePair("userid", user_id));
+				pairs.add(new BasicNameValuePair("devicetype", "ANDROID"));
+				pairs.add(new BasicNameValuePair("product_id", PID));
+				pairs.add(new BasicNameValuePair("favourite_value", "0"));
+
+				DefaultHttpClient httpClient = new DefaultHttpClient();
+
+				HttpPost httpPost = new HttpPost(URL);
+				httpPost.setEntity(new UrlEncodedFormEntity(pairs));
+				HttpResponse httpResponse = httpClient.execute(httpPost);
+				result = EntityUtils.toString(httpResponse.getEntity());
+
+			} catch (Exception e) {
+				Log.d("InputStream", e.getLocalizedMessage());
+			}
+			return result;
+		}
+
+		protected void onPostExecute(String result) {
+			JSONObject jObj_main;
+			try {
+				jObj_main = new JSONObject(result);
+
+				String res = jObj_main.getString("success").toString();
+				if (res.equals("1")) {
+					favList_Array.remove(POS);
+					if (favList_Array.size() == 0) {
+						myfavoritelist.setVisibility(View.GONE);
+						tv_nofav.setVisibility(View.VISIBLE);
+					}
+
+					// FL_Adapter = new
+					// FavoriteAdapter(FavoriteActivity.this,favList_Array);
+
+					fav_product();
+
+					FL_Adapter.notifyDataSetChanged();
+
+					// FL_Adapter.notifyDataSetInvalidated()
+					Toast.makeText(getApplicationContext(),
+							"Item removed from Favorite List.",
+							Toast.LENGTH_LONG).show();
+				} else {
+					alertDialogBuilder
+							.setMessage("Favorite not set!")
+							.setCancelable(false)
+							.setPositiveButton("OK",
+									new DialogInterface.OnClickListener() {
+										public void onClick(
+												DialogInterface dialog, int id) {
+											dialog.cancel();
+										}
+									});
+					AlertDialog alert = alertDialogBuilder.create();
+					alert.show();
+				}
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	private class AsyCartAdd extends AsyncTask<String, Void, String> {
+
+		@Override
+		protected String doInBackground(String... place) {
+			String productId = place[0];
+			
+			return cartRequest(productId,"add");
+		}
+		
+		@Override
+		protected void onPostExecute(String result) {
+			super.onPostExecute(result);
+			
+		}
+		
+	}
+	
+	private class AsyCartRemove extends AsyncTask<String, Void, String> {
+
+		@Override
+		protected String doInBackground(String... place) {
+			String productId = place[0];
+			
+			return cartRequest(productId,"remove");
+		}
+		
+		@Override
+		protected void onPostExecute(String result) {
+			super.onPostExecute(result);
+			
+		}
+		
+	}
+	
+public String cartRequest(String productId,String task) {
+		
+		String result = null;
+		String URL = URLs.ADD_TO_CART;
+		try {
+
+			List<NameValuePair> pairs = new ArrayList<NameValuePair>();
+			pairs.add(new BasicNameValuePair("user_id", user_id));
+			pairs.add(new BasicNameValuePair("device_id",Utils.getDeviceId(FavoriteActivity.this)));
+			pairs.add(new BasicNameValuePair("product_id", productId));
+			pairs.add(new BasicNameValuePair("task", task));
+			
+
+			DefaultHttpClient httpClient = new DefaultHttpClient();
+
+			HttpPost httpPost = new HttpPost(URL);
+			httpPost.setEntity(new UrlEncodedFormEntity(pairs));
+			HttpResponse httpResponse = httpClient.execute(httpPost);
+			result = EntityUtils.toString(httpResponse.getEntity());
+
+		} catch (Exception e) {
+			Log.d("InputStream", e.getLocalizedMessage());
+		}
+		return result;	
+		
+	}
+
+	// SWIPE ACTION DELETE
+
+	@Override
+	public ListView getListView() {
+
+		return myfavoritelist;
+	}
+
+	@Override
+	public void onSwipeItem(boolean isRight, int position) {
+		System.out.println("I am on swipe");
+		FL_Adapter.onSwipeItem(isRight, position);
+	}
+
+	@Override
+	public void onItemClickListener(ListAdapter adapter, int position) {
+
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+
+	}
+}

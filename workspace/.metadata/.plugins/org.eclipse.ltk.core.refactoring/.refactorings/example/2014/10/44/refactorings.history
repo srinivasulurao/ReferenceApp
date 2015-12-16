@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;action_bar.xml&apos; to &apos;layout&apos;&#x0D;&#x0A;- Original project: &apos;example&apos;&#x0D;&#x0A;- Destination element: &apos;layout&apos;&#x0D;&#x0A;- Original element: &apos;action_bar.xml&apos;" description="Copy file" element1="res/layout/action_bar.xml" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1414563231930" target="/Voicey/res/layout" units="0" version="1.0"/>
+</session>

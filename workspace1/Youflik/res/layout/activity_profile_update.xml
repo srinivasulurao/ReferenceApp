@@ -1,0 +1,170 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".UserProfileUpdate" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <ScrollView
+            android:id="@+id/update_userdetailsscrollViewpage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical" >
+
+                    <RelativeLayout
+                        android:id="@+id/update_image_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="255dp"
+                        android:background="@android:color/white"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:id="@+id/update_user_cover_pic"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/default_coverpic" />
+
+                        <com.youflik.youflik.utils.ImageViewRounded
+                            android:id="@+id/update_profilepic"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginLeft="19dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/placeholder" />
+
+                        <Button
+                            android:id="@+id/update_change_cover"
+                            android:layout_width="140dp"
+                            android:layout_height="30dp"
+                            android:layout_above="@+id/update_change_profile"
+                            android:layout_marginBottom="16dp"
+                            android:layout_marginRight="42dp"
+                            android:layout_toLeftOf="@+id/update_done"
+                            android:alpha=".75"
+                            android:background="@drawable/round_button_transparent"
+                            android:text="Cover image"
+                            android:textColor="#ffffff"
+                            android:textSize="15sp" />
+
+                        <Button
+                            android:id="@+id/update_done"
+                            android:layout_width="50dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginRight="17dp"
+                            android:layout_marginTop="14dp"
+                            android:alpha=".75"
+                            android:background="@drawable/round_button_transparent"
+                            android:text="Done"
+                            android:textColor="#ffffff"
+                            android:textSize="15sp" />
+
+                        <Button
+                            android:id="@+id/update_change_profile"
+                            android:layout_width="140dp"
+                            android:layout_height="30dp"
+                            android:layout_above="@+id/update_profilepic"
+                            android:layout_alignLeft="@+id/update_change_cover"
+                            android:layout_marginBottom="20dp"
+                            android:alpha=".75"
+                            android:background="@drawable/round_button_transparent"
+                            android:text="Profile image"
+                            android:textColor="#ffffff"
+                            android:textSize="15sp" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="12dp"
+                        android:orientation="vertical" >
+
+                        <EditText
+                            android:id="@+id/update_bio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/border"
+                            android:hint="add a status"
+                            android:paddingBottom="7dp"
+                            android:paddingLeft="7dp"
+                            android:paddingTop="7dp"
+                            android:singleLine="true"
+                            android:textColor="#989898"
+                            android:textSize="18dp" />
+
+                        <com.youflik.youflik.utils.CustomAutoComplectTextView
+                            android:id="@+id/update_location"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/border"
+                            android:hint="Location"
+                            android:paddingBottom="7dp"
+                            android:paddingLeft="7dp"
+                            android:paddingTop="9dp"
+                            android:singleLine="true"
+                            android:textColor="#989898"
+                            android:textSize="18dp" />
+
+                        <EditText
+                            android:id="@+id/update_website"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/border"
+                            android:hint="Website"
+                            android:paddingBottom="7dp"
+                            android:paddingLeft="7dp"
+                            android:paddingTop="9dp"
+                            android:singleLine="true"
+                            android:textColor="#989898"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/update_songs"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/border"
+                            android:hint="add songs"
+                            android:paddingBottom="7dp"
+                            android:paddingLeft="7dp"
+                            android:paddingTop="9dp"
+                            android:singleLine="true"
+                            android:textColor="#989898"
+                            android:textSize="18dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+</LinearLayout>

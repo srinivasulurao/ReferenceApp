@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/lllogin"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="vertical"
+        android:paddingBottom="10dp" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/employee_login"
+                android:textColor="#cb0101"
+                android:textSize="20dp" />
+            <!-- android:textColor="@android:color/black" -->
+
+            <ImageView
+                android:id="@+id/ivclose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:padding="3dp"
+                android:src="@drawable/btn_cross" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvusername"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_test_style"
+            android:ellipsize="start"
+            android:gravity="center"
+            android:hint="User Name"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/employee_password"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etusername"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_test_style"
+            android:ellipsize="start"
+            android:gravity="center"
+            android:hint="@string/passsward"
+            android:imeOptions="actionNext"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textSize="20dp" />
+
+        <Spinner
+            android:id="@+id/employee_language"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ettitle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/dropdown_background"
+            android:paddingLeft="5dp"
+            android:paddingRight="40dp"
+            android:spinnerMode="dialog" />
+
+        <Button
+            android:id="@+id/employee_login"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:background="@drawable/select_button"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Login"
+            android:textColor="#FFF200" />
+ <!-- android:textColor="@android:color/white" -->
+    </LinearLayout>
+
+</LinearLayout>

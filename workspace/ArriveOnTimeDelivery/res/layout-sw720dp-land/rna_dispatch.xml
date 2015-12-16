@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dispatchScreen_listview_main"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" 
+    android:background="#ffffff">  
+    
+    
+    <ScrollView      
+         android:layout_centerHorizontal="true"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+         
+        
+         
+         
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
+    <RelativeLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content" 
+	        android:layout_alignParentTop="true"
+	        android:id="@+id/rna_btn_layout">
+        
+        <Button 
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="AOTD"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_centerVertical="true"            
+            android:id="@+id/rna_btn"
+            android:background="@drawable/btn_background"
+            android:textStyle="bold"
+            android:padding="10dp"
+            />
+        <View 
+            android:layout_below="@+id/rna_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#DBD9D0"/>
+        
+        
+    </RelativeLayout>    
+        
+    <LinearLayout
+        android:layout_marginTop="20dp"           
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3"
+       >
+		<RelativeLayout
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="1" >
+    <Button
+        android:id="@+id/rna_dispatch_scan_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"       
+        android:background="@drawable/btn_background"
+        android:layout_centerInParent="true"
+        android:text="Scan"
+        android:textSize="18dp" 
+        android:textStyle="bold"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        />
+	</RelativeLayout>
+	    
+	<RelativeLayout
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="1" >
+    </RelativeLayout>
+	
+    <RelativeLayout
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="1" >
+    <Button
+        android:id="@+id/rna_dispatch_status_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"        
+        android:background="@drawable/btn_background"
+        android:text="Confirm"
+        android:textStyle="bold"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textSize="18dp" 
+        android:layout_centerInParent="true"/>
+	</RelativeLayout>
+   
+    </LinearLayout>
+    
+   <LinearLayout     
+        android:layout_marginTop="5dp"      
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3"
+       >
+	<RelativeLayout
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="1"
+	    android:layout_gravity="center" >
+    <TextView	  
+	    android:layout_width="120dp"
+	    android:layout_height="wrap_content"
+	    android:layout_centerInParent="true"	
+	    android:gravity="center"    
+	    android:text="BatchId"
+	    android:textColor="@color/black"
+	    android:textSize="18dp" 
+	    android:textStyle="bold"/>
+	    
+    </RelativeLayout>
+	<RelativeLayout
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="1" > 
+         </RelativeLayout>
+
+	
+	<RelativeLayout
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="1" >
+    
+        <EditText
+        android:layout_marginTop="10dp"    
+        android:id="@+id/rna_dispatch_editText"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"      
+        android:textColor="@color/black"           
+        android:singleLine="true"  
+        android:layout_centerInParent="true"    
+        android:textSize="18dp" />
+	</RelativeLayout>
+	
+    
+       
+  
+   </LinearLayout>
+    <View
+        android:layout_marginTop="5dp"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"/>
+    </LinearLayout>
+   </ScrollView>
+   
+    
+
+</RelativeLayout>

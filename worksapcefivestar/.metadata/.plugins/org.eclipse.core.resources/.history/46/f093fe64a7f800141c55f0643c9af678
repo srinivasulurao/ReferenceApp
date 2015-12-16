@@ -1,0 +1,67 @@
+package com.fivestarchicken.lms.fragments;
+
+import android.annotation.SuppressLint;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+
+import com.fivestarchicken.lms.R;
+
+@SuppressLint("NewApi")
+public class FragmentDashboard extends Fragment {
+	
+	 RelativeLayout rrprofile,rrtakeexample,rrviewresule;
+	
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View v = inflater.inflate(R.layout.fragment_dashboard, container, false);
+
+		initilizeUI(v);
+
+		return v;
+	}
+
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+
+		switch (v.getId()) {
+
+		}
+	}
+	
+	private void initilizeUI(View v) {
+
+		try {
+			 rrprofile=(RelativeLayout)v.findViewById(R.id.rrprofile);
+			    rrtakeexample=(RelativeLayout)v.findViewById(R.id.rrtakeexample);
+			    rrviewresule=(RelativeLayout)v.findViewById(R.id.rrviewresule);
+			    
+			    rrtakeexample.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						
+						Fragment fragment  = new FragmentTakeExam();
+						FragmentManager fragmentManager = getFragmentManager();
+						fragmentManager.beginTransaction()
+								.replace(R.id.frame_container, fragment).commit();
+						
+					}
+				});
+			
+		}	
+		 catch (Exception e) {
+
+			e.printStackTrace();
+		}
+	}
+	
+	
+
+}

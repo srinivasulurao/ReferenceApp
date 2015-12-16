@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlbody"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/llfriendName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvfriendName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:autoLink="web|phone"
+            android:gravity="left"
+            android:padding="5dp"
+            android:text="title"
+            android:textColor="@color/inbox_text"
+            android:textSize="18dp"
+            android:typeface="serif" />
+        
+        <TextView
+            android:id="@+id/tvadmin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_toLeftOf="@+id/tvaccept"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/gray"
+            android:padding="5dp"
+            android:text="ADMIN"
+            android:textStyle="bold"
+            android:textSize="12dp"
+            android:typeface="serif" />
+        
+        <TextView
+            android:id="@+id/tvaccept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/btnselected"
+            android:padding="5dp"
+            android:text="Accept"
+            android:textSize="15dp"
+            android:typeface="serif" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvfriendid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llfriendName"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:text="count"
+        android:textSize="15dp"
+        android:typeface="serif" />    
+        
+    <LinearLayout
+        android:id="@+id/llicon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/llfriendName"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/caller"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/caller" />
+        
+        <ImageView
+            android:id="@+id/info"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/i" />
+        
+        <ImageView
+            android:id="@+id/ivedit"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/edit_2" />        
+
+        
+        <ImageView
+            android:id="@+id/ivdelete"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_below="@+id/ivnotify"
+            android:layout_margin="10dp"
+            android:src="@drawable/remove" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/remove_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@android:drawable/ic_delete" />
+
+</RelativeLayout>

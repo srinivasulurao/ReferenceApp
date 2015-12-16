@@ -1,0 +1,143 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing
+END
+WriterException.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/WriterException.java
+END
+BarcodeFormat.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/BarcodeFormat.java
+END
+RGBLuminanceSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/RGBLuminanceSource.java
+END
+Writer.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/Writer.java
+END
+Binarizer.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/Binarizer.java
+END
+ChecksumException.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/ChecksumException.java
+END
+Reader.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/Reader.java
+END
+ResultPoint.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/ResultPoint.java
+END
+PlanarYUVLuminanceSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/PlanarYUVLuminanceSource.java
+END
+LuminanceSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/LuminanceSource.java
+END
+InvertedLuminanceSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/InvertedLuminanceSource.java
+END
+NotFoundException.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/NotFoundException.java
+END
+ResultMetadataType.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/ResultMetadataType.java
+END
+EncodeHintType.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/EncodeHintType.java
+END
+Result.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/Result.java
+END
+MultiFormatWriter.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/MultiFormatWriter.java
+END
+ResultPointCallback.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/ResultPointCallback.java
+END
+ReaderException.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/ReaderException.java
+END
+MultiFormatReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/MultiFormatReader.java
+END
+FormatException.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/FormatException.java
+END
+BinaryBitmap.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/BinaryBitmap.java
+END
+DecodeHintType.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/DecodeHintType.java
+END
+Dimension.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/Dimension.java
+END

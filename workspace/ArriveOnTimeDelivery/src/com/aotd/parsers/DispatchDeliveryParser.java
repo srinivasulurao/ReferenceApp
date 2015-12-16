@@ -1,0 +1,204 @@
+package com.aotd.parsers;
+
+import java.io.StringReader;
+import java.util.ArrayList;
+
+import org.xmlpull.v1.XmlPullParser;
+
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import android.util.Xml;
+
+import com.aotd.helpers.HttpLoader;
+import com.aotd.model.DetailDeliveryModel;
+import com.aotd.model.DispatchAllListModel;
+
+public class DispatchDeliveryParser extends HttpLoader {
+	
+	//private ArrayList <CarsListModel> carsListFeeds = null;
+	private Handler parentHandler;
+	DetailDeliveryModel mDetailDeliveryModel;
+	private boolean pickedUp = false;
+	private boolean delivered = false;
+	
+	public DispatchDeliveryParser(Handler handler,String feedUrl , DetailDeliveryModel mDetailObject) 
+	{
+		super(feedUrl);
+		parentHandler=handler;
+		
+		mDetailDeliveryModel = mDetailObject;
+	}
+	
+	
+	@Override	
+	public void parse(String inputStream,String errMsg) 
+	{
+		
+		if(errMsg.toString().length() == 0)
+		{
+	
+			XmlPullParser parser = Xml.newPullParser();
+			
+	        try {
+	        	boolean isValidXmlBeforeEndDoc = false;
+	            parser.setInput(new StringReader(inputStream));
+	            int eventType = parser.getEventType();
+	           
+	            boolean done = false;
+	           // boolean orderInfoFound = false;
+	           
+	            while ( !done)
+	            {
+	            	
+	                String name = null;
+	                switch (eventType)
+	                {
+	                    case XmlPullParser.START_DOCUMENT:
+	                    	
+	                        break;
+	                    case XmlPullParser.START_TAG:
+	                    	name = parser.getName();
+	                    	if(name.equalsIgnoreCase("order-details")){
+	                    		
+	                    		isValidXmlBeforeEndDoc = true;
+	                    	}
+	                    	else if(isValidXmlBeforeEndDoc){
+	                    			if (name.equalsIgnoreCase("accountName")){	 
+		                        		mDetailDeliveryModel.setAccountName(parser.nextText());
+		                        	}else if (name.equalsIgnoreCase("ref")){
+		                        		mDetailDeliveryModel.setRef((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("PUInstruction")){
+		                            	mDetailDeliveryModel.setPUInstruction((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("DLInstruction")){
+		                            	mDetailDeliveryModel.setDLInstruction((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("serviceName")){
+		                            	mDetailDeliveryModel.setServiceName((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("RDDate")){
+		                            	mDetailDeliveryModel.setRDDate((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("requestor")){
+		                            	mDetailDeliveryModel.setRequestor((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("piece")){
+		                            	mDetailDeliveryModel.setPiece((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("weight")){
+		                            	mDetailDeliveryModel.setWeight((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("roundTrip")){		                            	
+		                            	mDetailDeliveryModel.setRoundTrip((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("notes")){		                            	
+		                            	mDetailDeliveryModel.setAccountnotes((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("drivernotes")){		                            	
+		                            	mDetailDeliveryModel.setDrivernotes((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("adminNotes")){		                            	
+		                            	mDetailDeliveryModel.setAdminNotes((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("PUAddress")){		                            	
+		                            	pickedUp = true;		                            	
+		                            }else if (name.equalsIgnoreCase("ordersID") && pickedUp){
+		                            	mDetailDeliveryModel.setPUordersID((parser.nextText()));		                            
+		                            }else if (name.equalsIgnoreCase("subOrderID")&& pickedUp){
+		                            	mDetailDeliveryModel.setPUsuborderID((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("seq")&& pickedUp){
+		                            	mDetailDeliveryModel.setPUseq((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("isPU")&& pickedUp){
+		                            	mDetailDeliveryModel.setPUisPU((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("addressBookID")&& pickedUp){
+		                            	mDetailDeliveryModel.setPUaddressBookID((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("company")&& pickedUp){
+		                            	mDetailDeliveryModel.setPUcompany((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("address")&& pickedUp){
+		                            	mDetailDeliveryModel.setPUaddress((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("suit")&& pickedUp){
+		                            	mDetailDeliveryModel.setPUsuit((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("city")&& pickedUp){
+		                            	mDetailDeliveryModel.setPUcity((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("state")&& pickedUp){
+		                            	mDetailDeliveryModel.setPUstate((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("zip")&& pickedUp){
+		                            	mDetailDeliveryModel.setPUzip((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("cellPhone")&& pickedUp){
+		                            	mDetailDeliveryModel.setPUcellPhone((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("homePhone")&& pickedUp){
+		                            	mDetailDeliveryModel.setPUhomephone((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("DLAddress")){		                            	
+		                            	delivered = true;		                            	
+		                            }else if (name.equalsIgnoreCase("ordersID") && delivered){
+	                            		 mDetailDeliveryModel.setDLordersID((parser.nextText()));		                            	 
+		                            }else if (name.equalsIgnoreCase("subOrderID")&& delivered){
+		                            	mDetailDeliveryModel.setDLsuborderID((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("seq")&& delivered){
+		                            	mDetailDeliveryModel.setDLseq((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("isPU")&& delivered){
+		                            	mDetailDeliveryModel.setDLisPU((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("addressBookID")&& delivered){
+		                            	mDetailDeliveryModel.setDLaddressBookID((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("company")&& delivered){
+		                            	mDetailDeliveryModel.setDLcompany((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("address")&& delivered){
+		                            	mDetailDeliveryModel.setDLaddress((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("suit")&& delivered){
+		                            	mDetailDeliveryModel.setDLsuit((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("city")&& delivered){
+		                            	mDetailDeliveryModel.setDLcity((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("state")&& delivered){
+		                            	mDetailDeliveryModel.setDLstate((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("zip")&& delivered){
+		                            	mDetailDeliveryModel.setDLzip((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("cellPhone")&& delivered){
+		                            	mDetailDeliveryModel.setDLcellPhone((parser.nextText()));
+		                            }else if (name.equalsIgnoreCase("homePhone")&& delivered){
+		                            	mDetailDeliveryModel.setDLhomephone((parser.nextText()));
+		                            }
+	                    	}	
+		                        
+	                    	
+	                        break;
+	                        
+	                    case XmlPullParser.END_TAG:
+	                        name = parser.getName();
+	                        if (name.equalsIgnoreCase("PUAddress")){
+	                        	
+	                        	pickedUp = false;
+	                        	
+	                        	
+	                        }else if (name.equalsIgnoreCase("DLAddress")){
+	                        	
+	                        	delivered = false;
+	                        }
+	                        	
+	                        
+	                        break;
+	                    case XmlPullParser.END_DOCUMENT: 
+							
+							if (isValidXmlBeforeEndDoc == false) 
+							{
+								errMsg="Invalid response from AOTD Server";
+
+							}
+							done = true;
+		
+							break;
+						
+	                }
+	                if(eventType != XmlPullParser.END_DOCUMENT)
+						eventType = parser.next();
+	            }
+	        
+	        }
+	        catch (Exception e) {
+	        	
+	        	 errMsg="Invalid response from AOTD Server";
+	        
+	        }
+
+		}
+		Message messageToParent = new Message();
+		Bundle messageData = new Bundle();
+		messageToParent.what = 1;		
+		messageData.putString("HttpError",errMsg);
+		messageData.putSerializable("dispatchdetail",mDetailDeliveryModel);
+		messageToParent.setData(messageData);
+		parentHandler.sendMessage(messageToParent);
+
+	}
+
+}

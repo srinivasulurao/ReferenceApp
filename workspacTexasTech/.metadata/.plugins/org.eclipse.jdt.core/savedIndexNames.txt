@@ -1,0 +1,6 @@
+INDEX VERSION 1.127+E:\android\workspacTexasTech\.metadata\.plugins\org.eclipse.jdt.core
+2372605441.index
+1223488557.index
+848856923.index
+1630380783.index
+1284074322.index

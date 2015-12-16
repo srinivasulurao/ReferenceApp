@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="android.content.Intent"/>
+<fullyQualifiedTypeName name="android.widget.EditText"/>
+<fullyQualifiedTypeName name="com.example.example.R.id"/>
+<fullyQualifiedTypeName name="android.widget.ListView"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="foodzu.com.models.FilterCategory"/>
+<fullyQualifiedTypeName name="android.R"/>
+<fullyQualifiedTypeName name="foodzu.com.R"/>
+<fullyQualifiedTypeName name="android.app.DialogFragment"/>
+<fullyQualifiedTypeName name="foodzu.com.adapters.AdapterFilterCategory"/>
+<fullyQualifiedTypeName name="foodzu.com.R.layout"/>
+<fullyQualifiedTypeName name="android.app.ProgressDialog"/>
+<fullyQualifiedTypeName name="foodzu.com.Utils.Utils"/>
+<fullyQualifiedTypeName name="foodzu.com.adapters.AdapterFilterItem"/>
+<fullyQualifiedTypeName name="foodzu.com.HomeActivity"/>
+<fullyQualifiedTypeName name="foodzu.com.FilterFragment.FilterListener"/>
+<fullyQualifiedTypeName name="java.lang.StringBuffer"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="foodzu.com.models.FilterItem"/>
+<fullyQualifiedTypeName name="android.graphics.Color"/>
+<fullyQualifiedTypeName name="foodzu.com.FilterFragment"/>
+<fullyQualifiedTypeName name="foodzu.com.R.color"/>
+<fullyQualifiedTypeName name="android.widget.RelativeLayout"/>
+<fullyQualifiedTypeName name="android.widget.TextView"/>
+<fullyQualifiedTypeName name="foodzu.com.R.id"/>
+<fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
+<fullyQualifiedTypeName name="android.app.Activity"/>
+<fullyQualifiedTypeName name="com.paytm.pgsdk.PaytmPGService"/>
+<fullyQualifiedTypeName name="com.paytm.pgsdk.PaytmOrder"/>
+<fullyQualifiedTypeName name="android.view.View.OnTouchListener"/>
+<fullyQualifiedTypeName name="android.view.View"/>
+<fullyQualifiedTypeName name="android.util.Log"/>
+<fullyQualifiedTypeName name="android.widget.ImageView"/>
+</qualifiedTypeNameHistroy>

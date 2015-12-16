@@ -1,0 +1,61 @@
+8
+
+dir
+58
+https://copperlabs.unfuddle.com/svn/copperlabs_aotd/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/datamatrix
+https://copperlabs.unfuddle.com/svn/copperlabs_aotd
+
+
+
+2013-07-24T06:34:05.903976Z
+41
+bharat
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f1fa43f-907b-4675-81e4-73ce5c20cf60
+
+DataMatrixReader.java
+file
+
+
+
+
+2013-09-12T06:43:52.000000Z
+a8c957fb7ca60b214087011c96c8a607
+2013-07-24T06:34:05.903976Z
+41
+bharat
+
+DataMatrixWriter.java
+file
+
+
+
+
+2013-09-12T06:43:51.000000Z
+44ba95e5b51fcc6cf75b5ef8c35deb66
+2013-07-24T06:34:05.903976Z
+41
+bharat
+
+decoder
+dir
+
+detector
+dir
+
+encoder
+dir
+

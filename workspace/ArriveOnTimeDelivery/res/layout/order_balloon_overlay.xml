@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/balloon_main_layout"
+    android:layout_width="wrap_content"    
+    android:layout_height="wrap_content"
+    android:background="@drawable/balloon_overlay_bg_black_selector"
+    android:paddingBottom="25dip"
+    android:paddingLeft="10dip"
+    android:paddingRight="10dip" >
+
+    <!-- your click region must be some sort of layout container using @id/balloon_inner_layout -->
+
+    <LinearLayout
+        android:id="@+id/balloon_inner_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" 
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="10dp">
+
+        <TextView
+            android:id="@+id/balloon_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="11dip" 
+            android:singleLine="true"
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/balloon_item_snippet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="11dip"
+            android:maxLines="2" 
+            android:ellipsize="end"/>
+    </LinearLayout>
+
+</RelativeLayout>

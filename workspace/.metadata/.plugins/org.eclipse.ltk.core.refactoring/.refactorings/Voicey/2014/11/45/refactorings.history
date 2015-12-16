@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Voicey/res/layout/play_audio&apos; to &apos;play_audio.xml&apos;" description="Rename resource &apos;play_audio&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="res/layout/play_audio" name="play_audio.xml" stamp="1415173215060" updateReferences="true"/>
+</session>

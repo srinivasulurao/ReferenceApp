@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_light"
+    android:paddingBottom="@dimen/padding_main"
+    android:paddingLeft="@dimen/padding_main"
+    android:paddingRight="@dimen/padding_main"
+    android:paddingTop="@dimen/padding_main" >
+    
+     <TextView
+                    android:id="@+id/order_view_myOrders"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                 android:background="@drawable/green_btn_border"
+                    android:padding="10dp"
+                    android:layout_alignParentRight="true"
+                    android:text="Add Review"
+                    android:textColor="@color/White"
+                    android:textStyle="bold" />
+     
+     <ListView
+        android:id="@+id/lvReview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="#FFF"
+        android:dividerHeight="0dp"
+        android:fadeScrollbars="true"
+        android:fadingEdge="none"
+        android:fastScrollEnabled="true" >
+
+        <!-- #FFF -->
+        <!-- android:listSelector="@color/White" -->
+    </ListView>
+    
+    </RelativeLayout>

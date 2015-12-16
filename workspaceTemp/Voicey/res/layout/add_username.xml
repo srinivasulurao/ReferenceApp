@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text="WELCOME"
+        android:textColor="@color/blue"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/welcome"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Your User Id :"
+        android:textColor="@color/gray"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tvuseridvaluel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="40dp"
+        android:layout_toRightOf="@+id/textView1"
+        android:textColor="@color/blue"
+        android:textSize="18dp" />
+
+    <EditText
+        android:id="@+id/etname"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_grey"
+        android:ellipsize="start"
+        android:gravity="center"
+        android:hint="Name "
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        android:padding="3dp"
+        android:singleLine="true"
+        android:textSize="15dp" />
+
+    <LinearLayout
+        android:id="@+id/region"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/capture"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/regionname"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btnselected"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="Select region"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+    
+    
+    <LinearLayout
+        android:id="@+id/etphone_lay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/region"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/countrycode"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.60"
+            android:background="@drawable/semiround"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="code"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/etphone"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.15"
+            android:background="@drawable/btn_grey"
+            android:ellipsize="start"
+            android:gravity="center"
+            android:hint="Mobile Number"
+            android:imeOptions="actionNext"
+            android:inputType="phone"
+            android:padding="3dp"
+            android:singleLine="true"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/phonenotify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etphone_lay"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
+        android:text="You will only share your number with close friends you like. All other contacts will identify you by your User ID."
+        android:textSize="10dp" />
+
+    <EditText
+        android:id="@+id/etmail"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/phonenotify"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_grey"
+        android:ellipsize="start"
+        android:gravity="center"
+        android:hint="Email Id "
+        android:imeOptions="actionNext"
+        android:inputType="textWebEmailAddress"
+        android:padding="3dp"
+        android:singleLine="true"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/mailnotify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etmail"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
+        android:text="You will only share your mail id with work contacts. All other contacts will identify you by your User ID."
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/tvsave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mailnotify"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:text="Save"
+        android:textColor="@color/gray"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+    
+     <TextView
+        android:id="@+id/tvalreadymember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mailnotify"
+        android:layout_toLeftOf="@+id/tvsave"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:text="Already Member"
+        android:textColor="@color/gray"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <com.voicey.utils.RoundedImageView
+        android:id="@+id/capture"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/etname"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/add_img" />
+
+</RelativeLayout>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rel_main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="03dp"
+    android:paddingTop="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="10dp"
+    android:background="@drawable/background1"
+     >
+
+    <TextView
+        android:id="@+id/activityName"
+       style="@style/NormalText"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="10dp"
+        android:text="Name"
+        
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/edtQuantity"
+        />
+
+    <TextView
+        android:id="@+id/txtId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/edtQuantity"
+       style="@style/NormalText"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="0dp"
+        android:focusable="false"
+        android:text=""
+        android:textColor="@color/dark_blue"
+        android:textSize="13sp"
+        android:background="@android:color/transparent"
+        android:layout_centerVertical="true"
+        />
+    
+    
+
+    <RelativeLayout 
+        android:id="@+id/relPoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/edtQuantity"
+        android:layout_toLeftOf="@+id/imgEdit"
+        android:layout_centerVertical="true"
+        android:paddingRight="10dp"
+        >
+         <EditText
+        android:id="@+id/points"
+         style="@style/NormalText"
+        android:layout_marginLeft="10dp"
+        android:layout_centerInParent="true"
+        android:focusable="false"
+        android:textSize="15sp"
+        android:layout_alignParentRight="true"
+        android:background="@android:color/transparent"
+        android:text="aaa"
+        android:padding="10dp"
+        android:textColor="#000000" />
+    </RelativeLayout>
+   
+
+    <EditText
+        android:id="@+id/my_points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/activityName"
+        android:layout_centerVertical="true"
+        android:inputType="number"
+        android:onClick="myClickHandler"
+        android:text=""
+        android:textColor="#000000"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/txtCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/imgEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/no" />
+
+   <TextView 
+       android:id="@+id/txt"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_centerInParent="true"
+       />
+   <TextView 
+        android:id="@+id/txtGravity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_centerInParent="true"
+        />
+
+</RelativeLayout>

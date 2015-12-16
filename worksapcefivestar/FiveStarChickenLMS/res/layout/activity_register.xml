@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.fivestarchicken.lms"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="30dp"
+        android:background="@android:color/white"
+        android:padding="10dp" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="visible" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="330dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="35"
+                    android:background="@drawable/round_corner"
+                    android:orientation="vertical" >
+
+                    <!-- profile_background -->
+
+                    <com.fivestarchicken.lms.libs.CircularImageView
+                        android:id="@+id/Pic_image"
+                        android:layout_width="175dp"
+                        android:layout_height="175dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/default_user_icon"
+                        app:border="true"
+                        app:border_color="@color/profile_image_background"
+                        app:border_width="4dp"
+                        app:shadow="true" />
+
+                    <ImageView
+                        android:id="@+id/uploadPic_Register"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center_vertical|center_horizontal"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/pencil_white_icon" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="65"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/edit_test_style_xlarge"
+                        android:orientation="horizontal" >
+
+                        <!-- android:background="@android:color/white" -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="0.7"
+                            android:gravity="center|left"
+                            android:padding="20dp"
+                            android:text="Name "
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textSize="20sp" />
+
+                        <EditText
+                            android:id="@+id/userName_Register"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.3"
+                            android:ems="10"
+                            android:textSize="18sp" >
+                        </EditText>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/edit_test_style_xlarge"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="0.7"
+                            android:gravity="center|left"
+                            android:padding="20dp"
+                            android:text="Phone"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textSize="20sp" />
+                        <!-- android:textColor="@android:color/black" -->
+
+                        <EditText
+                            android:id="@+id/phoneNumber_Register"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.3"
+                            android:ems="10"
+                            android:inputType="phone"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textSize="18sp" >
+                        </EditText>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/edit_test_style_xlarge"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="0.7"
+                            android:gravity="center|left"
+                            android:padding="20dp"
+                            android:text="Email"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textSize="20sp" />
+                        <!-- android:textColor="@android:color/black" -->
+
+                        <EditText
+                            android:id="@+id/emailId_Register"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.3"
+                            android:ems="10"
+                            android:inputType="textEmailAddress"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textSize="18sp" >
+                        </EditText>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/edit_test_style_xlarge"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="0.7"
+                            android:gravity="center|left"
+                            android:paddingLeft="20dp"
+                            android:text="Language"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textSize="20sp" />
+
+                        <Spinner
+                            android:id="@+id/employee_language"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ettitle"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginLeft="20dp"
+                            android:layout_weight="0.3"
+                            android:background="@drawable/dropdown_background"
+                            android:paddingBottom="10dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="40dp"
+                            android:paddingTop="10dp"
+                            android:spinnerMode="dialog" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvregister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:background="@drawable/select_button_xlarge"
+                android:gravity="center"
+                android:paddingLeft="150dp"
+                android:paddingRight="150dp"
+                android:text="@string/register"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/button_text"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+            <!-- android:background="@drawable/select_button",android:textColor="@android:color/white" -->
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

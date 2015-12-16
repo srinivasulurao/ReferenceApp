@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView1"
+        android:layout_margin="20dp"
+        android:background="@drawable/white_bg"
+        android:padding="10dp" >
+
+        <TextView
+            android:id="@+id/tvCURRENT"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="60dp"
+            android:gravity="center"
+            android:text="Current Shipping Address"
+            android:textStyle="bold"
+            android:textColor="@color/orange"
+            android:padding="10dp"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tvLocation"
+            style="@android:style/TextAppearance.Small"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvCURRENT"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/green_round_border"
+            android:padding="10dp"
+            android:hint="Loading..."
+            android:textColor="@color/foodzu_green"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tvpicklocality"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvLocation"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/green_fullround_border"
+            android:gravity="center"
+            android:hint="Pick Shipping Locality"
+            android:padding="10dp"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/tvmylocation"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvpicklocality"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/green_fullround_border"
+            android:gravity="center"
+            android:hint="Use My Current Location"
+            android:padding="10dp"
+            android:textSize="15dp" />
+
+        <Button
+            android:id="@+id/btnsave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvmylocation"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/apptheme_btn_default_holo_light"
+            android:text="@string/btn_cancel"
+            android:textColor="@color/text_btn"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-80dp"
+        android:src="@drawable/green_home_icon" />
+
+</RelativeLayout>

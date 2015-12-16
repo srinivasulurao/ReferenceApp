@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/backmainimg"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/reltopbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp" >
+
+        <ImageView
+            android:id="@+id/ivgroup"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/inbox_group" />
+
+        <SearchView
+            android:id="@+id/svtitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/ivtodolist"
+            android:layout_toRightOf="@+id/ivgroup"
+            android:layout_weight="1"
+            android:background="@drawable/search_text" >
+        </SearchView>
+
+        <ImageView
+            android:id="@+id/ivtodolist"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/todo_icon" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvshowall"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reltopbutton"
+        android:padding="5dp"
+        android:text="Show All"
+        android:textColor="@color/inbox_text"
+        android:textSize="18dp"
+        android:typeface="serif" />
+
+    <ListView
+        android:id="@+id/lvcustomlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvshowall"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:animationCache="false"
+        android:descendantFocusability="beforeDescendants"
+         android:divider="@android:color/transparent"
+        android:dividerHeight="1dp"
+        android:scrollingCache="false"
+        android:smoothScrollbar="true" />
+    
+     <ListView
+        android:id="@+id/lvfriendsviewList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvshowall"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+         android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:animationCache="false"
+        android:descendantFocusability="beforeDescendants"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="5dp"
+        android:scrollingCache="false"
+        android:smoothScrollbar="true" />
+
+    <FrameLayout
+        android:id="@+id/emojicons"
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

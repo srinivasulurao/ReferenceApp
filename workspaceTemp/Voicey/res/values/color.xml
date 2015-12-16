@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="red">#dc2307</color>
+    <color name="green">#5cb17a</color>
+    <color name="list_item_title">#fff</color>
+    <color name="list_background">#303030</color>
+    <color name="list_background_pressed">#992416</color>
+    <color name="list_divider">#272727</color>
+    <color name="counter_text_bg">#626262</color>
+    <color name="counter_text_color">#c5c4c4</color>
+    <color name="text_color">#00b2fc</color>
+    <color name="button_text_color">#5f6975</color>
+    <color name="lablecolor">#65ae54</color>
+    <color name="save_background">#e2e7ea</color>
+    <color name="blue">#01b1fa</color>
+    <color name="gray">#727b8d</color>
+    <color name="transparent_color">#00000000</color>
+    <color name="button_background">#6e84b3</color>
+    <color name="spinnerbackground">#d2d2d2</color>
+    <color name="list_background_1">#99FFFF</color>
+    <color name="list_background_2">#00FF99</color>
+    <color name="list_background_3">#91FFD9</color>
+    <color name="list_background_4">#FFE88D</color>
+    <color name="reply_background">#e1ffcc</color>
+    <color name="send_background">#d2d2d2</color>
+    <color name="inbox_text">#838688</color>
+    <color name="divider">#d2d2d2</color>
+    <color name="red_indicator">#ee000c</color>
+    <color name="inbox_background">#DCD7CB</color>
+    <color name="inbox_content">#F2FFE8</color>
+    <color name="inbox_devider">#F4F4F4</color>
+    <color name="reply_devider">#5aa8bc</color>
+    <color name="reply_message_background">#99d9ea</color>
+    <color name="chat_background">#e0e9f2</color>
+    <color name="chat_message_background">#d3e0ed</color>
+
+</resources>

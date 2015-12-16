@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" />
+
+    <TextView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" 
+        android:background="@android:color/black"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/h3"
+        android:text="Tap on Start! to read a QR Code"
+        android:layout_margin="@dimen/h5"/>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+    
+    <Button 	android:id="@+id/btn_start"
+        		android:layout_width="match_parent"
+        		android:layout_height="wrap_content"
+        		android:background="@android:color/transparent"
+        		android:textColor="@color/blue"
+        		android:textSize="@dimen/h2"
+        		android:text="Start!"
+        		android:textStyle="bold"/>
+    
+
+</LinearLayout>

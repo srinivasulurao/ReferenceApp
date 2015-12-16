@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" />
+    
+    <LinearLayout android:layout_width="match_parent"
+        			android:layout_height="match_parent"
+        			android:layout_weight="1"
+        			android:orientation="vertical"
+        			android:padding="@dimen/h5">
+        			
+        <TextView style="@style/style_lable"
+            		android:id="@+id/tv_detail"
+            		android:autoLink="all"/>
+        
+        
+    </LinearLayout>
+    
+    <RelativeLayout android:layout_width="match_parent"
+        			android:layout_height="wrap_content"
+        			android:padding="@dimen/h6"
+        			android:background="@color/red">
+        
+        <TextView  android:id="@+id/browse"
+            		style="@style/style_lable"
+            		android:textColor="@color/white"
+            		android:text="Browse"/>
+        
+         <TextView  android:id="@+id/map_link"
+             		style="@style/style_lable"
+            		android:text="Map Link"
+            		android:textColor="@color/white"
+            		android:layout_alignParentRight="true"/>
+        
+        
+    </RelativeLayout>
+    
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" 
+        android:layout_weight="1">
+
+        <fragment
+            android:id="@+id/event_map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            class="com.google.android.gms.maps.SupportMapFragment" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="foodzu.com.HomeActivity.AsyCartRemove"/>
+<fullyQualifiedTypeName name="foodzu.com.HomeActivity.AsyGetCartList"/>
+<fullyQualifiedTypeName name="foodzu.com.CheckoutActivity"/>
+<fullyQualifiedTypeName name="foodzu.com.FavoriteActivity"/>
+<fullyQualifiedTypeName name="android.app.Fragment"/>
+<fullyQualifiedTypeName name="android.os.Bundle"/>
+<fullyQualifiedTypeName name="android.support.v7.widget.LinearLayoutManager"/>
+<fullyQualifiedTypeName name="foodzu.com.Utils.GridSpacingItemDecoration"/>
+<fullyQualifiedTypeName name="android.support.v7.widget.RecyclerView"/>
+<fullyQualifiedTypeName name="android.content.Context"/>
+<fullyQualifiedTypeName name="android.view.View"/>
+<fullyQualifiedTypeName name="android.view.LayoutInflater"/>
+<fullyQualifiedTypeName name="android.view.ViewGroup"/>
+<fullyQualifiedTypeName name="foodzu.com.adapters.AdapterHomeProduct"/>
+<fullyQualifiedTypeName name="foodzu.com.models.SubProduct"/>
+<fullyQualifiedTypeName name="foodzu.com.interfaces.HomeItemCallBack"/>
+<fullyQualifiedTypeName name="foodzu.com.interfaces.CartUpdateListener"/>
+<fullyQualifiedTypeName name="android.widget.FrameLayout"/>
+<fullyQualifiedTypeName name="android.widget.ImageView"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="foodzu.com.Utils.Utils"/>
+<fullyQualifiedTypeName name="foodzu.com.HomeFragment"/>
+<fullyQualifiedTypeName name="java.lang.Double"/>
+<fullyQualifiedTypeName name="com.google.gson.Gson"/>
+<fullyQualifiedTypeName name="android.app.FragmentTransaction"/>
+<fullyQualifiedTypeName name="foodzu.com.HomeActivity"/>
+<fullyQualifiedTypeName name="foodzu.com.R"/>
+<fullyQualifiedTypeName name="android.widget.ListView"/>
+<fullyQualifiedTypeName name="foodzu.com.models.Review"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="foodzu.com.adapters.AdapterReview"/>
+<fullyQualifiedTypeName name="foodzu.com.R.layout"/>
+<fullyQualifiedTypeName name="foodzu.com.ReviewFragment.AsyGetCartList"/>
+<fullyQualifiedTypeName name="android.widget.RelativeLayout"/>
+<fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="android.widget.Toast"/>
+<fullyQualifiedTypeName name="android.widget.TextView"/>
+<fullyQualifiedTypeName name="foodzu.com.R.id"/>
+<fullyQualifiedTypeName name="android.widget.LinearLayout"/>
+</qualifiedTypeNameHistroy>

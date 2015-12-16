@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/llheader"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal"
+        android:visibility="visible" >
+
+        <TextView
+            android:id="@+id/tvheader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Add Store"
+            android:textColor="@color/text_blue"
+            android:textSize="18dp" />
+
+        <ImageView
+            android:id="@+id/ivclose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/close" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/etstorename"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llheader"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edt_blue_border"
+        android:ellipsize="start"
+        android:gravity="center"
+        android:hint="Store Name "
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/etaddress"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etstorename"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edt_blue_border"
+        android:gravity="center"
+        android:hint="Address"
+        android:padding="10dp"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/etlocality"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etaddress"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edt_blue_border"
+        android:gravity="center"
+        android:hint="Locality"
+        android:padding="10dp"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/atv_places"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etlocality"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edt_blue_border"
+        android:gravity="center"
+        android:hint="Google map Address"
+        android:padding="10dp"
+        android:textSize="15dp" />
+
+    <Spinner
+        android:id="@+id/spcategory"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/atv_places"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/datespinner"
+        android:paddingLeft="5dp"
+        android:paddingRight="20dp"
+        android:spinnerMode="dialog" />
+
+    <Button
+        android:id="@+id/btnsave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spcategory"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/apptheme_btn_default_holo_light"
+        android:text="@string/btn_save"
+        android:textColor="@color/text_btn" />
+
+</RelativeLayout>

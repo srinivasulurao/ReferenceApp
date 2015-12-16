@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" 
+    android:orientation="vertical">
+    
+    <TextView
+        android:id="@+id/tv_date_header"
+        style="@style/style_lable"
+        android:layout_width="match_parent"
+        android:background="@color/red_light"
+        android:padding="@dimen/h7"
+        android:textColor="@color/black"
+        android:textSize="@dimen/h4"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/h6" >
+
+        <ImageView
+            android:id="@+id/place_holder"
+            android:layout_width="@dimen/place_holder"
+            android:layout_height="@dimen/place_holder"
+            android:scaleType="centerInside" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/h6"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/style_lable"
+                android:textColor="@color/red"
+                android:textSize="@dimen/h4"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_description"
+                style="@style/style_lable"
+                android:singleLine="true"
+                android:textSize="@dimen/h4"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_date"
+                style="@style/style_lable"
+                android:singleLine="true"
+                android:textSize="@dimen/h4" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/arrow" />
+    </LinearLayout>
+
+</LinearLayout>

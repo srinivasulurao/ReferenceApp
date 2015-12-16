@@ -1,0 +1,164 @@
+<!-- layout for youflik registration -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/signup_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ECECEC" >
+
+    <LinearLayout
+        android:id="@+id/signup_childLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_gravity="center"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        android:paddingBottom="40dp" >
+
+        <TextView
+            android:id="@+id/signup_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/string_signup_title"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/signup_firstname"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/white"
+            android:hint="@string/string_signup_firstname"
+            android:inputType="textCapSentences|textPersonName"
+            android:paddingLeft="5dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/darker_gray"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/signup_lastname"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/white"
+            android:hint="@string/string_signup_lastname"
+            android:inputType="textCapSentences|textPersonName"
+            android:paddingLeft="5dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/darker_gray"
+            android:textSize="15sp" />
+
+        <Spinner
+            android:id="@+id/signup_gender"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/white"
+            android:hint="@string/string_signup_gender"
+            android:textColor="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/signup_username"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/white"
+            android:hint="@string/string_signup_username"
+            android:inputType="textPersonName"
+            android:paddingLeft="5dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/darker_gray"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/signup_password"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/white"
+            android:hint="@string/string_signup_password"
+            android:inputType="textPassword"
+            android:paddingLeft="5dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/darker_gray"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/signup_Email"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/white"
+            android:hint="@string/string_signup_email"
+            android:inputType="textWebEmailAddress"
+            android:paddingLeft="5dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/darker_gray"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/signup_dob"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/white"
+            android:gravity="left|center"
+            android:hint="@string/string_signup_dob"
+            android:paddingLeft="5dp"
+            android:textColorHint="@android:color/darker_gray"
+            android:textSize="15sp" />
+
+        <!-- layout for terms and conditions -->
+
+        <LinearLayout
+            android:id="@+id/signup_layout_termsandconditions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal" >
+
+            <CheckBox
+                android:id="@+id/signup_checkbox_terms"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:paddingLeft="5dp" />
+
+            <!-- layout for different labels in terms and conditions -->
+
+            <LinearLayout
+                android:id="@+id/signup_layout_textTerms"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginLeft="6dp" >
+
+                <TextView
+                    android:id="@+id/signup_termsandconditions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/string_signup_terms"
+                    android:textSize="13sp" >
+                </TextView>
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/signup_join"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_button"
+            android:gravity="center"
+            android:text="@string/string_signup_join"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+</ScrollView>

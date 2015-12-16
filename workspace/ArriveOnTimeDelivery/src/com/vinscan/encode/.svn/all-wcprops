@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/encode
+END
+ContactEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/encode/ContactEncoder.java
+END
+Formatter.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/encode/Formatter.java
+END
+MECARDContactEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/encode/MECARDContactEncoder.java
+END
+VCardContactEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/encode/VCardContactEncoder.java
+END
+QRCodeEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/encode/QRCodeEncoder.java
+END

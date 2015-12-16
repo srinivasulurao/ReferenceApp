@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@+id/myorder_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="#FFF"
+        android:dividerHeight="0dp"
+        android:fadeScrollbars="true"
+        android:fadingEdge="none"
+        android:fastScrollEnabled="true"
+        android:listSelector="#FFF" >
+    </ListView>
+
+</LinearLayout>

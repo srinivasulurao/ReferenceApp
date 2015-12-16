@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Dealsforsure/res/layout/actionbar_home&apos; to &apos;actionbar_home.xml&apos;" description="Rename resource &apos;actionbar_home&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="res/layout/actionbar_home" name="actionbar_home.xml" stamp="1427697448183" updateReferences="true"/>
+</session>

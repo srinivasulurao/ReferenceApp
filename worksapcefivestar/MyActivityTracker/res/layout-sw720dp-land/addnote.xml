@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/txtGravity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/edtNewNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/img_speak"
+        android:gravity="top"
+        android:padding="10dp"
+        android:hint="Enter Notes.."
+        android:inputType="textMultiLine" />
+
+    <ImageView
+        android:id="@+id/img_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/txtGravity"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/gallery" />
+    
+    <ImageView
+        android:id="@+id/img_speak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/txtGravity"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/speak" />
+
+    <RelativeLayout
+        android:id="@+id/relAudio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_speak"
+        android:layout_marginTop="05dp"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/img_Play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/play" />
+
+        <TextView
+            android:id="@+id/txt_AudioTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="00:00"
+            
+            android:textStyle="bold"
+            android:typeface="serif" />
+
+        <ImageView
+            android:id="@+id/img_Stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/stop" />
+
+        <Button
+            android:id="@+id/btn_PlayAudio"
+            style="@style/ButtonBlue"
+            android:layout_below="@+id/img_Stop"
+            android:layout_marginTop="10dp"
+            android:tag="1"
+            android:enabled="false"
+            android:text="Play" />
+
+        <Button
+            android:id="@+id/btn_SaveAudio"
+            style="@style/ButtonBlue"
+            android:layout_below="@+id/btn_PlayAudio"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:text="Take Picture." />
+    </RelativeLayout>
+
+</RelativeLayout>

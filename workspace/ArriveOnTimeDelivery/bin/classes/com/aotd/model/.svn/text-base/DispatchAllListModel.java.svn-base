@@ -1,0 +1,247 @@
+package com.aotd.model;
+
+import java.io.Serializable;
+
+public class DispatchAllListModel implements Serializable {
+	
+	
+	private String order_id = "";
+	private String driver_id = "";
+	private String RDDate ="";
+	private String min = "";
+	private String timezone = "";
+	private String orderColor ="";
+	private String accountName = "";
+	private String DLDate ="";
+	private String PUDate ="'";
+	private String hour = "";	
+	private String orderStatus="";
+	private String SignRoundTrip="";	
+	private String SignDelivery="";
+	private String isRoundTrip="";
+	private String PCRoundTrip="";
+	private String DPDate="";
+	
+	private String company = "";
+	private String address = "";
+	private String suit = "";
+	private String city = "";
+	private String state = "";
+	private String zip = "";
+	private double Latitude;
+	private double Longitude;
+	
+	private String dlcompany = "";
+	private String dladdress = "";
+	private String dlsuit = "";
+	private String dlcity = "";
+	private String dlstate = "";
+	private String dlzip = "";
+	private double dlLatitude;
+	private double dlLongitude;
+	
+	private Boolean selectedItem = false;
+	
+	public String getDPDate() {
+		return DPDate;
+	}
+	public void setDPDate(String dPDate) {
+		DPDate = dPDate;
+	}
+	public String getSignRoundTrip() {
+		return SignRoundTrip;
+	}
+	public void setSignRoundTrip(String signRoundTrip) {
+		SignRoundTrip = signRoundTrip;
+	}
+	public String getSignDelivery() {
+		return SignDelivery;
+	}
+	public void setSignDelivery(String signDelivery) {
+		SignDelivery = signDelivery;
+	}	
+	
+	public String getIsRoundTrip() {
+		return isRoundTrip;
+	}
+	public void setIsRoundTrip(String isRoundTrip) {
+		this.isRoundTrip = isRoundTrip;
+	}
+	public String getPCRoundTrip() {
+		return PCRoundTrip;
+	}
+	public void setPCRoundTrip(String pCRoundTrip) {
+		PCRoundTrip = pCRoundTrip;
+	}
+	
+	public String getOrder_id() {
+		return order_id;
+	}
+	public void setOrder_id(String order_id) {
+		this.order_id = order_id;
+	}
+	public String getDriver_id() {
+		return driver_id;
+	}
+	public void setDriver_id(String driver_id) {
+		this.driver_id = driver_id;
+	}
+	public String getRDDate() {
+		return RDDate;
+	}
+	public void setRDDate(String rDDate) {
+		RDDate = rDDate;
+	}
+	public String getMin() {
+		return min;
+	}
+	public void setMin(String min) {
+		this.min = min;
+	}
+	public String getTimezone() {
+		return timezone;
+	}
+	public void setTimezone(String timezone) {
+		this.timezone = timezone;
+	}
+	public String getOrderColor() {
+		return orderColor;
+	}
+	public void setOrderColor(String orderColor) {
+		this.orderColor = orderColor;
+	}
+	public String getAccountName() {
+		return accountName;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public void setAccountName(String accountName) {
+		this.accountName = accountName;
+	}
+	public String getDLDate() {
+		return DLDate;
+	}
+	public void setDLDate(String dLDate) {
+		DLDate = dLDate;
+	}
+	public String getPUDate() {
+		return PUDate;
+	}
+	public void setPUDate(String pUDate) {
+		PUDate = pUDate;
+	}
+	public String getHour() {
+		return hour;
+	}
+	public void setHour(String hour) {
+		this.hour = hour;
+	}
+	
+	public String getOrderStatus() {
+		return orderStatus;
+	}
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
+	}
+	public String getCompany() {
+		return company;
+	}
+	public void setCompany(String company) {
+		this.company = company;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getSuit() {
+		return suit;
+	}
+	public void setSuit(String suit) {
+		this.suit = suit;
+	}
+	public String getZip() {
+		return zip;
+	}
+	public void setZip(String zip) {
+		this.zip = zip;
+	}
+	public String getDlcompany() {
+		return dlcompany;
+	}
+	public void setDlcompany(String dlcompany) {
+		this.dlcompany = dlcompany;
+	}
+	public String getDladdress() {
+		return dladdress;
+	}
+	public void setDladdress(String dladdress) {
+		this.dladdress = dladdress;
+	}
+	public String getDlsuit() {
+		return dlsuit;
+	}
+	public void setDlsuit(String dlsuit) {
+		this.dlsuit = dlsuit;
+	}
+	public String getDlcity() {
+		return dlcity;
+	}
+	public void setDlcity(String dlcity) {
+		this.dlcity = dlcity;
+	}
+	public String getDlstate() {
+		return dlstate;
+	}
+	public void setDlstate(String dlstate) {
+		this.dlstate = dlstate;
+	}
+	public String getDlzip() {
+		return dlzip;
+	}
+	public void setDlzip(String dlzip) {
+		this.dlzip = dlzip;
+	}
+	public double getLatitude() {
+		return Latitude;
+	}
+	public void setLatitude(double latitude) {
+		Latitude = latitude;
+	}
+	public double getLongitude() {
+		return Longitude;
+	}
+	public void setLongitude(double longitude) {
+		Longitude = longitude;
+	}
+	public double getDlLatitude() {
+		return dlLatitude;
+	}
+	public void setDlLatitude(double dlLatitude) {
+		this.dlLatitude = dlLatitude;
+	}
+	public double getDlLongitude() {
+		return dlLongitude;
+	}
+	public void setDlLongitude(double dlLongitude) {
+		this.dlLongitude = dlLongitude;
+	}
+	
+	public void setSelectedItem(Boolean selectedItem) {
+		this.selectedItem = selectedItem;
+	}
+	public Boolean getSelectedItem() {
+		return selectedItem;
+	}
+}

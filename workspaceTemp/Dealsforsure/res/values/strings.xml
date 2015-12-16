@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Dealsforsure</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+    <!-- Need Change with your -->
+    <!-- Admob -->
+    <string name="admob_id">YOUR_ADMOB_ID_HERE</string>
+
+    <!-- Facebook and Twitter configuration -->
+    <string name="facebook_app_id">365833376766371</string>
+    <string name="twitter_consumer_key">YOUR_TWITTER_CONSUMER_KEY</string>
+    <string name="twitter_secret_key">YOUR_TWITTER_SECRET_KEY</string>
+
+    <!-- google play url -->
+    <string name="gplay_url">market://details?id=dealsforsure.in</string>
+
+    <!-- Copyright -->
+    <string name="copyright">&#169; dealsforsure.in. All rights reserved.</string>
+    
+     <string name="mobile">Mobile/Whatsapp 7760943952</string>
+      <string name="email">Email: info@dealsforsure.in</string>
+       <string name="website">Website: www.dealsforsure.in</string>
+       
+       <string name="terms_and_condition">I agree to the Terms and Conditions </string>
+
+    <!-- Notification hader -->
+    <string name="notification_header">Dealsforsure</string>
+
+    <!-- Menu -->
+    <string name="menu_arround">Around You</string>
+    <string name="menu_reroute">Reroute</string>
+    <string name="menu_search">Search</string>
+
+    <!-- Messagebox -->
+    <string name="msgbox_title_cancel">Canceled</string>
+    <string name="msgbox_message_not_granted">permission not granted</string>
+    <string name="msgbox_button_ok">OK</string>
+
+    <!-- Default location, gplay url configurations -->
+    <string name="gps_alert">Would you like to enable GPS?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="distance_alert">your position is outside the area. this app will use default location.</string>
+    <string name="no_user_position">Can\'t get user position</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="layers">Layers</string>
+    <string name="retry">Retry</string>
+    <string name="no_internet_connection">No connection</string>
+    <string name="getting_marker">Getting marker&#8230;</string>
+    <string name="search_text">Search for deal, store etc</string>
+    <string name="share_via">Share Via</string>
+    <string name="app_description">Dealsforsure (DFS) offers you the best, last minute deals in your vicinity. So make sure before you step out, check for deals on dealsforsure App.
+Think of this app like a neighborhood pocket guide to supporting local businesses and finding out what’s awesome near you. The best part of all this? IT’S TOTALLY FREE... and you never have to pay upfront to get a deal.
+It helps merchants to sell their unused inventory and customers to buy at much lower price, thus creating win-win situation for both of them. Merchants can see real-time increase in sales and unlike other advertising platform it costs just fraction of it.</string>
+
+    <!-- private Button -->
+    <string name="btn_load_more">Load More</string>
+    <string name="btn_get_it">Get It</string>
+    <string name="btn_accept">Accept</string>
+    <string name="btn_other_apps">Other Apps</string>
+    <string name="btn_share">Share</string>
+    <string name="btn_tell_friend">Tell a Friend</string>
+    <string name="btn_rate_app">Rate App</string>
+    <string name="btn_customer">Customer</string>
+    <string name="btn_merchant">Merchant Login</string>
+    <string name="btn_login">Login</string>
+    <string name="btn_regester">Register</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_ok">OK</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_submit">Submit</string>
+    <string name="btn_place_order">Place Order</string>
+    <string name="btn_confirm_order">Confirm Order</string>
+     <string name="btn_create_deal">Create deal for this user</string>
+     <string name="btn_pay_now">Pay Now</string>
+     <string name="btn_recharge_icon">Recharge Coins</string>
+
+    <!-- Messages -->
+    <string name="no_connection">No connection: Cannot request location</string>
+
+    <!-- Alert -->
+    <string name="alert_notification">You have new deal!!</string>
+
+    <!-- Tab -->
+    <string name="tab_deal_list">List</string>
+    <string name="tab_deal_map">Map</string>
+
+    <!-- Label -->
+    <string name="claim">Claim This Deal</string>
+    <string name="lbl_result">Result</string>
+    <string name="lbl_no_result">No Result</string>
+    <string name="lbl_share_to">Share to:</string>
+    <string name="lbl_date_end">End Date: </string>
+    <string name="lbl_date_start">Start Date: </string>
+    <string name="lbl_start">Start</string>
+    <string name="lbl_buy">Buy</string>
+    <string name="lbl_disc">Discount</string>
+    <string name="lbl_save">Save</string>
+    <string name="lbl_description">Description</string>
+    <string name="lbl_order_total">Order Cost</string>
+    <string name="error_server">Server is under construction or \n connection is unstable</string>
+
+    <!-- hint -->
+    <string name="loading_data">Loading data&#8230;</string>
+    <string name="hint_search">Type Name</string>
+    <string name="hint_share">What do you think ?</string>
+
+    <!-- Page -->
+    <string name="page_around_you">Around You</string>
+    <string name="page_category">Category</string>
+    <string name="page_deals_list">Deals List</string>
+    <string name="page_setting">Settings</string>
+    <string name="page_search">Search</string>
+    <string name="page_detail">Deal Details</string>
+    <string name="page_profile">Profile</string>
+    <string name="page_share">Share</string>
+    <string name="page_about">About Dealsforsure</string>
+    <string name="page_register">Register</string>
+    <string name="page_login">Login</string>
+    <string name="page_Deals">Deals</string>
+    <string name="page_MyDeals">My Deals</string>
+    <string name="page_verify_promocode">Verify Coupon</string>
+    <string name="page_Review">User Review</string>
+     <string name="page_merchant_register">Merchant Register</string>
+    <string name="page_otp">OTP Verify</string>
+    <string name="page_cart">My Cart</string>
+    <string name="page_order_confirm">Order Confirm</string>
+    <string name="page_my_customer">My Customer</string>
+    <string name="page_customer_detail">Customer Detail</string>
+    <string name="page_recharge_coins">Recharge Coins</string>
+    
+      <string name="page_payment">Payment</string>
+    
+    <!-- Checkbox -->
+    <string name="chk_facebook">Facebook</string>
+    <string name="chk_twiiter">Twiiter</string>
+
+    <!-- Setting Preference -->
+    <string name="preferences_type">preferenceType</string>
+    <string name="preferences_zoom">preferenceZoom</string>
+
+    <!-- User interface labels and strings -->
+    <string name="internet_alert">No connection. Please enable your internet connection.</string>
+
+    <!-- Address format -->
+    <string name="address_output_string">%1$s %2$s %3$s</string>
+
+    <!-- Settings -->
+    <string name="social">Social</string>
+    <string name="facebook">Facebook</string>
+    <string name="twitter">Twitter</string>
+    <string name="help">Help</string>
+    <string name="map">Map</string>
+    <string name="view_type">View Type</string>
+    <string name="default_zoom">Default Zoom</string>
+    <string name="preferences_facebook">preferenceFacebook</string>
+    <string name="preferences_twitter">preferenceTwitter</string>
+    <string name="preferences_overlay">preferenceOverlay</string>
+
+    <!-- Activity Maps -->
+    <string name="get_position">Getting user position &#8230;</string>
+
+    <!-- Latitude, longitude format -->
+    <string name="latitude_longitude">%1$.8f, %2$.8f</string>
+
+    <!-- Setting Preferences -->
+    <string name="zoom_summary">%1$d</string>
+    <string name="zoom_dialog_title">Default Zoom</string>
+    <string name="overlay_title">Activated Overlay</string>
+    <string name="direction">Direction</string>
+    <string name="direction_alert">Improve the accuracy of your location by turning on GPS.</string>
+    <string name="no_route">Unable to get route</string>
+    <string name="loading_route">Loading route. Please wait &#8230;</string>
+    <string name="settings">Settings</string>
+    <string name="notice">Notice</string>
+    <string name="cannot_get_address">Cannot get location address</string>
+    <string name="confirm">Confirm</string>
+    <string name="login_facebook">Login to Facebook</string>
+    <string name="login_twitter">Login to Twitter</string>
+    <string name="select_share">Please select your share</string>
+    <string name="no_name">No Name</string>
+    <string name="connect_twitter">Connected to Twitter as</string>
+    <string name="connect_twitter_failed">Twitter connection failed</string>
+    <string name="delete_twitter_connection">Delete current Twitter connection?</string>
+    <string name="post_to_twitter">Posted to Twitter</string>
+    <string name="post_to_twitter_failed">Post to Twitter failed</string>
+    <string name="post_limit">Post is more than 140 character</string>
+    <string name="post_review">Review posted</string>
+    <string name="connect_facebook_failed">Facebook connection failed</string>
+    <string name="delete_facebook_connection">Delete current Facebook connection?</string>
+    <string name="disconnect_facebook">Disconnecting from Facebook</string>
+    <string name="disconnect_facebook_2">Disconnected from Facebook</string>
+    <string name="connect_facebook">Connected to Facebook as</string>
+    <string name="connect_facebook_2">Connected to Facebook</string>
+    <string name="logout_facebook_failed">Facebook logout failed</string>
+    <string name="post_to_facebook">Posted to Facebook</string>
+
+    <!-- Messages -->
+    <string name="connected">Client connected</string>
+    <string name="connected_social">Connected as</string>
+    <string name="connection_error_code_unknown">Unknown connection error code:  %1$d</string>
+    <string name="connection_failed">Connection failed</string>
+    <string name="disconnected">Client disconnected</string>
+    <string name="get_address">Get Address</string>
+    <string name="get_location">Get Location</string>
+    <string name="illegal_argument_exception">        Illegal arguments: Latitude %1$.8f Longitude %2$.8f</string>
+    <string name="invalid_action">Invalid intent action %1$s</string>
+    <string name="invalid_integer_id">Invalid integer request ID: %1$s</string>
+    <string name="IO_Exception_getFromLocation">IO Exception in Geocoder.getFromLocation()</string>
+    <string name="location_requested">Periodic updates requested</string>
+    <string name="location_updated">Location updated</string>
+    <string name="location_update_error">Location update failed</string>
+    <string name="location_update_error_detail">        Location update error. code %1$d message %2$s</string>
+    <string name="location_update_missing_update">        Location update error. No incoming location.</string>
+    <string name="location_updates_stopped">Periodic updates stopped</string>
+    <string name="log_new_location">New location: %1$s</string>
+    <string name="no_address_found">No address found for location</string>
+    <string name="no_geocoder_available">Cannot get address. No geocoder available.</string>
+    <string name="no_location_available">Location not available</string>
+    <string name="resolved">Error resolved. Please re-try operation.</string>
+    <string name="no_resolution">Google Play services: unable to resolve connection error.</string>
+    <string name="periodic_update_stop">Stopping periodic updates</string>
+    <string name="play_services_available">Google Play services is available</string>
+    <string name="request_location_updates_in_progress">        Can\'t request location updates, previous request hasn\'t finished</string>
+    <string name="start_updates">Start Updates</string>
+    <string name="stop_updates">Stop Updates</string>
+    <string name="unknown">--Unknown--</string>
+    <string name="unknown_activity_request_code">        Received an unknown activity request code %1$d in onActivityResult.</string>
+    <string name="loading">Loading&#8230;</string>
+
+    <string-array name="lbl_array_view_type">
+        <item>Normal</item>
+        <item>Hybrid</item>
+        <item>Satelite</item>
+        <item>Terrain</item>
+    </string-array>
+    
+     <string-array name="menu_profile_list">
+        <item>Latest</item>
+        <item>Category</item>
+        <item>Profile</item>
+        <item>My Deals</item>
+        <item>About</item>
+    </string-array>
+    
+     <string-array name="menu_merchant_profile_list">
+        <item>Latest</item>
+        <item>Category</item>
+        <item>Profile</item>
+        <item>My Deals</item>
+        <item>Verify Promocode</item>
+         <item>My Customer</item>
+        <item>About</item>
+    </string-array>
+    
+    <string-array name="menu_list">
+        <item>Latest</item>
+        <item>Category</item>
+        <item>Register</item>
+       <item>About</item>
+    </string-array>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_search">Search</string>
+
+</resources>

@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/qrcode/decoder
+END
+DecodedBitStreamParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/qrcode/decoder/DecodedBitStreamParser.java
+END
+BitMatrixParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/qrcode/decoder/BitMatrixParser.java
+END
+DataMask.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/qrcode/decoder/DataMask.java
+END
+FormatInformation.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/qrcode/decoder/FormatInformation.java
+END
+ErrorCorrectionLevel.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/qrcode/decoder/ErrorCorrectionLevel.java
+END
+DataBlock.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/qrcode/decoder/DataBlock.java
+END
+Version.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/qrcode/decoder/Version.java
+END
+Decoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/qrcode/decoder/Decoder.java
+END
+Mode.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/qrcode/decoder/Mode.java
+END

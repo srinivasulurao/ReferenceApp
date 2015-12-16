@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dispatch_tab_past_layout_main"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/aotd_background" >
+
+    <RelativeLayout
+        android:layout_width="400dp"
+        android:layout_height="fill_parent"
+        android:layout_centerHorizontal="true" >
+
+        <RelativeLayout
+            android:id="@+id/rna_btn_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:visibility="gone" >
+
+            <Button
+                android:id="@+id/rna_btn"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:text="RNA" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/rna_btn"
+                android:background="@color/white" />
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/rna_dispatch_listView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rna_btn_layout"
+            android:divider="#00000000"
+            android:scrollingCache="false" />
+
+        <ListView
+            android:id="@+id/dispatch_listView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/dispatch_accept_rel"
+            android:layout_below="@+id/rna_dispatch_listView"
+            android:divider="#00000000"
+            android:scrollingCache="false" />
+
+        <RelativeLayout
+            android:id="@+id/dispatch_accept_rel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:padding="3dp" >
+
+            <Button
+                android:id="@+id/dispatch_accept"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Accept"
+                android:textSize="18dp" />
+
+            <LinearLayout
+                android:id="@+id/dispatch_selected_ok_linear"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:weightSum="2" >
+
+                <Button
+                    android:id="@+id/dispatch_selected_ok"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Ok"
+                    android:textSize="18dp" />
+
+                <Button
+                    android:id="@+id/dispatch_selected_cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Cancel"
+                    android:textSize="18dp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

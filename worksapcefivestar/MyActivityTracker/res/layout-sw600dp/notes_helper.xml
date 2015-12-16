@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:id="@+id/linMain"
+    
+    >
+    <TextView 
+        android:id="@+id/noteDate"
+        style="@style/textview"
+        android:text="01/Jan/2014"
+        android:typeface="serif"
+        android:layout_marginLeft="35dp"
+        android:textStyle="bold"
+        />
+    
+    <TextView 
+        android:id="@+id/txtContent"
+       
+        android:text="Some Text...."
+       style="@style/textview"
+        android:layout_marginTop="05dp"
+        android:layout_marginLeft="35dp"
+        android:maxLines="2"
+        />
+    
+    <TextView 
+        android:id="@+id/notesId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
+    
+     <TextView 
+        android:id="@+id/notes_audio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
+     
+      <TextView 
+        android:id="@+id/notes_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
+      
+       <TextView 
+        android:id="@+id/notes_archieve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
+      
+      
+      
+     <RelativeLayout 
+         android:id="@+id/relExtras"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:padding="05dp"
+         >
+         <LinearLayout 
+             android:id="@+id/linPicture"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             >
+              <ImageView 
+             android:id="@+id/imgPicture"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:background="@drawable/gallery"
+             />
+         </LinearLayout>
+        
+         <LinearLayout 
+             android:id="@+id/linAudio"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_toLeftOf="@+id/linPicture"
+             android:layout_marginRight="10dp"
+             >
+             <ImageView 
+             android:id="@+id/imgAudio"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:background="@drawable/play_small"
+             android:tag="1"
+             />
+             
+         </LinearLayout>
+         
+          
+         
+     </RelativeLayout>
+    
+    
+
+</LinearLayout>

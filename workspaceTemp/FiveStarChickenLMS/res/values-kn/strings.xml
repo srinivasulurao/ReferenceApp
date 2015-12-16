@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">FiveStarChickenLMS</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="login">ಲಾಗಿನ್</string>
+
+    <array name="nav_drawer_icons">
+        <item>@drawable/dash_board</item>
+        <item>@drawable/profile_settings</item>
+        <item>@drawable/results</item>
+        <item>@drawable/view_icon</item>
+        <item>@drawable/log_out</item>
+    </array>
+
+    <string name="profile_setting">ಪ್ರೊಫೈಲ್ ವೀಕ್ಷಿಸಿ</string>
+    <string name="take_exam">ಪರೀಕ್ಷೆ ತೆಗೆದುಕೊಳ್ಳಿ</string>
+    <string name="view_result">ಫಲಿತಾಂಶ ವೀಕ್ಷಿಸಿ</string>
+    <string name="contact_trainer">ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ</string>
+    <string name="certificate">ಪ್ರಮಾಣಪತ್ರ</string>
+    <string name="new_update">ಹೊಸ ಅಪ್ಡೇಟ್</string>
+    <string name="video_call">ವಿಡಿಯೋ ಕಾಲ್</string>
+    <string name="manager_login">ಮ್ಯಾನೇಜರ್ ಲಾಗ್ಇನ್</string>
+    <string name="email">ಈಮೇಲ್</string>
+    <string name="phone">ಫೋನ್</string>
+    <string name="passsward">Password</string>
+    <string name="restore_data">Restore Data</string>
+    <string name="update_data">Update Data</string>
+    <string name="carrier_graph_string">ವೃತ್ತಿ ಜಿವನ ರೇಖಾಚಿತ್ರ</string>
+    <string name="send_message">ಮೆಸ್ಯಾಯೇಜ್ ಕಳುಹಿಸು</string>
+    <string name="contact_info">ಸಂಪರ್ಕಿಸಿ</string>
+    <string name="module_name">ಅದ್ಯಾಯದ ಹೆಸರು</string>
+    <string name="percentage">ಶೇಕಡಾವಾರು</string>
+    <string name="status">ದರ್ಜೆ</string>
+    <string name="restore_description">It will delete all local data</string>
+    <string name="update_description">Update from last successful sync</string>
+    <string name="send">ಕಳುಹಿಸಿ</string>
+    <string name="write_message_here">ಮೆಸ್ಯಾಯೇಜ್ ಇಲ್ಲಿ ಬರೆಇರಿ</string>
+    
+    <string name="duration">ಕಾಲಾವಧಿ</string>
+    <string name="total_question">ಒಟ್ಟು  ಪ್ರಶ್ನೆಗಳು</string>
+    <string name="passing_score">ಉತ್ತೀರ್ಣಕ್ಕೆ ಬೇಕಾದ ಅಂಕ</string>
+    <string name="candidate_name">ಅಭ್ಯರ್ಥಿಯ ಹೆಸರು</string>
+    <string name="exam_date">ಪರೀಕ್ಷೆಯ ದಿನಾಂಕ</string>
+    <string name="questions_answered">Questions Answered</string>
+    <string name="assessment">ಸ್ಥಾನ</string>
+    <string name="exam_detail">ಪರೀಕ್ಷೆಯ ವಿವರ</string>
+    <string name="result">ಫಲಿತಾಂಶ</string>
+    <string name="tutorial">ಟ್ಯುಟೋರಿಯಲ್</string>
+  
+
+    <string-array name="nav_drawer_items">
+        <item>ಡ್ಯಾಶ್ಬೋರ್ಡ್</item>
+        <item>ಪ್ರೊಫೈಲ್ ವೀಕ್ಷಿಸಿ</item>
+        <item>ಪರೀಕ್ಷೆ ತೆಗೆದುಕೊಳ್ಳಿ</item>
+        <item>ಫಲಿತಾಂಶ ವೀಕ್ಷಿಸಿ</item>
+        <item>ಲಾಗ್ಔಟ್</item>
+    </string-array>
+
+</resources>

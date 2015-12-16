@@ -1,0 +1,161 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+    <ScrollView
+        android:id="@+id/slbody"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="10dp"
+        android:background="@drawable/btn_grey"
+         >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/logo_main" />
+
+        <LinearLayout
+            android:id="@+id/lllogin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/capture" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="0.25"
+                android:gravity="top"
+                android:src="@drawable/icon_user" />
+
+            <EditText
+                android:id="@+id/etname"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView1"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="0.75"
+                android:background="@drawable/btn_grey"
+                android:ellipsize="start"
+                android:gravity="center"
+                android:hint="E Mail "
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llpass"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/capture" >
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="0.25"
+                android:gravity="top"
+                android:src="@drawable/icon_password" />
+
+            <EditText
+                android:id="@+id/etpass"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView1"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0.75"
+                android:background="@drawable/btn_grey"
+                android:ellipsize="start"
+                android:gravity="center"
+                android:hint="Password"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnLogin"
+            style="@android:style/TextAppearance.Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/apptheme_btn_default_holo_light"
+            android:text="@string/btn_login"
+            android:textColor="@color/text_btn" />
+
+        <Button
+            android:id="@+id/btnregister"
+            style="@android:style/TextAppearance.Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/apptheme_btn_default_holo_light"
+            android:text="@string/btn_regester"
+            android:textColor="@color/text_btn" />
+
+        <TextView
+            style="@android:style/TextAppearance.Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="Sign In Through" />
+
+        <LinearLayout
+            android:id="@+id/llbottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/capture"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center" >
+
+            <ImageView
+                android:id="@+id/ivfacebook"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/fb" />
+
+            <ImageView
+                android:id="@+id/ivgpluse"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/gpluse" />
+        </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

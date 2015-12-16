@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/qrcode/detector
+END
+FinderPatternFinder.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/qrcode/detector/FinderPatternFinder.java
+END
+AlignmentPatternFinder.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/qrcode/detector/AlignmentPatternFinder.java
+END
+FinderPattern.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/qrcode/detector/FinderPattern.java
+END
+Detector.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/qrcode/detector/Detector.java
+END
+FinderPatternInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/qrcode/detector/FinderPatternInfo.java
+END
+AlignmentPattern.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/qrcode/detector/AlignmentPattern.java
+END

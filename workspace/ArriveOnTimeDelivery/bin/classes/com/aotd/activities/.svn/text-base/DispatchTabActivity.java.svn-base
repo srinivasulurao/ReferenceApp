@@ -1,0 +1,641 @@
+package com.aotd.activities;
+
+import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.aotd.dialog.AlertDialogMsg;
+import com.aotd.helpers.AOTDDataBase;
+import com.aotd.model.DispatchListModel;
+import com.aotd.model.OfflineDataModel;
+import com.aotd.parsers.AuthenticationParser;
+import com.aotd.parsers.DispatchOrderParser;
+import com.aotd.parsers.OfflineDispatchParser;
+import com.aotd.utils.Utils;
+import com.rna.activities.RNATabActivity;
+
+public class DispatchTabActivity extends Activity {
+
+	private ListView mDispatchList = null;
+	private ProgressDialog progressdialog = null;
+	private DispatchAdapter mDataAdapter = null;
+	private ArrayList<DispatchListModel> marrDispatchList = new ArrayList<DispatchListModel>();
+	private ArrayList<OfflineDataModel> marrDispatchListOffline = new ArrayList<OfflineDataModel>(); // Offline
+																										// Data
+																										// array
+	private ArrayList<String> marrSelectedOrders = null;
+	private ArrayList<String> tempArrSelectedOrders = null;
+	private Button acceptOrders = null;
+	private String data = "", driverId = "";
+	private StringBuffer order_ids = null;
+	private boolean goto_present = false;
+	private SharedPreferences mSharedPrefernces;
+	private SharedPreferences loginprefs;
+	private boolean dataRequestSent = false;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		setContentView(R.layout.aotd_dispatch_tab_listview);
+		intializeUI();
+		acceptOrders.setVisibility(View.GONE);
+		acceptOrders.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				tempArrSelectedOrders = marrSelectedOrders;
+				
+				if (tempArrSelectedOrders.size() > 0) {
+					if (Utils.checkNetwork(getApplicationContext())) {
+
+						progressdialog = ProgressDialog.show(DispatchTabActivity.this, "", "please wait...");
+						dataRequestSent = true;
+
+						try {
+							
+							new DownLoadAcceptPDF(DispatchTabActivity.this,	new GetDownloadPDFHandler(), tempArrSelectedOrders);
+
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+
+					} else {
+						acceptOrder();
+
+					}
+				}
+
+				else {
+					alertDialog("AOTD", "No Dispatches selected");
+				}
+
+			}
+
+		});
+
+		Button rna_btn = (Button) findViewById(R.id.rna_btn);
+		rna_btn.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+				SharedPreferences loginprefs;
+				loginprefs = DispatchTabActivity.this.getSharedPreferences(
+						"loginprefs", 0);
+				System.out.println("The user id is "
+						+ loginprefs.getString("username", ""));
+				System.out.println("The password  is "
+						+ loginprefs.getString("temppassword", ""));
+
+				String url = String.format(Utils.RNA_AUTHENTICATION_URL,
+						loginprefs.getString("username", ""),
+						loginprefs.getString("temppassword", ""));
+
+				// startActivity(new
+				// Intent(DispatchPresentTabActivity.this,SignatureActivity.class).putExtra("from",
+				// "rna"));
+				progressdialog = ProgressDialog.show(DispatchTabActivity.this,
+						"", "please wait...");
+				AuthenticationParser mAuthParser = new AuthenticationParser(
+						new AuthenticateHandler(), url);
+				mAuthParser.start();
+
+			}
+		});
+
+	}
+
+	private void acceptOrder() {
+
+		String sep = "";
+		order_ids = new StringBuffer();
+		Log.i("", "kkk marrSelectedOrders.size : "+marrSelectedOrders);
+		for (int i = 0; i < marrSelectedOrders.size(); i++) {
+			
+			Log.i("", "kkk marrSelectedOrders.size : "+marrSelectedOrders.size()+"         values : "+marrSelectedOrders.get(i).toString());
+		}
+		for (int iCtr = 0; iCtr < marrSelectedOrders.size(); iCtr++) {
+			order_ids.append(sep + marrSelectedOrders.get(iCtr));
+			sep = ",";
+		}
+
+		if (Utils.checkNetwork(getApplicationContext())) {
+
+			progressdialog = ProgressDialog.show(DispatchTabActivity.this, "",
+					"please wait...");
+
+			try {
+				String encodedURoleName = URLEncoder.encode(
+						Utils.ROLENAME.trim(), "UTF-8");
+				Log.v("ROLE NAME", "" + Utils.ROLENAME);
+				String encodedOrderIds = URLEncoder.encode(
+						order_ids.toString(), "UTF-8");
+				data = "roleName=" + encodedURoleName + "&order_ids="
+						+ encodedOrderIds + "&driver_id=" + driverId;
+				Log.v("data", "" + data);
+
+			} catch (Exception e) {
+
+				Toast.makeText(getApplicationContext(),
+						"Error in porcessing login details, contact support",
+						Toast.LENGTH_LONG).show();
+			}
+
+			DispatchOrderParser mResponseParser = null;
+			mResponseParser = new DispatchOrderParser(Utils.UPLOAD_ORDERS_URL,new DispatchHandler());
+			mResponseParser.isPost = true;
+			mResponseParser.postData = data;
+			mResponseParser.start();
+
+		} else {
+
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+			Date date = new Date();
+			String mydate = sdf.format(date);
+			Log.e("Date", "Format : " + mydate);
+			Utils.IS_OFFICE_DATA_UPDATED = true;
+			AOTDDataBase _AOTDDataBase = new AOTDDataBase(this);
+			_AOTDDataBase.updateDispatchers(order_ids.toString(), mydate,
+					"update", driverId);
+			alertDialogWithMsg("AOTD ",
+					"Order dispatches updated successfully.");
+		}
+	}
+
+	private void intializeUI() {
+		loginprefs = this.getSharedPreferences("loginprefs", 0);
+		mSharedPrefernces = this.getSharedPreferences("DispatchCount",
+				MODE_PRIVATE);
+
+		mSharedPrefernces.edit().putInt("count", 0).commit();
+
+		driverId = loginprefs.getString("username", "none");
+		marrDispatchList = new ArrayList<DispatchListModel>();
+		tempArrSelectedOrders = new ArrayList<String>();
+		marrSelectedOrders = new ArrayList<String>();
+		mDispatchList = (ListView) findViewById(R.id.dispatch_listView);
+		acceptOrders = (Button) findViewById(R.id.dispatch_accept);
+
+	}
+
+	@Override
+	public void onResume() {
+
+		super.onResume();
+
+		MainDispatchScreenTabView.title.setText("Dispatch Screen");
+
+		if (Utils.checkNetwork(getApplicationContext()))
+			MainDispatchScreenTabView.imgOnline
+					.setBackgroundResource(R.drawable.online);
+		else
+			MainDispatchScreenTabView.imgOnline
+					.setBackgroundResource(R.drawable.offline);
+
+		if (!dataRequestSent) {
+
+			marrDispatchListOffline.clear();
+			marrDispatchList.clear();
+
+			if (mDataAdapter != null)
+				mDataAdapter.notifyDataSetChanged();
+
+			getParserData();
+		}
+	}
+
+	private void getParserData() {
+
+		Utils.NEW_ORDER_VIEWED = true;
+		MainDispatchScreenTabView.tabHost.getTabWidget().getChildAt(0)
+				.setBackgroundColor(Color.BLACK);
+		MainDispatchScreenTabView.tabHost.getTabWidget().getChildAt(1)
+				.setBackgroundColor(Color.BLACK);
+		MainDispatchScreenTabView.tabHost.getTabWidget().getChildAt(2)
+				.setBackgroundColor(Color.BLACK);
+		MainDispatchScreenTabView.tabHost.getTabWidget().getChildAt(3)
+				.setBackgroundColor(Color.GRAY);
+
+		if (Utils.checkNetwork(getApplicationContext())) {
+
+			progressdialog = ProgressDialog.show(DispatchTabActivity.this, "",
+					"please wait...");
+			dataRequestSent = true;
+
+			try {
+
+				Log.e("Sync Data", "******************* syncData");
+				new SyncData(getApplicationContext(), new getSyncHandler());
+
+			} catch (Exception e) {
+				// TODO: handle exception
+
+				Log.e("Sync Data", "******************* syncData Error");
+				e.printStackTrace();
+			}
+
+		} else {
+
+			getOfflineOrders();
+
+		}
+	}
+
+	private void getOnlineOrders() {
+
+		try {
+
+			String encodedRoleName = URLEncoder.encode(Utils.ROLENAME, "UTF-8");
+			String encodedId = URLEncoder.encode(Utils.USER_ID, "UTF-8");
+			String url = String.format(Utils.DISPATCH_URL, encodedRoleName,
+					encodedId);
+			OfflineDispatchParser mDispatchparser = new OfflineDispatchParser(
+					new OfflineDataHandler(), url, marrDispatchListOffline,
+					marrDispatchList);
+			mDispatchparser.start();
+
+		} catch (Exception e) {
+
+		}
+	}
+
+	private void getOfflineOrders() {
+
+		AOTDDataBase _AOTDDataBase = new AOTDDataBase(this);
+		marrDispatchList = _AOTDDataBase.retrieveOfflineDispathes(driverId);
+
+		if (marrDispatchList != null && marrDispatchList.size() > 0) {
+			acceptOrders.setVisibility(View.VISIBLE);
+			mDataAdapter = null;
+			mDataAdapter = new DispatchAdapter(marrDispatchList);
+			mDispatchList.setAdapter(mDataAdapter);
+			mSharedPrefernces.edit().putInt("count", marrDispatchList.size())
+					.commit();
+
+		} else {
+
+			alertDialogWithMsg("AOTD", "No Dispatches available");
+
+		}
+
+	}
+
+	// Called when the sync id done
+
+	class getSyncHandler extends Handler {
+
+		public void handleMessage(android.os.Message msg) {
+
+			if (msg.what == 10) {
+
+				Log.e("Sync Data", "******************* getOnlineOrders 10");
+				getOnlineOrders();
+
+			} else if (msg.what == 11) {
+
+				if (Utils.checkNetwork(getApplicationContext())) {
+
+					Log.e("Sync Data", "******************* getOnlineOrders 10");
+					getOnlineOrders();
+
+				} else {
+
+					Log.e("Sync Data",
+							"******************* getOfflineOrders 11");
+					progressdialog.dismiss();
+					dataRequestSent = false;
+					getOfflineOrders();
+				}
+
+			} else if (msg.what == 12) {
+
+				Log.e("Sync Data", "******************* getOnlineOrders 12");
+				getOnlineOrders();
+			}
+		}
+
+	}
+
+	class OfflineDataHandler extends Handler {
+		public void handleMessage(android.os.Message msg) {
+			progressdialog.dismiss();
+
+			Log.e("offline Database", "back to handler");
+			if (msg.what == 0) {
+				Log.e("offline Database", "back to handler 1");
+				String errorMsg = msg.getData().getString("HttpError");
+				if (errorMsg.length() > 0) {
+
+					alertDialogWithMsg("AOTD", errorMsg);
+					Log.e("offline Database", "back to handler 2.1");
+
+				} else {
+
+					Log.e("offline Database", "back to handler 2.2");
+					if (marrDispatchListOffline != null
+							&& marrDispatchListOffline.size() > 0) {
+
+						Log.e("offline Database", "back to handler 2.2.1");
+						AOTDDataBase _AOTDDataBase = new AOTDDataBase(
+								DispatchTabActivity.this);
+						for (int i = 0; i < marrDispatchListOffline.size(); i++) {
+							_AOTDDataBase.addValues(marrDispatchListOffline
+									.get(i));
+						}
+
+						if (marrDispatchList != null
+								&& marrDispatchList.size() > 0) {
+
+							dataRequestSent = false;
+							acceptOrders.setVisibility(View.VISIBLE);
+							mDataAdapter = null;
+							mDataAdapter = new DispatchAdapter(marrDispatchList);
+							mDispatchList.setAdapter(mDataAdapter);
+							mSharedPrefernces.edit()
+									.putInt("count", marrDispatchList.size())
+									.commit();
+
+						} else {
+
+							alertDialogWithMsg("AOTD",
+									"No Dispatches available");
+
+						}
+
+					} else {
+
+						Log.e("offline Database", "back to handler 2.3");
+						alertDialogWithMsg("AOTD",
+								"No New Dispatches available for sync");
+
+					}
+				}
+			} else {
+				Log.i("offline Database", "back to handler msg" + msg.what);
+			}
+		}
+	}
+
+	class DispatchHandler extends Handler {
+		public void handleMessage(android.os.Message msg) {
+			progressdialog.dismiss();
+
+			if (mSharedPrefernces.getBoolean("colour", false)) {
+
+				MainDispatchScreenTabView.tabHost.getTabWidget().getChildAt(3)
+						.setBackgroundResource(R.drawable.tab_background);
+				mSharedPrefernces.edit().putBoolean("colour", false).commit();
+			}
+
+			if (msg.what == 1) {
+
+				String errorMsg = msg.getData().getString("HttpError");
+
+				if (errorMsg.length() > 0) {
+
+					Log.v("error************", "error*******");
+					alertDialogWithMsg("AOTD ", errorMsg);
+
+				} else {
+
+					Log.v("success************", "success*******");
+					goto_present = true;
+					String successMsg = msg.getData().getString("success");
+					alertDialogWithMsg("AOTD ",
+							"Order dispatches updated successfully.");
+					Utils.IS_OFFICE_DATA_UPDATED = true;
+					AOTDDataBase _AOTDDataBase = new AOTDDataBase(
+							DispatchTabActivity.this);
+					_AOTDDataBase.updateDispatchers(order_ids.toString(),
+							successMsg, "none", driverId);
+
+				}
+
+			} else {
+              Log.i("", "kkk DispatchHandler msg what else "+msg.what);
+				String errorMsg = msg.getData().getString("HttpError");
+				if (errorMsg.length() > 0) {
+
+					alertDialogWithMsg("AOTD", errorMsg);
+
+				} else {
+
+					marrSelectedOrders.clear();
+
+					if (marrDispatchList != null && marrDispatchList.size() > 0) {
+
+						acceptOrders.setVisibility(View.VISIBLE);
+						mDataAdapter = null;
+						mDataAdapter = new DispatchAdapter(marrDispatchList);
+						mDispatchList.setAdapter(mDataAdapter);
+
+					} else {
+
+						alertDialogWithMsg("AOTD", "No Dispatches available");
+
+					}
+				}
+			}
+		}
+	}
+
+	public class DispatchAdapter extends BaseAdapter {
+
+		ArrayList<DispatchListModel> mDataFeeds;
+
+		public DispatchAdapter(ArrayList<DispatchListModel> mDataFeeds) {
+
+			this.mDataFeeds = mDataFeeds;
+			Log.v("size ", "" + mDataFeeds.size());
+		}
+
+		@Override
+		public int getCount() {
+
+			return mDataFeeds.size();
+		}
+
+		@Override
+		public Object getItem(int position) {
+
+			return position;
+		}
+
+		@Override
+		public long getItemId(int position) {
+
+			return position;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			View v = convertView;
+
+			if (v == null) {
+				LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				v = inflater.inflate(R.layout.aotd_dispatch_listrow, null);
+			}
+
+			RelativeLayout parentLayout = (RelativeLayout) v
+					.findViewById(R.id.dispatchScreen_listview_main);
+
+			TextView mTime = (TextView) v
+					.findViewById(R.id.dispathch_listrow_date);
+			mTime.setText(mDataFeeds.get(position).getRDDate().trim());
+			mTime.setTextColor(Color.BLACK);
+
+			final Button mOrderNum = (Button) parentLayout.getChildAt(2);
+			final Button mOrderStatus = (Button) parentLayout.getChildAt(1);
+
+			mOrderNum.setText(mDataFeeds.get(position).getOrder_id().trim());
+			mOrderNum.setTextColor(Color.BLACK);
+
+			mOrderNum.setOnClickListener(new OnClickListener() {
+
+				public void onClick(View v) {
+
+					Intent intent = new Intent(DispatchTabActivity.this,
+							DeliveryOrderInfoDelivery.class);
+					intent.putExtra("orderNumber", mOrderNum.getText()
+							.toString());
+					intent.putExtra("condition", "UpdateRoundTripPickup");
+					startActivity(intent);
+
+				}
+			});
+
+			mOrderStatus.setBackgroundResource(R.drawable.btn_bg_confirm);
+			mOrderStatus.setTag("notclicked");
+			mOrderStatus.setOnClickListener(new OnClickListener() {
+
+				public void onClick(View v) {
+
+					if (mOrderStatus.getTag().equals("notclicked")) {
+						mOrderStatus
+								.setBackgroundResource(R.drawable.btn_bg_confirm_clk);
+						mOrderStatus.setTag("clicked");
+						marrSelectedOrders.add(mOrderNum.getText().toString());
+						Log.i("", "kkk click conform marrSelectedOrders size"+marrSelectedOrders.size());
+
+					} else {
+
+						mOrderStatus
+								.setBackgroundResource(R.drawable.btn_bg_confirm);
+						mOrderStatus.setTag("notclicked");
+						for (int iCtr = 0; iCtr < marrSelectedOrders.size(); iCtr++) {
+							if (marrSelectedOrders.get(iCtr).equalsIgnoreCase(
+									mOrderNum.getText().toString()))
+								marrSelectedOrders.remove(iCtr);
+						}
+					}
+				}
+			});
+
+			return v;
+		}
+	}
+
+	public void alertDialogWithMsg(String title, String msg) {
+
+		new AlertDialogMsg(DispatchTabActivity.this, title, msg)
+				.setPositiveButton("ok",
+						new android.content.DialogInterface.OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+
+								dataRequestSent = false;
+
+								MainDispatchScreenTabView.tabHost
+										.setCurrentTab(1);
+							}
+
+						}).create().show();
+	}
+
+	public void alertDialog(String title, String msg) {
+
+		new AlertDialogMsg(DispatchTabActivity.this, title, msg)
+				.setPositiveButton("ok",
+						new android.content.DialogInterface.OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+
+							}
+
+						}).create().show();
+	}
+
+	@Override
+	public void onBackPressed() {
+
+		android.os.Process.killProcess(android.os.Process.myPid());
+	}
+
+	class AuthenticateHandler extends Handler {
+		public void handleMessage(android.os.Message msg) {
+			progressdialog.dismiss();
+			String errorMsg = msg.getData().getString("HttpError");
+			String authMsg = msg.getData().getString("Authentication");
+			// authMsg = "true";
+			Log.v("authentication", authMsg);
+			if (errorMsg.length() > 0) {
+
+				alertDialogWithMsg("AOTD", errorMsg);
+
+			} else {
+				if (Boolean.parseBoolean(authMsg)) {
+					Intent rna_dispatch_intent = new Intent(
+							DispatchTabActivity.this, RNATabActivity.class);
+					rna_dispatch_intent.putExtra("from", "aotd_present");
+					startActivity(rna_dispatch_intent);
+
+				} else {
+					alertDialogWithMsg("AOTD", "You are not Authorized User");
+				}
+			}
+		}
+	}
+
+	class GetDownloadPDFHandler extends Handler {
+
+		@Override
+		public void handleMessage(Message msg) {
+		if(progressdialog != null && progressdialog.isShowing()){
+         progressdialog.dismiss();
+		}
+		marrSelectedOrders = msg.getData().getStringArrayList("marrSelectedOrders");
+		Log.i("", "kkk handler....marrSelectedOrders"+marrSelectedOrders);
+
+         acceptOrder();
+		}
+	}
+}

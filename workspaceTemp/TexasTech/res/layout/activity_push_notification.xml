@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/h5" >
+
+        <TextView
+            style="@style/style_lable"
+            android:text="Role"
+            android:textColor="@color/red" />
+
+        <Spinner
+            android:id="@+id/spin_role"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" 
+            android:layout_marginTop="@dimen/h7"
+            android:layout_marginBottom="@dimen/h7"/>
+
+        <TextView
+            style="@style/style_lable"
+            android:text="Program"
+            android:textColor="@color/red" />
+
+        <Spinner
+            android:id="@+id/spin_program"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" 
+            android:layout_marginTop="@dimen/h7"
+            android:layout_marginBottom="@dimen/h7"/>
+
+        <TextView
+            style="@style/style_lable"
+            android:text="Graduation Term"
+            android:textColor="@color/red" />
+
+        <Spinner
+            android:id="@+id/spin_graduation_mm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" 
+            android:layout_marginTop="@dimen/h7"
+            android:layout_marginBottom="@dimen/h7"/>
+
+        <TextView
+            style="@style/style_lable"
+            android:text="Graduation YYYY"
+            android:textColor="@color/red" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            style="@style/style_lable"
+            android:hint="Graduation YYYY"
+            android:textColor="@color/black" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" 
+            android:layout_marginTop="@dimen/h7"
+            android:layout_marginBottom="@dimen/h7"/>
+
+        <TextView
+            style="@style/style_lable"
+            android:text="Push Message"
+            android:textColor="@color/red" 
+            />
+
+        <EditText
+            android:id="@+id/et_push_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:lines="4" 
+            />
+    </LinearLayout>
+
+</LinearLayout>

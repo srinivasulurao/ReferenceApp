@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/dispatchScreen_listview_main" 
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content"
+	android:padding="5dp"
+	android:background="@android:color/transparent">
+	
+   
+    <TextView  
+    android:textSize = "20dip" 
+    android:layout_centerVertical="true" 
+    android:text="   Driver Name" 
+    android:layout_height="wrap_content"  
+    android:id="@+id/driver_listrow_name" 
+    android:layout_width="wrap_content"
+    android:textColor="#000000"
+    android:layout_marginLeft="10dp"
+    />
+    
+    <ImageView 
+    android:layout_width="wrap_content" 
+    android:src="@drawable/arrow" 
+    android:id="@+id/imageView1" 
+    android:layout_height="wrap_content" 
+    android:layout_centerVertical="true" 
+    android:layout_alignParentRight="true" 
+    android:layout_marginRight="25dp"/>
+   
+    
+    
+	
+</RelativeLayout>

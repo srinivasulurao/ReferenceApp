@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerHorizontal="true" >
+
+        <RelativeLayout
+            android:id="@+id/dispatchScreen_ll_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" >
+
+            <TextView
+                android:id="@+id/aotd_logo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/aotd_title"
+                android:gravity="center"
+                android:paddingBottom="8dp"
+                android:text="Registration"
+                android:textColor="#4169E1"
+                android:textSize="25dip"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/aotd_img_mode"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/online" />
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dispatchScreen_ll_title"
+            android:layout_centerHorizontal="true" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+
+                <EditText
+                    android:id="@+id/reg_email_EditTxt"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/login_text_field"
+                    android:hint="Email"
+                    android:paddingLeft="20dp"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:id="@+id/reg_info_TxtView"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/reg_email_EditTxt"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/background1"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
+                    
+                    android:paddingTop="10dp"
+                    android:layout_marginLeft="05dp"
+                    android:layout_marginRight="05dp"
+                    android:text="@string/registration"
+                    android:textColor="#000000" />
+
+                <Button
+                    android:id="@+id/reg_back_Btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/reg_info_TxtView"
+                    android:layout_below="@+id/reg_info_TxtView"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/btn_login"
+                    android:textStyle="bold"
+                    
+                    android:text="Back" />
+
+                <Button
+                    android:id="@+id/reg_send_Btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@+id/reg_info_TxtView"
+                    android:layout_below="@+id/reg_info_TxtView"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/btn_login"
+                    android:textStyle="bold"
+                    android:text="Send" />
+            </RelativeLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+</RelativeLayout>

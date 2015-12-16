@@ -1,0 +1,8 @@
+INDEX VERSION 1.127+E:\android\workspaceFoodzunew\.metadata\.plugins\org.eclipse.jdt.core
+1284074322.index
+92733433.index
+3796372520.index
+2974232205.index
+1943071433.index
+3490297925.index
+905751046.index

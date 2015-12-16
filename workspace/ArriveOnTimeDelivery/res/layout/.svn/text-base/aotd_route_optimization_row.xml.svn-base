@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:background="#FFFFFF"
+    android:padding="5dp" >
+
+    <RelativeLayout
+        android:id="@+id/layout_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/btn_oreder_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/btn_bg"
+            android:gravity="center"
+            android:textColor="@android:color/background_dark"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/txt_order_priority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/btn_bg_openorder"
+            android:gravity="center"
+            android:textColor="#FF0000"
+            android:textSize="18dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_header"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:weightSum="2" >
+
+        <RelativeLayout
+            android:id="@+id/layout_pickup"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#00FF00" >
+
+            <TextView
+                android:id="@+id/txt_pu_company_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:padding="5dp"
+                android:paddingTop="5dp"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txt_pu_company_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/txt_pu_company_name"
+                android:layout_marginRight="5dp"
+                android:padding="5dp"
+                android:paddingBottom="5dp"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_delivery"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="#FF0000" >
+
+            <TextView
+                android:id="@+id/txt_dl_company_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:padding="5dp"
+                android:paddingTop="5dp"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txt_dl_company_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/txt_dl_company_name"
+                android:layout_marginRight="5dp"
+                android:padding="5dp"
+                android:paddingBottom="5dp"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

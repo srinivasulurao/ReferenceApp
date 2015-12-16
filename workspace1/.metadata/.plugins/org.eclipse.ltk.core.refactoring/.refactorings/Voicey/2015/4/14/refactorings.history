@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;libs&apos; to &apos;MainActivity&apos;&#x0D;&#x0A;- Original project: &apos;Voicey&apos;&#x0D;&#x0A;- Destination element: &apos;MainActivity&apos;&#x0D;&#x0A;- Original element: &apos;libs&apos;" description="Copy folder" element1="libs" files="0" flags="589830" folders="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1428105921038" target="/MainActivity" units="0" version="1.0"/>
+</session>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="headerbackground">#AC0806</color>
+    <color name="bluebackground">#004799</color>
+    <color name="list_divider">#272727</color>
+    <color name="list_item_title">#fff</color>
+    <color name="list_background">#303030</color>
+    <color name="list_background_pressed">#992416</color>
+    <color name="actionbar_background">#AC0806</color>
+    <color name="spinnerbackground">#d2d2d2</color>
+    <color name="passbackground"> #428BCA</color>
+    <color name="failbackground"> #D4402A</color>
+    <color name="processingbackground"> #ACB207</color>
+    <color name="divider_color">#E2E2E2</color>
+    <color name="table_color">#BCBCBC</color>
+    <color name="profile_image_background">#eeeeee</color>
+    <color name="profile_background">#F94E39</color>
+    <color name="profile_bottom_background">#E2E2E2</color>
+    <color name="dialog_background">#E2E2E2</color>
+    <color name="transparent">#00000000</color>
+    <color name="interviewpass">#009648</color>
+    <color name="interviewavg">#FAC846</color>
+    <color name="interviewfail">#DE3825</color>
+    <color name="gray">#E7E8EA</color>
+    <color name="maroonbackground">#D32524</color>
+     <color name="border_gray">#CBCBCB</color>
+      <color name="button_text">#FFF200</color>
+      <color name="heading_color">#FFF200</color>
+    
+
+</resources>

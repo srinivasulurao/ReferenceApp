@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;FiveStarChickenLMS/res/menu/actionbar_direction.xml&apos; to &apos;actionbar_home.xml&apos;" description="Rename resource &apos;actionbar_direction.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="res/menu/actionbar_direction.xml" name="actionbar_home.xml" stamp="1432641706317" updateReferences="true"/>
+</session>

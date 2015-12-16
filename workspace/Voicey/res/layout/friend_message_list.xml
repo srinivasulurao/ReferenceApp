@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:emojicon="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp" >
+
+    <RelativeLayout
+        android:id="@+id/llmainbody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/inbox_message_white" >
+
+        <RelativeLayout
+            android:id="@+id/llfrominfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp" >
+
+            <TextView
+                android:id="@+id/tvfromValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="abc"
+                android:textSize="18dp" />
+            
+              <ImageView
+                    android:id="@+id/ivinvite"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/i" 
+                     android:layout_toRightOf="@+id/tvfromValue"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/llmessagecount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp" >
+
+            <TextView
+                android:id="@+id/tvmessagecount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/tvmessagelabel"
+                android:textColor="@color/blue"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/tvmessagelabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="Messages"
+                android:textColor="@color/blue"
+                android:textSize="18dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rrreply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/rlbody"
+            android:layout_below="@+id/llfrominfo"
+            android:layout_marginTop="3dp"
+            android:background="@color/reply_background"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:id="@+id/llexpand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/ivexpand"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="8dp"
+                    android:src="@drawable/icon_plush" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rraddimage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/llexpand" >
+
+                <ImageView
+                    android:id="@+id/ivaddimage"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/camera_new" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rrsmily"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_toRightOf="@+id/rraddimage" >
+
+                <ImageView
+                    android:id="@+id/ivsmily"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/smily" />
+            </RelativeLayout>
+
+            <com.rockerhieu.emojicon.EmojiconEditText
+                android:id="@+id/editEmojicon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/rrsend"
+                android:layout_toRightOf="@+id/rrsmily"
+                android:textSize="14dp"
+                emojicon:emojiconSize="10sp" />
+
+           
+
+            <RelativeLayout
+                android:id="@+id/rrsend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toLeftOf="@+id/rrrecord" >
+
+                <ImageView
+                    android:id="@+id/ivsend"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/rocket"
+                    android:gravity="center" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rrrecord"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="5dp" >
+
+                <ImageView
+                    android:id="@+id/ivrecord"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/launcher" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/llfriendmessages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llmainbody"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+</RelativeLayout>

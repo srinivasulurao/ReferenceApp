@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:myapp="http://schemas.android.com/apk/res-auto" >
+
+    <item
+        android:id="@+id/gallery_video"
+        android:icon="@drawable/status_update_videoplayer"
+        android:title="@string/phone"
+        myapp:showAsAction="collapseActionView"/>
+    <item
+        android:id="@+id/gallery_image"
+        android:icon="@drawable/status_update_gallery"
+        android:title="@string/computer"
+        myapp:showAsAction="collapseActionView"/>
+    <item
+        android:id="@+id/camera"
+        android:icon="@drawable/status_update_camera"
+        android:title="@string/camera"
+        myapp:showAsAction="collapseActionView"/>
+    <item
+        android:id="@+id/video"
+        android:icon="@drawable/status_update_video"
+        android:title="@string/video"
+        myapp:showAsAction="collapseActionView"/>
+      <item
+        android:id="@+id/loc"
+        android:icon="@drawable/status_location"
+        android:title="@string/loc"
+        myapp:showAsAction="collapseActionView"/>
+
+</menu>

@@ -1,0 +1,161 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned
+END
+UPCEANExtension5Support.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/UPCEANExtension5Support.java
+END
+EAN8Reader.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/EAN8Reader.java
+END
+Code39Writer.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/Code39Writer.java
+END
+EANManufacturerOrgSupport.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/EANManufacturerOrgSupport.java
+END
+UPCEANExtensionSupport.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/UPCEANExtensionSupport.java
+END
+MultiFormatOneDReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/MultiFormatOneDReader.java
+END
+UPCEANWriter.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/UPCEANWriter.java
+END
+UPCEANReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/UPCEANReader.java
+END
+UPCAReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/UPCAReader.java
+END
+Code128Writer.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/Code128Writer.java
+END
+CodaBarWriter.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/CodaBarWriter.java
+END
+ITFReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/ITFReader.java
+END
+EAN13Reader.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/EAN13Reader.java
+END
+UPCEANExtension2Support.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/UPCEANExtension2Support.java
+END
+EAN8Writer.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/EAN8Writer.java
+END
+Code128Reader.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/Code128Reader.java
+END
+UPCEReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/UPCEReader.java
+END
+CodaBarReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/CodaBarReader.java
+END
+EAN13Writer.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/EAN13Writer.java
+END
+OneDimensionalCodeWriter.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/OneDimensionalCodeWriter.java
+END
+Code93Reader.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/Code93Reader.java
+END
+UPCAWriter.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/UPCAWriter.java
+END
+Code39Reader.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/Code39Reader.java
+END
+OneDReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/OneDReader.java
+END
+ITFWriter.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/ITFWriter.java
+END
+MultiFormatUPCEANReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/oned/MultiFormatUPCEANReader.java
+END

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" 
+    android:background="@color/red_light">
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/red"
+        android:padding="@dimen/h7" >
+
+        <TextView
+            style="@style/style_lable"
+            android:layout_centerInParent="true"
+            android:text="To Do"
+            android:textColor="@color/white"
+            android:textSize="@dimen/h2"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btn_cancel"
+            style="@style/style_lable"
+            android:layout_centerVertical="true"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            android:textSize="@dimen/h4"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btn_save"
+            style="@style/style_lable"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="Save"
+            android:textColor="@color/white"
+            android:textSize="@dimen/h4"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/contentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/h5" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subject"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/h3" />
+
+        <EditText
+            android:id="@+id/et_to_do"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/h7"
+            android:background="@android:drawable/editbox_background_normal"
+            android:hint="What do you have to do?"
+            android:imeOptions="actionDone"
+            android:padding="@dimen/h6"
+            android:singleLine="true"
+            android:textSize="@dimen/h4" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/h7"
+            android:gravity="center"
+            android:text="Tap to edit your to-do subject."
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/h4" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/h7"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/h5"
+                android:text="Reminder:\n(Optional)"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/h4" />
+
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:drawable/editbox_background_normal"
+                android:gravity="center"
+                android:hint="Select Time:"
+                android:lines="2"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/h4" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/h7"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_justOnce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/h6"
+                android:layout_weight="1"
+                android:background="@android:color/darker_gray"
+                android:tag="0"
+                android:text="Just Once"
+                android:textSize="@dimen/h4" />
+
+            <Button
+                android:id="@+id/btn_weekDay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/h6"
+                android:layout_weight="1"
+                android:background="@android:color/darker_gray"
+                android:tag="0"
+                android:text="Week Days"
+                android:textSize="@dimen/h4" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

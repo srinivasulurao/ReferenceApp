@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Background_main" >
+    
+    
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+         android:layout_margin="5dp"
+         android:padding="5dp"
+         android:id="@+id/llsearch"
+         android:orientation="horizontal"
+        android:background="@drawable/search_text" >
+
+        <ImageView
+             android:id="@+id/ivsearch"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+               android:padding="2dp"
+            android:src="@drawable/search_icon" />
+        
+        <TextView  
+		    android:id="@+id/lblsearch"
+		    android:text="@string/search_text"
+		    android:textColor="@color/text_sub_title"
+		    android:layout_width="wrap_content"    
+		    android:layout_height="wrap_content"
+		   
+		    android:layout_toRightOf="@+id/ivsearch"
+		    style="@android:style/TextAppearance.Small"/>
+        
+        <TextView
+            android:id="@+id/tvclose"
+            style="@android:style/TextAppearance.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="X"
+            android:paddingLeft="5dp"
+               android:paddingRight="5dp"
+             android:textStyle="bold"
+             android:textSize="15dp"
+            android:textColor="@color/text_sub_title" />
+        
+    </RelativeLayout>
+    	
+   	<dealsforsure.in.loadmore.PagingListView
+		android:id="@+id/list"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:fadeScrollbars="true"
+		android:layout_below="@+id/llsearch"
+		android:fastScrollEnabled="true"
+		android:fadingEdge="none"
+		android:divider="@color/divider"
+		android:dividerHeight="6dp"
+		android:listSelector="@drawable/apptheme_list_selector_holo_light"
+		/>
+
+    <LinearLayout
+        android:id="@+id/lytRetry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+       	android:layout_centerInParent="true"
+       	android:gravity="center"
+       	android:visibility="gone">
+        <TextView  
+		    android:id="@+id/lblAlert"
+		    android:text="@string/no_internet_connection"
+		    android:textColor="@color/text_sub_title"
+		    android:layout_width="wrap_content"    
+		    android:layout_height="wrap_content"
+		    style="@android:style/TextAppearance.Medium"/>
+        <Button 
+	        android:id="@+id/btnRetry"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/retry"
+	        android:textColor="@color/text_btn"
+	        android:background="@drawable/apptheme_btn_default_holo_light"
+		   	style="@android:style/TextAppearance.Medium"/>
+    </LinearLayout>
+    
+    <TextView
+        android:id="@+id/lblNoResult"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textColor="@color/text_sub_title"
+		android:text="@string/lbl_no_result"
+		android:layout_centerInParent="true"
+		android:visibility="gone"
+		style="@android:style/TextAppearance.Medium"/>
+    
+
+</RelativeLayout>
+

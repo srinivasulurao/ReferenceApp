@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.omkar.globlegroup&apos; to &apos;com.omkar.globalgroup&apos;&#x0D;&#x0A;- Original project: &apos;globalgroup&apos;&#x0D;&#x0A;- Original element: &apos;globalgroup/src/com.omkar.globlegroup&apos;&#x0D;&#x0A;- Renamed element: &apos;globalgroup/src/com.omkar.globalgroup&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;com.omkar.globlegroup&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;com.omkar.globlegroup" name="com.omkar.globalgroup" qualified="false" references="true" stamp="1414679299125" textual="false" version="1.0"/>
+</session>

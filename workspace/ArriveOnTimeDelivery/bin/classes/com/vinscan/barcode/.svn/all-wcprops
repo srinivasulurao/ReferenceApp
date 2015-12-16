@@ -1,0 +1,125 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/copperlabs_aotd/!svn/ver/42/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/barcode
+END
+AmbientLightManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/barcode/AmbientLightManager.java
+END
+PlanarYUVLuminanceSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/barcode/PlanarYUVLuminanceSource.java
+END
+DecodeHintManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/barcode/DecodeHintManager.java
+END
+HttpHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/barcode/HttpHelper.java
+END
+DecodeHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/barcode/DecodeHandler.java
+END
+InactivityTimer.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/barcode/InactivityTimer.java
+END
+Intents.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/barcode/Intents.java
+END
+FinishListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/barcode/FinishListener.java
+END
+DecodeThread.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/barcode/DecodeThread.java
+END
+ScanFromWebPageManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/barcode/ScanFromWebPageManager.java
+END
+LocaleManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/barcode/LocaleManager.java
+END
+CaptureActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/copperlabs_aotd/!svn/ver/42/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/barcode/CaptureActivity.java
+END
+PreferencesActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/barcode/PreferencesActivity.java
+END
+ViewfinderResultPointCallback.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/barcode/ViewfinderResultPointCallback.java
+END
+ViewfinderView.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/barcode/ViewfinderView.java
+END
+Contents.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/barcode/Contents.java
+END
+IntentSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/barcode/IntentSource.java
+END
+BeepManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/barcode/BeepManager.java
+END
+DecodeFormatManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/barcode/DecodeFormatManager.java
+END
+CaptureActivityHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/barcode/CaptureActivityHandler.java
+END

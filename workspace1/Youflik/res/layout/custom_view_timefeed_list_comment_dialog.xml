@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="7dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="7dp"
+    android:orientation="horizontal" >
+
+    <com.youflik.youflik.utils.ImageViewRounded
+        android:id="@+id/custom_view_timefeed_listcomment_dialog_profilepic"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="3dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="4dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/custom_view_timefeed_listcomment_dialog_firstname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textStyle="bold" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/custom_view_timefeed_listcomment_dialog_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="all"
+            android:paddingRight="7dp"
+            android:singleLine="false"
+            android:text="Good jdshlfjdslfjklsjdfklsjdfkljsdklfjdsklfjkldsjfkldsjfkldsjfkljdsfkljdsklfjdsklfjdskljfkldsjfkldsjfkldsj"
+            android:textSize="15sp" >
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/custom_view_timefeed_listcomment_dialog_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:text="10 seconds ago"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="12sp"
+                android:visibility="invisible" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/custom_view_timefeed_listcomment_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="EDIT"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="13sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/custom_view_timefeed_listcomment_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="DELETE"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="13sp" >
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

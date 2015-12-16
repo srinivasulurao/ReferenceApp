@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dispatchScreen_listview_main"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <TextView
+        android:id="@+id/dispathch_listrow_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:text="sfdfg" />
+
+    <Button
+        android:id="@+id/dispathch_list_row_btn_order_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/dispathch_listrow_date"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/btn_bg_openorder"
+        android:text="Confirm"
+        android:textSize="18dp" />
+
+    <Button
+        android:id="@+id/dispatch_order_num_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/dispathch_list_row_btn_order_status"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/btn_bg"
+        android:gravity="center"
+        android:text="dflafla"
+        android:textSize="18dp" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/dispathch_list_row_btn_order_status"
+        android:layout_marginTop="5dp"
+        android:background="@color/white" />
+
+</RelativeLayout>

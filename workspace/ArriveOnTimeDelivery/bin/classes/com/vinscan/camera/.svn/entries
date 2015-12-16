@@ -1,0 +1,94 @@
+8
+
+dir
+58
+https://copperlabs.unfuddle.com/svn/copperlabs_aotd/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan/camera
+https://copperlabs.unfuddle.com/svn/copperlabs_aotd
+
+
+
+2013-07-24T06:34:05.903976Z
+41
+bharat
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f1fa43f-907b-4675-81e4-73ce5c20cf60
+
+AutoFocusManager.java
+file
+
+
+
+
+2013-09-12T06:43:40.000000Z
+a53c26be537bf9da4c958d7db155aa2b
+2013-07-24T06:34:05.903976Z
+41
+bharat
+
+CameraConfigurationManager.java
+file
+
+
+
+
+2013-09-12T06:43:40.000000Z
+a05a638ffab2dd64f4ce70ae844532b8
+2013-07-24T06:34:05.903976Z
+41
+bharat
+
+CameraManager.java
+file
+
+
+
+
+2013-09-12T06:43:40.000000Z
+c665a3f9463a13acd5dbcde85d29e7cb
+2013-07-24T06:34:05.903976Z
+41
+bharat
+
+FrontLightMode.java
+file
+
+
+
+
+2013-09-12T06:43:40.000000Z
+c1d9a1dfffe1e6f00aeedeabf86412c5
+2013-07-24T06:34:05.903976Z
+41
+bharat
+
+PreviewCallback.java
+file
+
+
+
+
+2013-09-12T06:43:40.000000Z
+12ec49556cd79a88642bc0421d8dc495
+2013-07-24T06:34:05.903976Z
+41
+bharat
+
+exposure
+dir
+
+open
+dir
+

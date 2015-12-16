@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" 
+    android:paddingBottom="05dp"
+    >
+    
+    <RelativeLayout
+        android:id="@+id/relMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/listbg1" >
+
+        <View
+            android:id="@+id/divider_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/relMorning"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray" />
+
+        <View
+            android:id="@+id/divider_vertical"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/relNight"
+            android:layout_alignTop="@+id/relMorning"
+            android:layout_centerInParent="true"
+            android:background="@color/gray" />
+
+        <RelativeLayout
+            android:id="@+id/relMorning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/divider_vertical" >
+
+            <FrameLayout
+                android:id="@+id/seekArcContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <com.devadvance.circularseekbar.CircularSeekBar
+                    xmlns:app="http://schemas.android.com/apk/res/com.omkar.myactivitytracker"
+                    android:id="@+id/morningSeekbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:circle_color="#DBD9D0"
+                    app:circle_fill="false"
+                    app:circle_stroke_width="10"
+                    app:circle_x_radius="100"
+                    app:circle_y_radius="100"
+                    app:end_angle="400"
+                    app:max="100"
+                    app:pointer_alpha_ontouch="100"
+                    app:pointer_halo_color="@color/blue1"
+                    app:start_angle="-220"
+                    app:use_custom_radii="false" />
+
+                <RelativeLayout
+                    android:id="@+id/relText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" >
+
+                    <TextView
+                        android:id="@+id/morningProgress"
+                        style="@style/DayEndProgress"
+                        android:layout_centerHorizontal="true" />
+
+                    <TextView
+                        android:id="@+id/txtPercent"
+                        style="@style/DayEndPercent"
+                        android:layout_alignTop="@+id/morningProgress"
+                        android:layout_marginLeft="30dp"
+                        android:text=""
+                        android:visibility="gone"
+                        android:layout_toRightOf="@+id/morningProgress" />
+
+                    <TextView
+                        android:id="@+id/txtMorning"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/morningProgress"
+                        android:text="MORNING"
+                        android:textStyle="italic"
+                        android:textSize="12sp"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="@color/black"
+                        android:typeface="sans" />
+                </RelativeLayout>
+            </FrameLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relNoon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/divider_vertical" >
+
+            <FrameLayout
+                android:id="@+id/seekArcContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <com.devadvance.circularseekbar.CircularSeekBar
+                    xmlns:app="http://schemas.android.com/apk/res/com.omkar.myactivitytracker"
+                    android:id="@+id/noonSeekbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:circle_color="#DBD9D0"
+                    app:circle_fill="false"
+                    app:circle_stroke_width="10"
+                    app:circle_x_radius="100"
+                    app:circle_y_radius="100"
+                    app:end_angle="400"
+                    app:max="100"
+                    app:pointer_alpha_ontouch="100"
+                    app:pointer_halo_color="@color/blue1"
+                    app:start_angle="-220"
+                    app:use_custom_radii="false" />
+
+                <RelativeLayout
+                    android:id="@+id/relText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" >
+
+                    <TextView
+                        android:id="@+id/noonProgress"
+                        style="@style/DayEndProgress"
+                        android:layout_centerHorizontal="true" />
+
+                    <TextView
+                        android:id="@+id/txtPercent"
+                        style="@style/DayEndPercent"
+                        android:layout_alignTop="@+id/noonProgress"
+                        android:layout_marginLeft="30dp"
+                        android:text="pts"
+                        android:visibility="gone"
+                        android:layout_toRightOf="@+id/noonProgress" />
+
+                    <TextView
+                        android:id="@+id/txtNoon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/noonProgress"
+                        android:text="Noon"
+                        android:textStyle="italic"
+                        android:textSize="12sp"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="@color/black"
+                        android:typeface="sans" />
+                </RelativeLayout>
+            </FrameLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relEvening"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignLeft="@+id/relNoon"
+            android:layout_below="@+id/divider_horizontal" >
+
+            <FrameLayout
+                android:id="@+id/seekArcContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <com.devadvance.circularseekbar.CircularSeekBar
+                    xmlns:app="http://schemas.android.com/apk/res/com.omkar.myactivitytracker"
+                    android:id="@+id/eveningSeekbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:circle_color="#DBD9D0"
+                    app:circle_fill="false"
+                    app:circle_stroke_width="10"
+                    app:circle_x_radius="100"
+                    app:circle_y_radius="100"
+                    app:end_angle="400"
+                    app:max="100"
+                    app:pointer_alpha_ontouch="100"
+                    app:pointer_halo_color="@color/blue1"
+                    app:start_angle="-220"
+                    app:use_custom_radii="false" />
+
+                <RelativeLayout
+                    android:id="@+id/relText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" >
+
+                    <TextView
+                        android:id="@+id/eveningProgress"
+                        style="@style/DayEndProgress"
+                        android:layout_centerHorizontal="true" />
+
+                    <TextView
+                        android:id="@+id/txtPercent"
+                        style="@style/DayEndPercent"
+                        android:layout_alignTop="@+id/eveningProgress"
+                        android:layout_marginLeft="30dp"
+                        android:text="pts"
+                        android:visibility="gone"
+                        android:layout_toRightOf="@+id/eveningProgress" />
+
+                    <TextView
+                        android:id="@+id/txtEvening"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/eveningProgress"
+                        android:text="Evening"
+                        android:textStyle="italic"
+                        android:textSize="12sp"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="@color/black"
+                        android:typeface="sans" />
+                </RelativeLayout>
+            </FrameLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relNight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/relMorning"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/divider_horizontal" >
+
+            <FrameLayout
+                android:id="@+id/seekArcContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <com.devadvance.circularseekbar.CircularSeekBar
+                    xmlns:app="http://schemas.android.com/apk/res/com.omkar.myactivitytracker"
+                    android:id="@+id/nightSeekbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:circle_color="#DBD9D0"
+                    app:circle_fill="false"
+                    app:circle_stroke_width="10"
+                    app:circle_x_radius="100"
+                    app:circle_y_radius="100"
+                    app:end_angle="400"
+                    app:max="100"
+                    app:pointer_alpha_ontouch="100"
+                    app:pointer_halo_color="@color/blue1"
+                    app:start_angle="-220"
+                    app:use_custom_radii="false" />
+
+                <RelativeLayout
+                    android:id="@+id/relText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" >
+
+                    <TextView
+                        android:id="@+id/nightProgress"
+                        style="@style/DayEndProgress"
+                        android:layout_centerHorizontal="true" />
+
+                    <TextView
+                        android:id="@+id/txtPercent"
+                        style="@style/DayEndPercent"
+                        android:layout_alignTop="@+id/nightProgress"
+                        android:layout_marginLeft="30dp"
+                        android:text="pts"
+                        android:visibility="gone"
+                        android:layout_toRightOf="@+id/nightProgress" />
+
+                    <TextView
+                        android:id="@+id/txtNight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/nightProgress"
+                        android:text="Night"
+                        android:textStyle="italic"
+                        android:textSize="12sp"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="@color/black"
+                        android:typeface="sans" />
+                </RelativeLayout>
+            </FrameLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/relTodo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="05dp"
+        android:visibility="gone"
+        android:layout_below="@+id/relMain"
+        android:background="@color/listbg2"
+        >
+        
+        <TextView 
+            android:id="@+id/txtToDo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Tap to view Todo points"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            />
+        
+    </RelativeLayout>
+    
+    <Button 
+        android:id="@+id/btnClose"
+        style="@style/ButtonBlue"
+        android:layout_marginTop="10dp"
+        android:text="Cancel"
+        android:layout_marginLeft="05dp"
+        android:layout_marginRight="05dp"
+        android:layout_marginBottom="05dp"
+        android:layout_below="@+id/relTodo"
+        />
+    
+      <Button 
+        android:id="@+id/btnDelete"
+        style="@style/ButtonBlue"
+        android:layout_marginTop="10dp"
+        android:text="Delete"
+        android:layout_marginLeft="05dp"
+        android:layout_marginRight="05dp"
+        android:layout_marginBottom="05dp"
+        android:layout_below="@+id/btnClose"
+        />
+
+</RelativeLayout>

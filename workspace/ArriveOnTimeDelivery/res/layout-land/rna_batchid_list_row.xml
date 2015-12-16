@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+     >
+    
+    <TextView 
+        android:layout_alignParentTop="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/batchid_date_txtView"
+        android:layout_alignParentRight="true" 
+        android:text="djflsjfls"     
+        android:textStyle="bold"
+        android:textColor="@color/black"  
+        android:layout_marginRight="10dp"/>
+    
+     <LinearLayout
+        	    android:layout_below="@+id/batchid_date_txtView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3" >
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" >
+
+                    <Button
+                        android:id="@+id/rna_batchId_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/btn_background"
+                        android:text="BatchId"
+                        android:textStyle="bold"
+                        android:textSize="18dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" >
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" >
+
+                    <Button
+                        android:id="@+id/rna_batchId_status_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/btn_background"
+                        android:textStyle="bold"    
+                        android:layout_marginTop="05dp"                   
+                        android:textSize="18dp" />
+                </RelativeLayout>
+            </LinearLayout>
+    
+</RelativeLayout>   
+    

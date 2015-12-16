@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/llheader" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/llone"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_below="@+id/llheader"
+                android:layout_marginTop="50dp"
+                android:layout_weight="50"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="50" >
+
+                    <RelativeLayout
+                        android:id="@+id/rrprofile"
+                        android:layout_width="200dp"
+                        android:layout_height="175dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/thumb_image_shape"
+                        android:padding="10dp" >
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true" >
+
+                            <ImageView
+                                android:id="@+id/improductregst"
+                                android:layout_width="75dp"
+                                android:layout_height="75dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:src="@drawable/profile_imag" />
+
+                            <TextView
+                                android:id="@+id/tvcustomerrest"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/improductregst"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="2dp"
+                                android:layout_marginTop="2dp"
+                                android:gravity="center"
+                                android:text="@string/profile_setting"
+                                android:textColor="@android:color/black"
+                                android:textSize="18dp"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="50"
+                    android:orientation="vertical" >
+
+                    <RelativeLayout
+                        android:id="@+id/rrtakeexample"
+                        android:layout_width="200dp"
+                        android:layout_height="175dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/thumb_image_shape"
+                        android:padding="10dp" >
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true" >
+
+                            <ImageView
+                                android:id="@+id/imglance"
+                                android:layout_width="75dp"
+                                android:layout_height="75dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:src="@drawable/take_exam" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/imglance"
+                                android:layout_centerHorizontal="true"
+                                android:gravity="center"
+                                android:text="@string/take_exam"
+                                android:textColor="@android:color/black"
+                                android:textSize="18dp"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="50"
+                    android:orientation="vertical" >
+
+                    <RelativeLayout
+                        android:id="@+id/rrcontacts"
+                        android:layout_width="200dp"
+                        android:layout_height="175dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/thumb_image_shape"
+                        android:padding="10dp" >
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true" >
+
+                            <ImageView
+                                android:id="@+id/imvideocall"
+                                android:layout_width="75dp"
+                                android:layout_height="75dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:src="@drawable/contact_us" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/imvideocall"
+                                android:layout_centerHorizontal="true"
+                                android:gravity="center"
+                                android:text="@string/contact_trainer"
+                                android:textColor="@android:color/black"
+                                android:textSize="18dp"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lltwo"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_below="@+id/llheader"
+                android:layout_marginTop="50dp"
+                android:layout_weight="50"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="50"
+                    android:orientation="vertical" >
+
+                    <RelativeLayout
+                        android:id="@+id/rrblog"
+                        android:layout_width="200dp"
+                        android:layout_height="175dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/thumb_image_shape"
+                        android:padding="10dp" >
+
+                        <ImageView
+                            android:id="@+id/ivnew"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/new_icon" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true" >
+
+                            <ImageView
+                                android:id="@+id/ivblog"
+                                android:layout_width="75dp"
+                                android:layout_height="75dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:src="@drawable/blog_icon" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/ivblog"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="2dp"
+                                android:gravity="center"
+                                android:text="@string/new_update"
+                                android:textColor="@android:color/black"
+                                android:textSize="18dp"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="50"
+                    android:orientation="vertical" >
+
+                    <RelativeLayout
+                        android:id="@+id/rrviewresult"
+                        android:layout_width="200dp"
+                        android:layout_height="175dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/thumb_image_shape"
+                        android:padding="10dp" >
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true" >
+
+                            <ImageView
+                                android:id="@+id/imcomplaint"
+                                android:layout_width="75dp"
+                                android:layout_height="75dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:src="@drawable/view_result" />
+
+                            <TextView
+                                android:id="@+id/tvviewresult"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/imcomplaint"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="2dp"
+                                android:gravity="center"
+                                android:text="@string/view_result"
+                                android:textColor="@android:color/black"
+                                android:textSize="18dp"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="50"
+                    android:orientation="vertical" >
+                    
+                    <RelativeLayout
+                        android:id="@+id/rrcertificate"
+                        android:layout_width="200dp"
+                        android:layout_height="175dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/thumb_image_shape"
+                        android:padding="10dp" >
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true" >
+
+                            <ImageView
+                                android:id="@+id/ivcertificate"
+                                android:layout_width="75dp"
+                                android:layout_height="75dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:src="@drawable/certificate" />
+
+                            <TextView
+                                android:id="@+id/tvcertificate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/ivcertificate"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="2dp"
+                                android:gravity="center"
+                                android:text="@string/certificate"
+                                android:textColor="@android:color/black"
+                                android:textSize="18dp"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

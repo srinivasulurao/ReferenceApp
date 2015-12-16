@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:layout_marginLeft="5dp"
+        android:orientation="horizontal" >
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/status_text_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="To: "
+                            android:textColor="#989898"
+                            android:textSize="21dp" />
+
+                        <Spinner
+                            android:id="@+id/status_privacy"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="7dp"
+                            android:spinnerMode="dialog" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/status_custom_friends"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/border_with_no_background"
+                        android:hint="Add Custom Friends"
+                        android:paddingBottom="7dp"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="7dp"
+                        android:textColor="#3B9DDA"
+                        android:textSize="17dp"
+                        android:visibility="gone" />
+
+                    <EditText
+                        android:id="@+id/PostMessage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@android:color/transparent"
+                        android:inputType="textMultiLine|textCapSentences"
+                        android:textSize="18dp" >
+
+                        <requestFocus />
+                    </EditText>
+
+                    <LinearLayout
+                        android:id="@+id/loc_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:visibility="gone" >
+
+                        <com.youflik.youflik.utils.CustomAutoComplectTextView
+                            android:id="@+id/status_loc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Add Location"
+                            android:paddingBottom="10dp"
+                            android:paddingLeft="7dp"
+                            android:paddingTop="9dp"
+                            android:singleLine="true"
+                            android:textColor="#3B9DDA"
+                            android:textSize="18dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/linearLayout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/status_text_container"
+                    android:layout_marginBottom="7dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="25dp" >
+
+                    <ImageView
+                        android:id="@+id/post_image"
+                        android:layout_width="180dp"
+                        android:layout_height="180dp"
+                        android:scaleType="fitXY"
+                        android:src="@android:color/background_dark" />
+
+                    <ImageView
+                        android:id="@+id/post_imageclose"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignRight="@+id/post_image"
+                        android:alpha="1"
+                        android:background="@drawable/post_cross" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</LinearLayout>

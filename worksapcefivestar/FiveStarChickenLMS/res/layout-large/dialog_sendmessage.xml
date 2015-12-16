@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:paddingBottom="5dp"
+    android:background="@drawable/white_round_border"
+    android:minWidth="400dp"
+    android:orientation="vertical" >
+    
+     <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+    
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/send_message"
+        android:textColor="@android:color/black"
+        android:textSize="30dp" />
+    
+     <ImageView
+                android:id="@+id/ivclose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:padding="10dp"
+                android:src="@drawable/btn_cross" />
+     </RelativeLayout>
+
+    <EditText
+        android:id="@+id/etmessage"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llheader"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="3dp"
+        android:background="@color/gray"
+        android:ellipsize="start"
+        android:hint="@string/write_message_here"
+        android:gravity="center"
+        android:imeOptions="actionNext"
+        android:inputType="textMultiLine"
+        android:lines="6"
+        android:padding="5dp"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/employee_login"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/select_button"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/send"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>

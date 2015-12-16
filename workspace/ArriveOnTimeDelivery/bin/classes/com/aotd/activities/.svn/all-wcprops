@@ -1,0 +1,149 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/copperlabs_aotd/!svn/ver/58/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities
+END
+OrdersRouteOptimizationListActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities/OrdersRouteOptimizationListActivity.java
+END
+DispatchTabActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/copperlabs_aotd/!svn/ver/53/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities/DispatchTabActivity.java
+END
+DeliveryOrderInfoPickUp.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/copperlabs_aotd/!svn/ver/42/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities/DeliveryOrderInfoPickUp.java
+END
+LoginActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities/LoginActivity.java
+END
+DispatchPresentTabActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/copperlabs_aotd/!svn/ver/58/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities/DispatchPresentTabActivity.java
+END
+DeliveryOrderInfoDelivery.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/copperlabs_aotd/!svn/ver/52/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities/DeliveryOrderInfoDelivery.java
+END
+DispatchFutureTabActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/copperlabs_aotd/!svn/ver/43/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities/DispatchFutureTabActivity.java
+END
+RegistrationAcivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities/RegistrationAcivity.java
+END
+DriverHistoryScreenActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities/DriverHistoryScreenActivity.java
+END
+DriverListScreenActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities/DriverListScreenActivity.java
+END
+DriverGpsScreenActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities/DriverGpsScreenActivity.java
+END
+DownLoadAcceptPDF.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/copperlabs_aotd/!svn/ver/52/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities/DownLoadAcceptPDF.java
+END
+SyncData.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/copperlabs_aotd/!svn/ver/52/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities/SyncData.java
+END
+OrdersRouteOptimizationMapActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/copperlabs_aotd/!svn/ver/47/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities/OrdersRouteOptimizationMapActivity.java
+END
+PdfSignatureActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/copperlabs_aotd/!svn/ver/47/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities/PdfSignatureActivity.java
+END
+RoundTripActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/copperlabs_aotd/!svn/ver/52/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities/RoundTripActivity.java
+END
+DispatchPastTabActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/copperlabs_aotd/!svn/ver/58/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities/DispatchPastTabActivity.java
+END
+MainDispatchScreenTabView.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/copperlabs_aotd/!svn/ver/47/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities/MainDispatchScreenTabView.java
+END
+GetDistance.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/copperlabs_aotd/!svn/ver/47/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities/GetDistance.java
+END
+SignatureActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/copperlabs_aotd/!svn/ver/47/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities/SignatureActivity.java
+END
+NewListOrdersRouteOptimizationActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/copperlabs_aotd/!svn/ver/47/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities/NewListOrdersRouteOptimizationActivity.java
+END
+AOTDSplashActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities/AOTDSplashActivity.java
+END
+NewOrdersRouteOptimizationMapActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/copperlabs_aotd/!svn/ver/47/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities/NewOrdersRouteOptimizationMapActivity.java
+END
+DriverEachOrderDetailsActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/activities/DriverEachOrderDetailsActivity.java
+END

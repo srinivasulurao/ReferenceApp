@@ -1,0 +1,45 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E1E1E1"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/connection_search"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:autoText="true"
+        android:background="@android:color/white"
+        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:hint="search..."
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:paddingBottom="14dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="14dp"
+        android:singleLine="true"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/noconn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="No Friends Found"
+        android:textColor="@android:color/black"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/list_connections"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="5dp"
+        android:divider="#b5b5b5"
+        android:dividerHeight="1dp"
+        android:listSelector="@drawable/list_selector" >
+    </ListView>
+
+</LinearLayout>

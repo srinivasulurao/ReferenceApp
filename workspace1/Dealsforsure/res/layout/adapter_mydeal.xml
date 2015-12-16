@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlmain"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFCC33"
+    android:paddingBottom="5dp"
+    android:paddingLeft="@dimen/padding_main"
+    android:paddingRight="@dimen/padding_main"
+    android:paddingTop="@dimen/padding_main" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btnselected"
+        android:padding="3dp" >
+
+        <LinearLayout
+            android:id="@+id/lytMain"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="1dp"
+                android:background="#FFF" >
+
+                <ImageView
+                    android:id="@+id/icmarker"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_latest_blue" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/lblNameCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:padding="3dp"
+                    android:text="15% OFF in SHOWOFF"
+                    android:textColor="@color/text_title" />
+
+                <TextView
+                    android:id="@+id/lblofferDeatil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:padding="3dp"
+                    android:text="15% OFF in SHOWOFF"
+                    android:textColor="@color/text_title" />
+
+                <TextView
+                    android:id="@+id/bar"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#80FF00" />
+
+                <LinearLayout
+                    android:id="@+id/lytPriceDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/Background_main_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/lblcouponcode"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="Coupon Code :"
+                        android:textColor="@color/text_deal_detail"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/couponcode"
+                        style="@android:style/TextAppearance.Medium"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="SAMPLE"
+                        android:textColor="#FF8000"
+                        android:textSize="15dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/lydate"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lytMain" >
+
+            <TextView
+                android:id="@+id/lblpurcahsedate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="Purchase Date : "
+                android:textColor="@color/text_title" />
+
+            <TextView
+                android:id="@+id/tvpurchasedate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/lblpurcahsedate"
+                android:padding="3dp"
+                android:text="15% OFF in SHOWOFF"
+                android:textColor="@color/text_title" />
+
+            <TextView
+                android:id="@+id/lblexpireddate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lblpurcahsedate"
+                android:padding="3dp"
+                android:text="Expired Date     : "
+                android:textColor="@color/text_title" />
+
+            <TextView
+                android:id="@+id/tvexpireddate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lblpurcahsedate"
+                android:layout_toRightOf="@+id/lblexpireddate"
+                android:padding="3dp"
+                android:text="15% OFF in SHOWOFF"
+                android:textColor="@color/text_title" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

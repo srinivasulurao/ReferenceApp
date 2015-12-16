@@ -1,0 +1,49 @@
+8
+
+dir
+58
+https://copperlabs.unfuddle.com/svn/copperlabs_aotd/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/vinscan
+https://copperlabs.unfuddle.com/svn/copperlabs_aotd
+
+
+
+2013-09-10T09:36:23.844475Z
+42
+bharat
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f1fa43f-907b-4675-81e4-73ce5c20cf60
+
+barcode
+dir
+
+camera
+dir
+
+common
+dir
+
+encode
+dir
+
+pref
+dir
+
+result
+dir
+
+wifi
+dir
+

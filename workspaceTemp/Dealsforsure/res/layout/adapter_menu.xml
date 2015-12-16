@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_menu"
+    android:layout_marginTop="@dimen/margin_menu"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/padding_menu"
+    android:paddingRight="@dimen/padding_menu" >
+
+    <ImageView
+        android:id="@+id/ic_img"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+      
+        android:background="@drawable/ic_search"
+        android:layout_gravity="center_vertical"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtCategory"
+            style="@android:style/TextAppearance.Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:padding="@dimen/padding_menu_list_row"
+            android:textColor="#71acd6" />
+
+        <TextView
+            android:id="@+id/txtCounter"
+            style="@android:style/TextAppearance.Small"
+            android:layout_width="fill_parent"
+           android:text="500"
+           android:visibility="gone"
+           android:gravity="center"
+           android:background="@drawable/counter_bg"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.75"
+             android:layout_marginTop="5dp"
+             android:layout_marginBottom="5dp"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+</LinearLayout>

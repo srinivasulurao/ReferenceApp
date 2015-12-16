@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_header"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/header_height"
+    android:background="@color/red">
+    
+    <ImageView
+            android:id="@+id/header_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/h8">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="@dimen/back_button_height"
+            android:layout_height="@dimen/back_button_height"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/back"
+            android:onClick="onBackEvent"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/tv_header"
+            android:layout_width="@dimen/header"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:lines="2"
+            android:textColor="@color/white"
+            android:textSize="@dimen/h2"
+            android:textStyle="bold" />
+        
+        <TextView android:id="@+id/btn_save"
+            style="@style/style_lable"
+            android:text="Save"
+            android:layout_alignParentRight="true"
+            android:textSize="@dimen/h3"
+            android:padding="@dimen/h6"
+            android:layout_centerVertical="true"
+            android:textColor="@color/white"
+            android:visibility="gone"/>
+        
+    </RelativeLayout>
+
+</RelativeLayout>

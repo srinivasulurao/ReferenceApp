@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    
+         <TextView
+            android:id="@+id/tvvoicey"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginTop="5dp"
+            android:padding="5dp"
+            android:text="Voicey"
+            android:background="@drawable/list_background1"
+            android:textColor="@color/gray"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:typeface="serif" />
+         
+          <TextView
+            android:id="@+id/tvwhatsapp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginTop="5dp"
+              android:layout_below="@+id/tvvoicey"
+            android:padding="5dp"
+            android:text="Whats app"
+            android:background="@drawable/list_background2"
+            android:textColor="@color/gray"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:typeface="serif" />
+          
+           <TextView
+            android:id="@+id/tvphone"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginTop="5dp"
+            android:padding="5dp"
+             android:layout_below="@+id/tvwhatsapp"
+            android:text="Phone"
+            android:background="@drawable/list_background3"
+            android:textColor="@color/gray"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:typeface="serif" />
+           
+           
+           
+            <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvphone"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tvcancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="cancel"
+            android:textColor="@color/gray"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+    
+    </RelativeLayout>

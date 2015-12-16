@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Foodzu</string>
+    <string name="app_id">934045336634140</string>
+        
+    <!-- 1587502721536138 // roslin live-->
+
+    <!-- 846191062132272 // roslin debug-->
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="action_search">Search</string>
+    <string name="action_MyCart">My Cart</string>
+    <string name="action_Login">Login</string>
+    <string name="action_Logout">Logout</string>
+    <string name="action_orders">My Orders</string>
+    <string name="action_favorite">My Favorites</string>
+    
+    <string name="action_profile">Profile</string>    
+    <string name="action_SignUp">Sign Up</string>  
+    <string name="action_Aboutus">About Foodzu</string>
+    <string name="action_share">Tell a Friend</string>
+    
+    <string name="Login_message">Login to avail benefits.</string>
+    <string name="terms_and_condition">I agree to the Terms and Conditions </string>
+    <string name="i_confirm">I agree to the Terms and Conditions &amp; confirm my order.</string>
+    <string name="show_password">Show Password </string>
+    <string name="cart_empty">Cart is Empty!</string>
+    <string name="place_order">PLACE ORDER</string>
+    <string name="total_text">Total</string>
+    <string name="shipping_text">Shipping</string>
+    <string name="discount_text">Discount</string>
+    <string name="service_text">Service Tax</string>
+    <string name="vat_text">VAT</string>
+    <string name="payable_text">Payable</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="shipping_details">Shipping Details</string>
+    <string name="step1">STEP 1</string>
+    <string name="step2">STEP 2</string>
+    <string name="btn_save">SAVE</string>
+    <string name="btn_savecont">Save &amp; Continue</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="confirm">Confirm Now</string>
+    <string name="continue_text">Continue</string> 
+    <string name="OK_text">Place Order</string> 
+    <string name="Change_text"><u>Change</u></string>   
+    <string name="text_Login">Login</string>    
+    <string name="text_count">0</string>    
+    <string name="delivery_address">Delivery Address</string>  
+    <string name="Shiping_address">Shipping Address</string>     
+    <string name="Cur_Loc">Current Locality</string> 
+     <string name="apply">Apply</string> 
+     <string name="clear_filter">Clear Filter</string>
+     
+     <string name="filters">FILTERS</string>
+    <string name="sort_by">SORT BY</string>
+    <string name="popularity">Popularity</string>
+    <string name="high_to_low">Price--High to Low</string>
+    <string name="low_to_high">Price--Low to High</string>
+    <string name="newest_first">Newest First</string>
+
+    <string name="product_details">Product Info</string>
+    <string name="page_register">SIGN UP</string>
+    <string name="page_orders">MY ORDERS</string>
+    <string name="page_login">LOGIN</string>
+    <string name="page_checkout">Checkout</string>
+    <string name="add_address">Shipping Address</string>
+    <string name="Rs">\u20B9</string> 
+    <string-array name="dropdown">
+        <item>First Item</item>
+        <item>Second Item</item>
+    </string-array>
+</resources>

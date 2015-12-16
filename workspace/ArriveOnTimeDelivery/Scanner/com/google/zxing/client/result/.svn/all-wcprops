@@ -1,0 +1,215 @@
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result
+END
+AddressBookDoCoMoResultParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/AddressBookDoCoMoResultParser.java
+END
+AddressBookParsedResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/AddressBookParsedResult.java
+END
+ResultParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/ResultParser.java
+END
+SMSTOMMSTOResultParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/SMSTOMMSTOResultParser.java
+END
+ProductParsedResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/ProductParsedResult.java
+END
+TelParsedResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/TelParsedResult.java
+END
+URIParsedResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/URIParsedResult.java
+END
+VEventResultParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/VEventResultParser.java
+END
+GeoResultParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/GeoResultParser.java
+END
+ExpandedProductParsedResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/ExpandedProductParsedResult.java
+END
+EmailAddressResultParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/EmailAddressResultParser.java
+END
+AbstractDoCoMoResultParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/AbstractDoCoMoResultParser.java
+END
+URLTOResultParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/URLTOResultParser.java
+END
+AddressBookAUResultParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/AddressBookAUResultParser.java
+END
+TextParsedResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/TextParsedResult.java
+END
+VCardResultParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/VCardResultParser.java
+END
+CalendarParsedResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/CalendarParsedResult.java
+END
+BookmarkDoCoMoResultParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/BookmarkDoCoMoResultParser.java
+END
+TelResultParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/TelResultParser.java
+END
+EmailDoCoMoResultParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/EmailDoCoMoResultParser.java
+END
+ISBNResultParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/ISBNResultParser.java
+END
+WifiResultParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/WifiResultParser.java
+END
+ISBNParsedResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/ISBNParsedResult.java
+END
+ParsedResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/ParsedResult.java
+END
+URIResultParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/URIResultParser.java
+END
+BizcardResultParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/BizcardResultParser.java
+END
+SMTPResultParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/SMTPResultParser.java
+END
+SMSMMSResultParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/SMSMMSResultParser.java
+END
+GeoParsedResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/GeoParsedResult.java
+END
+SMSParsedResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/SMSParsedResult.java
+END
+ParsedResultType.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/ParsedResultType.java
+END
+EmailAddressParsedResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/EmailAddressParsedResult.java
+END
+WifiParsedResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/WifiParsedResult.java
+END
+ProductResultParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/ProductResultParser.java
+END
+ExpandedProductResultParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/client/result/ExpandedProductResultParser.java
+END

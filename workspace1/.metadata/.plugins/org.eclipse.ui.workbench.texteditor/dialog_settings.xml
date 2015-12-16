@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="347" key="DIALOG_WIDTH"/>
+		<item value="164" key="DIALOG_Y_ORIGIN"/>
+		<item value="1133" key="DIALOG_X_ORIGIN"/>
+		<item value="511" key="DIALOG_HEIGHT"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="true" key="wrap"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
+		<item value="false" key="incremental"/>
+		<item value="false" key="wholeword"/>
+		<item value="getAddressTask" key="selection"/>
+		<list key="findhistory">
+			<item value="getAddressTask"/>
+			<item value="service_saveaddress"/>
+			<item value="getAddress"/>
+			<item value="twitter"/>
+			<item value="activityshare"/>
+			<item value="activitysetting"/>
+			<item value="setting"/>
+			<item value="tvUserName"/>
+		</list>
+		<list key="replacehistory">
+			<item value=""/>
+			<item value="in.dealsforsure"/>
+			<item value="adapterReview"/>
+			<item value="review"/>
+			<item value="Review"/>
+			<item value="13dp"/>
+			<item value="dealsforsure"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item value="275" key="DIALOG_Y_ORIGIN"/>
+		<item value="492" key="DIALOG_X_ORIGIN"/>
+	</section>
+</section>

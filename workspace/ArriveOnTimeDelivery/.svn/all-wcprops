@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/copperlabs_aotd/!svn/ver/58/AOTD/Version_2.0/ArriveOnTimeDelivery
+END
+AndroidManifest.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/copperlabs_aotd/!svn/ver/50/AOTD/Version_2.0/ArriveOnTimeDelivery/AndroidManifest.xml
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/.classpath
+END
+default.properties
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/default.properties
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/.project
+END
+proguard.cfg
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/proguard.cfg
+END
+lint.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/lint.xml
+END
+project.properties
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/copperlabs_aotd/!svn/ver/51/AOTD/Version_2.0/ArriveOnTimeDelivery/project.properties
+END

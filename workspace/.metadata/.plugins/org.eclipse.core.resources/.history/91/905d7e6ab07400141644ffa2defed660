@@ -1,0 +1,1748 @@
+package com.voicey.activity;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.TypedArray;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.media.MediaRecorder;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.SystemClock;
+import android.preference.PreferenceManager;
+import android.provider.MediaStore;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.SeekBar;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
+
+import com.google.gson.Gson;
+import com.voicey.adapter.CategoryAdapter;
+import com.voicey.adapter.NavDrawerListAdapter;
+import com.voicey.fragment.FriendListFragment;
+import com.voicey.fragment.ListFragment;
+import com.voicey.fragment.UserEditFragment;
+import com.voicey.model.AudioInfo;
+import com.voicey.model.Category;
+import com.voicey.model.MenuObject;
+import com.voicey.utils.Constants;
+import com.voicey.webservices.Webservices;
+
+public class HomeActivity extends Activity {
+
+	private DrawerLayout mDrawerLayout;
+	private ListView mDrawerList;
+	private ActionBarDrawerToggle mDrawerToggle;
+	private TypedArray navMenuIcons;
+	private String[] navMenuTitles;
+	private ArrayList<MenuObject> navDrawerItems;
+	private MenuObject menuObject;
+	private CharSequence mTitle;
+	private CharSequence mDrawerTitle;
+	private NavDrawerListAdapter adapter;
+	private Boolean isActivePopup;
+	private Spinner spCategory, spControl;
+	private long startTime = 0L;
+	private Handler customHandler = new Handler();
+	private Handler mHandler = new Handler();
+	long timeInMilliseconds = 0L;
+	long timeSwapBuff = 0L;
+	long updatedTime = 0L;
+	private SeekBar songProgressBar;
+	private String outputFile = null, categoryId;
+	private MediaRecorder myAudioRecorder;
+	String audio_file_name = "";
+	MediaPlayer m;
+	String userCode, userId, userName, popupControl,shareCount,requestCount;
+	ImageView ivstop, ivplay, ivAddPhoto;
+	ImageButton ivstart;
+	TextView tvTimmer, tvComment, tvmaxTime, tvcancel, tvsave, 
+			tvUserId;
+	EditText etTitle, etMood, tvAdd;
+	
+ TextView tvRequestCount;
+	TextView tvShareCount;
+	RelativeLayout llPublic;
+	RelativeLayout llUser;
+	ImageView ivMaximize, ivMinimize, ivClose;
+	ToggleButton tgmakepublic, tguser;
+	Bitmap imagebitmap;
+	SharedPreferences sharedPreferences;
+	Webservices Webservices = new Webservices();
+	private AudioInfo audioInfo;
+	private final static int ACTIVITY_TAKE_PHOTO = 1;
+	private static int RESULT_LOAD_IMAGE = 2;
+	Gson gson;
+	List<String> selItemList;
+
+	final int PIC_CROP = 4044;
+
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.home);
+
+		initilizeUI();
+
+		/*
+		 * Bundle bundle = getIntent().getExtras(); gson = new Gson();
+		 * audioInfoList=new ArrayList<AudioInfo>(); selItemList=new
+		 * ArrayList<String>(); selItemList =
+		 * bundle.getStringArrayList("audioInfoList");
+		 * 
+		 * for(int i=0;i<selItemList.size();i++){
+		 * 
+		 * String audioInfoStr=selItemList.get(i);
+		 * 
+		 * audioInfo = gson.fromJson(audioInfoStr, AudioInfo.class);
+		 * audioInfoList.add(audioInfo); }
+		 */
+		sharedPreferences = PreferenceManager
+				.getDefaultSharedPreferences(HomeActivity.this);
+		userName = sharedPreferences.getString("userName", null);
+
+		if (userName == null) {
+			displayAddUser();
+			//
+		} else {
+
+			if (savedInstanceState == null) {
+				// on first time display view for first nav item
+				displayView(0,"normal");
+			}
+		}
+
+	}
+
+	@SuppressLint("NewApi")
+	private void initilizeUI() {
+
+		sharedPreferences = PreferenceManager
+				.getDefaultSharedPreferences(HomeActivity.this);
+		userCode = sharedPreferences.getString("userCode", null);
+		userId = sharedPreferences.getString("userId", null);
+		navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
+
+		// nav drawer icons from resources
+		navMenuIcons = getResources()
+				.obtainTypedArray(R.array.nav_drawer_icons);
+
+		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
+
+		navDrawerItems = new ArrayList<MenuObject>();
+
+		// adding nav drawer items to array
+		// Home
+		navDrawerItems.add(new MenuObject(navMenuTitles[0], navMenuIcons
+				.getResourceId(0, -1)));
+		navDrawerItems.add(new MenuObject(navMenuTitles[1], navMenuIcons
+				.getResourceId(0, -1)));
+		navDrawerItems.add(new MenuObject(navMenuTitles[2] + userCode,
+				navMenuIcons.getResourceId(0, -1)));
+		navDrawerItems.add(new MenuObject(navMenuTitles[3], navMenuIcons
+				.getResourceId(0, -1)));
+		navDrawerItems.add(new MenuObject(navMenuTitles[4], navMenuIcons
+				.getResourceId(0, -1)));
+		navDrawerItems.add(new MenuObject(navMenuTitles[5], navMenuIcons
+				.getResourceId(0, -1)));
+
+		// Find People
+
+		navMenuIcons.recycle();
+
+		mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
+
+		adapter = new NavDrawerListAdapter(getApplicationContext(),
+				navDrawerItems);
+		mDrawerList.setAdapter(adapter);
+
+		// enabling action bar app icon and behaving it as toggle button
+
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+
+		/*
+		 * getActionBar().setDisplayShowTitleEnabled(false);
+		 * getActionBar().setDisplayShowCustomEnabled(true);
+		 */
+		// LayoutInflater li = LayoutInflater.from(this);
+
+		// View customView = li.inflate(R.layout.action_bar, null);
+		// ab.setCustomView(customView);
+
+		final ViewGroup actionBarLayout = (ViewGroup) getLayoutInflater()
+				.inflate(R.layout.action_bar, null);
+
+		getActionBar().setCustomView(actionBarLayout);
+
+		// getActionBar().setCustomView(R.layout.action_bar);
+		getActionBar().setDisplayShowTitleEnabled(false);
+		getActionBar().setDisplayShowCustomEnabled(true);
+		getActionBar().setDisplayUseLogoEnabled(false);
+		getActionBar().setIcon(
+				new ColorDrawable(getResources().getColor(
+						android.R.color.transparent)));
+		
+		shareCount = sharedPreferences.getString("userId", null);
+		requestCount=sharedPreferences.getString("userId", null);
+		// getActionBar().setDisplayShowHomeEnabled(false);
+		isActivePopup = true;
+		ImageView ibItem1 = (ImageView) actionBarLayout
+				.findViewById(R.id.actionBarLogo);
+	
+		tvRequestCount= (TextView) actionBarLayout
+				.findViewById(R.id.tvrequestcount);
+		tvShareCount= (TextView) actionBarLayout
+				.findViewById(R.id.tvsharecount);
+		
+		
+		tvRequestCount.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				displayView(3,"requests");
+				
+				tvRequestCount.setVisibility(View.GONE);
+			}
+		});
+		
+		tvShareCount.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				
+				tvShareCount.setVisibility(View.GONE);
+				displayView(0,"inbox");
+			}
+		});
+		
+		ibItem1.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				displayView(0,"normal");
+			}
+		});
+		
+		
+		
+
+		File f = new File(Environment.getExternalStorageDirectory() + "/"
+				+ Constants.app_folder + "");
+		if (f.mkdir()) {
+			System.out.println("Directory created");
+		} else {
+			System.out.println("Directory is not created");
+		}
+		imagebitmap = null;
+
+		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+				R.drawable.menu, R.string.app_name,
+
+				R.string.app_name
+
+		) {
+			public void onDrawerClosed(View view) {
+				// getActionBar().setTitle(mTitle);
+				// calling onPrepareOptionsMenu() to show action bar icons
+				invalidateOptionsMenu();
+			}
+
+			public void onDrawerOpened(View drawerView) {
+				// getActionBar().setTitle(mDrawerTitle);
+				// calling onPrepareOptionsMenu() to hide action bar icons
+				invalidateOptionsMenu();
+			}
+		};
+		mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+	}
+
+	void displayAddUser() {
+
+		final EditText etUserName;
+		TextView tvSave, tvuserId;
+
+		LayoutInflater li = LayoutInflater.from(this);
+		View promptsView = li.inflate(R.layout.add_username, null);
+
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+		alertDialogBuilder.setCancelable(false);
+		alertDialogBuilder.setView(promptsView);
+
+		final AlertDialog alertDialog = alertDialogBuilder.create();
+
+		etUserName = (EditText) promptsView.findViewById(R.id.etname);
+		tvuserId = (TextView) promptsView.findViewById(R.id.tvuseridvaluel);
+		tvSave = (TextView) promptsView.findViewById(R.id.tvsave);
+
+		tvuserId.setText(userCode);
+		tvSave.setOnClickListener(new OnClickListener() {
+
+			@SuppressLint("NewApi")
+			public void onClick(View v) {
+
+				try {
+
+					userName = ((TextView) etUserName).getText().toString();
+
+					if (userName.length() == 0) {
+						Toast.makeText(HomeActivity.this, "Please enter Name.",
+								Toast.LENGTH_LONG).show();
+
+					} else {
+						alertDialog.cancel();
+						new saveUserNameAsyncTask().execute();
+
+					}
+
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+
+		alertDialog.getWindow().setBackgroundDrawable(
+				new ColorDrawable(Color.argb(0, 0, 0, 0)));
+
+		alertDialog.getWindow().setBackgroundDrawable(
+				new ColorDrawable(android.graphics.Color.TRANSPARENT));
+		alertDialog.show();
+
+	}
+
+	private class saveUserNameAsyncTask extends AsyncTask<String, Void, String> {
+		Dialog dialog;
+
+		@Override
+		protected String doInBackground(String... urls) {
+			publishProgress((Void[]) null);
+			return Webservices.saveUserName(userCode, userName);
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			try {
+				if (result != null) {
+
+					JSONObject jObj = new JSONObject(result);
+					sharedPreferences = PreferenceManager
+							.getDefaultSharedPreferences(HomeActivity.this);
+					SharedPreferences.Editor editor = sharedPreferences.edit();
+					editor.putString("userName", jObj.getString("Name"));
+
+					editor.commit();
+					// new GetAudioList().execute();
+
+					displayView(0,"normal");
+
+				}
+
+			} catch (Exception e) {
+				Log.d("InputStream", e.getLocalizedMessage());
+			}
+		}
+
+	}
+
+	void displayAlert() {
+
+		LayoutInflater li = LayoutInflater.from(this);
+		View promptsView = li.inflate(R.layout.record_page, null);
+
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+		alertDialogBuilder.setCancelable(false);
+
+		alertDialogBuilder.setView(promptsView);
+
+		ivstart = (ImageButton) promptsView.findViewById(R.id.ivstart);
+		ivstop = (ImageView) promptsView.findViewById(R.id.ivstop);
+		ivplay = (ImageView) promptsView.findViewById(R.id.ivplay);
+		tvTimmer = (TextView) promptsView.findViewById(R.id.currentduration);
+		tvmaxTime = (TextView) promptsView.findViewById(R.id.totalduration);
+		tvComment = (TextView) promptsView.findViewById(R.id.tvcomment);
+		tvUserId = (TextView) promptsView.findViewById(R.id.tvuserid);
+		// tvcancel = (TextView) promptsView.findViewById(R.id.tvcancel);
+		tvsave = (TextView) promptsView.findViewById(R.id.tvsave);
+		// tvControl= (TextView) promptsView.findViewById(R.id.tvcontol);
+		ivClose = (ImageView) promptsView.findViewById(R.id.ivclose);
+		Typeface face = Typeface.createFromAsset(this.getAssets(),
+				"verdana.ttf");
+		spCategory = (Spinner) promptsView.findViewById(R.id.spCategory);
+		//tvheading = (TextView) promptsView.findViewById(R.id.tvheading);
+
+	//	tvheading.setTypeface(face);
+
+		songProgressBar = (SeekBar) promptsView
+				.findViewById(R.id.songProgressBar);
+
+		etTitle = (EditText) promptsView.findViewById(R.id.ettitle);
+		etMood = (EditText) promptsView.findViewById(R.id.etmood);
+		tvAdd = (EditText) promptsView.findViewById(R.id.etyouradd);
+		ivAddPhoto = (ImageView) promptsView.findViewById(R.id.ivaddimage);
+
+		llPublic = (RelativeLayout) promptsView.findViewById(R.id.llpublic);
+		llUser = (RelativeLayout) promptsView.findViewById(R.id.lluser);
+		ivMaximize = (ImageView) promptsView.findViewById(R.id.ivmaximize);
+		tgmakepublic = (ToggleButton) promptsView
+				.findViewById(R.id.tgmakepublic);
+		tguser = (ToggleButton) promptsView.findViewById(R.id.tganonymous);
+		ivMinimize = (ImageView) promptsView.findViewById(R.id.ivminimize);
+		tvUserId.setText(userCode);
+		etMood.setVisibility(View.GONE);
+		llPublic.setVisibility(View.GONE);
+		llUser.setVisibility(View.GONE);
+		ivMinimize.setVisibility(View.GONE);
+		llUser.setVisibility(View.GONE);
+		tvComment.setVisibility(View.GONE);
+		tvAdd.setVisibility(View.GONE);
+		ivAddPhoto.setVisibility(View.GONE);
+		spCategory.setVisibility(View.GONE);
+		popupControl = "normal";
+		// tvControl.setText("6 Sec");
+		tgmakepublic.setChecked(true);
+		tguser.setChecked(true);
+		ivstart.setBackgroundResource(R.drawable.record_inactive);
+		ivplay.setBackgroundResource(R.drawable.play_inactive);
+		ivstop.setBackgroundResource(R.drawable.stop_inactive);
+		/*
+		 * final AlertDialog alertDialog = alertDialogBuilder.create();
+		 * //alertDialog
+		 * .getWindow().setBackgroundDrawable(getResources().getDrawable
+		 * (R.drawable.save_panel_bg)); // show it
+		 * alertDialog.getWindow().setBackgroundDrawableResource
+		 * (android.R.color.transparent); alertDialog.show();
+		 */
+
+		final AlertDialog alertDialog = alertDialogBuilder.create();
+
+		alertDialog.getWindow().setBackgroundDrawable(
+				new ColorDrawable(Color.argb(0, 0, 0, 0)));
+		alertDialog.setCancelable(false);
+		alertDialog.getWindow().setBackgroundDrawable(
+				new ColorDrawable(android.graphics.Color.TRANSPARENT));
+		alertDialog.show();
+
+		spControl = (Spinner) promptsView.findViewById(R.id.spControl);
+		List<String> list = new ArrayList<String>();
+		list.add("VOICEY");
+		list.add("VOICEY +");
+
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_spinner_item, list);
+
+		dataAdapter
+				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+		spControl.setAdapter(dataAdapter);
+
+		spControl.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> arg0, View arg1, int pos,
+					long id) {
+
+				String workRequestType = arg0.getItemAtPosition(pos).toString();
+
+				if (workRequestType.equals("VOICEY")) {
+					popupControl = "normal";
+
+					etMood.setVisibility(View.GONE);
+					llPublic.setVisibility(View.GONE);
+					llUser.setVisibility(View.GONE);
+					ivMinimize.setVisibility(View.GONE);
+					ivMaximize.setVisibility(View.VISIBLE);
+					tvAdd.setVisibility(View.GONE);
+					spCategory.setVisibility(View.GONE);
+					ivAddPhoto.setVisibility(View.GONE);
+
+				} else if (workRequestType.equals("VOICEY +")) {
+					popupControl = "classifield";
+
+					etMood.setVisibility(View.GONE);
+					llPublic.setVisibility(View.GONE);
+					llUser.setVisibility(View.GONE);
+					ivMinimize.setVisibility(View.GONE);
+					ivMaximize.setVisibility(View.GONE);
+					tvAdd.setVisibility(View.VISIBLE);
+					ivAddPhoto.setVisibility(View.VISIBLE);
+					spCategory.setVisibility(View.VISIBLE);
+					new getCategoryAsyncTask().execute();
+
+				}
+
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+		/*
+		 * tvControl.setOnClickListener(new OnClickListener() {
+		 * 
+		 * @SuppressLint("NewApi") public void onClick(View v) {
+		 * if(popupControl.equals("normal")){
+		 * 
+		 * popupControl="classifield";
+		 * 
+		 * tvControl.setText("Classifield");
+		 * 
+		 * etMood.setVisibility(View.GONE); llPublic.setVisibility(View.GONE);
+		 * llUser.setVisibility(View.GONE); ivMinimize.setVisibility(View.GONE);
+		 * ivMaximize.setVisibility(View.GONE);
+		 * tvAdd.setVisibility(View.VISIBLE);
+		 * ivAddPhoto.setVisibility(View.VISIBLE);
+		 * spCategory.setVisibility(View.VISIBLE); new
+		 * getCategoryAsyncTask().execute();
+		 * 
+		 * }else if(popupControl.equals("classifield")){
+		 * 
+		 * tvControl.setText("6 Sec"); popupControl="normal";
+		 * 
+		 * etMood.setVisibility(View.GONE); llPublic.setVisibility(View.GONE);
+		 * llUser.setVisibility(View.GONE); ivMinimize.setVisibility(View.GONE);
+		 * ivMaximize.setVisibility(View.VISIBLE);
+		 * tvAdd.setVisibility(View.GONE); spCategory.setVisibility(View.GONE);
+		 * ivAddPhoto.setVisibility(View.GONE); }
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 * } });
+		 */
+		
+		if (m != null) {
+
+			m.stop();
+		}
+		customHandler.removeCallbacksAndMessages(null);
+		mHandler.removeCallbacksAndMessages(null);
+		playBeep("B");
+		
+		ivstart.setOnClickListener(new OnClickListener() {
+
+			@SuppressLint("NewApi")
+			public void onClick(View v) {
+
+				try {
+					if (myAudioRecorder != null) {
+						// delay()
+
+						stopRecord();
+						//playBeep("S");
+
+					}
+					
+					if (m != null) {
+
+						m.stop();
+					}
+					customHandler.removeCallbacksAndMessages(null);
+					mHandler.removeCallbacksAndMessages(null);
+					playBeep("B");
+
+				} catch (Exception e) {
+
+				}
+			}
+		});
+
+		
+
+		/*ivstart.setOnLongClickListener(new OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View v) {
+
+				if (m != null) {
+
+					m.stop();
+				}
+				customHandler.removeCallbacksAndMessages(null);
+				mHandler.removeCallbacksAndMessages(null);
+				playBeep("B");
+
+				return true;
+			}
+		});
+*/
+		/*ivstart.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+
+				} else if (event.getAction() == MotionEvent.ACTION_UP) {
+
+					try {
+						if (myAudioRecorder != null) {
+							// delay()
+
+							stopRecord();
+							playBeep("S");
+
+						}
+
+					} catch (Exception e) {
+
+					}
+				}
+				return false;
+			}
+		});*/
+
+		ivstop.setOnClickListener(new OnClickListener() {
+
+			@SuppressLint("NewApi")
+			public void onClick(View v) {
+
+			//	stopPlay();
+				
+				if (myAudioRecorder != null) {
+					// delay()
+
+					stopRecord();
+					playBeep("S");
+
+				}
+				
+				if (m != null) {
+
+					m.stop();
+				}
+			}
+		});
+
+		ivplay.setOnClickListener(new OnClickListener() {
+
+			@SuppressLint("NewApi")
+			public void onClick(View v) {
+
+				try {
+					play();
+
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+
+		ivAddPhoto.setOnClickListener(new OnClickListener() {
+
+			@SuppressLint("NewApi")
+			public void onClick(View v) {
+
+				try {
+
+					displayPhotoSelect();
+
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+
+		ivMaximize.setOnClickListener(new OnClickListener() {
+
+			@SuppressLint("NewApi")
+			public void onClick(View v) {
+
+				try {
+					etMood.setVisibility(View.VISIBLE);
+					llPublic.setVisibility(View.VISIBLE);
+					llUser.setVisibility(View.VISIBLE);
+					ivMinimize.setVisibility(View.VISIBLE);
+					ivMaximize.setVisibility(View.GONE);
+
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+
+		ivMinimize.setOnClickListener(new OnClickListener() {
+
+			@SuppressLint("NewApi")
+			public void onClick(View v) {
+
+				try {
+					etMood.setVisibility(View.GONE);
+					llPublic.setVisibility(View.GONE);
+					llUser.setVisibility(View.GONE);
+					ivMinimize.setVisibility(View.GONE);
+					ivMaximize.setVisibility(View.VISIBLE);
+
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		ivClose.setOnClickListener(new OnClickListener() {
+
+			@SuppressLint("NewApi")
+			public void onClick(View v) {
+
+				try {
+					if (myAudioRecorder != null) {
+
+						myAudioRecorder.release();
+					}
+					if (m != null) {
+						m.stop();
+					}
+					customHandler.removeCallbacksAndMessages(null);
+					mHandler.removeCallbacksAndMessages(null);
+					isActivePopup = true;
+					alertDialog.cancel();
+
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+
+		tguser.setOnClickListener(new OnClickListener() {
+
+			@SuppressLint("NewApi")
+			public void onClick(View v) {
+				String usercontrol = (String) tguser.getText();
+
+				if (tguser.isChecked()) {
+
+					tvUserId.setText(userCode);
+
+				} else {
+					tvUserId.setText("Annunymous");
+				}
+
+			}
+		});
+
+		tvsave.setOnClickListener(new OnClickListener() {
+
+			@SuppressLint("NewApi")
+			public void onClick(View v) {
+
+				if (myAudioRecorder != null) {
+
+					myAudioRecorder.release();
+				}
+				if (m != null) {
+					m.stop();
+				}
+				customHandler.removeCallbacksAndMessages(null);
+				mHandler.removeCallbacksAndMessages(null);
+				isActivePopup = true;
+				String title = ((TextView) etTitle).getText().toString();
+				String source = ((TextView) etMood).getText().toString();
+
+				if (title.length() == 0) {
+					Toast.makeText(getBaseContext(), "Please enter Name it.",
+							Toast.LENGTH_LONG).show();
+
+				} else if (title.length() > 140) {
+					Toast.makeText(getBaseContext(),
+							"Title should be less then 15 character.",
+							Toast.LENGTH_LONG).show();
+
+				} else if (source.length() > 10) {
+					Toast.makeText(getBaseContext(),
+							"Source should be less then 10 character.",
+							Toast.LENGTH_LONG).show();
+
+				}
+
+				else {
+					audioInfo = new AudioInfo();
+					audioInfo.setTitle(title);
+
+					if (popupControl.equals("normal")) {
+
+						String makepublic = (String) tgmakepublic.getText();
+						String usercontrol = (String) tguser.getText();
+
+						audioInfo.setSource(source);
+
+						if (makepublic.equals("ON")) {
+							audioInfo.setPublic_control("1");
+						} else {
+
+							audioInfo.setPublic_control("0");
+						}
+						if (usercontrol.equals("ON")) {
+							audioInfo.setUser_control("1");
+						} else {
+
+							audioInfo.setUser_control("0");
+						}
+
+					} else if (popupControl.equals("classifield")) {
+
+						audioInfo.setPublic_control("1");
+						audioInfo.setUser_control("1");
+
+						String yourAd = ((TextView) tvAdd).getText().toString();
+						audioInfo.setYourAd(yourAd);
+
+						audioInfo.setImagebitmap(imagebitmap);
+						
+						if(imagebitmap!=null){
+							
+							
+							File file = new File (Constants.image_folder+"/"+ title+ ".jpeg");
+							
+							if (file.exists ()) file.delete (); 
+							try {
+							       FileOutputStream out = new FileOutputStream(file);
+							       imagebitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
+							       out.flush();
+							       out.close();
+
+							} catch (Exception e) {
+							       e.printStackTrace();
+							}
+						}
+
+						audioInfo.setCategoryId(categoryId);
+					}
+
+					audioInfo.setUserid(userId);
+					audioInfo.setType(popupControl);
+					try {
+						File f = new File(Constants.temp_url);
+
+						if (f.exists()) {
+
+							InputStream in = new FileInputStream(
+									Constants.temp_url);
+							OutputStream out = new FileOutputStream(Environment
+									.getExternalStorageDirectory()
+									+ "/"
+									+ Constants.app_folder
+									+ "/"
+									+ title
+									+ ".3gp");
+
+							byte[] buf = new byte[1024];
+							int len;
+							while ((len = in.read(buf)) > 0) {
+								out.write(buf, 0, len);
+							}
+							in.close();
+							out.close();
+
+							f.delete();
+
+							alertDialog.cancel();
+
+							new saveAudioAsyncTask().execute();
+
+						}
+
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		});
+
+	}
+
+	private class getCategoryAsyncTask extends AsyncTask<String, Void, String> {
+		Dialog dialog;
+
+		@Override
+		protected String doInBackground(String... urls) {
+			publishProgress((Void[]) null);
+			return Webservices.getCategoryList();
+		}
+
+		protected void onProgressUpdate(Void... progress) {
+
+			dialog = new Dialog(HomeActivity.this);
+
+			dialog.requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+			dialog.setContentView(R.layout.loading_layout);
+			dialog.setCancelable(false);
+			dialog.getWindow().setBackgroundDrawableResource(
+					android.R.color.transparent);
+			dialog.show();
+
+		}
+
+		// onPostExecute displays the results of the AsyncTask.
+		@Override
+		protected void onPostExecute(String result) {
+			dialog.dismiss();
+			try {
+				if (result != null) {
+					Category category;
+					ArrayList<Category> categoryList = new ArrayList<Category>();
+					JSONArray arr = new JSONArray(result);
+					for (int i = 0; i < arr.length(); i++) {
+						JSONObject jObj = arr.getJSONObject(i);
+						category = new Category();
+						category.setCategoryName(jObj
+								.getString("category_name"));
+						category.setId(jObj.getString("id"));
+						categoryList.add(category);
+					}
+
+					// spCountry = (Spinner)
+					// findViewById(R.id.guestListCategory);
+					spCategory.setAdapter(new CategoryAdapter(
+							HomeActivity.this, R.layout.spinner_content,
+							categoryList));
+
+					spCategory
+							.setOnItemSelectedListener(new CategorySelectedListener());
+
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public class CategorySelectedListener implements OnItemSelectedListener {
+		public void onItemSelected(AdapterView<?> adapterView, View view,
+				int position, long id) {
+
+			Category category = (Category) spCategory.getSelectedItem();
+			categoryId = category.getId();
+
+		}
+
+		public void onNothingSelected(AdapterView<?> arg0) {
+
+		}
+	}
+
+	void displayPhotoSelect() {
+
+		TextView camera, gallery;
+		final Dialog dialog = new Dialog(HomeActivity.this);
+
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.setContentView(R.layout.photo_select);
+
+		camera = (TextView) dialog.findViewById(R.id.tvcamera);
+		gallery = (TextView) dialog.findViewById(R.id.tvgallery);
+
+		dialog.show();
+
+		camera.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+				takePictureButtonClicked();
+				dialog.dismiss();
+			}
+		});
+
+		gallery.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+				dialog.dismiss();
+
+				Intent i = new Intent(
+						Intent.ACTION_PICK,
+						android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+				startActivityForResult(i, RESULT_LOAD_IMAGE);
+			}
+		});
+
+	}
+
+	private void takePictureButtonClicked() {
+		Uri imageUri = Uri.fromFile(getTempFile(getApplicationContext()));
+		Intent intent = createIntentForCamera(imageUri);
+		startActivityForResult(intent, ACTIVITY_TAKE_PHOTO);
+	}
+
+	private File getTempFile(Context context) {
+		String fileName = "temp_photo.jpg";
+		File path = new File(Environment.getExternalStorageDirectory(),
+				context.getPackageName());
+		if (!path.exists()) {
+			path.mkdir();
+		}
+		return new File(path, fileName);
+	}
+
+	private Intent createIntentForCamera(Uri imageUri) {
+		Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+		intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+		intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+		return intent;
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		File imgFile;
+		if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK
+				&& null != data) {
+
+			Uri selectedImage = data.getData();
+			String[] filePathColumn = { MediaStore.Images.Media.DATA };
+
+			Cursor cursor = getContentResolver().query(selectedImage,
+					filePathColumn, null, null, null);
+			cursor.moveToFirst();
+
+			int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+
+			String picturePath = cursor.getString(columnIndex);
+			cursor.close();
+
+			imgFile = new File(picturePath);
+
+			// new LoginActss().execute();
+
+			try {
+				// call the standard crop action intent (the user device may not
+				// support it)
+				Intent cropIntent = new Intent("com.android.camera.action.CROP");
+				// indicate image type and Uri
+				cropIntent.setDataAndType(Uri.fromFile(imgFile), "image/*");
+				// set crop properties
+				cropIntent.putExtra("crop", "true");
+				// indicate aspect of desired crop
+				cropIntent.putExtra("aspectX", 1);
+				cropIntent.putExtra("aspectY", 1);
+				// indicate output X and Y
+				cropIntent.putExtra("outputX", 256);
+				cropIntent.putExtra("outputY", 256);
+				// retrieve data on return
+				cropIntent.putExtra("return-data", true);
+				// start the activity - we handle returning in onActivityResult
+				startActivityForResult(cropIntent, PIC_CROP);
+			}
+			// respond to users whose devices do not support the crop action
+			catch (ActivityNotFoundException anfe) {
+				// display an error message
+				String errorMessage = "Whoops - your device doesn't support the crop action!";
+				Toast toast = Toast.makeText(this, errorMessage,
+						Toast.LENGTH_SHORT);
+				toast.show();
+			}
+
+		} else if (requestCode == ACTIVITY_TAKE_PHOTO
+				&& resultCode == RESULT_OK) {
+
+			try {
+				// call the standard crop action intent (the user device may not
+				// support it)
+				Intent cropIntent = new Intent("com.android.camera.action.CROP");
+				// indicate image type and Uri
+				cropIntent.setDataAndType(
+						Uri.fromFile(getTempFile(getApplicationContext())),
+						"image/*");
+				// set crop properties
+				cropIntent.putExtra("crop", "true");
+				// indicate aspect of desired crop
+				cropIntent.putExtra("aspectX", 1);
+				cropIntent.putExtra("aspectY", 1);
+				// indicate output X and Y
+				cropIntent.putExtra("outputX", 256);
+				cropIntent.putExtra("outputY", 256);
+				// retrieve data on return
+				cropIntent.putExtra("return-data", true);
+				// start the activity - we handle returning in onActivityResult
+				startActivityForResult(cropIntent, 1221);
+			}
+			// respond to users whose devices do not support the crop action
+			catch (ActivityNotFoundException anfe) {
+				// display an error message
+				String errorMessage = "Whoops - your device doesn't support the crop action!";
+				Toast toast = Toast.makeText(this, errorMessage,
+						Toast.LENGTH_SHORT);
+				toast.show();
+			}
+
+		} else if (requestCode == 1221 && resultCode == RESULT_OK
+				&& null != data) {
+			Bundle extras = data.getExtras();
+			// get the cropped bitmap
+			final Bitmap thePic = extras.getParcelable("data");
+			imagebitmap = thePic;
+			ivAddPhoto.setImageBitmap(thePic);
+
+		} else if (requestCode == PIC_CROP && resultCode == RESULT_OK
+				&& null != data) {
+			Bundle extras = data.getExtras();
+			// get the cropped bitmap
+			final Bitmap thePic = extras.getParcelable("data");
+			imagebitmap = thePic;
+			ivAddPhoto.setImageBitmap(thePic);
+
+		}
+	}
+
+	void playintial() {
+		MediaPlayer mPlayer;
+
+		mPlayer = MediaPlayer.create(HomeActivity.this, R.raw.bring_it_on);
+
+		mPlayer.start();
+
+	}
+
+	void delay() {
+
+		new Handler().postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					stopRecord();
+					playBeep("S");
+
+					// play();
+
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				// your code here
+			}
+		}, 1000);
+
+	}
+
+	void delaybeforeplay() {
+
+		new Handler().postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				try {
+
+					play();
+
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				// your code here
+			}
+		}, 1000);
+
+	}
+
+	void playBeep(final String type) {
+		MediaPlayer mPlayer;
+		if (type.equals("B")) {
+			mPlayer = MediaPlayer.create(HomeActivity.this, R.raw.start_beep);
+		} else if (type.equals("S")) {
+			mPlayer = MediaPlayer.create(HomeActivity.this, R.raw.start_beep);
+
+		}
+
+		else {
+			mPlayer = MediaPlayer.create(HomeActivity.this, R.raw.start_audio);
+
+		}
+
+		mPlayer.start();
+
+		mPlayer.setOnCompletionListener(new OnCompletionListener() {
+
+			@Override
+			public void onCompletion(MediaPlayer mp) {
+				if (type.equals("R")) {
+
+					playBeep("B");
+
+				} else if (type.equals("S")) {
+
+					delaybeforeplay();
+
+				}
+
+				else if (type.equals("B")) {
+
+					startRecord();
+
+				}
+
+			}
+		});
+
+	}
+
+	private void play() throws IllegalArgumentException, SecurityException,
+			IllegalStateException, IOException {
+
+		m = new MediaPlayer();
+		m.setDataSource(outputFile);
+		m.prepare();
+		m.start();
+		ivplay.setBackgroundResource(R.drawable.play_active);
+		ivstop.setBackgroundResource(R.drawable.stop_inactive);
+		// ivplay.setVisibility(View.GONE);
+		// ivstop.setVisibility(View.VISIBLE);
+		tvComment.setText("Playing...");
+
+		songProgressBar.setProgress(0);
+		songProgressBar.setMax(100);
+
+		// Updating progress bar
+		updateProgressBar();
+
+		m.setOnCompletionListener(new OnCompletionListener() {
+
+			@Override
+			public void onCompletion(MediaPlayer mp) {
+				// songProgressBar.setVisibility(View.GONE);
+				// tvTimmer.setVisibility(View.GONE);
+				// tvmaxTime.setVisibility(View.GONE);
+				// TODO Auto-generated method stub
+				// btn_PlayAudio.setTag("1");
+				// btn_PlayAudio.setText("Play");
+				m.start();
+				songProgressBar.setProgress(0);
+				songProgressBar.setMax(100);
+
+				// Updating progress bar
+				updateProgressBar();
+
+			}
+		});
+
+	}
+
+	public void updateProgressBar() {
+		mHandler.postDelayed(mUpdateTimeTask, 100);
+	}
+
+	/**
+	 * Background Runnable thread
+	 * */
+	private Runnable mUpdateTimeTask = new Runnable() {
+		public void run() {
+			long totalDuration = m.getDuration();
+			long currentDuration = m.getCurrentPosition();
+
+			int secs = (int) (currentDuration / 1000);
+			int maxsec = (int) (totalDuration / 1000);
+
+			int currentmilisec = (int) (currentDuration % 60);
+			int totalmilisec = (int) (totalDuration % 60);
+
+			secs = secs % 60;
+			maxsec = maxsec % 60;
+			Double percentage = ((double) secs / maxsec) * 100;
+			songProgressBar.setProgress(percentage.intValue());
+
+			tvTimmer.setText("" + String.format("%02d", secs) + ":"
+					+ currentmilisec + " Sec");
+
+			// Displaying Total Duration time
+			// tvTimmer.setText("" + utils.milliSecondsToTimer(totalDuration));
+			// Displaying time completed playing
+			if (maxsec == 6) {
+				totalmilisec = 00;
+
+			}
+			tvmaxTime.setText("" + String.format("%02d", maxsec) + ":"
+					+ totalmilisec + " Sec");
+
+			// Updating progress bar
+
+			// Log.d("Progress", ""+progress);
+
+			// Running this thread after 100 milliseconds
+			if (secs < maxsec) {
+				mHandler.postDelayed(this, 100);
+			}
+		}
+	};
+
+	private void startRecord() {
+		try {
+
+			File f = new File(Constants.temp_url);
+
+			if (f.exists()) {
+				f.delete();
+			}
+
+			ivstart.setBackgroundResource(R.drawable.record_active);
+
+			// ivstop.setVisibility(View.VISIBLE);
+			// ivstart.setVisibility(View.GONE);
+			startTime = SystemClock.uptimeMillis();
+			tvComment.setText("Recording...");
+
+			tvmaxTime.setText("06:00 Sec");
+			songProgressBar.setProgress(0);
+			songProgressBar.setMax(100);
+			customHandler.postDelayed(updateTimerThread, 0);
+			setUpMediaRecorder();
+
+			myAudioRecorder.prepare();
+			myAudioRecorder.start();
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// Toast.makeText(getApplicationContext(), "Recording started",
+		// Toast.LENGTH_LONG).show();
+	}
+
+	private void stopRecord() {
+
+		ivstart.setBackgroundResource(R.drawable.record_inactive);
+		timeSwapBuff += timeInMilliseconds;
+		customHandler.removeCallbacks(updateTimerThread);
+
+		// ivstart.setEnabled(false);
+		// ivplay.setVisibility(View.VISIBLE);
+
+		// rlbottombutton.setVisibility(View.GONE);
+		// songProgressBar.setVisibility(View.GONE);
+		// tvTimmer.setVisibility(View.GONE);
+		// tvmaxTime.setVisibility(View.GONE);
+		// llbotombitton.setVisibility(View.VISIBLE);
+
+		// btn_PlayAudio.setEnabled(true);
+		myAudioRecorder.stop();
+		myAudioRecorder.release();
+		myAudioRecorder = null;
+		// Toast.makeText(getApplicationContext(),
+		// "Audio recorded successfully",
+		// Toast.LENGTH_LONG).show();
+	}
+
+	void setUpMediaRecorder() {
+		outputFile = Constants.temp_url;
+
+		myAudioRecorder = new MediaRecorder();
+		myAudioRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+		myAudioRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+		myAudioRecorder.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB);
+		myAudioRecorder.setOutputFile(outputFile);
+	}
+
+	private Runnable updateTimerThread = new Runnable() {
+		public void run() {
+
+			int maxSec = 6;
+			// timeSwapBuff = 0L;
+
+			timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
+
+			updatedTime = timeInMilliseconds;
+
+			int secs = (int) (updatedTime / 1000);
+
+			int mins = secs / 60;
+
+			secs = secs % 60;
+
+			int milliseconds = (int) (updatedTime % 60);
+
+			if (mins == 0 && secs <= 6) {
+				Double percentage = ((double) secs / maxSec) * 100;
+				songProgressBar.setProgress(percentage.intValue());
+
+				Integer secInt = new Integer(secs);
+				Integer maxCount = new Integer(Constants.total_audio_time);
+				Integer actualSec = maxCount - secInt;
+
+				tvTimmer.setText("" + String.format("%02d", actualSec) + ":"
+						+ milliseconds + " Sec");
+				customHandler.postDelayed(this, 50);
+			} else {
+				tvTimmer.setText("00:00 Sec");
+				/*
+				 * stopRecord(); playBeep("S");
+				 * 
+				 * try { play();
+				 * 
+				 * } catch (Exception e) { // TODO Auto-generated catch block
+				 * e.printStackTrace(); }
+				 */
+				
+				stopRecord();
+				playBeep("S");
+
+				//delay();
+
+			}
+
+		}
+
+	};
+
+	private void stopPlay() {
+
+		m.stop();
+
+		ivplay.setBackgroundResource(R.drawable.play_inactive);
+		ivstop.setBackgroundResource(R.drawable.stop_active);
+
+		tvComment.setText("Play your voicey");
+
+	}
+
+	private class SlideMenuClickListener implements
+			ListView.OnItemClickListener {
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position,
+				long id) {
+			// display view for selected nav drawer item
+			displayView(position,"normal");
+		}
+	}
+
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// toggle nav drawer on selecting action bar app icon/title
+		if (mDrawerToggle.onOptionsItemSelected(item)) {
+			return true;
+		}
+		// Handle action bar actions click
+		switch (item.getItemId()) {
+		case R.id.action_settings:
+			return true;
+
+		case R.id.action_record:
+			// playintial();
+			if (isActivePopup) {
+				displayAlert();
+				isActivePopup = false;
+			}
+
+			/*
+			 * Fragment fragment= new RecordFragment(); FragmentManager
+			 * fragmentManager = getFragmentManager();
+			 * fragmentManager.beginTransaction() .replace(R.id.frame_container,
+			 * fragment).commit();
+			 */
+
+			return true;
+
+		case R.id.actionBarLogo:
+			displayAlert();
+			return true;
+
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+	
+	void sendfeedback(){
+		
+		Intent email = new Intent(Intent.ACTION_SEND);
+		email.putExtra(Intent.EXTRA_EMAIL,
+				new String[] { Constants.notifican_mail });
+		// email.putExtra(Intent.EXTRA_CC, new String[]{ to});
+		// email.putExtra(Intent.EXTRA_BCC, new String[]{to});
+		email.putExtra(Intent.EXTRA_SUBJECT,
+				Constants.notifican_mail_subject);
+		
+
+		// need this to prompts email client only
+		email.setType("message/rfc822");
+
+		startActivity(Intent.createChooser(email,
+				"Choose an Email client :"));
+
+		
+	}
+	
+	void rateUs(){
+		
+		 TextView tvrates,tvlater;
+         
+         
+         
+         final Dialog dialog = new Dialog(HomeActivity.this);
+			 
+			dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		    dialog.setContentView(R.layout.dialograteus);
+
+				    
+		 
+		    tvrates=(TextView) dialog.findViewById(R.id.textView3);
+		    tvlater=(TextView) dialog.findViewById(R.id.textView3a);
+								
+		    dialog.show();
+		    
+		    tvrates.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					
+					dialog.dismiss();
+					  Intent intent = new Intent(Intent.ACTION_VIEW);
+			            intent.setData(Uri.parse("market://details?id=com.omkar.map"));
+			            if (!MyStartActivity(intent)) {
+			                //Market (Google play) app seems not installed, let's try to open a webbrowser
+			                intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.omkar.map"));
+			                if (!MyStartActivity(intent)) {
+			                    //Well if this also fails, we have run out of options, inform the user.
+			                    Toast.makeText(HomeActivity.this, "Could not open Android market, please install the market app.", Toast.LENGTH_SHORT).show();
+			                }
+			            }
+					
+				}
+			});
+			
+		
+		    tvlater.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					
+					dialog.dismiss();
+					 
+					
+				}
+			});
+		
+		
+	}
+	
+	 private boolean MyStartActivity(Intent aIntent) {
+	       try
+	       {
+	           startActivity(aIntent);
+	           return true;
+	       }
+	       catch (ActivityNotFoundException e)
+	       {
+	           return false;
+	       }
+	   }
+	   
+		
+		
+		
+	
+
+	/* *
+	 * Called when invalidateOptionsMenu() is triggered
+	 */
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		// if nav drawer is opened, hide the action items
+		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
+		menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
+		return super.onPrepareOptionsMenu(menu);
+	}
+
+	/**
+	 * Diplaying fragment view for selected nav drawer list item
+	 * */
+	private void displayView(int position,String message) {
+		// update the main content by replacing fragments
+		Fragment fragment = null;
+		Bundle bundle = new Bundle();
+		switch (position) {
+		case 0:
+			fragment = new ListFragment();
+			
+			
+			bundle.putString("edttext", message);
+			fragment.setArguments(bundle);
+			break;
+		case 1:
+			// playintial();
+			displayAlert();
+
+			break;
+		case 2:
+
+			fragment = new UserEditFragment();
+			
+			
+
+			break;
+		case 3:
+
+			fragment = new FriendListFragment();
+			
+			
+			bundle.putString("edttext", message);
+			fragment.setArguments(bundle);
+			
+			break;
+		case 4:
+			rateUs();
+
+			break;
+		case 5:
+			sendfeedback();
+
+			break;
+
+		default:
+			break;
+		}
+
+		if (fragment != null) {
+			FragmentManager fragmentManager = getFragmentManager();
+			fragmentManager.beginTransaction()
+					.replace(R.id.frame_container, fragment).commit();
+
+			// update selected item and title, then close the drawer
+			mDrawerList.setItemChecked(position, true);
+			mDrawerList.setSelection(position);
+			// setTitle(navMenuTitles[position]);
+			mDrawerLayout.closeDrawer(mDrawerList);
+		} else {
+			// error in creating fragment
+			Log.e("MainActivity", "Error in creating fragment");
+		}
+	}
+
+	private class saveAudioAsyncTask extends AsyncTask<String, Void, String> {
+		Dialog dialog;
+
+		@Override
+		protected String doInBackground(String... urls) {
+			publishProgress((Void[]) null);
+			return Webservices.saveAudio(audioInfo);
+		}
+
+		protected void onProgressUpdate(Void... progress) {
+
+			dialog = new Dialog(HomeActivity.this);
+
+			dialog.requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+			dialog.setContentView(R.layout.loading_layout);
+			dialog.setCancelable(false);
+			dialog.getWindow().setBackgroundDrawableResource(
+					android.R.color.transparent);
+			dialog.show();
+
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			try {
+				dialog.dismiss();
+				if (result != null) {
+
+					JSONObject jObj = new JSONObject(result);
+
+					displayView(0,"normal");
+
+				}
+
+			} catch (Exception e) {
+				Log.d("InputStream", e.getLocalizedMessage());
+			}
+		}
+
+	}
+
+	@Override
+	public void setTitle(CharSequence title) {
+		mTitle = title;
+		getActionBar().setTitle(mTitle);
+	}
+
+	public void onBackPressed() {
+
+		Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		intent.putExtra("EXIT", true);
+		startActivity(intent);
+		finish();
+
+	}
+
+	/**
+	 * When using the ActionBarDrawerToggle, you must call it during
+	 * onPostCreate() and onConfigurationChanged()...
+	 */
+
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		// Sync the toggle state after onRestoreInstanceState has occurred.
+		mDrawerToggle.syncState();
+	}
+
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		// Pass any configuration change to the drawer toggls
+		mDrawerToggle.onConfigurationChanged(newConfig);
+	}
+
+}

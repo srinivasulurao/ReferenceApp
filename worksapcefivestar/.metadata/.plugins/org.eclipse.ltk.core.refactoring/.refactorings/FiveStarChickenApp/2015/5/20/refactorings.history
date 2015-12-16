@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;AdapterViewResult.java&apos; to &apos;FiveStarChickenLMS/src/com.fivestarchicken.lms.adapter&apos;&#x0D;&#x0A;- Original project: &apos;FiveStarChickenApp&apos;&#x0D;&#x0A;- Destination element: &apos;FiveStarChickenLMS/src/com.fivestarchicken.lms.adapter&apos;&#x0D;&#x0A;- Original element: &apos;com.example.fivestarchickenapp.adapter.AdapterViewResult.java&apos;" description="Copy compilation unit" destination="=FiveStarChickenLMS/src&lt;com.fivestarchicken.lms.adapter" element1="/src&lt;com.example.fivestarchickenapp.adapter{AdapterViewResult.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1431435336285" units="1" version="1.0"/>
+</session>

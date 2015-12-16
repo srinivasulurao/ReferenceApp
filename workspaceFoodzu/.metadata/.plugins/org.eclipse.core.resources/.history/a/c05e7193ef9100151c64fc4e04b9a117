@@ -1,0 +1,47 @@
+package foodzu.com;
+
+import com.google.gson.Gson;
+
+import foodzu.com.models.SubProduct;
+import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+public class ReviewFragment extends Fragment {
+	 String userId;
+	  SharedPreferences sharedpreferences;
+	  private Gson gson;
+	
+	@Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sharedpreferences = getActivity().getSharedPreferences("Login", Context.MODE_PRIVATE);
+        userId = sharedpreferences.getString("user_id", "");
+        gson = new Gson();
+       
+	}
+	
+	
+	@Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View v = inflater.inflate(R.layout.fragment_, null);
+        
+       
+        initUI(v);
+        
+	
+        return v;
+    }
+	
+	 private void initUI(View v) {
+		 
+		 
+	 }
+	 
+
+}

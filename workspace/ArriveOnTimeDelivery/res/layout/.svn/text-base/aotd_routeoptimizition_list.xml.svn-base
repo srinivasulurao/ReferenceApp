@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/aotd_background" >
+
+    <RelativeLayout
+        android:layout_width="400dp"
+        android:layout_height="fill_parent"
+        android:layout_centerHorizontal="true" >
+
+        <RelativeLayout
+            android:id="@+id/top_dispatchScreen_main"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <RelativeLayout
+                android:id="@+id/rout_dispatchScreen_ll_title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true" >
+
+                <TextView
+                    android:id="@+id/txt_routeoptimization_title"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/aotd_title"
+                    android:gravity="center"
+                    android:paddingBottom="8dp"
+                    android:text="Route Optimization"
+                    android:textColor="@color/blue"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/aotd_img_mode"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/online" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_current_location_detatils"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/top_dispatchScreen_main"
+            android:layout_margin="10dp"
+            android:background="#FF00FC" >
+
+            <TextView
+                android:id="@+id/txt_current_location_title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Current Location "
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_current_address"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_current_location_title"
+                android:padding="5dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="5dp"
+                android:text="Getting Current Location..."
+                android:textColor="@color/blue"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/list_route_optimization"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/layout_current_location_detatils"
+            android:layout_margin="10dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="10dp"
+            android:fadingEdge="none"
+            android:background="@drawable/aotd_background"
+            android:listSelector="@android:color/transparent"
+            android:scrollingCache="false" />
+    </RelativeLayout>
+
+</RelativeLayout>

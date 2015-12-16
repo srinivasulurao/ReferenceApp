@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/wrap_rl"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/foodzu_green"
+    android:paddingBottom="1dp" >
+
+    <RelativeLayout
+        android:id="@+id/lytMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/Background_main_content" >
+
+        <FrameLayout
+            android:id="@+id/lytImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/imgThumbnail"
+                android:layout_width="@dimen/thumb_width"
+                android:layout_height="@dimen/thumb_height"
+                android:layout_margin="8dp"
+                android:background="@color/White"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_launcher" />
+
+            <RelativeLayout
+                android:id="@+id/lytTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="@dimen/margin_top_home_deal"
+                android:background="@color/foodzu_green"
+                android:visibility="gone" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/added_item"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/lblofferdetail"
+                    android:layout_width="@dimen/thumb_width"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="In Cart"
+                    android:textColor="@color/text_deal"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </RelativeLayout>
+        </FrameLayout>
+
+        <RelativeLayout
+            android:id="@+id/product_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_toEndOf="@id/lytImage"
+            android:layout_toRightOf="@id/lytImage"
+            android:background="@color/Background_main_content" >
+
+            <TextView
+                android:id="@+id/lblstore"
+                style="@android:style/TextAppearance.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:text=""
+                android:textColor="@color/text_title" />
+
+            <TextView
+                android:id="@+id/p_qty"
+                style="@android:style/TextAppearance.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/lblstore"
+                android:layout_marginEnd="100dp"
+                android:layout_marginRight="100dp"
+                android:text=""
+                android:textColor="@color/grey" />
+
+            <TextView
+                android:id="@+id/prod_off_cost"
+                style="@android:style/TextAppearance.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/p_qty"
+                android:text=""
+                android:textColor="#ffa500"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lblAddress"
+                style="@android:style/TextAppearance.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/prod_off_cost"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/prod_off_cost"
+                android:text=""
+                android:textColor="@color/grey" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/counter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/lytImage"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="15dp"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal" >
+
+            <ImageView
+            android:id="@+id/fav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/unfav_icon"
+            android:visibility="gone" />
+            <ImageView
+                android:id="@+id/more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="6dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/more"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/minus_icon" />
+
+            <TextView
+                android:id="@+id/count"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:gravity="center_vertical|center_horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/text_count"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#ffa500" />
+
+            <ImageView
+                android:id="@+id/plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/plus_icon" />
+        </LinearLayout>
+
+        
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imgDivider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_height"
+        android:layout_below="@+id/lytMain"
+        android:layout_marginTop="10dp"
+        android:background="@color/divider"
+        android:contentDescription="@string/app_name"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgDivider"
+        android:layout_centerVertical="true"
+        android:background="@color/Background_main_content"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/lblEndDateTxt"
+            style="@android:style/TextAppearance.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:text=""
+            android:textColor="@color/text_sub_title"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lblEndDate"
+            style="@android:style/TextAppearance.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/lblEndDateTxt"
+            android:layout_toRightOf="@+id/lblEndDateTxt"
+            android:textColor="@color/text_sub_title" />
+
+        <TextView
+            android:id="@+id/lblDayResrtict"
+            style="@android:style/TextAppearance.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/lblEndDateTxt"
+            android:layout_marginTop="5dp"
+            android:text=""
+            android:textColor="@color/text_sub_title" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/imgDivider"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/add_to_cart"
+        android:visibility="gone" />
+
+</RelativeLayout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/aotd_background" >
+
+    <RelativeLayout
+        android:id="@+id/dispatchScreen_ll_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" >
+
+        <TextView
+            android:id="@+id/sign_second_layout_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/aotd_title"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:text="Sign"
+            android:textColor="@color/blue"
+            android:textSize="25dip"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/aotd_img_mode_two"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/online" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/aotd_sign_editText"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/sec_sign_complete"
+        android:layout_below="@+id/dispatchScreen_ll_title"
+        android:background="@drawable/signature_notes_bg"
+        android:gravity="top"
+        android:hint="Enter notes"
+        android:padding="40dip" />
+
+  
+    <Button
+        android:id="@+id/sec_sign_complete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dip"
+        android:layout_marginRight="15dip"
+        android:background="@drawable/btn_bg_openorder_shade"
+        android:paddingLeft="20dip"
+        android:paddingRight="20dip"
+        android:text="Complete Signature" />
+
+</RelativeLayout>

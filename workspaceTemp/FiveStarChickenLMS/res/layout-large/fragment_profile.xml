@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.fivestarchicken.lms"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+         android:background="@color/profile_bottom_background">
+
+        <LinearLayout
+            android:id="@+id/llbody"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:visibility="visible" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="50"
+                android:background="@color/profile_background"
+                android:orientation="vertical" >
+
+                <com.fivestarchicken.lms.libs.CircularImageView
+                    android:id="@+id/ciprofileimage"
+                    android:layout_width="175dp"
+                    android:layout_height="175dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/image"
+                    app:border="true"
+                    app:border_color="@color/profile_image_background"
+                    app:border_width="4dp"
+                    android:layout_margin="10dp"
+                    app:shadow="true" />
+
+                <ImageView
+                    android:id="@+id/iveditProfilepic"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/pencil_white_icon" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="10dp"
+                  android:layout_marginRight="10dp"
+                android:layout_weight="50"
+                android:background="@color/profile_bottom_background"
+                android:orientation="vertical" >
+
+               <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="70"
+                        android:padding="3dp"
+                        android:text="Profile"
+                        android:textColor="@android:color/black"
+                        android:textSize="30dp" />
+
+                    <LinearLayout
+                        android:id="@+id/llrate"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="30"
+                        android:gravity="center"
+                        android:orientation="horizontal" >
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:background="@android:color/white"
+                    android:orientation="horizontal"
+                    android:padding="10dp" >
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="10" >
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical|center_horizontal"
+                            android:gravity="center_vertical"
+                            android:src="@drawable/profile_icon" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tvname"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="70"
+                        android:padding="3dp"
+                        android:text="Republic Day"
+                        android:textColor="@android:color/black"
+                        android:textSize="20dp" />
+
+                    <FrameLayout
+                        android:id="@+id/flusername"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="10" >
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical|center_horizontal"
+                            android:gravity="center_vertical"
+                            android:src="@drawable/pencil_icon" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:background="@android:color/white"
+                    android:orientation="horizontal"
+                    android:padding="10dp" >
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="10" >
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical|center_horizontal"
+                            android:gravity="center_vertical"
+                            android:src="@drawable/message_icon" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tvemail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="70"
+                        android:padding="3dp"
+                        android:text="Republic Day"
+                        android:textColor="@android:color/black"
+                        android:textSize="20dp" />
+
+                    <FrameLayout
+                        android:id="@+id/flemail"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="10" >
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical|center_horizontal"
+                            android:gravity="center_vertical"
+                            android:src="@drawable/pencil_icon" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:background="@android:color/white"
+                    android:orientation="horizontal"
+                    android:padding="10dp" >
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="10" >
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical|center_horizontal"
+                            android:gravity="center_vertical"
+                            android:src="@drawable/phone_icon" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tvphone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="70"
+                        android:padding="3dp"
+                        android:text="Republic Day"
+                        android:textColor="@android:color/black"
+                        android:textSize="20dp" />
+
+                    <FrameLayout
+                        android:id="@+id/flphonenumber"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="10" >
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical|center_horizontal"
+                            android:gravity="center_vertical"
+                            android:src="@drawable/pencil_icon" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                     android:layout_marginBottom="20dp"
+                    android:gravity="right"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/txt_changepassword"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CHANGE PASSWORD?"
+                        android:textSize="25dp"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

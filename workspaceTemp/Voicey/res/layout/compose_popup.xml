@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp" >
+     <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rrcompose"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:id="@+id/rraddimage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/inbox_background" >
+
+            <ImageView
+                android:id="@+id/ivaddimage"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/camera_icon_small" />
+        </RelativeLayout>
+
+     
+
+        <EditText
+            android:id="@+id/ettextmsg"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_toLeftOf="@+id/rrsend"
+            android:layout_toRightOf="@+id/rraddimage"
+            android:background="@drawable/edit_text_style"
+            android:gravity="center"
+            android:inputType="textMultiLine"
+            android:textSize="15dp" />
+
+        <RelativeLayout
+            android:id="@+id/rrsend"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:layout_toLeftOf="@+id/rrrecord"
+            android:background="@color/send_background" >
+
+            <TextView
+                android:id="@+id/tvsend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="send"
+                android:textSize="13dp"
+                android:typeface="serif" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rrrecord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dp" >
+
+            <ImageView
+                android:id="@+id/ivrecord"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/record_inactive" />
+        </RelativeLayout>
+    </RelativeLayout>
+    
+     <TextView
+            android:id="@+id/tvcancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_below="@+id/rrcompose"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"
+            android:text="Cancel"
+            android:textColor="@color/gray"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </RelativeLayout>

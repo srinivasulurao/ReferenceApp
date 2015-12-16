@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;CustomViewPager.java&apos; to &apos;FiveStarChickenLMS/src/com.fivestarchicken.lms.libs&apos;&#x0D;&#x0A;- Original project: &apos;AyurvedaPrakritiAssessment&apos;&#x0D;&#x0A;- Destination element: &apos;FiveStarChickenLMS/src/com.fivestarchicken.lms.libs&apos;&#x0D;&#x0A;- Original element: &apos;com.ayurdhara.ayurvedaprakritiassessment.CustomViewPager.java&apos;" description="Copy compilation unit" destination="=FiveStarChickenLMS/src&lt;com.fivestarchicken.lms.libs" element1="/src&lt;com.ayurdhara.ayurvedaprakritiassessment{CustomViewPager.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1430832116332" units="1" version="1.0"/>
+</session>

@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/common
+END
+DecoderResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/common/DecoderResult.java
+END
+BitMatrix.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/common/BitMatrix.java
+END
+DetectorResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/common/DetectorResult.java
+END
+BitSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/common/BitSource.java
+END
+PerspectiveTransform.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/common/PerspectiveTransform.java
+END
+GridSampler.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/common/GridSampler.java
+END
+HybridBinarizer.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/common/HybridBinarizer.java
+END
+CharacterSetECI.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/common/CharacterSetECI.java
+END
+DefaultGridSampler.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/common/DefaultGridSampler.java
+END
+StringUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/common/StringUtils.java
+END
+GlobalHistogramBinarizer.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/common/GlobalHistogramBinarizer.java
+END
+BitArray.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/Scanner/com/google/zxing/common/BitArray.java
+END

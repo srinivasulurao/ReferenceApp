@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E1E1E1"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/settings_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:paddingBottom="30dp" >
+
+        <TextView
+            android:id="@+id/fragment_settings_title_general"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_settings_general"
+            android:textColor="#808080"
+            android:textStyle="bold" >
+        </TextView>
+
+        <LinearLayout
+            android:id="@+id/fragment_settings_general_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/fragment_settings_notifications"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="7dp"
+                android:background="@android:color/white"
+                android:gravity="left|center"
+                android:hint="@string/string_settings_notifications"
+                android:paddingLeft="5dp"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/fragment_settings_change_email"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="7dp"
+                android:visibility="gone"
+                android:background="@android:color/white"
+                android:gravity="left|center"
+                android:hint="@string/string_settings_change_email"
+                android:paddingLeft="5dp"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/fragment_settings_change_password"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="7dp"
+                android:background="@android:color/white"
+                android:gravity="left|center"
+                android:hint="@string/string_settings_change_password"
+                android:paddingLeft="5dp"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <!-- <TextView
+            android:id="@+id/fragment_settings_title_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/string_settings_language"
+            android:textColor="#808080"
+            android:textStyle="bold" />
+ -->
+        <!-- <Spinner
+            android:id="@+id/fragment_settings_language"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="7dp"
+            android:background="@android:color/white" />
+ -->
+        <LinearLayout
+            android:id="@+id/fragment_settings_support_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/fragment_settings_support"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/string_settings_support"
+                android:textColor="#808080"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/fragment_settings_privacy_policy"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="7dp"
+                android:background="@android:color/white"
+                android:gravity="left|center"
+                android:hint="@string/string_settings_privacy_policy"
+                android:paddingLeft="5dp"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/fragment_settings_terms"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="7dp"
+                android:background="@android:color/white"
+                android:gravity="left|center"
+                android:hint="@string/string_settings_terms"
+                android:paddingLeft="5dp"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/fragment_settings_block"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="7dp"
+                android:background="@android:color/white"
+                android:gravity="left|center"
+                android:hint="Block/Unblock Users"
+                android:paddingLeft="5dp"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/fragment_settings_about"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="25dp"
+                android:background="@android:color/white"
+                android:gravity="left|center"
+                android:hint="@string/string_settings_about"
+                android:paddingLeft="5dp"
+                android:textSize="17sp" />
+
+            <Button
+                android:id="@+id/fragment_settings_logout"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="7dp"
+                android:background="@android:color/white"
+                android:gravity="left|center"
+                android:hint="@string/string_logout"
+                android:paddingLeft="5dp"
+                android:textSize="17sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="dark_gray">#DBD9D0</color>
+    
+    <color name="tabMedium">#2B2B2B</color>
+	<color name="tabDark">#000000</color>
+	<color name="tabTransparent">#10ffffff</color>
+	<color name="gray">#ccc</color>
+	<color name="green">#117202</color>
+	
+	<color name="red">#930101</color>
+	<color name="blue1">#9BC9F7</color>
+	<color name="dark_blue">#0921F4</color>
+	<color name="purple">#035920</color>
+	
+	<color name="translucent_black">#30DBD9D0</color>
+	<color name="translucent_gray">#FFDBD9D0</color>
+	
+	<color name="red_brown">#6D1919</color>
+	
+	<color name="login_button_color">#A58B70</color>
+	
+	<!-- DARK GREEN -->
+	<color name="startcolor">#002C39</color>
+	<color name="centrecolor">#002C39</color>
+	<color name="endcolor">#002C39</color>
+	
+	
+	<color name="botton">#42363A</color>
+	<color name="middle">#5B5456</color>
+	<color name="top">#7F7F77</color>
+
+	
+	
+	<color name="tabColor">#FF0B7DEF</color>
+	
+	<color name="listbg1_transparent">#80e6ebef</color>
+	<color name="listbg2_transparent">#80f5f6f8</color>
+	
+	
+	<color name="listbg1">#e6ebef</color>
+	<color name="listbg2">#f5f6f8</color>
+	
+	<color name="HEADER">#ffffff</color>
+	<color name="SUB_HEADER">#08aef4</color>
+	<color name="TEXT">#000000</color>
+	
+	<color name="dash1">#f5f6f8</color>
+	<color name="dash2">#e6ebef</color>
+	<color name="dash3">#cdd4de</color>
+	<color name="dash4">#e7eaef</color>
+	
+	
+	
+
+    
+</resources>

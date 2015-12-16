@@ -1,0 +1,380 @@
+package foodzu.com;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.Fragment;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+
+import foodzu.com.Utils.URLs;
+import foodzu.com.Utils.Utils;
+import foodzu.com.adapters.AdapterReview;
+import foodzu.com.models.Review;
+
+public class ReviewFragment extends Fragment {
+	String userId, productId,itemName;
+	SharedPreferences sharedpreferences;
+	private Gson gson;
+	Review review;
+	ListView lvReview;
+	TextView tvAddComments,tvItemName;
+	List<Review> reviewList;
+	AdapterReview adapterReview;
+	AlertDialog.Builder alertDialogBuilder;
+	AlertDialog alertDialog;
+	String rating,commets;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		sharedpreferences = getActivity().getSharedPreferences("Login",
+				Context.MODE_PRIVATE);
+		userId = sharedpreferences.getString("user_id", null);
+		gson = new Gson();
+		reviewList = new ArrayList<Review>();
+		productId = getArguments().getString("product_id");
+		itemName= getArguments().getString("item_name");
+		if (new Utils(getActivity()).isNetworkAvailable()) {
+			new AsyGetReviewList().execute();
+		} else {
+			alertDialogBuilder = new AlertDialog.Builder(getActivity());
+			alertDialogBuilder
+					.setMessage("Internet/Mobile Data Not Available!")
+					.setCancelable(false)
+					.setPositiveButton("Retry",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int id) {
+									new AsyGetReviewList().execute();
+								}
+							});
+
+			alertDialogBuilder.setNegativeButton("Cancel",
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.cancel();
+						}
+					});
+			alertDialog = alertDialogBuilder.create();
+			alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+			alertDialog.show();
+		}
+	}
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+
+		View v = inflater.inflate(R.layout.fragment_comments, null);
+
+		initUI(v);
+
+		adapterReview = new AdapterReview(getActivity(),
+				R.layout.adapter_review, reviewList);
+		lvReview.setAdapter(adapterReview);
+
+		return v;
+	}
+
+	private void initUI(View v) {
+
+		lvReview = (ListView) v.findViewById(R.id.lvReview);
+		tvAddComments = (TextView) v.findViewById(R.id.tvaddreview);
+		tvItemName= (TextView) v.findViewById(R.id.tvitemname);
+		tvAddComments.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				if (sharedpreferences.getString("login_status", "").equals("OK_N")
+						|| sharedpreferences.getString("login_status", "").equals(
+								"OK_G")
+						|| sharedpreferences.getString("login_status", "").equals(
+								"OK_FB")) {
+					userId = sharedpreferences.getString("user_id", null);
+				displayAddComments();
+				}else {
+					
+					Intent	i = new Intent(getActivity(), LoginActivity.class);
+					startActivity(i);
+					}
+				
+
+			}
+		});
+	}
+
+	void displayAddComments() {
+
+		ImageView ivClose;
+		Button btSave;
+		final RelativeLayout rlRate1;
+		final RelativeLayout rlRate2;
+		final RelativeLayout rlRate3;
+		final EditText etComments;
+		
+		LayoutInflater li = LayoutInflater.from(getActivity());
+		View promptsView = li.inflate(R.layout.dialog_write_comments, null);
+
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+				getActivity());
+		alertDialogBuilder.setCancelable(false);
+		alertDialogBuilder.setView(promptsView);
+		final AlertDialog alertDialog = alertDialogBuilder.create();
+
+		alertDialog.getWindow().setBackgroundDrawable(
+				new ColorDrawable(Color.argb(0, 0, 0, 0)));
+
+		alertDialog.getWindow().setBackgroundDrawable(
+				new ColorDrawable(android.graphics.Color.TRANSPARENT));
+		alertDialog.show();
+
+		ivClose = (ImageView) promptsView.findViewById(R.id.ivclose);
+		btSave = (Button) promptsView.findViewById(R.id.btnsave);
+		etComments = (EditText) promptsView.findViewById(R.id.etcomments);
+		rlRate1 = (RelativeLayout) promptsView.findViewById(R.id.rl_rate1);
+		rlRate2 = (RelativeLayout) promptsView.findViewById(R.id.rl_rate2);
+		rlRate3 = (RelativeLayout) promptsView.findViewById(R.id.rl_rate3);
+		
+		rlRate3.setBackgroundColor(getResources().getColor(R.color.select_color));
+		rating="3";
+		rlRate3.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				rlRate3.setBackgroundColor(getResources().getColor(R.color.select_color));
+				rlRate2.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+				rlRate1.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+				rating="3";
+			}
+		});
+		rlRate2.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				rlRate3.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+				rlRate2.setBackgroundColor(getResources().getColor(R.color.select_color));
+				rlRate1.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+				rating="2";
+
+			}
+		});
+		rlRate1.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				rlRate3.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+				rlRate2.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+				rlRate1.setBackgroundColor(getResources().getColor(R.color.select_color));
+				rating="1";
+
+			}
+		});
+		// ratingBar = (RatingBar)promptsView. findViewById(R.id.ratingBar);
+
+		btSave.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+				commets = ((TextView) etComments).getText().toString();
+
+				if (commets.length() == 0) {
+					Toast.makeText(getActivity(), "Please enter Comments .",
+							Toast.LENGTH_LONG).show();
+
+				} else {
+					if (new Utils(getActivity()).isNetworkAvailable()) {
+						new AsySendCommentsList().execute();
+					}
+					
+					
+					alertDialog.cancel();
+
+				}
+
+			}
+		});
+
+		ivClose.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+				alertDialog.cancel();
+			}
+		});
+
+	}
+
+	public String getReviewList() {
+
+		String result = null;
+		String URL = URLs.REVIEW_LIST;
+		try {
+
+			List<NameValuePair> pairs = new ArrayList<NameValuePair>();
+
+			pairs.add(new BasicNameValuePair("product_id", productId));
+
+			DefaultHttpClient httpClient = new DefaultHttpClient();
+
+			HttpPost httpPost = new HttpPost(URL);
+			httpPost.setEntity(new UrlEncodedFormEntity(pairs));
+			HttpResponse httpResponse = httpClient.execute(httpPost);
+			result = EntityUtils.toString(httpResponse.getEntity());
+
+		} catch (Exception e) {
+			Log.d("InputStream", e.getLocalizedMessage());
+		}
+		return result;
+
+	}
+	
+	public String sendComments() {
+
+		String result = null;
+		String URL = URLs.ADD_REVIEW;
+		try {
+
+			List<NameValuePair> pairs = new ArrayList<NameValuePair>();
+			pairs.add(new BasicNameValuePair("product_id", productId));
+			pairs.add(new BasicNameValuePair("user_id", userId));
+			pairs.add(new BasicNameValuePair("review_text", commets));
+
+			pairs.add(new BasicNameValuePair("vote", rating));
+
+			DefaultHttpClient httpClient = new DefaultHttpClient();
+
+			HttpPost httpPost = new HttpPost(URL);
+			httpPost.setEntity(new UrlEncodedFormEntity(pairs));
+			HttpResponse httpResponse = httpClient.execute(httpPost);
+			result = EntityUtils.toString(httpResponse.getEntity());
+
+		} catch (Exception e) {
+			Log.d("InputStream", e.getLocalizedMessage());
+		}
+		return result;
+
+	}
+	
+	public class AsySendCommentsList extends AsyncTask<Void, Void, String> {
+
+		Dialog dialog;
+
+		protected void onPreExecute() {
+
+			dialog = Utils.createProgressDialog(getActivity());
+			dialog.setCancelable(false);
+			if (dialog.isShowing())
+				dialog.dismiss();
+			dialog.show();
+		}
+
+		protected String doInBackground(Void... params) {
+
+			return sendComments();
+		}
+
+		protected void onPostExecute(String result) {
+
+			try {
+
+				if (result != null && result.length() > 0) {
+					JSONObject jObj_main = new JSONObject(result);
+					if (jObj_main.getString("success").equals("1")) {
+						Toast.makeText(getActivity(), jObj_main.getString("result"), Toast.LENGTH_SHORT).show();;
+					}
+					dialog.dismiss();
+				}
+			}catch(Exception e){
+				
+				
+			}
+		}
+	}
+
+	public class AsyGetReviewList extends AsyncTask<Void, Void, String> {
+
+		Dialog dialog;
+
+		protected void onPreExecute() {
+
+			dialog = Utils.createProgressDialog(getActivity());
+			dialog.setCancelable(false);
+			if (dialog.isShowing())
+				dialog.dismiss();
+			dialog.show();
+		}
+
+		protected String doInBackground(Void... params) {
+
+			return getReviewList();
+		}
+
+		protected void onPostExecute(String result) {
+
+			try {
+
+				if (result != null && result.length() > 0) {
+					reviewList.clear();
+
+					JSONObject jObj_main = new JSONObject(result);
+					if (jObj_main.getString("success").equals("1")) {
+						JSONArray jaresult = jObj_main.getJSONArray("result");
+						for (int i = 0; i < jaresult.length(); i++) {
+							JSONObject joReview = jaresult.getJSONObject(i);
+							review = new Review();
+							review.setComments(joReview
+									.getString("review_text"));
+							review.setDate(joReview.getString("added_on"));
+							review.setStarRate(joReview.getString("voted"));
+							review.setUserName(joReview.getString("review_by"));
+							reviewList.add(review);
+
+						}
+						adapterReview.notifyDataSetChanged();
+					}
+				}
+				dialog.dismiss();
+			} catch (Exception e) {
+
+			}
+
+		}
+	}
+
+}

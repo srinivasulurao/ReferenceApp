@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/backmainimg"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@+id/lvfriendsviewList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvshowall"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:animationCache="false"
+        android:descendantFocusability="beforeDescendants"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="5dp"
+        android:scrollingCache="false"
+        android:smoothScrollbar="true" />
+
+</RelativeLayout>

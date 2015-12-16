@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/copperlabs_aotd/!svn/ver/43/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/model
+END
+SignatureModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/model/SignatureModel.java
+END
+OfflineDataModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/model/OfflineDataModel.java
+END
+RxItemModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/model/RxItemModel.java
+END
+LocationModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/model/LocationModel.java
+END
+DispatchAllListModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/copperlabs_aotd/!svn/ver/43/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/model/DispatchAllListModel.java
+END
+RouteOptamizationModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/model/RouteOptamizationModel.java
+END
+DispatchListModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/model/DispatchListModel.java
+END
+pixcelsModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/model/pixcelsModel.java
+END
+RNABatchIdModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/model/RNABatchIdModel.java
+END
+AddressComponentModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/model/AddressComponentModel.java
+END
+LocationResultModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/model/LocationResultModel.java
+END
+DriverGeoLocationModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/model/DriverGeoLocationModel.java
+END
+DetailDeliveryModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/copperlabs_aotd/!svn/ver/41/AOTD/Version_2.0/ArriveOnTimeDelivery/src/com/aotd/model/DetailDeliveryModel.java
+END

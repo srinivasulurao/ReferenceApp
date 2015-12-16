@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MyActivityTracker</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <string name="UserName">UserName</string>
+    <string name="Password">Password</string>
+    <string name="login">Login</string>
+    <string name="rememberme">Remember Me</string>
+    <string name="createaccount">Not Registered? Sign Up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="phone">Phone</string>
+    <string name="setupaccount">Set Up Account</string>
+    <string name="CreateAccount">Create Account</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="Morning">Morning</string>
+    <string name="Noon">Noon</string>
+    <string name="Evening">Evening</string>
+    <string name="Night">Night</string>
+    
+
+</resources>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/listbg1"
+    android:padding="10dp"
+     >
+    
+    <EditText 
+        android:id="@+id/edtFromEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Your Email."
+        android:padding="10dp"
+        android:layout_alignParentTop="true"
+        />
+    
+    <EditText 
+        android:id="@+id/edtToEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/edtFromEmail"
+        android:padding="10dp"
+        android:visibility="gone"
+        />
+    
+    <EditText 
+        android:id="@+id/edtMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:inputType="textMultiLine"
+        android:gravity="top"
+        android:padding="10dp"
+        android:hint="Type Problem/Suggestion."
+        android:layout_below="@+id/edtFromEmail"
+        android:layout_above="@+id/txtGravity"
+        />
+    
+    <TextView 
+        android:id="@+id/txtGravity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_centerInParent="true"
+        />
+    
+    <Button 
+        android:id="@+id/btnSubmit"
+        android:text="Report"
+        android:layout_below="@+id/txtGravity"
+        android:layout_marginTop="10dp"
+        style="@style/ButtonBlue"
+        />
+    
+     <TextView 
+        android:id="@+id/txtBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_alignParentBottom="true"
+        />
+    
+
+</RelativeLayout>

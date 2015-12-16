@@ -1,0 +1,398 @@
+package foodzu.com.adapters;
+
+import java.util.ArrayList;
+
+import com.squareup.picasso.Picasso;
+
+import foodzu.com.HomeActivity;
+import foodzu.com.R;
+import foodzu.com.Utils.Utils;
+import foodzu.com.interfaces.HomeItemCallBack;
+import foodzu.com.models.SubProduct;
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.Paint;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class AdapterHomeProduct extends RecyclerView.Adapter<AdapterHomeProduct.CategoryViewHolder> {
+
+    private ArrayList<SubProduct> productList;
+    Context context;
+    HomeItemCallBack callbacks;
+    SubProduct product;
+    
+
+    public AdapterHomeProduct(ArrayList<SubProduct> categoryList, Context context) {
+        this.productList = categoryList;
+
+
+        this.context = context;
+        
+       
+        // this.tracker = tracker;
+    }
+
+    public void setRecyclerCallBacks(HomeItemCallBack callbacks) {
+        this.callbacks = callbacks;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+
+
+        return 1;
+    }
+
+    @Override
+    public void onBindViewHolder(CategoryViewHolder holder, final int position) {
+
+        try {
+        	product=productList.get(position);
+        	
+        	
+        	
+        	holder.tvProductName.setMaxLines(2);
+        	holder. tvProductName.setText(product.getitem_name());
+        	holder. tvPrice.setText("\u20B9  "+product.getSelling_price());
+        	holder. tvActualPrice.setText("\u20B9  "+product.getMRP_price());
+        	holder. tvQuantity.setText(String.valueOf(product.getqty_count()));
+        
+        	holder.tvActualPrice.setPaintFlags(holder.tvActualPrice.getPaintFlags()
+					| Paint.STRIKE_THRU_TEXT_FLAG);
+        	if (product.getvaliddiscount().equals("1")){
+        		
+        		
+        	}
+        	Picasso.with(context)
+			.load(product.getitem_image())
+			.placeholder(R.drawable.foodzu_noimage).fit()
+			.centerInside().tag(context)
+			.into(holder.ivProductImage);
+        	
+        	
+        	 int cnt_val = -1;
+				for (int m = 0; m < Utils.Cart_checklist.getcartdata().size(); m++) {
+					if (Utils.Cart_checklist.getcartdata().get(m).getitem_ID()
+							.equals(product.getitem_ID())){
+						
+						cnt_val = m;
+						
+						break;
+					}
+					
+				}
+				
+				if(cnt_val>-1){
+					product.setqty_count(Utils.Cart_checklist.getcartdata().get(cnt_val).getqty_count());
+					productList.set(position,product);
+					holder. tvQuantity.setText(String.valueOf(product.getqty_count()));
+					
+				}else{
+					
+					product.setqty_count(0);
+					holder. tvQuantity.setText(String.valueOf(product.getqty_count()));
+				}
+				
+        	
+        	holder.ivPlus.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					product=productList.get(position);
+					int value = product.getqty_count();
+					value=value+1;
+					
+					product.setqty_count(value);
+					productList.set(position,product);
+				    notifyDataSetChanged();
+				    
+				    int cnt_val = -1;
+				    
+					for (int m = 0; m < Utils.Cart_checklist.getcartdata().size(); m++) {
+						if (Utils.Cart_checklist.getcartdata().get(m).getitem_ID()
+								.equals(product.getitem_ID())){
+							cnt_val = m;
+							break;
+						}
+						
+					}
+					if(cnt_val>-1){
+					
+				Utils.Cart_checklist.getcartdata().set(cnt_val, product);
+					}else{
+						product.setitem_in_cart("YES");
+						Utils.Cart_checklist.getcartdata().add(product);
+					}
+					callbacks.homeItemOnItemClicked(position, productList.get(position),"plus");
+				}
+			});
+        	
+        	
+        	
+          holder.ivMinus.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+				
+					product=productList.get(position);
+					int value = product.getqty_count();
+					boolean isRemove =false;
+					if(value==1){
+						isRemove=true;
+					}
+					
+					if(value>0){
+						value=value-1;
+					}
+					
+					product.setqty_count(value);
+					productList.set(position,product);
+				    notifyDataSetChanged();
+				    
+				    int cnt_val = -1;
+				    for (int m = 0; m < Utils.Cart_checklist.getcartdata().size(); m++) {
+						if (Utils.Cart_checklist.getcartdata().get(m).getitem_ID()
+								.equals(product.getitem_ID())){
+							cnt_val = m;
+							break;
+						}
+						
+					}
+				    if(cnt_val>-1&&!isRemove){
+					Utils.Cart_checklist.getcartdata().set(cnt_val, product);
+				    }if(isRemove){
+				    	
+				    	Utils.Cart_checklist.getcartdata().remove(cnt_val);
+				    }
+				    callbacks.homeItemOnItemClicked(position, productList.get(position),"minus");
+					
+				}
+			});
+        	
+        	
+        	holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callbacks.homeItemOnItemClicked(position, productList.get(position),"detail");
+                	
+                	//dialogProductDeatil(productList.get(position),position);
+                }
+            });
+        	
+        	
+            /*holder.tvCategoryName.setText(homeCategory.getCategoryName());
+
+            Glide.with(context)
+                    .load(homeCategory.getImageName())
+                    .centerCrop()
+                    .crossFade()
+                    .into(holder.ivCategory);
+
+            holder.tvCategoryName.setTypeface(commons.getFont());
+            
+*/
+        } catch (Exception e) {
+
+        }
+
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return productList.size();
+    }
+
+    @Override
+    public CategoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView;
+        itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_home_product, parent, false);
+        return new CategoryViewHolder(itemView);
+
+    }
+
+    public static class CategoryViewHolder extends RecyclerView.ViewHolder {
+
+        TextView tvProductName,tvPrice,tvActualPrice,tvQuantity,tvPercentage;
+               ImageView ivProductImage,ivMinus,ivPlus;
+
+
+        public CategoryViewHolder(View itemView) {
+            super(itemView);
+
+            tvProductName = (TextView) itemView.findViewById(R.id.tv_productname);
+           ivProductImage= (ImageView) itemView.findViewById(R.id.iv_productimg);
+           tvPrice= (TextView) itemView.findViewById(R.id.prod_off_cost);
+           tvActualPrice= (TextView) itemView.findViewById(R.id.tv_actual_price);
+           tvQuantity= (TextView) itemView.findViewById(R.id.count);
+           ivMinus=(ImageView)itemView.findViewById(R.id.minus);
+           ivPlus=(ImageView)itemView.findViewById(R.id.plus);
+           tvPercentage= (TextView) itemView.findViewById(R.id.tv_percentage);
+
+        }
+    }
+    
+    void dialogProductDeatil(final SubProduct product,final int position){
+    	TextView tab1,prod_name,prod_cost,prod_offer_cost,prod_desc,prod_quantity,tvBrandAll;
+		final TextView count;
+    	ImageView imgThumbnail,closeit,plus,minus,favo;
+    	final Dialog dialog = new Dialog(
+				context,
+				android.R.style.Theme_DeviceDefault_Dialog_NoActionBar);
+		dialog.setContentView(R.layout.view_product_details);
+
+		tab1 = (TextView) dialog.findViewById(R.id.product_wt1);
+		prod_name = (TextView) dialog.findViewById(R.id.prod_name);
+		prod_cost = (TextView) dialog.findViewById(R.id.prod_cost);
+		prod_offer_cost = (TextView) dialog
+				.findViewById(R.id.prod_offer_cost);
+		prod_desc = (TextView) dialog
+				.findViewById(R.id.desc_details);
+		prod_quantity = (TextView) dialog
+				.findViewById(R.id.prod_quantity);
+		imgThumbnail = (ImageView) dialog
+				.findViewById(R.id.imgThumbnail);
+		closeit = (ImageView) dialog.findViewById(R.id.closeit);
+		plus = (ImageView) dialog.findViewById(R.id.plus);
+		minus = (ImageView) dialog.findViewById(R.id.minus);
+		favo = (ImageView) dialog.findViewById(R.id.favorite);
+		count = (TextView) dialog.findViewById(R.id.count);
+		tvBrandAll = (TextView)dialog.findViewById(R.id.tvbrendall);
+		
+		tvBrandAll.setText("All product of "+product.getBrandName());
+		prod_desc.setText(product.getDescription());
+		tvBrandAll.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				callbacks.homeItemOnItemClicked(position, product,"brand");
+				
+			/*	brandId=data.get(p).getprod_0().getBrandId();
+			onBrandSelect();*/
+			dialog.dismiss();
+			}
+		});
+		
+		//tvBrandAll.setVisibility(View.GONE);
+		
+		prod_name.setText(product.getitem_name());
+		prod_offer_cost.setText("\u20B9  "
+				+ product.getSelling_price());
+		
+		prod_cost.setText("\u20B9  "
+				+ product.getMRP_price());
+		prod_cost.setPaintFlags(prod_cost.getPaintFlags()
+				| Paint.STRIKE_THRU_TEXT_FLAG);
+	//	prod_desc.setText(data.get(p).getpd_description());
+		prod_quantity.setText(product
+				.getpd_wieght());
+
+		count.setText(Integer.toString(product
+				.getqty_count()));
+		
+		plus.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				int value = product.getqty_count();
+				value=value+1;
+				
+				//product.setqty_count(value);
+				product.setqty_count(value);
+				productList.set(position,product);
+				
+				count.setText(Integer.toString(value));
+			    
+			    int cnt_val = -1;
+			    
+				for (int m = 0; m < Utils.Cart_checklist.getcartdata().size(); m++) {
+					if (Utils.Cart_checklist.getcartdata().get(m).getitem_ID()
+							.equals(product.getitem_ID())){
+						cnt_val = m;
+						break;
+					}
+					
+				}
+				if(cnt_val>-1){
+				
+			Utils.Cart_checklist.getcartdata().set(cnt_val, product);
+				}else{
+					Utils.Cart_checklist.getcartdata().add(product);
+				}
+				callbacks.homeItemOnItemClicked(position, product,"plus");
+			}
+		});
+    	
+		minus.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+			
+				
+				int value = product.getqty_count();
+				boolean isRemove =false;
+				if(value==1){
+					isRemove=true;
+				}
+				
+				if(value>0){
+					value=value-1;
+					
+					product.setqty_count(value);
+					productList.set(position,product);
+				}
+				
+				count.setText(Integer.toString(value));
+				
+			    
+			    int cnt_val = -1;
+			    for (int m = 0; m < Utils.Cart_checklist.getcartdata().size(); m++) {
+					if (Utils.Cart_checklist.getcartdata().get(m).getitem_ID()
+							.equals(product.getitem_ID())){
+						cnt_val = m;
+						break;
+					}
+					
+				}
+			    if(cnt_val>-1&&!isRemove){
+				Utils.Cart_checklist.getcartdata().set(cnt_val, product);
+			    }if(isRemove){
+			    	
+			    	Utils.Cart_checklist.getcartdata().remove(cnt_val);
+			    }
+			    //homeItemOnItemClicked(0, product,"minus");
+			    callbacks.homeItemOnItemClicked(position, product,"minus");
+				
+			}
+		});
+    	
+		
+		Picasso.with(context)
+		.load(product.getitem_image())
+		.placeholder(R.drawable.foodzu_noimage).fit()
+		.centerInside().tag(context)
+		.into(imgThumbnail);
+		
+		
+		closeit.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+				notifyDataSetChanged();
+			}
+		});
+		
+		dialog.show();
+    	
+    }
+
+}

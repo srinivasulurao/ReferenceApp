@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff" >
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:paddingBottom="0dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+
+        android:gravity="center"
+        android:orientation="vertical" android:id="@+id/linearLayout1">
+        
+        <TextView
+             android:id="@+id/tvcamera"
+             android:layout_width="match_parent"
+             android:layout_height="40dp"
+             android:layout_marginBottom="5dp"
+             android:layout_marginTop="5dp"
+             android:gravity="center"
+             android:text="Take a Photo"
+             android:textColor="#006FB5" />
+
+         <TextView
+            android:id="@+id/textView61"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+           android:background="#dfdfdf"
+            android:gravity="center"
+            
+             />
+         
+         
+         <TextView
+             android:id="@+id/tvgallery"
+             android:layout_width="match_parent"
+             android:layout_height="40dp"
+             android:layout_marginBottom="5dp"
+             android:layout_marginTop="5dp"
+             android:gravity="center"
+             android:text="Choose Existing Photos"
+             android:textColor="#006FB5" />
+
+         <TextView
+            android:id="@+id/textView62"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+           android:background="#dfdfdf"
+            android:gravity="center"
+            
+             />
+         
+         <TextView
+             android:id="@+id/tvvideo"
+             android:layout_width="match_parent"
+             android:layout_height="40dp"
+             android:layout_marginBottom="5dp"
+             android:layout_marginTop="5dp"
+             android:gravity="center"
+             android:text="Choose Existing Video"
+             android:textColor="#006FB5" />
+
+         <TextView
+            android:id="@+id/textView34"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+           android:background="#dfdfdf"
+            android:gravity="center"
+            
+             />
+         
+         
+         <TextView
+            android:id="@+id/tvcancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentLeft="true"
+            android:text="Cancel"
+            android:padding="10dp"
+            android:textColor="@color/gray"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+         
+         
+        </LinearLayout>
+    
+
+</RelativeLayout>

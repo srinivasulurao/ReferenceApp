@@ -1,0 +1,148 @@
+package foodzu.com;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.google.gson.Gson;
+
+import foodzu.com.Utils.URLs;
+import foodzu.com.Utils.Utils;
+import foodzu.com.models.Review;
+import foodzu.com.models.SubProduct;
+import android.app.Dialog;
+import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.TextView;
+
+public class ReviewFragment extends Fragment {
+	 String userId;
+	  SharedPreferences sharedpreferences;
+	  private Gson gson;
+	  Review review;
+	  ListView lvReview;
+	  TextView tvAddComments;
+	
+	@Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sharedpreferences = getActivity().getSharedPreferences("Login", Context.MODE_PRIVATE);
+        userId = sharedpreferences.getString("user_id", "");
+        gson = new Gson();
+       
+	}
+	
+	
+	@Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View v = inflater.inflate(R.layout.fragment_comments, null);
+        
+       
+        initUI(v);
+        
+	
+        return v;
+    }
+	
+	 private void initUI(View v) {
+		 
+		 lvReview=(ListView)v.findViewById(R.id.lvReview);
+		 tvAddComments=(TextView)v.findViewById(R.id.tvaddreview);
+	 }
+	 
+	 public String getReviewList() {
+			
+			String result = null;
+			String URL = URLs.REVIEW_LIST;
+			try {
+
+				List<NameValuePair> pairs = new ArrayList<NameValuePair>();
+				
+				pairs.add(new BasicNameValuePair("product_id",Utils.getDeviceId(getActivity())));
+			
+				
+
+				DefaultHttpClient httpClient = new DefaultHttpClient();
+
+				HttpPost httpPost = new HttpPost(URL);
+				httpPost.setEntity(new UrlEncodedFormEntity(pairs));
+				HttpResponse httpResponse = httpClient.execute(httpPost);
+				result = EntityUtils.toString(httpResponse.getEntity());
+
+			} catch (Exception e) {
+				Log.d("InputStream", e.getLocalizedMessage());
+			}
+			return result;	
+			
+		}
+	 
+	 public class AsyGetCartList extends AsyncTask<Void, Void, String> {
+
+			Dialog dialog;
+			
+
+			protected void onPreExecute() {
+
+				dialog = Utils.createProgressDialog(getActivity());
+				dialog.setCancelable(false);
+				if (dialog.isShowing())
+					dialog.dismiss();
+				dialog.show();
+			}
+
+			protected String doInBackground(Void... params) {
+				
+
+				return getReviewList();
+			}
+
+			protected void onPostExecute(String result) {
+				
+				try{
+				
+				if (result != null && result.length() > 0) {
+					
+					JSONObject jObj_main = new JSONObject(result);
+					if (jObj_main.getString("success").equals("1")) {
+						JSONArray jaresult = jObj_main.getJSONArray("result");	
+					    for(int i=0;i<jaresult.length();i++){
+						 JSONObject joReview=jaresult.getJSONObject(i);
+						 review=new Review();
+						 review.setComments(joReview.getString("review_text"));
+						 review.setDate(joReview.getString("added_on"));
+						 review.setStarRate(joReview.getString("voted"));
+						 review.setUserName(joReview.getString("review_by"));
+						 
+						 
+						}
+					}
+				}
+				}catch(Exception e){
+		        	   
+		        	   
+					
+				}
+				
+			}
+				}
+	 
+
+}

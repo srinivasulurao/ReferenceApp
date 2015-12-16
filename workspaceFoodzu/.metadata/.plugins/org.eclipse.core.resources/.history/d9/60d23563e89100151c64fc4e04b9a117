@@ -1,0 +1,409 @@
+package foodzu.com;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
+
+import foodzu.com.HomeActivity.create_favList;
+import foodzu.com.Utils.URLs;
+import foodzu.com.Utils.Utils;
+import foodzu.com.interfaces.CartUpdateListener;
+import foodzu.com.models.SubProduct;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Fragment;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.graphics.Paint;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class DetailFragment extends Fragment {
+	
+	 String userId,productStr,productId,favoriteValue;
+	    SharedPreferences sharedpreferences;
+	    TextView tab1,prod_name,prod_cost,prod_offer_cost,prod_desc,prod_quantity,tvBrandAll, tab2, tab3, tab4, tab5;
+	    TextView count;
+    	ImageView imgThumbnail,plus,minus,favo;
+    	SubProduct product;
+    	 private Gson gson;
+    	 LinearLayout llOutOfStock, llAddCounter;
+    	 CartUpdateListener mListener;
+    	
+	@Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sharedpreferences = getActivity().getSharedPreferences("Login", Context.MODE_PRIVATE);
+        userId = sharedpreferences.getString("user_id", "");
+        gson = new Gson();
+       
+	}
+	
+	@Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception.
+        try {
+        	
+
+            mListener = (CartUpdateListener) activity;
+             } catch (ClassCastException e) {
+
+        }
+    }
+	
+	@Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View v = inflater.inflate(R.layout.fragment_detail, null);
+        
+        productStr = getArguments().getString("product_detail");
+        product = gson.fromJson(productStr, SubProduct.class);
+        initUI(v);
+        
+	
+        return v;
+    }
+	
+	  private void initUI(View v) {
+		  
+		  tab1 = (TextView) v.findViewById(R.id.product_wt1);
+			prod_name = (TextView) v.findViewById(R.id.prod_name);
+			prod_cost = (TextView) v.findViewById(R.id.prod_cost);
+			prod_offer_cost = (TextView) v
+					.findViewById(R.id.prod_offer_cost);
+			prod_desc = (TextView) v
+					.findViewById(R.id.desc_details);
+			prod_quantity = (TextView) v
+					.findViewById(R.id.prod_quantity);
+			imgThumbnail = (ImageView) v
+					.findViewById(R.id.imgThumbnail);
+			//closeit = (ImageView) v.findViewById(R.id.closeit);
+			plus = (ImageView) v.findViewById(R.id.plus);
+			minus = (ImageView) v.findViewById(R.id.minus);
+			favo = (ImageView) v.findViewById(R.id.favorite);
+			count = (TextView) v.findViewById(R.id.count);
+			tvBrandAll = (TextView)v.findViewById(R.id.tvbrendall);
+			
+			tvBrandAll.setText("All product of "+product.getBrandName());
+			prod_desc.setText(product.getDescription());
+			//closeit.setVisibility(View.GONE);
+			
+			llOutOfStock = (LinearLayout) v
+					.findViewById(R.id.lloutofstock);
+			llAddCounter = (LinearLayout) v
+					.findViewById(R.id.add_counter);
+			tvBrandAll.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					
+					mListener.onAllBrandProduct(product.getBrandId());
+				}
+			});
+			
+			//tvBrandAll.setVisibility(View.GONE);
+			
+			prod_name.setText(product.getitem_name());
+			prod_offer_cost.setText("\u20B9  "
+					+ product.getSelling_price());
+			
+			prod_cost.setText("\u20B9  "
+					+ product.getMRP_price());
+			prod_cost.setPaintFlags(prod_cost.getPaintFlags()
+					| Paint.STRIKE_THRU_TEXT_FLAG);
+		//	prod_desc.setText(data.get(p).getpd_description());
+			prod_quantity.setText(product
+					.getpd_wieght());
+
+			count.setText(Integer.toString(product
+					.getqty_count()));
+			
+			
+			if (userId.equals(""))
+				favo.setVisibility(View.GONE);
+			else {
+//				if (product.getIsFavorite().equals("1")) {
+//					favo.setVisibility(View.VISIBLE);
+//					favo.setImageResource(R.drawable.fav_icon);
+//				} else {
+//					favo.setVisibility(View.VISIBLE);
+//					favo.setImageResource(R.drawable.unfav_icon);
+//				}
+			}
+			
+			if (product.getIsOutOfStock().equals("1")) {
+				llOutOfStock.setVisibility(View.VISIBLE);
+				favo.setVisibility(View.GONE);
+				llAddCounter.setVisibility(View.GONE);
+			} else {
+				llOutOfStock.setVisibility(View.GONE);
+				favo.setVisibility(View.VISIBLE);
+				llAddCounter.setVisibility(View.VISIBLE);
+			}
+			
+			favo.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					
+					if (product.getIsFavorite().equals("1"))
+						favorite(product.getitem_ID(),
+								"0");
+					else
+						favorite(product.getitem_ID(),
+								"1");
+				}
+			});
+			
+			plus.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					
+					int value = product.getqty_count();
+					value=value+1;
+					
+					//product.setqty_count(value);
+					product.setqty_count(value);
+					
+					
+					count.setText(Integer.toString(value));
+				    
+				    int cnt_val = -1;
+				    
+					for (int m = 0; m < Utils.Cart_checklist.getcartdata().size(); m++) {
+						if (Utils.Cart_checklist.getcartdata().get(m).getitem_ID()
+								.equals(product.getitem_ID())){
+							cnt_val = m;
+							break;
+						}
+						
+					}
+					if(cnt_val>-1){
+					
+				Utils.Cart_checklist.getcartdata().set(cnt_val, product);
+					}else{
+						product.setitem_in_cart("YES");
+						Utils.Cart_checklist.getcartdata().add(product);
+					}
+					 mListener.onCartUpdate(Utils.Cart_checklist.getcartdata(),null,"plus",product);
+				}
+			});
+	    	
+			minus.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+				
+					
+					int value = product.getqty_count();
+					boolean isRemove =false;
+					if(value==1){
+						isRemove=true;
+					}
+					
+					if(value>0){
+						value=value-1;
+						
+						product.setqty_count(value);
+						//productList.set(position,product);
+					}
+					
+					count.setText(Integer.toString(value));
+					
+				    
+				    int cnt_val = -1;
+				    for (int m = 0; m < Utils.Cart_checklist.getcartdata().size(); m++) {
+						if (Utils.Cart_checklist.getcartdata().get(m).getitem_ID()
+								.equals(product.getitem_ID())){
+							cnt_val = m;
+							break;
+						}
+						
+					}
+				    if(cnt_val>-1&&!isRemove){
+					Utils.Cart_checklist.getcartdata().set(cnt_val, product);
+				    }if(isRemove){
+				    	
+				    	Utils.Cart_checklist.getcartdata().remove(cnt_val);
+				    }
+				    mListener.onCartUpdate(Utils.Cart_checklist.getcartdata(),null,"minus",product);
+				    //homeItemOnItemClicked(0, product,"minus");
+				    //callbacks.homeItemOnItemClicked(position, product,"minus");
+					
+				}
+			});
+	    	
+			
+			Picasso.with(getActivity())
+			.load(product.getitem_image())
+			.placeholder(R.drawable.foodzu_noimage).fit()
+			.centerInside().tag(getActivity())
+			.into(imgThumbnail);
+		  
+	  }
+	  
+	  void updateQty(){
+		  int cnt_val = -1;
+			for (int m = 0; m < Utils.Cart_checklist.getcartdata().size(); m++) {
+				if (Utils.Cart_checklist.getcartdata().get(m).getitem_ID()
+						.equals(product.getitem_ID())){
+					
+					cnt_val = m;
+					
+					break;
+				}
+				
+			}
+			
+			if(cnt_val>-1){
+				product.setqty_count(Utils.Cart_checklist.getcartdata().get(cnt_val).getqty_count());
+				
+				
+			}else{
+				
+				product.setqty_count(0);
+				
+			}
+			count.setText(Integer.toString(product
+					.getqty_count()));
+			
+		  
+	  }
+	  
+	  void favorite(String prod_id, String action) {
+		  
+		  productId=prod_id;
+		  favoriteValue=action;
+		  
+		  
+		  AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+					getActivity());
+			if (new Utils(getActivity()).isNetworkAvailable())
+				if (userId.equals("")) {
+					
+					
+					alertDialogBuilder
+							.setMessage("Login to add Favorites.")
+							.setCancelable(false)
+							.setPositiveButton("OK",
+									new DialogInterface.OnClickListener() {
+										public void onClick(DialogInterface dialog,
+												int id) {
+											dialog.cancel();
+										}
+									});
+					AlertDialog alert = alertDialogBuilder.create();
+					alert.show();
+				} else {
+					new create_favList().execute();
+				}
+			else {
+				/*alertDialogBuilder
+						.setMessage("Internet/Mobile Data Not Available!")
+						.setCancelable(false)
+						.setPositiveButton("Retry",
+								new DialogInterface.OnClickListener() {
+									public void onClick(DialogInterface dialog,
+											int id) {
+										favorite(PID, SET, POS);
+									}
+								});
+				alertDialog = alertDialogBuilder.create();
+				alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+				alertDialog.show();*/
+			}
+		}
+	  
+	  public class create_favList extends AsyncTask<Void, Void, String> {
+
+			String URL;
+
+			protected void onPreExecute() {
+				URL = URLs.SET_FAV_URL;
+			}
+
+			protected String doInBackground(Void... params) {
+
+				String result = null;
+
+				try {
+					List<NameValuePair> pairs = new ArrayList<NameValuePair>();
+					pairs.add(new BasicNameValuePair("userid", userId));
+					pairs.add(new BasicNameValuePair("devicetype", "ANDROID"));
+					pairs.add(new BasicNameValuePair("product_id", productId));
+					pairs.add(new BasicNameValuePair("favourite_value", favoriteValue));
+
+					DefaultHttpClient httpClient = new DefaultHttpClient();
+
+					HttpPost httpPost = new HttpPost(URL);
+					httpPost.setEntity(new UrlEncodedFormEntity(pairs));
+					HttpResponse httpResponse = httpClient.execute(httpPost);
+					result = EntityUtils.toString(httpResponse.getEntity());
+
+				} catch (Exception e) {
+					Log.d("InputStream", e.getLocalizedMessage());
+				}
+				return result;
+			}
+
+			protected void onPostExecute(String result) {
+				JSONObject jObj_main;
+				try {
+					jObj_main = new JSONObject(result);
+
+					String res = jObj_main.getString("success").toString();
+					if (res.equals("1")) {
+						
+						if (favoriteValue.equals("1")) {
+							Toast.makeText(getActivity(),
+									"Item added to Favorite List.", Toast.LENGTH_LONG)
+									.show();
+							product.setIsFavorite("1");
+							favo.setImageResource(R.drawable.fav_icon);
+						} else if (favoriteValue.equals("0")) {
+							Toast.makeText(getActivity(),
+									"Item Removed from Favorite List.", Toast.LENGTH_LONG)
+									.show();
+							product.setIsFavorite("0");
+							favo.setImageResource(R.drawable.unfav_icon);
+						}
+						
+					} else {
+						
+
+						Toast.makeText(getActivity(),
+								"Favorite not set!", Toast.LENGTH_SHORT).show();
+
+					}
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+}

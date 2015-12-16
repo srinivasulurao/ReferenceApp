@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 3 elements to &apos;drawable-hdpi&apos;&#x0D;&#x0A;- Original project: &apos;Voicey&apos;&#x0D;&#x0A;- Destination element: &apos;drawable-hdpi&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     noimage.jpg&#x0D;&#x0A;     left_video_frame.jpg&#x0D;&#x0A;     right_video_frame.jpg" description="Copy files" element1="res/drawable-hdpi/noimage.jpg" element2="res/drawable-hdpi/left_video_frame.jpg" element3="res/drawable-hdpi/right_video_frame.jpg" files="3" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1435216328643" target="/FiveStarChickenLMS/res/drawable-hdpi" units="0" version="1.0"/>
+</session>

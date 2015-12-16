@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/main_rel_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/searchView"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/main_bottombar"
+            android:layout_below="@+id/navigation_bar"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/list_background_rounded"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/no_favorite"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="25dp"
+                android:gravity="top|center_horizontal"
+                android:text="Currently NO Favorites!"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/foodzu_green"
+                android:visibility="gone" />
+
+            <ListView
+                android:id="@+id/myfavorite_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/list_background_rounded"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="0dp"
+                android:scrollbarSize="5dp"
+                android:scrollbarThumbVertical="@drawable/scrolltrack" >
+            </ListView>
+
+            <ImageView
+                android:id="@+id/noproduct"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/no_product" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/main_bottombar"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_alignParentBottom="true"
+            android:visibility="visible" >
+
+            <TextView
+                android:id="@+id/bottombar"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/foodzu_brick_red"
+                android:padding="15dp" /> <!-- foodzu_green -->
+ 
+            <TextView
+                android:id="@+id/total_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                 android:layout_toLeftOf="@+id/chk_out_bottom"
+                android:layout_toStartOf="@+id/chk_out_bottom"
+                android:padding="5dp"
+                android:textColor="@color/Background_main_content"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:id="@+id/cart_item_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="3dp"
+               android:layout_toEndOf="@+id/cart_icon"
+                android:layout_toRightOf="@+id/cart_icon"
+                android:background="@drawable/round_bg_white"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/bag_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/bag_icon"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/cartitem_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:padding="5dp"
+                    android:textColor="@color/orange"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/chk_out_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="5dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/checkout"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/menu_topbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/bottombar"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_margin="5dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/menu_topbar"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/dot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/dot" />
+
+            <ImageView
+                android:id="@+id/cart_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_margin="5dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/cart" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/cart_icon_buttom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/checkout_pay_buttom"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/view_rel_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/searchView"
+        android:visibility="gone" >
+
+        <ListView
+            android:id="@+id/cartproduct_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/cart_header"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/list_background_rounded"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0dp"
+            android:scrollbarSize="5dp"
+            android:scrollbarThumbVertical="@drawable/scrolltrack"
+            android:visibility="visible" >
+        </ListView>
+
+        <TextView
+            android:id="@+id/topbar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/foodzu_brick_red"
+            android:padding="15dp"
+            android:textColor="@color/Background_main_content" /> <!-- foodzu_green -->
+
+        <TextView
+            android:id="@+id/cart_header"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/topbar"
+            android:layout_centerHorizontal="true"
+            android:background="@color/Background_main_content"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="My Cart items."
+            android:textColor="@color/orange"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/chk_out_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="6dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/checkout"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/top_total_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+              android:layout_toLeftOf="@+id/chk_out_top"
+            android:layout_toStartOf="@+id/chk_out_top"
+            android:padding="15dp"
+            android:textColor="@color/Background_main_content"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:id="@+id/top_cart_item_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_margin="3dp"
+         android:layout_toEndOf="@+id/top_cart_icon"
+            android:layout_toRightOf="@+id/top_cart_icon"
+            android:background="@drawable/round_bg_white"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/top_bag_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/bag_icon"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/top_cartitem_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_marginEnd="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="10dp"
+                android:padding="5dp"
+                android:textColor="@color/orange"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/top_menu_topbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/topbar"
+            android:layout_margin="5dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/menu_topbar"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/top_dot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/dot" />
+
+        <ImageView
+            android:id="@+id/top_cart_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="5dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/cart" />
+
+        <ImageView
+            android:id="@+id/cart_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/cart_empty"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/cart_empty_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/cart_empty"
+            android:layout_centerHorizontal="true"
+            android:text="@string/cart_empty"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/foodzu_green"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/cart_icon_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="10dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/checkout_pay_top"
+        android:visibility="gone" />
+
+</RelativeLayout>
